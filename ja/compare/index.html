@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIミニPC スペック一括比較表 - ShotPC</title>
+    <link rel="stylesheet" href="/shotpc/assets/css/style.css">
+    <style>
+        /* 軽さを追求した専用スタイル */
+        .compare-wrapper {
+            width: 100%;
+            margin-top: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .scroll-area {
+            overflow-x: auto;
+            max-height: 80vh; /* 縦もスクロール可能に */
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.8rem;
+            white-space: nowrap;
+        }
+        th, td {
+            padding: 8px 12px;
+            border-bottom: 1px solid #eee;
+            border-right: 1px solid #eee;
+        }
+        /* ヘッダー固定 */
+        th {
+            background: #f8f9fa;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            cursor: pointer;
+            user-select: none;
+            text-align: left;
+            font-weight: 700;
+            border-bottom: 2px solid #ccc;
+        }
+        th:hover { background: #e9ecef; }
+        th::after { content: ' ↕'; opacity: 0.3; font-size: 0.6rem; }
+
+        /* 左側2列を固定 */
+        .sticky-col-1 { position: sticky; left: 0; background: #fff; z-index: 5; box-shadow: 2px 0 5px -2px rgba(0,0,0,0.1); }
+        .sticky-col-2 { position: sticky; left: 80px; background: #fff; z-index: 5; border-right: 2px solid #444; }
+        th.sticky-col-1, th.sticky-col-2 { z-index: 15; background: #f8f9fa; }
+
+        /* ストライプとホバー */
+        tr:nth-child(even) td { background: #fafafa; }
+        tr:nth-child(even) td.sticky-col-1, tr:nth-child(even) td.sticky-col-2 { background: #fafafa; }
+        tr:hover td { background: #f0f7ff !important; }
+
+        .num { text-align: right; font-family: monospace; }
+        .ai-status { color: #157347; font-weight: bold; }
+        .btn-link { text-decoration: none; color: #0d6efd; font-weight: bold; }
+        .btn-link:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1><a href="/shotpc/">ShotPC</a></h1>
+            <p>AIミニPC スペック一括比較表 (PCPartPicker Style)</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:1rem;">
+            <div>
+                <h2 style="font-size:1.2rem; margin:0;">全機種リスト</h2>
+                <p style="font-size:0.8rem; color:#666; margin:0;">項目名クリックでソートできます。横スクロールで詳細を確認。</p>
+            </div>
+            <a href="/shotpc/" class="btn-link" style="font-size:0.85rem;">← 検索画面へ</a>
+        </div>
+
+        <div class="compare-wrapper">
+            <div class="scroll-area">
+                <table id="spec-table">
+                    <thead>
+                        <tr>
+                            <th class="sticky-col-1" data-sort="brand">Brand</th>
+                            <th class="sticky-col-2" data-sort="model">Model</th>
+                            <th data-sort="cpu.name">CPU</th>
+                            <th class="num" data-sort="ram.capacity_gb">RAM (GB)</th>
+                            <th data-sort="ai_features.vram_allocation">VRAM Allocation</th>
+                            <th data-sort="ai_features.oculink_support">Oculink</th>
+                            <th data-sort="ai_features.ai_inference_suitability">AI Suitability</th>
+                            <th class="num" data-sort="effective_price_jpy">Price (JPY)</th>
+                            <th>Amazon</th>
+                        </tr>
+                    </thead>
+                    <tbody id="spec-body">
+                        <!-- JSで描画 -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        let miniData = [];
+        let sortDir = 1;
+        let lastKey = '';
+
+        // 深い階層のプロパティを取得 (例: 'cpu.name')
+        const getVal = (obj, path) => path.split('.').reduce((o, i) => (o ? o[i] : null), obj);
+
+        async function init() {
+            try {
+                const res = await fetch('../../data/minis.json');
+                miniData = await res.json();
+                renderTable(miniData);
+
+                // ソートイベントの登録
+                document.querySelectorAll('th[data-sort]').forEach(th => {
+                    th.addEventListener('click', () => {
+                        const key = th.dataset.sort;
+                        sortDir = (lastKey === key) ? -sortDir : 1;
+                        lastKey = key;
+                        
+                        const sorted = [...miniData].sort((a, b) => {
+                            const valA = getVal(a, key);
+                            const valB = getVal(b, key);
+                            if (typeof valA === 'number') return (valA - valB) * sortDir;
+                            return String(valA).localeCompare(String(valB)) * sortDir;
+                        });
+                        renderTable(sorted);
+                    });
+                });
+            } catch (e) { console.error(e); }
+        }
+
+        function renderTable(data) {
+            const body = document.getElementById('spec-body');
+            body.innerHTML = data.map(pc => `
+                <tr>
+                    <td class="sticky-col-1">${pc.brand}</td>
+                    <td class="sticky-col-2"><strong>${pc.model}</strong></td>
+                    <td>${pc.cpu.name}</td>
+                    <td class="num">${pc.ram.capacity_gb}GB</td>
+                    <td class="ai-status">${pc.ai_features.vram_allocation}</td>
+                    <td>${pc.ai_features.oculink_support ? 'Yes' : '-'}</td>
+                    <td>${pc.ai_features.ai_inference_suitability}</td>
+                    <td class="num">¥${pc.effective_price_jpy.toLocaleString()}</td>
+                    <td><a href="${pc.amazon_url}" target="_blank" class="btn-link">View</a></td>
+                </tr>
+            `).join('');
+        }
+
+        init();
+    </script>
+</body>
+</html>
