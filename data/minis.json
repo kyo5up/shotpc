@@ -26,7 +26,7 @@
     "coupon_jpy": 8000,
     "effective_price_jpy": 87000,
     "stock": "in_stock",
-    "amazon_url": "https://www.amazon.co.jp/dp/XXXXXXXXXX?tag=shotsim-22",
+    "amazon_url": "https://www.amazon.co.jp/dp/B0CP91MTY2?tag=shotsim-22",
     "ai_features": {
       "vram_allocation": "Possible via BIOS (Up to 16GB)",
       "oculink_support": true,
@@ -37,14 +37,14 @@
     "notes": "Oculink搭載。外付けGPU(eGPU)接続も視野に入る最強構成。"
   },
   {
-    "id": "BL-SER7-32G-1T",
-    "brand": "Beelink",
-    "model": "SER7",
+    "id": "GK-K8-32G-1T",
+    "brand": "GMKtec",
+    "model": "NucBox K8",
     "cpu": {
-      "name": "AMD Ryzen 7 7840HS",
+      "name": "AMD Ryzen 7 8845HS",
       "cores": 8,
       "threads": 16,
-      "score": "High-End (RDNA3)"
+      "score": "High-End (Hawk Point)"
     },
     "ram": {
       "capacity_gb": 32,
@@ -53,30 +53,104 @@
       "max_capacity_gb": 64
     },
     "storage": {
-      "capacity_gb": 1000,
+      "capacity_gb": 1024,
+      "type": "NVMe PCIe 4.0",
+      "slots": 2,
+      "max_capacity_gb": "4TB"
+    },
+    "gpu": "AMD Radeon 780M",
+    "price_jpy": 92000,
+    "coupon_jpy": 12000,
+    "effective_price_jpy": 80000,
+    "stock": "in_stock",
+    "amazon_url": "https://www.amazon.co.jp/dp/B0D1V6P5H2?tag=shotsim-22",
+    "ai_features": {
+      "vram_allocation": "Possible via BIOS (Up to 16GB)",
+      "oculink_support": false,
+      "thermal_design": "Dual Fan System",
+      "expansion_score": 8,
+      "ai_inference_suitability": "Excellent for 7B/8B Models"
+    },
+    "notes": "最新の8845HS搭載。NPU性能が向上しており、将来のAI機能活用にも期待。"
+  },
+  {
+    "id": "MS-UM890P-32G-1T",
+    "brand": "Minisforum",
+    "model": "UM890 Pro",
+    "cpu": {
+      "name": "AMD Ryzen 9 8945HS",
+      "cores": 8,
+      "threads": 16,
+      "score": "Ultra High-End"
+    },
+    "ram": {
+      "capacity_gb": 32,
+      "type": "DDR5-5600",
+      "slots": 2,
+      "max_capacity_gb": 64
+    },
+    "storage": {
+      "capacity_gb": 1024,
+      "type": "NVMe PCIe 4.0",
+      "slots": 2,
+      "max_capacity_gb": "4TB"
+    },
+    "gpu": "AMD Radeon 780M",
+    "price_jpy": 115000,
+    "coupon_jpy": 15000,
+    "effective_price_jpy": 100000,
+    "stock": "in_stock",
+    "amazon_url": "https://www.amazon.co.jp/dp/B0D5H7L6L8?tag=shotsim-22",
+    "ai_features": {
+      "vram_allocation": "Possible via BIOS (Up to 16GB)",
+      "oculink_support": false,
+      "thermal_design": "Active Cooling with Dual Heatpipes",
+      "expansion_score": 8,
+      "ai_inference_suitability": "Top tier for mobile CPU inference"
+    },
+    "notes": "Ryzen 9搭載のフラッグシップ。高負荷時の安定性が非常に高い。"
+  },
+  {
+    "id": "BL-SER8-32G-1T",
+    "brand": "Beelink",
+    "model": "SER8",
+    "cpu": {
+      "name": "AMD Ryzen 7 8845HS",
+      "cores": 8,
+      "threads": 16,
+      "score": "High-End (Hawk Point)"
+    },
+    "ram": {
+      "capacity_gb": 32,
+      "type": "DDR5-5600",
+      "slots": 2,
+      "max_capacity_gb": 64
+    },
+    "storage": {
+      "capacity_gb": 1024,
       "type": "NVMe PCIe 4.0",
       "slots": 2,
       "max_capacity_gb": "Unlimited"
     },
-    "gpu": "AMD Radeon 780M (VRAM allocation possible)",
-    "price_jpy": 88000,
-    "coupon_jpy": 5000,
-    "effective_price_jpy": 83000,
+    "gpu": "AMD Radeon 780M",
+    "price_jpy": 89000,
+    "coupon_jpy": 9000,
+    "effective_price_jpy": 80000,
     "stock": "in_stock",
-    "amazon_url": "https://www.amazon.co.jp/dp/YYYYYYYYYY?tag=shotsim-22",
+    "amazon_url": "https://www.amazon.co.jp/dp/B0D2N7H5F3?tag=shotsim-22",
     "ai_features": {
-      "vram_allocation": "Possible via BIOS (Up to 16GB)",
+      "vram_allocation": "Possible via BIOS (Standard)",
       "oculink_support": false,
-      "thermal_design": "MSP+MSC Cool System",
+      "thermal_design": "MSC (Modern Standby Cooling)",
       "expansion_score": 7,
-      "ai_inference_suitability": "Great for stable LLM inference"
+      "ai_inference_suitability": "Great Balance of Noise and Performance"
     },
-    "notes": "コスパ重視のハイエンド機。静音性と安定性に定評あり。"
+    "notes": "非常に静かな動作音が特徴。寝室や静かなオフィスでのAI推論に最適。"
   },
   {
-    "id": "GM-G3-N100-16G-512G",
-    "brand": "GEEMOOL",
-    "model": "G3 (N100)",
+    "id": "CW-LBX-N100-12G-512G",
+    "brand": "CHUWI",
+    "model": "LarkBox X",
     "cpu": {
       "name": "Intel N100",
       "cores": 4,
@@ -84,30 +158,67 @@
       "score": "Entry-Level"
     },
     "ram": {
-      "capacity_gb": 16,
+      "capacity_gb": 12,
       "type": "LPDDR5",
       "slots": 0,
-      "max_capacity_gb": 16
+      "max_capacity_gb": 12
     },
     "storage": {
       "capacity_gb": 512,
       "type": "NVMe",
       "slots": 1,
-      "max_capacity_gb": 2000
+      "max_capacity_gb": "1TB"
     },
     "gpu": "Intel UHD Graphics",
-    "price_jpy": 26000,
-    "coupon_jpy": 2000,
-    "effective_price_jpy": 24000,
-    "stock": "out_of_stock",
-    "amazon_url": "https://www.amazon.co.jp/dp/ZZZZZZZZZZ?tag=shotsim-22",
+    "price_jpy": 28000,
+    "coupon_jpy": 3000,
+    "effective_price_jpy": 25000,
+    "stock": "in_stock",
+    "amazon_url": "https://www.amazon.co.jp/dp/B0CQ4RH3W2?tag=shotsim-22",
     "ai_features": {
       "vram_allocation": "Limited",
       "oculink_support": false,
-      "thermal_design": "Single Fan (Standard)",
-      "expansion_score": 3,
-      "ai_inference_suitability": "Basic (Lightweight models only)"
+      "thermal_design": "Active Cooling (Standard)",
+      "expansion_score": 2,
+      "ai_inference_suitability": "Edge AI / Light Inference"
     },
-    "notes": "超低予算向け。簡易サーバーや軽量な推論（OpenVINO等）なら可能。"
+    "notes": "N100搭載機の中でもデザイン性が高い。軽作業や常時稼働サーバーに最適。"
+  },
+  {
+    "id": "AP-M4-16G-256G",
+    "brand": "Apple",
+    "model": "Mac Mini M4",
+    "cpu": {
+      "name": "Apple M4",
+      "cores": 10,
+      "threads": 10,
+      "score": "High Performance (Unified)"
+    },
+    "ram": {
+      "capacity_gb": 16,
+      "type": "Unified Memory",
+      "slots": 0,
+      "max_capacity_gb": 32
+    },
+    "storage": {
+      "capacity_gb": 256,
+      "type": "SSD",
+      "slots": 0,
+      "max_capacity_gb": 512
+    },
+    "gpu": "10-core GPU",
+    "price_jpy": 94800,
+    "coupon_jpy": 0,
+    "effective_price_jpy": 94800,
+    "stock": "in_stock",
+    "amazon_url": "https://www.amazon.co.jp/dp/B0DLN3X2Y7?tag=shotsim-22",
+    "ai_features": {
+      "vram_allocation": "Unified Memory (Dynamic)",
+      "oculink_support": false,
+      "thermal_design": "Compact Active Cooling",
+      "expansion_score": 4,
+      "ai_inference_suitability": "Excellent Efficiency for Small Models"
+    },
+    "notes": "M4チップ搭載の最新Mac Mini。メモリ帯域が広く、特定のAIモデルでは爆速。"
   }
 ]
