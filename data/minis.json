@@ -1,0 +1,113 @@
+[
+  {
+    "id": "MS-UM780XTX-32G-1T",
+    "brand": "Minisforum",
+    "model": "UM780 XTX",
+    "cpu": {
+      "name": "AMD Ryzen 7 7840HS",
+      "cores": 8,
+      "threads": 16,
+      "score": "High-End (RDNA3)"
+    },
+    "ram": {
+      "capacity_gb": 32,
+      "type": "DDR5-5600",
+      "slots": 2,
+      "max_capacity_gb": 64
+    },
+    "storage": {
+      "capacity_gb": 1000,
+      "type": "NVMe PCIe 4.0",
+      "slots": 2,
+      "max_capacity_gb": "Unlimited"
+    },
+    "gpu": "AMD Radeon 780M (VRAM allocation possible)",
+    "price_jpy": 95000,
+    "coupon_jpy": 8000,
+    "effective_price_jpy": 87000,
+    "stock": "in_stock",
+    "amazon_url": "https://www.amazon.co.jp/dp/XXXXXXXXXX?tag=shotsim-22",
+    "ai_features": {
+      "vram_allocation": "Possible via BIOS (Up to 16GB)",
+      "oculink_support": true,
+      "thermal_design": "Liquid Metal (Excellent)",
+      "expansion_score": 9,
+      "ai_inference_suitability": "Perfect for Llama 3 8B (Full VRAM)"
+    },
+    "notes": "Oculink搭載。外付けGPU(eGPU)接続も視野に入る最強構成。"
+  },
+  {
+    "id": "BL-SER7-32G-1T",
+    "brand": "Beelink",
+    "model": "SER7",
+    "cpu": {
+      "name": "AMD Ryzen 7 7840HS",
+      "cores": 8,
+      "threads": 16,
+      "score": "High-End (RDNA3)"
+    },
+    "ram": {
+      "capacity_gb": 32,
+      "type": "DDR5-5600",
+      "slots": 2,
+      "max_capacity_gb": 64
+    },
+    "storage": {
+      "capacity_gb": 1000,
+      "type": "NVMe PCIe 4.0",
+      "slots": 2,
+      "max_capacity_gb": "Unlimited"
+    },
+    "gpu": "AMD Radeon 780M (VRAM allocation possible)",
+    "price_jpy": 88000,
+    "coupon_jpy": 5000,
+    "effective_price_jpy": 83000,
+    "stock": "in_stock",
+    "amazon_url": "https://www.amazon.co.jp/dp/YYYYYYYYYY?tag=shotsim-22",
+    "ai_features": {
+      "vram_allocation": "Possible via BIOS (Up to 16GB)",
+      "oculink_support": false,
+      "thermal_design": "MSP+MSC Cool System",
+      "expansion_score": 7,
+      "ai_inference_suitability": "Great for stable LLM inference"
+    },
+    "notes": "コスパ重視のハイエンド機。静音性と安定性に定評あり。"
+  },
+  {
+    "id": "GM-G3-N100-16G-512G",
+    "brand": "GEEMOOL",
+    "model": "G3 (N100)",
+    "cpu": {
+      "name": "Intel N100",
+      "cores": 4,
+      "threads": 4,
+      "score": "Entry-Level"
+    },
+    "ram": {
+      "capacity_gb": 16,
+      "type": "LPDDR5",
+      "slots": 0,
+      "max_capacity_gb": 16
+    },
+    "storage": {
+      "capacity_gb": 512,
+      "type": "NVMe",
+      "slots": 1,
+      "max_capacity_gb": 2000
+    },
+    "gpu": "Intel UHD Graphics",
+    "price_jpy": 26000,
+    "coupon_jpy": 2000,
+    "effective_price_jpy": 24000,
+    "stock": "out_of_stock",
+    "amazon_url": "https://www.amazon.co.jp/dp/ZZZZZZZZZZ?tag=shotsim-22",
+    "ai_features": {
+      "vram_allocation": "Limited",
+      "oculink_support": false,
+      "thermal_design": "Single Fan (Standard)",
+      "expansion_score": 3,
+      "ai_inference_suitability": "Basic (Lightweight models only)"
+    },
+    "notes": "超低予算向け。簡易サーバーや軽量な推論（OpenVINO等）なら可能。"
+  }
+]

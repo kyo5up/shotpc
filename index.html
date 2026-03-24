@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShotPC - ミニPC比較・在庫確認ポータル</title>
+    <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1><a href="/">ShotPC</a></h1>
+            <p>AI構築のためのミニPC比較・在庫確認ポータル</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <aside id="sidebar">
+            <section class="filter-group">
+                <h3>CPU</h3>
+                <label><input type="checkbox" name="cpu" value="ryzen7"> Ryzen 7</label>
+                <label><input type="checkbox" name="cpu" value="n100"> Intel N100</label>
+            </section>
+            <section class="filter-group">
+                <h3>RAM</h3>
+                <label><input type="checkbox" name="ram" value="16"> 16GB</label>
+                <label><input type="checkbox" name="ram" value="32"> 32GB</label>
+                <label><input type="checkbox" name="ram" value="64"> 64GB</label>
+            </section>
+            <section class="filter-group">
+                <label><input type="checkbox" name="stock" value="in_stock"> 在庫ありのみ表示</label>
+            </section>
+        </aside>
+
+        <section id="product-list">
+            <!-- JavaScript でここにミニPCの一覧を表示 -->
+            <div class="loading">データを読み込み中...</div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 ShotPC. 掲載情報はAmazon等の各ECサイトのものです。</p>
+            <p class="disclaimer">※Amazonアソシエイトとして、ShotPCは適格販売により収入を得ています。</p>
+        </div>
+    </footer>
+
+    <script src="/assets/js/app.js"></script>
+</body>
+</html>
