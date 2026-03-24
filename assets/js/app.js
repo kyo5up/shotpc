@@ -7,13 +7,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // データ読み込み
     async function loadData() {
         try {
-            // ミニPCデータの読み込み
-            const pcResponse = await fetch('/data/minis.json');
+            // ミニPCデータの読み込み (相対パスに変更)
+            const pcResponse = await fetch('data/minis.json');
             allMinis = await pcResponse.json();
             renderProducts(allMinis);
 
-            // メーカーデータの読み込み
-            const brandResponse = await fetch('/data/brands.json');
+            // メーカーデータの読み込み (相対パスに変更)
+            const brandResponse = await fetch('data/brands.json');
             const brands = await brandResponse.json();
             renderBrands(brands);
         } catch (error) {
