@@ -4,15 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ShotPC - ミニPC比較・在庫確認ポータル</title>
-    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/shotpc/assets/css/style.css">
 </head>
 <body>
     <header>
         <div class="container">
-            <h1><a href="/">ShotPC</a></h1>
+            <h1><a href="/shotpc/">ShotPC</a></h1>
             <p>AI構築のためのミニPC比較・在庫確認ポータル</p>
         </div>
     </header>
+
+    <section id="featured-brands" class="container">
+        <h2>注目のAI向けメーカー</h2>
+        <div class="brand-grid" id="brand-list">
+            <!-- JavaScript でここにメーカー一覧を表示 -->
+            <div class="loading">メーカー情報を読み込み中...</div>
+        </div>
+    </section>
 
     <main class="container">
         <aside id="sidebar">
@@ -45,6 +53,6 @@
         </div>
     </footer>
 
-    <script src="/assets/js/app.js"></script>
+    <script src="/shotpc/assets/js/app.js"></script>
 </body>
 </html>

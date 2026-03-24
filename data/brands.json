@@ -1,0 +1,110 @@
+[
+  {
+    "id": "minisforum",
+    "name": "Minisforum",
+    "country": "香港/中国",
+    "mini_pc_status": "製造中 (主力)",
+    "ai_strength": "最先端の拡張性・冷却性能",
+    "description": "ミニPC専門メーカー。Oculink搭載や液体金属冷却など、実験的な試みを最速で製品化。BIOS設定が豊富でAIユーザーに最も支持されている。",
+    "typical_models": ["UM780 XTX", "UM890 Pro"]
+  },
+  {
+    "id": "beelink",
+    "name": "Beelink",
+    "country": "中国",
+    "mini_pc_status": "製造中 (主力)",
+    "ai_strength": "安定性・静音性・大容量メモリ",
+    "description": "ミニPC専門メーカー。冷却システムの設計に定評があり、高負荷時も静か。128GB LPDDR5X搭載モデルなど、帯域重視のハイエンド機を展開。",
+    "typical_models": ["SER8", "SER9"]
+  },
+  {
+    "id": "apple",
+    "name": "Apple",
+    "country": "アメリカ",
+    "mini_pc_status": "製造中",
+    "ai_strength": "爆速なメモリ帯域 (Unified Memory)",
+    "description": "Mac Miniを展開。M4 Proチップ等はメモリ帯域が極めて広く、大型LLMも高速動作。省スペースと圧倒的効率の両立。",
+    "typical_models": ["Mac Mini M4 Pro"]
+  },
+  {
+    "id": "lenovo",
+    "name": "Lenovo",
+    "country": "中国/アメリカ",
+    "mini_pc_status": "製造中",
+    "ai_strength": "堅牢性・中古市場の豊富さ",
+    "description": "「ThinkCentre Tiny」シリーズを展開。法人向けで非常に頑丈。型落ちモデルが中古市場に安く出回るため、低予算サーバー構築に人気。",
+    "typical_models": ["ThinkCentre M75q Tiny"]
+  },
+  {
+    "id": "hp",
+    "name": "HP",
+    "country": "アメリカ",
+    "mini_pc_status": "製造中",
+    "ai_strength": "法人クオリティの安定性",
+    "description": "「Elite Mini」「Pro Mini」シリーズを展開。内部アクセスが容易でメンテナンス性が高い。拡張スロットの設計が丁寧。",
+    "typical_models": ["Elite Mini 800 G9"]
+  },
+  {
+    "id": "dell",
+    "name": "Dell",
+    "country": "アメリカ",
+    "mini_pc_status": "製造中",
+    "ai_strength": "信頼性とオンサイト保証",
+    "description": "「OptiPlex Micro」シリーズを展開。大手ならではのサポート体制。中古流通も多く、パーツの入手性が良い。",
+    "typical_models": ["OptiPlex 7000 Micro"]
+  },
+  {
+    "id": "asus",
+    "name": "ASUS",
+    "country": "台湾",
+    "mini_pc_status": "製造中",
+    "ai_strength": "Intel NUCの正統継承",
+    "description": "Intel NUC事業を引き継ぎ、最新のIntelチップ搭載機を展開。ROGブランドで外部GPU搭載の大型ミニPCも手掛ける。",
+    "typical_models": ["NUC 14 Pro", "ROG NUC"]
+  },
+  {
+    "id": "msi",
+    "name": "MSI",
+    "country": "台湾",
+    "mini_pc_status": "製造中",
+    "ai_strength": "ゲーミング・デザイン",
+    "description": "「Cubi」「PRO DP」シリーズを展開。スタイリッシュなデザインが多く、リビングPCとしても馴染みやすい。",
+    "typical_models": ["Cubi 5 12M"]
+  },
+  {
+    "id": "microsoft",
+    "name": "Microsoft",
+    "country": "アメリカ",
+    "mini_pc_status": "製造なし",
+    "ai_strength": "-",
+    "description": "Surfaceシリーズが中心。かつて開発者向けに「Windows Dev Kit 2023」という小型PCを出したが、一般販売のミニPCラインはない。",
+    "typical_models": ["なし"]
+  },
+  {
+    "id": "panasonic",
+    "name": "Panasonic",
+    "country": "日本",
+    "mini_pc_status": "製造なし",
+    "ai_strength": "-",
+    "description": "レッツノート（ノートPC）に特化。ミニPCは展開していない。現場でのタフネス性能に全振りしているメーカー。",
+    "typical_models": ["なし"]
+  },
+  {
+    "id": "vaio",
+    "name": "VAIO",
+    "country": "日本",
+    "mini_pc_status": "製造なし",
+    "ai_strength": "-",
+    "description": "ノートPC専業に近い。デスクトップも一体型や大型が過去にあったが、現在はミニPCのラインナップは存在しない。",
+    "typical_models": ["なし"]
+  },
+  {
+    "id": "samsung",
+    "name": "Samsung",
+    "country": "韓国",
+    "mini_pc_status": "製造なし (確認不可)",
+    "ai_strength": "-",
+    "description": "海外では「Galaxy Book」を展開しているが、デスクトップミニPCについては現行モデルの公式販売は確認できない。",
+    "typical_models": ["なし"]
+  }
+]
