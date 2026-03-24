@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let allMinis = [];
     const productList = document.getElementById('product-list');
     const brandList = document.getElementById('brand-list');
+    const articleList = document.getElementById('article-list');
     const filters = document.querySelectorAll('#sidebar input');
 
     // データ読み込み
@@ -16,10 +17,25 @@ document.addEventListener('DOMContentLoaded', () => {
             const brandResponse = await fetch('data/brands.json');
             const brands = await brandResponse.json();
             renderBrands(brands);
+
+            // 記事データの読み込み
+            const articleResponse = await fetch('data/articles.json');
+            const articles = await articleResponse.json();
+            renderArticles(articles);
         } catch (error) {
             console.error('データの読み込みに失敗しました:', error);
             if (productList) productList.innerHTML = '<p class="error">データの読み込みに失敗しました。</p>';
         }
+    }
+
+    // 記事一覧の描画
+    function renderArticles(articles) {
+        if (!articleList) return;
+        articleList.innerHTML = articles.map(article => `
+            <div class="article-item">
+                <a href="${article.url}">${article.title}</a>
+            </div>
+        `).join('');
     }
 
     // メーカー一覧の描画

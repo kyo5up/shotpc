@@ -157,6 +157,25 @@ main.container {
     font-size: 0.9rem;
 }
 
+.article-item {
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--bg-color);
+}
+
+.article-item a {
+    text-decoration: none;
+    color: var(--text-main);
+    font-size: 0.85rem;
+    font-weight: 500;
+    line-height: 1.4;
+    display: block;
+}
+
+.article-item a:hover {
+    color: var(--primary-color);
+}
+
 /* Product List */
 #product-list {
     display: grid;

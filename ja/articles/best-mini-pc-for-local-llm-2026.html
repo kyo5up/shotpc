@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026年最新：ローカルLLM推論に最適なミニPCの選び方 - ShotPC</title>
+    <link rel="stylesheet" href="/shotpc/assets/css/style.css">
+    <style>
+        .article-content {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+        .article-content h1 { margin-bottom: 1rem; font-size: 2rem; }
+        .article-meta { color: var(--text-sub); margin-bottom: 2rem; font-size: 0.9rem; }
+        .article-body h2 { margin-top: 2.5rem; margin-bottom: 1rem; border-bottom: 2px solid var(--primary-color); display: inline-block; }
+        .article-body p { margin-bottom: 1.5rem; line-height: 1.8; }
+        .article-body ul { margin-bottom: 1.5rem; padding-left: 1.5rem; }
+        .article-body li { margin-bottom: 0.5rem; }
+        .back-link { margin-top: 2rem; display: inline-block; color: var(--primary-color); text-decoration: none; font-weight: bold; }
+        .highlight-box { background: #eff6ff; border-left: 4px solid var(--primary-color); padding: 1.5rem; margin: 2rem 0; border-radius: 4px; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1><a href="/shotpc/">ShotPC</a></h1>
+            <p>AI構築のためのミニPC比較・在庫確認ポータル</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <article class="article-content">
+            <h1>2026年最新：ローカルLLM推論に最適なミニPCの選び方</h1>
+            <div class="article-meta">
+                公開日: 2026年3月24日 | カテゴリ: 選び方, AI
+            </div>
+
+            <section class="article-body">
+                <p>2026年、ローカルLLM（Llama 3, Gemma 2, DeepSeekなど）を個人のPCで動かすことは、エンジニアやホビーユーザーにとって一般的なものとなりました。しかし、巨大なパラメータを持つAIモデルを快適に動かすには、従来のPC選びとは異なる視点が必要です。</p>
+
+                <p>本記事では、限られた予算で最高のAI推論環境を構築するための、ミニPC選びのポイントを解説します。</p>
+
+                <h2>1. VRAM（ビデオメモリ）が命</h2>
+                <p>LLM推論において最も重要なのは、GPUが扱えるメモリ量です。ミニPCの多くは内蔵GPU（iGPU）を使用しますが、近年のAMD Ryzen（Radeon 780M以降）を搭載したモデルは、<strong>BIOS設定でメインメモリの最大半分（または最大16GB）をVRAMとして固定割り当て</strong>することが可能です。</p>
+                <ul>
+                    <li><strong>8Bモデル推奨:</strong> VRAM 16GB割り当て（メインメモリ32GB以上必須）</li>
+                    <li><strong>70Bモデル（量子化）:</strong> Unified Memoryを備えた Mac Mini M4 Pro (48GB以上)</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <strong>💡 ポイント:</strong> メモリは「増設可能」なモデルを選びましょう。LPDDRなどのオンボードメモリは帯域が広いですが、後からの増設ができません。
+                </div>
+
+                <h2>2. AMD vs Intel vs Apple</h2>
+                <p>現在、ミニPCのAI推論においてはAMDが圧倒的に優勢です。Radeon 780M / 880M / 890M は、ROCm（Linux）や DirectML（Windows）を通じて、NVIDIA GPUに近い互換性で推論を加速できます。</p>
+                <ul>
+                    <li><strong>AMD:</strong> VRAM割り当ての自由度が高く、Linuxでの環境構築も容易。</li>
+                    <li><strong>Apple Silicon:</strong> Unified Memoryによる高速なメモリ帯域が最大の武器。70Bクラスのモデルも1台で動かせる。</li>
+                    <li><strong>Intel:</strong> OpenVINOを使用する場合は強力。しかしVRAM割り当ての制限が厳しいモデルが多い。</li>
+                </ul>
+
+                <h2>3. 冷却性能（熱ダレ対策）</h2>
+                <p>AI推論は長時間CPU/GPUがフル稼働します。超小型のミニPCでは、熱による性能低下（サーマルスロットリング）が起きやすいため、冷却機構がしっかりしたモデル（Minisforumの液金冷却など）を選ぶのが定石です。</p>
+
+                <h2>まとめ</h2>
+                <p>まずは「Ryzen 7 7840HS / 8845HS」を搭載し、メモリを32GB以上にカスタマイズできるモデルから始めるのが、2026年現在の最も賢いAI向けミニPCの買い方と言えるでしょう。</p>
+            </section>
+
+            <a href="/shotpc/" class="back-link">← トップページに戻る</a>
+        </article>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 ShotPC. 掲載情報はAmazon等の各ECサイトのものです。</p>
+            <p class="disclaimer">※Amazonアソシエイトとして、ShotPCは適格販売により収入を得ています。</p>
+        </div>
+    </footer>
+</body>
+</html>
