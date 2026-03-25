@@ -5,6 +5,35 @@ document.addEventListener('DOMContentLoaded', () => {
     const articleList = document.getElementById('article-list');
     const filters = document.querySelectorAll('#sidebar input');
 
+    // Admin状態の管理 (localStorageに保存)
+    let isAdmin = localStorage.getItem('shotpc_admin') === 'true';
+    
+    // 隠しコマンド (ロゴ5連打でAdmin切替)
+    let logoClickCount = 0;
+    let logoClickTimer = null;
+    const logo = document.querySelector('header h1 a');
+    if (logo) {
+        logo.addEventListener('click', (e) => {
+            logoClickCount++;
+            clearTimeout(logoClickTimer);
+            logoClickTimer = setTimeout(() => { logoClickCount = 0; }, 2000);
+
+            if (logoClickCount >= 5) {
+                const pass = prompt('管理者パスワードを入力してください:');
+                if (pass === 'admin') {
+                    isAdmin = !isAdmin;
+                    localStorage.setItem('shotpc_admin', isAdmin);
+                    alert(`Admin Mode: ${isAdmin ? 'ON (Full Data)' : 'OFF (Standard)'}`);
+                    renderProducts(allMinis);
+                } else {
+                    alert('パスワードが違います。');
+                }
+                logoClickCount = 0;
+                e.preventDefault();
+            }
+        });
+    }
+
     // データ読み込み
     async function loadData() {
         try {
@@ -92,18 +121,34 @@ document.addEventListener('DOMContentLoaded', () => {
                         <span class="label">CPU / GPU</span>
                         <span class="value">${pc.cpu.name} (${pc.cpu.cores}C/${pc.cpu.threads}T) / ${pc.gpu || '-'}</span>
                     </div>
+                    
+                    ${isAdmin ? `
+                    <div class="spec-node">
+                        <span class="label">CPU Benchmark</span>
+                        <span class="value">${pc.cpu.benchmark_score || '未計測'}</span>
+                    </div>
+                    <div class="spec-node">
+                        <span class="label">NPU (AI Engine)</span>
+                        <span class="value">${pc.ai_features.npu_tops ? pc.ai_features.npu_tops + ' TOPS' : '非搭載 / 不明'}</span>
+                    </div>
+                    ` : ''}
+
                     <div class="spec-node">
                         <span class="label">RAM</span>
                         <span class="value">${pc.ram.capacity_gb}GB (${pc.ram.type || '-'})</span>
                     </div>
                     <div class="spec-node">
-                        <span class="label">RAM 拡張性</span>
-                        <span class="value">${pc.ram.slots || '-'} Slot / Max ${pc.ram.max_capacity_gb || '-'}GB</span>
-                    </div>
-                    <div class="spec-node">
                         <span class="label">VRAM設定</span>
                         <span class="value">${pc.ai_features.vram_allocation || '不明'}</span>
                     </div>
+
+                    ${isAdmin ? `
+                    <div class="spec-node">
+                        <span class="label">RAM 拡張性</span>
+                        <span class="value">${pc.ram.slots || '-'} Slot / Max ${pc.ram.max_capacity_gb || '-'}GB</span>
+                    </div>
+                    ` : ''}
+
                     <div class="spec-node">
                         <span class="label">Oculink</span>
                         <span class="value">${pc.ai_features.oculink_support ? '✅ 対応' : 'ー'}</span>
@@ -112,13 +157,28 @@ document.addEventListener('DOMContentLoaded', () => {
                         <span class="label">Storage</span>
                         <span class="value">${pc.storage.capacity_gb}GB (${pc.storage.slots || '-'} Slot)</span>
                     </div>
+
+                    ${isAdmin ? `
+                    <div class="spec-node">
+                        <span class="label">USB4 / Thunderbolt</span>
+                        <span class="value">${pc.io_ports?.usb4_count || '未調査'} Port</span>
+                    </div>
+                    <div class="spec-node">
+                        <span class="label">LAN / Network</span>
+                        <span class="value">${pc.io_ports?.lan_speed || '未調査'}</span>
+                    </div>
                     <div class="spec-node">
                         <span class="label">冷却 / 構造</span>
                         <span class="value">${pc.ai_features.thermal_design || '-'}</span>
                     </div>
+                    <div class="spec-node">
+                        <span class="label">サイズ / 重量</span>
+                        <span class="value">${pc.physical?.dimensions || '-'} / ${pc.physical?.weight || '-'}</span>
+                    </div>
+                    ` : ''}
                 </div>
 
-                ${pc.notes ? `
+                ${(isAdmin && pc.notes) ? `
                 <div class="pc-notes">
                     <span class="label">備考:</span> ${pc.notes}
                 </div>
