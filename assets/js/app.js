@@ -8,18 +8,18 @@ document.addEventListener('DOMContentLoaded', () => {
     // データ読み込み
     async function loadData() {
         try {
-            // ミニPCデータの読み込み (ルート相対パスに変更)
-            const pcResponse = await fetch(\'/shotpc/data/minis.json');
+            // ミニPCデータの読み込み (相対パスに変更)
+            const pcResponse = await fetch("/shotpc/data/minis.json');
             allMinis = await pcResponse.json();
             renderProducts(allMinis);
 
-            // メーカーデータの読み込み (ルート相対パスに変更)
-            const brandResponse = await fetch(\'/shotpc/data/brands.json');
+            // メーカーデータの読み込み (相対パスに変更)
+            const brandResponse = await fetch("/shotpc/data/brands.json');
             const brands = await brandResponse.json();
             renderBrands(brands);
 
             // 記事データの読み込み
-            const articleResponse = await fetch(\'/shotpc/data/articles.json');
+            const articleResponse = await fetch("/shotpc/data/articles.json');
             const articles = await articleResponse.json();
             renderArticles(articles);
         } catch (error) {
