@@ -70,39 +70,72 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        productList.innerHTML = minis.map(pc => `
+        productList.innerHTML = minis.map(pc => {
+            // 適合度に応じたバッジクラスの判定
+            let suitabilityClass = 'badge-standard';
+            const suitability = pc.ai_features.ai_inference_suitability || '不明';
+            if (suitability.includes('Sクラス') || suitability.includes('非常に高い')) suitabilityClass = 'badge-s';
+            else if (suitability.includes('Aクラス') || suitability.includes('高い')) suitabilityClass = 'badge-a';
+            else if (suitability.includes('エントリー') || suitability.includes('入門')) suitabilityClass = 'badge-entry';
+
+            return `
             <article class="pc-card">
-                <div class="brand">${pc.brand}</div>
+                <div class="brand-line">
+                    <span class="brand">${pc.brand}</span>
+                    <span class="stock-badge ${pc.stock}">${pc.stock === 'in_stock' ? '● 在庫あり' : '× 在庫切れ'}</span>
+                </div>
                 <h2 class="model">${pc.model}</h2>
-                <div class="ai-badge">${pc.ai_features.ai_inference_suitability}</div>
+                <div class="ai-badge ${suitabilityClass}">${suitability}</div>
                 
-                <div class="specs">
-                    <div class="spec-item">
-                        <span class="spec-label">CPU</span>
-                        <span class="spec-value">${pc.cpu.name}</span>
+                <div class="specs-grid">
+                    <div class="spec-node full-width">
+                        <span class="label">CPU / GPU</span>
+                        <span class="value">${pc.cpu.name} (${pc.cpu.cores}C/${pc.cpu.threads}T) / ${pc.gpu || '-'}</span>
                     </div>
-                    <div class="spec-item">
-                        <span class="spec-label">RAM</span>
-                        <span class="spec-value">${pc.ram.capacity_gb}GB (${pc.ram.type})</span>
+                    <div class="spec-node">
+                        <span class="label">RAM</span>
+                        <span class="value">${pc.ram.capacity_gb}GB (${pc.ram.type || '-'})</span>
                     </div>
-                    <div class="spec-item">
-                        <span class="spec-label">Storage</span>
-                        <span class="spec-value">${pc.storage.capacity_gb}GB NVMe</span>
+                    <div class="spec-node">
+                        <span class="label">RAM 拡張性</span>
+                        <span class="value">${pc.ram.slots || '-'} Slot / Max ${pc.ram.max_capacity_gb || '-'}GB</span>
+                    </div>
+                    <div class="spec-node">
+                        <span class="label">VRAM設定</span>
+                        <span class="value">${pc.ai_features.vram_allocation || '不明'}</span>
+                    </div>
+                    <div class="spec-node">
+                        <span class="label">Oculink</span>
+                        <span class="value">${pc.ai_features.oculink_support ? '✅ 対応' : 'ー'}</span>
+                    </div>
+                    <div class="spec-node">
+                        <span class="label">Storage</span>
+                        <span class="value">${pc.storage.capacity_gb}GB (${pc.storage.slots || '-'} Slot)</span>
+                    </div>
+                    <div class="spec-node">
+                        <span class="label">冷却 / 構造</span>
+                        <span class="value">${pc.ai_features.thermal_design || '-'}</span>
                     </div>
                 </div>
 
-                <div class="stock-status ${pc.stock}">
-                    ${pc.stock === 'in_stock' ? '● 在庫あり' : '× 在庫切れ'}
+                ${pc.notes ? `
+                <div class="pc-notes">
+                    <span class="label">備考:</span> ${pc.notes}
                 </div>
+                ` : ''}
 
                 <div class="price-box">
                     ${pc.coupon_jpy > 0 ? `<div class="original-price">¥${pc.price_jpy.toLocaleString()}</div>` : ''}
-                    <div class="effective-price">¥${pc.effective_price_jpy.toLocaleString()}</div>
+                    <div class="effective-price">
+                        <span class="currency">¥</span>${pc.effective_price_jpy.toLocaleString()}
+                        ${pc.coupon_jpy > 0 ? '<span class="price-note">（クーポン適用後）</span>' : ''}
+                    </div>
                 </div>
 
                 <a href="${pc.amazon_url}" target="_blank" class="btn-amazon">Amazonで詳細を見る</a>
             </article>
-        `).join('');
+            `;
+        }).join('');
     }
 
     // フィルタリング処理
