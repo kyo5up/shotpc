@@ -220,5 +220,1226 @@
       "ai_inference_suitability": "Excellent Efficiency for Small Models"
     },
     "notes": "M4チップ搭載の最新Mac Mini。メモリ帯域が広く、特定のAIモデルでは爆速。"
+  },
+  {
+    "id": "AMZ-B0FVFVWNRD",
+    "brand": "MINISFORUM",
+    "model": "Model from title",
+    "cpu": {
+      "name": "Ryzen 7 8845HS",
+      "cores": null,
+      "threads": null,
+      "score": null
+    },
+    "ram": {
+      "capacity_gb": 32,
+      "type": "DDR5/DDR4",
+      "slots": null,
+      "max_capacity_gb": null
+    },
+    "storage": {
+      "capacity_gb": 1024,
+      "type": "NVMe",
+      "slots": null
+    },
+    "gpu": "Integrated Graphics",
+    "price_jpy": 132799,
+    "coupon_jpy": 0,
+    "effective_price_jpy": 132799,
+    "stock": "in_stock",
+    "amazon_url": "https://www.amazon.co.jp/dp/B0FVFVWNRD?tag=shotsim-22",
+    "image_url": "https://m.media-amazon.com/images/I/61nXTMYaqvL._AC_UL320_.jpg",
+    "ai_features": {
+      "vram_allocation": "Check BIOS",
+      "oculink_support": true,
+      "thermal_design": "Active Cooling",
+      "expansion_score": 5,
+      "ai_inference_suitability": "Perfect for 7B/8B Models"
+    },
+    "notes": "Automatically parsed: MINISFORUM UM880Plus AMD Ryzen 7 8845HS ミニPC|32GBメモリ 1TB SSD..."
+  },
+  {
+    "id": "AMZ-B0GCN5VYWM",
+    "brand": "GMKtec",
+    "model": "Model from title",
+    "cpu": {
+      "name": "Ryzen 7 Pro 6850U",
+      "cores": null,
+      "threads": null,
+      "score": null
+    },
+    "ram": {
+      "capacity_gb": 64,
+      "type": "DDR5/DDR4",
+      "slots": null,
+      "max_capacity_gb": null
+    },
+    "storage": {
+      "capacity_gb": 16384,
+      "type": "NVMe",
+      "slots": null
+    },
+    "gpu": "Integrated Graphics",
+    "price_jpy": 111238,
+    "coupon_jpy": 0,
+    "effective_price_jpy": 111238,
+    "stock": "in_stock",
+    "amazon_url": "https://www.amazon.co.jp/dp/B0GCN5VYWM?tag=shotsim-22",
+    "image_url": "https://m.media-amazon.com/images/I/61hwx9+aYGL._AC_UL320_.jpg",
+    "ai_features": {
+      "vram_allocation": "Check BIOS",
+      "oculink_support": true,
+      "thermal_design": "Active Cooling",
+      "expansion_score": 5,
+      "ai_inference_suitability": "Great for AI Models"
+    },
+    "notes": "Automatically parsed: 【究極のゲーミング PC】GMKtec ミニPC AMD Ryzen 7 Pro 6850U【64GB DDR5 +16..."
+  },
+  {
+    "id": "AMZ-B0GJDHYKDS",
+    "brand": "MINISFORUM",
+    "model": "Model from title",
+    "cpu": {
+      "name": "Ryzen 7 255",
+      "cores": null,
+      "threads": null,
+      "score": null
+    },
+    "ram": {
+      "capacity_gb": 32,
+      "type": "DDR5/DDR4",
+      "slots": null,
+      "max_capacity_gb": null
+    },
+    "storage": {
+      "capacity_gb": 1024,
+      "type": "NVMe",
+      "slots": null
+    },
+    "gpu": "Integrated Graphics",
+    "price_jpy": 124798,
+    "coupon_jpy": 0,
+    "effective_price_jpy": 124798,
+    "stock": "in_stock",
+    "amazon_url": "https://www.amazon.co.jp/dp/B0GJDHYKDS?tag=shotsim-22",
+    "image_url": "https://m.media-amazon.com/images/I/51tsX-bzLmL._AC_UL320_.jpg",
+    "ai_features": {
+      "vram_allocation": "Check BIOS",
+      "oculink_support": false,
+      "thermal_design": "Active Cooling",
+      "expansion_score": 5,
+      "ai_inference_suitability": "Perfect for 7B/8B Models"
+    },
+    "notes": "Automatically parsed: MINISFORUM AI X1 ミニPC｜AMD Ryzen 7 255｜32GB DDR5 メモリ｜1TB SSD｜..."
+  },
+  {
+    "id": "AMZ-B0G5NK18BF",
+    "brand": "Unknown",
+    "model": "Model from title",
+    "cpu": {
+      "name": "ryzen 7 PRO 8845HS",
+      "cores": null,
+      "threads": null,
+      "score": null
+    },
+    "ram": {
+      "capacity_gb": 256,
+      "type": "DDR5/DDR4",
+      "slots": null,
+      "max_capacity_gb": null
+    },
+    "storage": {
+      "capacity_gb": 1024,
+      "type": "NVMe",
+      "slots": null
+    },
+    "gpu": "Integrated Graphics",
+    "price_jpy": 124700,
+    "coupon_jpy": 0,
+    "effective_price_jpy": 124700,
+    "stock": "in_stock",
+    "amazon_url": "https://www.amazon.co.jp/dp/B0G5NK18BF?tag=shotsim-22",
+    "image_url": "https://m.media-amazon.com/images/I/719dp3lbp2L._AC_UL320_.jpg",
+    "ai_features": {
+      "vram_allocation": "Check BIOS",
+      "oculink_support": true,
+      "thermal_design": "Active Cooling",
+      "expansion_score": 5,
+      "ai_inference_suitability": "Perfect for 7B/8B Models"
+    },
+    "notes": "Automatically parsed: AOOSTAR G-FLIP ミニpc ryzen 7 PRO 8845HS 8C/16T 5.1GHz 32G(16G..."
+  },
+  {
+    "id": "AMZ-B0G52HH15X",
+    "brand": "Unknown",
+    "model": "Model from title",
+    "cpu": {
+      "name": "Ryzen 7 7730U",
+      "cores": null,
+      "threads": null,
+      "score": null
+    },
+    "ram": {
+      "capacity_gb": 16,
+      "type": "DDR5/DDR4",
+      "slots": null,
+      "max_capacity_gb": null
+    },
+    "storage": {
+      "capacity_gb": 512,
+      "type": "NVMe",
+      "slots": null
+    },
+    "gpu": "Integrated Graphics",
+    "price_jpy": 59998,
+    "coupon_jpy": 0,
+    "effective_price_jpy": 59998,
+    "stock": "in_stock",
+    "amazon_url": "https://www.amazon.co.jp/dp/B0G52HH15X?tag=shotsim-22",
+    "image_url": "https://m.media-amazon.com/images/I/71pAzPiyS7L._AC_UL320_.jpg",
+    "ai_features": {
+      "vram_allocation": "Check BIOS",
+      "oculink_support": false,
+      "thermal_design": "Active Cooling",
+      "expansion_score": 5,
+      "ai_inference_suitability": "Standard Use"
+    },
+    "notes": "Automatically parsed: 【7430Uより速い】ミニpc Ryzen 7 7730U 8C/16T 最大4.5GHz mini pc ryzen ..."
+  },
+  {
+    "id": "AMZ-B0FZCZKRL6",
+    "brand": "Unknown",
+    "model": "Model from title",
+    "cpu": {
+      "name": "Ryzen 7 PRO 8845HS",
+      "cores": null,
+      "threads": null,
+      "score": null
+    },
+    "ram": {
+      "capacity_gb": 32,
+      "type": "DDR5/DDR4",
+      "slots": null,
+      "max_capacity_gb": null
+    },
+    "storage": {
+      "capacity_gb": 1024,
+      "type": "NVMe",
+      "slots": null
+    },
+    "gpu": "Integrated Graphics",
+    "price_jpy": 150783,
+    "coupon_jpy": 0,
+    "effective_price_jpy": 150783,
+    "stock": "in_stock",
+    "amazon_url": "https://www.amazon.co.jp/dp/B0FZCZKRL6?tag=shotsim-22",
+    "image_url": "https://m.media-amazon.com/images/I/61OeI1+lLxL._AC_UL320_.jpg",
+    "ai_features": {
+      "vram_allocation": "Check BIOS",
+      "oculink_support": false,
+      "thermal_design": "Active Cooling",
+      "expansion_score": 5,
+      "ai_inference_suitability": "Perfect for 7B/8B Models"
+    },
+    "notes": "Automatically parsed: Getorli Mini PC、デュアルLAN AMD Ryzen 7 PRO 8845HS (最大5.1GHz)、ミニ..."
+  },
+  {
+    "id": "AMZ-B0GDWDLZ9Q",
+    "brand": "MINISFORUM",
+    "model": "Model from title",
+    "cpu": {
+      "name": "Ryzen 7 8845HS",
+      "cores": null,
+      "threads": null,
+      "score": null
+    },
+    "ram": {
+      "capacity_gb": 16,
+      "type": "DDR5/DDR4",
+      "slots": null,
+      "max_capacity_gb": null
+    },
+    "storage": {
+      "capacity_gb": 512,
+      "type": "NVMe",
+      "slots": null
+    },
+    "gpu": "Integrated Graphics",
+    "price_jpy": 128999,
+    "coupon_jpy": 0,
+    "effective_price_jpy": 128999,
+    "stock": "in_stock",
+    "amazon_url": "https://www.amazon.co.jp/dp/B0GDWDLZ9Q?tag=shotsim-22",
+    "image_url": "https://m.media-amazon.com/images/I/61VOWeea1dL._AC_UL320_.jpg",
+    "ai_features": {
+      "vram_allocation": "Check BIOS",
+      "oculink_support": true,
+      "thermal_design": "Active Cooling",
+      "expansion_score": 5,
+      "ai_inference_suitability": "Perfect for 7B/8B Models"
+    },
+    "notes": "Automatically parsed: MINISFORUM UM880 Plus ミニPC AMD Ryzen 7 8845HS 16GB DDR5 512G..."
+  },
+  {
+    "id": "AMZ-B0GJZ8PSJT",
+    "brand": "Unknown",
+    "model": "Model from title",
+    "cpu": {
+      "name": "ryzen 7 PRO 8845HS",
+      "cores": null,
+      "threads": null,
+      "score": null
+    },
+    "ram": {
+      "capacity_gb": 256,
+      "type": "DDR5/DDR4",
+      "slots": null,
+      "max_capacity_gb": null
+    },
+    "storage": {
+      "capacity_gb": 8192,
+      "type": "NVMe",
+      "slots": null
+    },
+    "gpu": "Integrated Graphics",
+    "price_jpy": 69999,
+    "coupon_jpy": 0,
+    "effective_price_jpy": 69999,
+    "stock": "in_stock",
+    "amazon_url": "https://www.amazon.co.jp/dp/B0GJZ8PSJT?tag=shotsim-22",
+    "image_url": "https://m.media-amazon.com/images/I/719dp3lbp2L._AC_UL320_.jpg",
+    "ai_features": {
+      "vram_allocation": "Check BIOS",
+      "oculink_support": true,
+      "thermal_design": "Active Cooling",
+      "expansion_score": 5,
+      "ai_inference_suitability": "Perfect for 7B/8B Models"
+    },
+    "notes": "Automatically parsed: AOOSTAR G-FLIP ミニpc ryzen 7 PRO 8845HS 8C/16T 5.1GHz OSなし mi..."
+  },
+  {
+    "id": "AMZ-B0G1YF928T",
+    "brand": "Unknown",
+    "model": "Model from title",
+    "cpu": {
+      "name": "Ryzen 5 3550H",
+      "cores": null,
+      "threads": null,
+      "score": null
+    },
+    "ram": {
+      "capacity_gb": 16,
+      "type": "DDR5/DDR4",
+      "slots": null,
+      "max_capacity_gb": null
+    },
+    "storage": {
+      "capacity_gb": 512,
+      "type": "NVMe",
+      "slots": null
+    },
+    "gpu": "Integrated Graphics",
+    "price_jpy": 37998,
+    "coupon_jpy": 0,
+    "effective_price_jpy": 37998,
+    "stock": "in_stock",
+    "amazon_url": "https://www.amazon.co.jp/dp/B0G1YF928T?tag=shotsim-22",
+    "image_url": "https://m.media-amazon.com/images/I/61eb+xdCqFL._AC_UL320_.jpg",
+    "ai_features": {
+      "vram_allocation": "Check BIOS",
+      "oculink_support": false,
+      "thermal_design": "Active Cooling",
+      "expansion_score": 5,
+      "ai_inference_suitability": "Standard Use"
+    },
+    "notes": "Automatically parsed: Getorli ミニPC【AMD Ryzen 5 3550H 搭載-3500Uのアップグレード】 - 16GB RAM ..."
+  },
+  {
+    "id": "AMZ-B0GJ59SBG9",
+    "brand": "MINISFORUM",
+    "model": "Model from title",
+    "cpu": {
+      "name": "Ryzen 7 8845HS",
+      "cores": null,
+      "threads": null,
+      "score": null
+    },
+    "ram": {
+      "capacity_gb": 32,
+      "type": "DDR5/DDR4",
+      "slots": null,
+      "max_capacity_gb": null
+    },
+    "storage": {
+      "capacity_gb": 512,
+      "type": "NVMe",
+      "slots": null
+    },
+    "gpu": "Integrated Graphics",
+    "price_jpy": 141999,
+    "coupon_jpy": 0,
+    "effective_price_jpy": 141999,
+    "stock": "in_stock",
+    "amazon_url": "https://www.amazon.co.jp/dp/B0GJ59SBG9?tag=shotsim-22",
+    "image_url": "https://m.media-amazon.com/images/I/61XPHA0IzzL._AC_UL320_.jpg",
+    "ai_features": {
+      "vram_allocation": "Check BIOS",
+      "oculink_support": true,
+      "thermal_design": "Active Cooling",
+      "expansion_score": 5,
+      "ai_inference_suitability": "Perfect for 7B/8B Models"
+    },
+    "notes": "Automatically parsed: MINISFORUM UM880 Plus ミニPC AMD Ryzen 7 8845HS DDR5 32GB RAM ..."
+  },
+  {
+    "id": "AMZ-B0G7H8QFW7",
+    "brand": "Unknown",
+    "model": "Model from title",
+    "cpu": {
+      "name": "Ryzen 9 Pro 8945HS",
+      "cores": null,
+      "threads": null,
+      "score": null
+    },
+    "ram": {
+      "capacity_gb": 32,
+      "type": "DDR5/DDR4",
+      "slots": null,
+      "max_capacity_gb": null
+    },
+    "storage": {
+      "capacity_gb": 1024,
+      "type": "NVMe",
+      "slots": null
+    },
+    "gpu": "Integrated Graphics",
+    "price_jpy": 139800,
+    "coupon_jpy": 0,
+    "effective_price_jpy": 139800,
+    "stock": "in_stock",
+    "amazon_url": "https://www.amazon.co.jp/dp/B0G7H8QFW7?tag=shotsim-22",
+    "image_url": "https://m.media-amazon.com/images/I/617nMcVqmaL._AC_UL320_.jpg",
+    "ai_features": {
+      "vram_allocation": "Check BIOS",
+      "oculink_support": true,
+      "thermal_design": "Active Cooling",
+      "expansion_score": 5,
+      "ai_inference_suitability": "Perfect for 7B/8B Models"
+    },
+    "notes": "Automatically parsed: AOOSTAR MACOミニPC Ryzen 9 Pro 8945HS (8C/16T, up to 5.2GHz) 3..."
+  },
+  {
+    "id": "AMZ-B0GQB7JLLW",
+    "brand": "MINISFORUM",
+    "model": "Model from title",
+    "cpu": {
+      "name": "Ryzen 7 8845HS",
+      "cores": null,
+      "threads": null,
+      "score": null
+    },
+    "ram": {
+      "capacity_gb": 32,
+      "type": "DDR5/DDR4",
+      "slots": null,
+      "max_capacity_gb": null
+    },
+    "storage": {
+      "capacity_gb": 512,
+      "type": "NVMe",
+      "slots": null
+    },
+    "gpu": "Integrated Graphics",
+    "price_jpy": 149999,
+    "coupon_jpy": 0,
+    "effective_price_jpy": 149999,
+    "stock": "in_stock",
+    "amazon_url": "https://www.amazon.co.jp/dp/B0GQB7JLLW?tag=shotsim-22",
+    "image_url": "https://m.media-amazon.com/images/I/61XPHA0IzzL._AC_UL320_.jpg",
+    "ai_features": {
+      "vram_allocation": "Check BIOS",
+      "oculink_support": true,
+      "thermal_design": "Active Cooling",
+      "expansion_score": 5,
+      "ai_inference_suitability": "Perfect for 7B/8B Models"
+    },
+    "notes": "Automatically parsed: MINISFORUM UM880 Plus ミニ PC、AMD Ryzen 7 8845HS、32GB DDR5、512..."
+  },
+  {
+    "id": "AMZ-B0GR577KGG",
+    "brand": "MINISFORUM",
+    "model": "Model from title",
+    "cpu": {
+      "name": "Ryzen 7 8845HS",
+      "cores": null,
+      "threads": null,
+      "score": null
+    },
+    "ram": {
+      "capacity_gb": 16,
+      "type": "DDR5/DDR4",
+      "slots": null,
+      "max_capacity_gb": null
+    },
+    "storage": {
+      "capacity_gb": 512,
+      "type": "NVMe",
+      "slots": null
+    },
+    "gpu": "Integrated Graphics",
+    "price_jpy": 136999,
+    "coupon_jpy": 0,
+    "effective_price_jpy": 136999,
+    "stock": "in_stock",
+    "amazon_url": "https://www.amazon.co.jp/dp/B0GR577KGG?tag=shotsim-22",
+    "image_url": "https://m.media-amazon.com/images/I/61XPHA0IzzL._AC_UL320_.jpg",
+    "ai_features": {
+      "vram_allocation": "Check BIOS",
+      "oculink_support": true,
+      "thermal_design": "Active Cooling",
+      "expansion_score": 5,
+      "ai_inference_suitability": "Perfect for 7B/8B Models"
+    },
+    "notes": "Automatically parsed: MINISFORUM UM880 Plus ミニ PC、AMD Ryzen 7 8845HS、16GB DDR5、512..."
+  },
+  {
+    "id": "AMZ-B0GSKGBXM1",
+    "brand": "GMKtec",
+    "model": "Model from title",
+    "cpu": {
+      "name": "Ryzen 7 8845HS",
+      "cores": null,
+      "threads": null,
+      "score": null
+    },
+    "ram": {
+      "capacity_gb": 32,
+      "type": "DDR5/DDR4",
+      "slots": null,
+      "max_capacity_gb": null
+    },
+    "storage": {
+      "capacity_gb": 512,
+      "type": "NVMe",
+      "slots": null
+    },
+    "gpu": "Integrated Graphics",
+    "price_jpy": 134500,
+    "coupon_jpy": 0,
+    "effective_price_jpy": 134500,
+    "stock": "in_stock",
+    "amazon_url": "https://www.amazon.co.jp/dp/B0GSKGBXM1?tag=shotsim-22",
+    "image_url": "https://m.media-amazon.com/images/I/61tCtSNtZQL._AC_UL320_.jpg",
+    "ai_features": {
+      "vram_allocation": "Check BIOS",
+      "oculink_support": false,
+      "thermal_design": "Active Cooling",
+      "expansion_score": 5,
+      "ai_inference_suitability": "Perfect for 7B/8B Models"
+    },
+    "notes": "Automatically parsed: GMKtec ミニPC K8 Plus AMD Ryzen 7 8845HS(8コア/16スレッド、最大5.1GHz) ..."
+  },
+  {
+    "id": "AMZ-B0FCFC7NDQ",
+    "brand": "Unknown",
+    "model": "Model from title",
+    "cpu": {
+      "name": "Ryzen 7 8845HS",
+      "cores": null,
+      "threads": null,
+      "score": null
+    },
+    "ram": {
+      "capacity_gb": 16,
+      "type": "DDR5/DDR4",
+      "slots": null,
+      "max_capacity_gb": null
+    },
+    "storage": {
+      "capacity_gb": 512,
+      "type": "NVMe",
+      "slots": null
+    },
+    "gpu": "Integrated Graphics",
+    "price_jpy": 99999,
+    "coupon_jpy": 0,
+    "effective_price_jpy": 99999,
+    "stock": "in_stock",
+    "amazon_url": "https://www.amazon.co.jp/dp/B0FCFC7NDQ?tag=shotsim-22",
+    "image_url": "https://m.media-amazon.com/images/I/51Tn92GIslL._AC_UL320_.jpg",
+    "ai_features": {
+      "vram_allocation": "Check BIOS",
+      "oculink_support": false,
+      "thermal_design": "Active Cooling",
+      "expansion_score": 5,
+      "ai_inference_suitability": "Perfect for 7B/8B Models"
+    },
+    "notes": "Automatically parsed: ミニpc AMD Ryzen 7 8845HS 8c/16t 小型PC 最大 5.1GHz 16GB LPDDR5、51..."
+  },
+  {
+    "id": "AMZ-B0G4VSXWFB",
+    "brand": "NiPoGi",
+    "model": "Model from title",
+    "cpu": {
+      "name": "Ryzen 5 7430U",
+      "cores": null,
+      "threads": null,
+      "score": null
+    },
+    "ram": {
+      "capacity_gb": 16,
+      "type": "DDR5/DDR4",
+      "slots": null,
+      "max_capacity_gb": null
+    },
+    "storage": {
+      "capacity_gb": 0,
+      "type": "NVMe",
+      "slots": null
+    },
+    "gpu": "Integrated Graphics",
+    "price_jpy": 50998,
+    "coupon_jpy": 0,
+    "effective_price_jpy": 50998,
+    "stock": "in_stock",
+    "amazon_url": "https://www.amazon.co.jp/dp/B0G4VSXWFB?tag=shotsim-22",
+    "image_url": "https://m.media-amazon.com/images/I/71W83hXfpqL._AC_UL320_.jpg",
+    "ai_features": {
+      "vram_allocation": "Check BIOS",
+      "oculink_support": false,
+      "thermal_design": "Active Cooling",
+      "expansion_score": 5,
+      "ai_inference_suitability": "Standard Use"
+    },
+    "notes": "Automatically parsed: NiPoGi ミニpc ryzen AMD Ryzen 5 7430U新登場 6C/12T 4.30GHz 16GB L..."
+  },
+  {
+    "id": "AMZ-B0GRX8B2DQ",
+    "brand": "GMKtec",
+    "model": "Model from title",
+    "cpu": {
+      "name": "Ryzen 5 3500U",
+      "cores": null,
+      "threads": null,
+      "score": null
+    },
+    "ram": {
+      "capacity_gb": 64,
+      "type": "DDR5/DDR4",
+      "slots": null,
+      "max_capacity_gb": null
+    },
+    "storage": {
+      "capacity_gb": 1024,
+      "type": "NVMe",
+      "slots": null
+    },
+    "gpu": "Integrated Graphics",
+    "price_jpy": 47463,
+    "coupon_jpy": 0,
+    "effective_price_jpy": 47463,
+    "stock": "in_stock",
+    "amazon_url": "https://www.amazon.co.jp/dp/B0GRX8B2DQ?tag=shotsim-22",
+    "image_url": "https://m.media-amazon.com/images/I/61iXajhyTaL._AC_UL320_.jpg",
+    "ai_features": {
+      "vram_allocation": "Check BIOS",
+      "oculink_support": false,
+      "thermal_design": "Active Cooling",
+      "expansion_score": 5,
+      "ai_inference_suitability": "Great for AI Models"
+    },
+    "notes": "Automatically parsed: ミニPC GMKtec G10 初登場【16GB+1TB SSD Windows 11 Pro ミニpc】N150/R3..."
+  },
+  {
+    "id": "AMZ-B0GD6VK2RL",
+    "brand": "GMKtec",
+    "model": "Model from title",
+    "cpu": {
+      "name": "Ryzen 5 PRO 6650H",
+      "cores": null,
+      "threads": null,
+      "score": null
+    },
+    "ram": {
+      "capacity_gb": 16,
+      "type": "DDR5/DDR4",
+      "slots": null,
+      "max_capacity_gb": null
+    },
+    "storage": {
+      "capacity_gb": 512,
+      "type": "NVMe",
+      "slots": null
+    },
+    "gpu": "Integrated Graphics",
+    "price_jpy": 49997,
+    "coupon_jpy": 0,
+    "effective_price_jpy": 49997,
+    "stock": "in_stock",
+    "amazon_url": "https://www.amazon.co.jp/dp/B0GD6VK2RL?tag=shotsim-22",
+    "image_url": "https://m.media-amazon.com/images/I/61cukenrhML._AC_UL320_.jpg",
+    "ai_features": {
+      "vram_allocation": "Check BIOS",
+      "oculink_support": true,
+      "thermal_design": "Active Cooling",
+      "expansion_score": 5,
+      "ai_inference_suitability": "Standard Use"
+    },
+    "notes": "Automatically parsed: GMKtec NucBox M8 ミニpc AMD Ryzen 5 PRO 6650H LPDDR5 16GB+512G..."
+  },
+  {
+    "id": "AMZ-B0GHRGTXNH",
+    "brand": "Unknown",
+    "model": "Model from title",
+    "cpu": {
+      "name": "N100",
+      "cores": null,
+      "threads": null,
+      "score": null
+    },
+    "ram": {
+      "capacity_gb": 16,
+      "type": "DDR5/DDR4",
+      "slots": null,
+      "max_capacity_gb": null
+    },
+    "storage": {
+      "capacity_gb": 512,
+      "type": "NVMe",
+      "slots": null
+    },
+    "gpu": "Integrated Graphics",
+    "price_jpy": 42998,
+    "coupon_jpy": 0,
+    "effective_price_jpy": 42998,
+    "stock": "in_stock",
+    "amazon_url": "https://www.amazon.co.jp/dp/B0GHRGTXNH?tag=shotsim-22",
+    "image_url": "https://m.media-amazon.com/images/I/6173GDv5mQL._AC_UL320_.jpg",
+    "ai_features": {
+      "vram_allocation": "Check BIOS",
+      "oculink_support": false,
+      "thermal_design": "Active Cooling",
+      "expansion_score": 5,
+      "ai_inference_suitability": "Edge AI / Light Inference"
+    },
+    "notes": "Automatically parsed: Getorli ミニPC AMD Ryzen 5300U搭載 | N100/N150/3500U/4300U を上回る性..."
+  },
+  {
+    "id": "AMZ-B0GL1SNDCV",
+    "brand": "Geekom",
+    "model": "Model from title",
+    "cpu": {
+      "name": "Ryzen 7 8745HS",
+      "cores": null,
+      "threads": null,
+      "score": null
+    },
+    "ram": {
+      "capacity_gb": 16,
+      "type": "DDR5/DDR4",
+      "slots": null,
+      "max_capacity_gb": null
+    },
+    "storage": {
+      "capacity_gb": 0,
+      "type": "NVMe",
+      "slots": null
+    },
+    "gpu": "Integrated Graphics",
+    "price_jpy": 109900,
+    "coupon_jpy": 0,
+    "effective_price_jpy": 109900,
+    "stock": "in_stock",
+    "amazon_url": "https://www.amazon.co.jp/dp/B0GL1SNDCV?tag=shotsim-22",
+    "image_url": "https://m.media-amazon.com/images/I/71-j3596YEL._AC_UL320_.jpg",
+    "ai_features": {
+      "vram_allocation": "Check BIOS",
+      "oculink_support": false,
+      "thermal_design": "Active Cooling",
+      "expansion_score": 5,
+      "ai_inference_suitability": "Standard Use"
+    },
+    "notes": "Automatically parsed: GEEKOM A8 ミニpc AMD Ryzen 7 8745HS搭載 16GB DDR5 メモリ+1TB M.2 SS..."
+  },
+  {
+    "id": "AMZ-B0GLH45BVS",
+    "brand": "ACEMAGIC",
+    "model": "Model from title",
+    "cpu": {
+      "name": "n11",
+      "cores": null,
+      "threads": null,
+      "score": null
+    },
+    "ram": {
+      "capacity_gb": 16,
+      "type": "DDR5/DDR4",
+      "slots": null,
+      "max_capacity_gb": null
+    },
+    "storage": {
+      "capacity_gb": 512,
+      "type": "NVMe",
+      "slots": null
+    },
+    "gpu": "Integrated Graphics",
+    "price_jpy": 53998,
+    "coupon_jpy": 0,
+    "effective_price_jpy": 53998,
+    "stock": "in_stock",
+    "amazon_url": "https://www.amazon.co.jp/dp/B0GLH45BVS?tag=shotsim-22",
+    "image_url": "https://m.media-amazon.com/images/I/51dyAtWGsmL._AC_UL320_.jpg",
+    "ai_features": {
+      "vram_allocation": "Check BIOS",
+      "oculink_support": false,
+      "thermal_design": "Active Cooling",
+      "expansion_score": 5,
+      "ai_inference_suitability": "Standard Use"
+    },
+    "notes": "Automatically parsed: ACEMAGIC ミニPC 【2026初登場 AMD Ryzen R2544搭載 10110U/3500U/4300Uよ..."
+  },
+  {
+    "id": "AMZ-B0GHZ1C87Q",
+    "brand": "NiPoGi",
+    "model": "Model from title",
+    "cpu": {
+      "name": "Ryzen 7 7735HS",
+      "cores": null,
+      "threads": null,
+      "score": null
+    },
+    "ram": {
+      "capacity_gb": 24,
+      "type": "DDR5/DDR4",
+      "slots": null,
+      "max_capacity_gb": null
+    },
+    "storage": {
+      "capacity_gb": 0,
+      "type": "NVMe",
+      "slots": null
+    },
+    "gpu": "Integrated Graphics",
+    "price_jpy": 69998,
+    "coupon_jpy": 0,
+    "effective_price_jpy": 69998,
+    "stock": "in_stock",
+    "amazon_url": "https://www.amazon.co.jp/dp/B0GHZ1C87Q?tag=shotsim-22",
+    "image_url": "https://m.media-amazon.com/images/I/71h+ZBfqM9L._AC_UL320_.jpg",
+    "ai_features": {
+      "vram_allocation": "Check BIOS",
+      "oculink_support": false,
+      "thermal_design": "Active Cooling",
+      "expansion_score": 5,
+      "ai_inference_suitability": "Standard Use"
+    },
+    "notes": "Automatically parsed: NiPoGi ミニpc AMD Ryzen 7 7735HS【6650H/6800Hより速い】 8C/16T 最大4.7..."
+  },
+  {
+    "id": "AMZ-B0GJSNT6BN",
+    "brand": "Geekom",
+    "model": "Model from title",
+    "cpu": {
+      "name": "Ryzen 7 5825U",
+      "cores": null,
+      "threads": null,
+      "score": null
+    },
+    "ram": {
+      "capacity_gb": 128,
+      "type": "DDR5/DDR4",
+      "slots": null,
+      "max_capacity_gb": null
+    },
+    "storage": {
+      "capacity_gb": 10240,
+      "type": "NVMe",
+      "slots": null
+    },
+    "gpu": "Integrated Graphics",
+    "price_jpy": 57900,
+    "coupon_jpy": 0,
+    "effective_price_jpy": 57900,
+    "stock": "in_stock",
+    "amazon_url": "https://www.amazon.co.jp/dp/B0GJSNT6BN?tag=shotsim-22",
+    "image_url": "https://m.media-amazon.com/images/I/71EWKwbferL._AC_UL320_.jpg",
+    "ai_features": {
+      "vram_allocation": "Check BIOS",
+      "oculink_support": false,
+      "thermal_design": "Active Cooling",
+      "expansion_score": 5,
+      "ai_inference_suitability": "Great for AI Models"
+    },
+    "notes": "Automatically parsed: 【本格派R7・全アルミボディ】GEEKOM A5 ミニpc AMD Ryzen 7 5825U搭載（3500Uの3倍超え..."
+  },
+  {
+    "id": "AMZ-B0GD6ZS99W",
+    "brand": "GMKtec",
+    "model": "Model from title",
+    "cpu": {
+      "name": "Ryzen 5 7640HS",
+      "cores": null,
+      "threads": null,
+      "score": null
+    },
+    "ram": {
+      "capacity_gb": 16,
+      "type": "DDR5/DDR4",
+      "slots": null,
+      "max_capacity_gb": null
+    },
+    "storage": {
+      "capacity_gb": 512,
+      "type": "NVMe",
+      "slots": null
+    },
+    "gpu": "Integrated Graphics",
+    "price_jpy": 57999,
+    "coupon_jpy": 0,
+    "effective_price_jpy": 57999,
+    "stock": "in_stock",
+    "amazon_url": "https://www.amazon.co.jp/dp/B0GD6ZS99W?tag=shotsim-22",
+    "image_url": "https://m.media-amazon.com/images/I/61FHk26k5GL._AC_UL320_.jpg",
+    "ai_features": {
+      "vram_allocation": "Check BIOS",
+      "oculink_support": false,
+      "thermal_design": "Active Cooling",
+      "expansion_score": 5,
+      "ai_inference_suitability": "Standard Use"
+    },
+    "notes": "Automatically parsed: GMKtec ミニPC | AMD Ryzen 5 7640HS, 16GB DDR5, 512GB SSD | 8K出..."
+  },
+  {
+    "id": "AMZ-B0G4M41GGK",
+    "brand": "ACEMAGIC",
+    "model": "Model from title",
+    "cpu": {
+      "name": "Ryzen 5 7430U",
+      "cores": null,
+      "threads": null,
+      "score": null
+    },
+    "ram": {
+      "capacity_gb": 64,
+      "type": "DDR5/DDR4",
+      "slots": null,
+      "max_capacity_gb": null
+    },
+    "storage": {
+      "capacity_gb": 4096,
+      "type": "NVMe",
+      "slots": null
+    },
+    "gpu": "Integrated Graphics",
+    "price_jpy": 49998,
+    "coupon_jpy": 0,
+    "effective_price_jpy": 49998,
+    "stock": "in_stock",
+    "amazon_url": "https://www.amazon.co.jp/dp/B0G4M41GGK?tag=shotsim-22",
+    "image_url": "https://m.media-amazon.com/images/I/61SikIQXdsL._AC_UL320_.jpg",
+    "ai_features": {
+      "vram_allocation": "Check BIOS",
+      "oculink_support": false,
+      "thermal_design": "Active Cooling",
+      "expansion_score": 5,
+      "ai_inference_suitability": "Great for AI Models"
+    },
+    "notes": "Automatically parsed: ACEMAGIC ミニpc Ryzen 5 7430U 6C/12T 最大4.3GHz 【最大64GB+4TB SSD拡..."
+  },
+  {
+    "id": "AMZ-B0G2C45X5N",
+    "brand": "Geekom",
+    "model": "Model from title",
+    "cpu": {
+      "name": "Ryzen 9 7940HS",
+      "cores": null,
+      "threads": null,
+      "score": null
+    },
+    "ram": {
+      "capacity_gb": 128,
+      "type": "DDR5/DDR4",
+      "slots": null,
+      "max_capacity_gb": null
+    },
+    "storage": {
+      "capacity_gb": 1024,
+      "type": "NVMe",
+      "slots": null
+    },
+    "gpu": "Integrated Graphics",
+    "price_jpy": 109155,
+    "coupon_jpy": 0,
+    "effective_price_jpy": 109155,
+    "stock": "in_stock",
+    "amazon_url": "https://www.amazon.co.jp/dp/B0G2C45X5N?tag=shotsim-22",
+    "image_url": "https://m.media-amazon.com/images/I/61462-o6CmL._AC_UL320_.jpg",
+    "ai_features": {
+      "vram_allocation": "Check BIOS",
+      "oculink_support": true,
+      "thermal_design": "Active Cooling",
+      "expansion_score": 5,
+      "ai_inference_suitability": "Perfect for 7B/8B Models"
+    },
+    "notes": "Automatically parsed: 「王者性能」GEEKOM A7 Max ミニpc【2026年最高峰ミニPC】AMD Ryzen 9 7940HS&Rad..."
+  },
+  {
+    "id": "AMZ-B0GD6SBH7B",
+    "brand": "GMKtec",
+    "model": "Model from title",
+    "cpu": {
+      "name": "n11",
+      "cores": null,
+      "threads": null,
+      "score": null
+    },
+    "ram": {
+      "capacity_gb": 128,
+      "type": "DDR5/DDR4",
+      "slots": null,
+      "max_capacity_gb": null
+    },
+    "storage": {
+      "capacity_gb": 8192,
+      "type": "NVMe",
+      "slots": null
+    },
+    "gpu": "Integrated Graphics",
+    "price_jpy": 94374,
+    "coupon_jpy": 0,
+    "effective_price_jpy": 94374,
+    "stock": "in_stock",
+    "amazon_url": "https://www.amazon.co.jp/dp/B0GD6SBH7B?tag=shotsim-22",
+    "image_url": "https://m.media-amazon.com/images/I/61HYKY2cTnL._AC_UL320_.jpg",
+    "ai_features": {
+      "vram_allocation": "Check BIOS",
+      "oculink_support": false,
+      "thermal_design": "Active Cooling",
+      "expansion_score": 5,
+      "ai_inference_suitability": "Great for AI Models"
+    },
+    "notes": "Automatically parsed: GMKtec M6 Ultra ミニPC,AMD Ryzen 7640HS (6850U/6800Hより高性能),最大5..."
+  },
+  {
+    "id": "AMZ-B0GS51F3C2",
+    "brand": "Geekom",
+    "model": "Model from title",
+    "cpu": {
+      "name": "Ryzen 5 7430U",
+      "cores": null,
+      "threads": null,
+      "score": null
+    },
+    "ram": {
+      "capacity_gb": 128,
+      "type": "DDR5/DDR4",
+      "slots": null,
+      "max_capacity_gb": null
+    },
+    "storage": {
+      "capacity_gb": 10240,
+      "type": "NVMe",
+      "slots": null
+    },
+    "gpu": "Integrated Graphics",
+    "price_jpy": 72900,
+    "coupon_jpy": 0,
+    "effective_price_jpy": 72900,
+    "stock": "in_stock",
+    "amazon_url": "https://www.amazon.co.jp/dp/B0GS51F3C2?tag=shotsim-22",
+    "image_url": "https://m.media-amazon.com/images/I/71hHiQSMN2L._AC_UL320_.jpg",
+    "ai_features": {
+      "vram_allocation": "Check BIOS",
+      "oculink_support": false,
+      "thermal_design": "Active Cooling",
+      "expansion_score": 5,
+      "ai_inference_suitability": "Great for AI Models"
+    },
+    "notes": "Automatically parsed: GEEKOM A5 ミニpc AMD Ryzen 5 7430U搭載 【3500Uより性能が3倍向上】128GB RAM..."
+  },
+  {
+    "id": "AMZ-B0FSQGX57D",
+    "brand": "Unknown",
+    "model": "Model from title",
+    "cpu": {
+      "name": "Ryzen 7 8745HS",
+      "cores": null,
+      "threads": null,
+      "score": null
+    },
+    "ram": {
+      "capacity_gb": 32,
+      "type": "DDR5/DDR4",
+      "slots": null,
+      "max_capacity_gb": null
+    },
+    "storage": {
+      "capacity_gb": 0,
+      "type": "NVMe",
+      "slots": null
+    },
+    "gpu": "Integrated Graphics",
+    "price_jpy": 90556,
+    "coupon_jpy": 0,
+    "effective_price_jpy": 90556,
+    "stock": "in_stock",
+    "amazon_url": "https://www.amazon.co.jp/dp/B0FSQGX57D?tag=shotsim-22",
+    "image_url": "https://m.media-amazon.com/images/I/81gxodgLqRL._AC_UL320_.jpg",
+    "ai_features": {
+      "vram_allocation": "Check BIOS",
+      "oculink_support": false,
+      "thermal_design": "Active Cooling",
+      "expansion_score": 5,
+      "ai_inference_suitability": "Great for AI Models"
+    },
+    "notes": "Automatically parsed: ミニPC, AMD Ryzen 7 8745HS ミニパソコン(8C/16T, 最大4.9GHz), 32GB DDR5..."
+  },
+  {
+    "id": "AMZ-B0GQGVS6BX",
+    "brand": "GMKtec",
+    "model": "Model from title",
+    "cpu": {
+      "name": "Ryzen 5 3500U",
+      "cores": null,
+      "threads": null,
+      "score": null
+    },
+    "ram": {
+      "capacity_gb": 16,
+      "type": "DDR5/DDR4",
+      "slots": null,
+      "max_capacity_gb": null
+    },
+    "storage": {
+      "capacity_gb": 512,
+      "type": "NVMe",
+      "slots": null
+    },
+    "gpu": "Integrated Graphics",
+    "price_jpy": 57124,
+    "coupon_jpy": 0,
+    "effective_price_jpy": 57124,
+    "stock": "in_stock",
+    "amazon_url": "https://www.amazon.co.jp/dp/B0GQGVS6BX?tag=shotsim-22",
+    "image_url": "https://m.media-amazon.com/images/I/61iXajhyTaL._AC_UL320_.jpg",
+    "ai_features": {
+      "vram_allocation": "Check BIOS",
+      "oculink_support": false,
+      "thermal_design": "Active Cooling",
+      "expansion_score": 5,
+      "ai_inference_suitability": "Standard Use"
+    },
+    "notes": "Automatically parsed: 【ミニPC Ryzen 5 3500U搭載】GMKtec G10 mini pc 動作より安定最大3.7GHz 4コア8..."
+  },
+  {
+    "id": "AMZ-B0FJ2298N5",
+    "brand": "Geekom",
+    "model": "Model from title",
+    "cpu": {
+      "name": "n11",
+      "cores": null,
+      "threads": null,
+      "score": null
+    },
+    "ram": {
+      "capacity_gb": 128,
+      "type": "DDR5/DDR4",
+      "slots": null,
+      "max_capacity_gb": null
+    },
+    "storage": {
+      "capacity_gb": 16384,
+      "type": "NVMe",
+      "slots": null
+    },
+    "gpu": "Integrated Graphics",
+    "price_jpy": 162355,
+    "coupon_jpy": 0,
+    "effective_price_jpy": 162355,
+    "stock": "in_stock",
+    "amazon_url": "https://www.amazon.co.jp/dp/B0FJ2298N5?tag=shotsim-22",
+    "image_url": "https://m.media-amazon.com/images/I/61abADu+mYL._AC_UL320_.jpg",
+    "ai_features": {
+      "vram_allocation": "Check BIOS",
+      "oculink_support": false,
+      "thermal_design": "Active Cooling",
+      "expansion_score": 5,
+      "ai_inference_suitability": "Great for AI Models"
+    },
+    "notes": "Automatically parsed: 【2026新型・AI加速】GEEKOM A9 MAX AI ミニpc 世界最強のAMD Ryzen AI 9 HX 37..."
+  },
+  {
+    "id": "AMZ-B0G4VS2FVV",
+    "brand": "GMKtec",
+    "model": "Model from title",
+    "cpu": {
+      "name": "Ryzen 5 3500U",
+      "cores": null,
+      "threads": null,
+      "score": null
+    },
+    "ram": {
+      "capacity_gb": 64,
+      "type": "DDR5/DDR4",
+      "slots": null,
+      "max_capacity_gb": null
+    },
+    "storage": {
+      "capacity_gb": 0,
+      "type": "NVMe",
+      "slots": null
+    },
+    "gpu": "Integrated Graphics",
+    "price_jpy": 40999,
+    "coupon_jpy": 0,
+    "effective_price_jpy": 40999,
+    "stock": "in_stock",
+    "amazon_url": "https://www.amazon.co.jp/dp/B0G4VS2FVV?tag=shotsim-22",
+    "image_url": "https://m.media-amazon.com/images/I/61wZB+PiAJL._AC_UL320_.jpg",
+    "ai_features": {
+      "vram_allocation": "Check BIOS",
+      "oculink_support": false,
+      "thermal_design": "Active Cooling",
+      "expansion_score": 5,
+      "ai_inference_suitability": "Great for AI Models"
+    },
+    "notes": "Automatically parsed: ミニ PC Ryzen 5 3500U搭載 N150/N97 より速い GMKtec G10 mini pc【64GB ..."
+  },
+  {
+    "id": "AMZ-B0DCYCY3H1",
+    "brand": "Unknown",
+    "model": "Model from title",
+    "cpu": {
+      "name": "Ryzen 7 7840HS",
+      "cores": null,
+      "threads": null,
+      "score": null
+    },
+    "ram": {
+      "capacity_gb": 32,
+      "type": "DDR5/DDR4",
+      "slots": null,
+      "max_capacity_gb": null
+    },
+    "storage": {
+      "capacity_gb": 0,
+      "type": "NVMe",
+      "slots": null
+    },
+    "gpu": "Integrated Graphics",
+    "price_jpy": 84218,
+    "coupon_jpy": 0,
+    "effective_price_jpy": 84218,
+    "stock": "in_stock",
+    "amazon_url": "https://www.amazon.co.jp/dp/B0DCYCY3H1?tag=shotsim-22",
+    "image_url": "https://m.media-amazon.com/images/I/617Ge8fzQ8L._AC_UL320_.jpg",
+    "ai_features": {
+      "vram_allocation": "Check BIOS",
+      "oculink_support": false,
+      "thermal_design": "Active Cooling",
+      "expansion_score": 5,
+      "ai_inference_suitability": "Perfect for 7B/8B Models"
+    },
+    "notes": "Automatically parsed: BOSGAME P3 PLUS ミニPC Ryzen 7 7840HS 32GB DDR5 4800Mhz 1TB M...."
   }
 ]
