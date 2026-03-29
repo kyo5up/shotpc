@@ -376,3 +376,173 @@ footer {
         position: static;
     }
 }
+
+/* Comparison Feature */
+.compare-checkbox-label {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 10;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    cursor: pointer;
+    border: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    transition: all 0.2s;
+}
+
+.compare-checkbox-label:hover {
+    border-color: var(--primary-color);
+    background: #fff;
+}
+
+.compare-checkbox-label input {
+    cursor: pointer;
+}
+
+#compare-bar {
+    position: fixed;
+    bottom: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 800px;
+    background: #1e293b;
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    z-index: 1000;
+    transition: bottom 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+#compare-bar.active {
+    bottom: 20px;
+}
+
+.compare-info {
+    font-weight: 700;
+}
+
+.btn-compare-start {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.6rem 1.5rem;
+    border-radius: 25px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-compare-start:hover {
+    background: #1d4ed8;
+}
+
+/* Modal */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    padding: 20px;
+}
+
+.modal-overlay.active {
+    display: flex;
+}
+
+.modal-content {
+    background: white;
+    width: 100%;
+    max-width: 1100px;
+    max-height: 90vh;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-header {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h2 {
+    font-size: 1.25rem;
+}
+
+.btn-close-modal {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text-sub);
+}
+
+.modal-body {
+    padding: 1.5rem;
+    overflow: auto;
+}
+
+.compare-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.compare-modal-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px;
+}
+
+.compare-modal-table th, .compare-modal-table td {
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    text-align: left;
+    font-size: 0.85rem;
+}
+
+.compare-modal-table th {
+    background: #f8fafc;
+    font-weight: 800;
+    width: 150px;
+    position: sticky;
+    left: 0;
+    z-index: 2;
+}
+
+.compare-modal-table td {
+    min-width: 200px;
+    vertical-align: top;
+}
+
+.compare-modal-table .pc-name {
+    font-weight: 800;
+    color: var(--primary-color);
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.compare-modal-table .pc-price {
+    color: #e11d48;
+    font-weight: 900;
+    font-size: 1.2rem;
+}

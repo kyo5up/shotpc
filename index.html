@@ -37,6 +37,13 @@
             </section>
 
             <section class="filter-group">
+                <h3>AI / 拡張性</h3>
+                <label title="BIOS設定等でVRAMを16GB以上割り当て可能な機種"><input type="checkbox" name="ai" value="vram16"> VRAM 16GB以上可</label>
+                <label title="eGPU(外付けGPU)を高速接続できるOculink端子搭載機種"><input type="checkbox" name="ai" value="oculink"> Oculink対応</label>
+                <label title="メモリを64GB以上搭載または増設可能な機種"><input type="checkbox" name="ai" value="ram64"> メモリ64GB以上可</label>
+            </section>
+
+            <section class="filter-group">
                 <h3>ツール</h3>
                 <div class="article-item">
                     <a href="/shotpc/ja/compare/" style="font-weight: bold; color: var(--primary-color);">📊 全機種スペック比較表</a>
@@ -69,10 +76,35 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 ShotPC. 掲載情報はAmazon等の各ECサイトのものです。</p>
-            <p class="disclaimer">※Amazonアソシエイトとして、ShotPCは適格販売により収入を得ています。</p>
+            <p><span style="color:#d11a2a;">&copy; 2026 ShotPC.</span> 掲載情報はAmazon等の各ECサイトのものです。</p>
+            <p class="disclaimer">※Amazonアソシエイトとして,ShotPCは適格販売により収入を得ています。</p>
         </div>
     </footer>
+
+    <!-- 比較用フローティングバー -->
+    <div id="compare-bar">
+        <div class="compare-info">選択中: <span id="compare-count">0</span> 件</div>
+        <button class="btn-compare-start" id="btn-compare-open">選択した機種を比較する</button>
+    </div>
+
+    <!-- 比較モーダル -->
+    <div class="modal-overlay" id="compare-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>スペック比較</h2>
+                <button class="btn-close-modal" id="btn-compare-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="compare-table-wrapper">
+                    <table class="compare-modal-table">
+                        <tbody id="compare-table-body">
+                            <!-- JSで生成 -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="/shotpc/assets/js/app.js"></script>
 </body>

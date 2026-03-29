@@ -26,7 +26,7 @@
             border: 1px solid #ddd;
             border-radius: 4px;
             overflow: auto;
-            max-height: calc(100vh - 130px); /* 画面下端ギリギリまで広げる */
+            max-height: calc(100vh - 130px);
             display: block;
             background: #fff;
         }
@@ -34,18 +34,17 @@
             width: 100%;
             border-collapse: separate;
             border-spacing: 0;
-            font-size: 0.8rem;
+            font-size: 0.75rem; /* さらに文字を小さくして密度を上げる */
             white-space: nowrap;
         }
         th, td {
-            padding: 8px 12px;
+            padding: 6px 10px;
             border-bottom: 1px solid #eee;
             border-right: 1px solid #eee;
         }
         th:first-child, td:first-child {
             border-left: 1px solid #eee;
         }
-        /* ヘッダー固定 */
         th {
             background: #f8f9fa;
             position: sticky;
@@ -68,27 +67,25 @@
         }
         .sticky-col-1 {
             left: 0;
-            min-width: 40px;
+            min-width: 35px;
             text-align: center;
             color: #aaa;
         }
         .sticky-col-2 {
-            left: var(--col1-width, 40px);
+            left: var(--col1-width, 35px);
             min-width: 80px;
         }
         .sticky-col-3 {
-            left: calc(var(--col1-width, 40px) + var(--col2-width, 80px));
-            min-width: 150px;
+            left: calc(var(--col1-width, 35px) + var(--col2-width, 80px));
+            min-width: 130px;
             border-right: 2px solid #444;
         }
 
-        /* ヘッダーの重なり */
         th.sticky-col-1, th.sticky-col-2, th.sticky-col-3 {
             z-index: 15;
             background: #f8f9fa;
         }
 
-        /* 偶数行の背景色を固定列にも適用 */
         tr:nth-child(even) td { background: #fafafa; }
         tr:nth-child(even) td.sticky-col-1,
         tr:nth-child(even) td.sticky-col-2,
@@ -96,7 +93,6 @@
             background: #fafafa;
         }
 
-        /* ホバー時の背景色を固定列にも適用 */
         tr:hover td { background: #f0f7ff !important; }
         tr:hover td.sticky-col-1,
         tr:hover td.sticky-col-2,
@@ -122,7 +118,7 @@
         <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:1rem;">
             <div>
                 <h2 style="font-size:1.2rem; margin:0;">全機種リスト</h2>
-                <p style="font-size:0.8rem; color:#666; margin:0;">項目名クリックでソートできます。横スクロールで詳細を確認。</p>
+                <p style="font-size:0.8rem; color:#666; margin:0;">項目名クリックでソート。横スクロールで詳細を確認。</p>
             </div>
             <a href="/shotpc/" class="btn-link" style="font-size:0.85rem;">← 検索画面へ</a>
         </div>
@@ -135,11 +131,16 @@
                         <th class="sticky-col-2" data-sort="brand">Brand</th>
                         <th class="sticky-col-3" data-sort="model">Model</th>
                         <th data-sort="cpu.name">CPU</th>
-                        <th class="num" data-sort="ram.capacity_gb">RAM (GB)</th>
-                        <th data-sort="ai_features.vram_allocation">VRAM Allocation</th>
+                        <th class="num admin-only" data-sort="cpu.benchmark_score">Score</th>
+                        <th class="num admin-only" data-sort="ai_features.npu_tops">NPU</th>
+                        <th class="num" data-sort="ram.capacity_gb">RAM</th>
+                        <th data-sort="ai_features.vram_allocation">VRAM</th>
                         <th data-sort="ai_features.oculink_support">Oculink</th>
-                        <th data-sort="ai_features.ai_inference_suitability">AI Suitability</th>
-                        <th class="num" data-sort="effective_price_jpy">Price (JPY)</th>
+                        <th class="num admin-only" data-sort="io_ports.usb4_count">USB4</th>
+                        <th class="admin-only" data-sort="io_ports.lan_speed">LAN</th>
+                        <th data-sort="ai_features.ai_inference_suitability">AI Class</th>
+                        <th class="num" data-sort="effective_price_jpy">Price</th>
+                        <th class="admin-only" data-sort="physical.dimensions">Size (W×D×H)</th>
                         <th>Amazon</th>
                     </tr>
                 </thead>
@@ -150,10 +151,19 @@
         </div>
     </main>
 
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 ShotPC. 掲載情報はAmazon等の各ECサイトのものです。</p>
+            <p class="disclaimer">※Amazonアソシエイトとして、ShotPCは適格販売により収入を得ています。</p>
+        </div>
+    </footer>
+
+    <script src="/shotpc/assets/js/app.js"></script>
     <script>
         let miniData = [];
         let sortDir = 1;
         let lastKey = '';
+        const isAdmin = localStorage.getItem('shotpc_admin') === 'true';
 
         const getVal = (obj, path) => path.split('.').reduce((o, i) => (o ? o[i] : null), obj);
 
@@ -183,22 +193,31 @@
 
         function renderTable(data) {
             const body = document.getElementById('spec-body');
+            
+            // Adminモード時のみ表示する列の制御
+            const adminHeaders = document.querySelectorAll('.admin-only');
+            adminHeaders.forEach(el => el.style.display = isAdmin ? 'table-cell' : 'none');
+
             body.innerHTML = data.map((pc, idx) => `
                 <tr>
                     <td class="sticky-col-1">${idx + 1}</td>
                     <td class="sticky-col-2">${pc.brand}</td>
                     <td class="sticky-col-3"><strong>${pc.model}</strong></td>
                     <td>${pc.cpu.name}</td>
+                    ${isAdmin ? `<td class="num">${pc.cpu.benchmark_score || '-'}</td>` : ''}
+                    ${isAdmin ? `<td class="num">${pc.ai_features.npu_tops || '-'}</td>` : ''}
                     <td class="num">${pc.ram.capacity_gb}GB</td>
-                    <td class="ai-status">${pc.ai_features.vram_allocation}</td>
+                    <td class="ai-status">${pc.ai_features.vram_allocation || '-'}</td>
                     <td>${pc.ai_features.oculink_support ? 'Yes' : '-'}</td>
+                    ${isAdmin ? `<td class="num">${pc.io_ports?.usb4_count || '0'}</td>` : ''}
+                    ${isAdmin ? `<td>${pc.io_ports?.lan_speed || '-'}</td>` : ''}
                     <td>${pc.ai_features.ai_inference_suitability}</td>
                     <td class="num">¥${pc.effective_price_jpy.toLocaleString()}</td>
+                    ${isAdmin ? `<td>${pc.physical?.dimensions || '-'}</td>` : ''}
                     <td><a href="${pc.amazon_url}" target="_blank" class="btn-link">View</a></td>
                 </tr>
             `).join('');
 
-            // 各列の幅を精密に測り、CSS変数で一括制御 (ジッター防止)
             requestAnimationFrame(() => {
                 const table = document.getElementById('spec-table');
                 const col1 = document.querySelector('th.sticky-col-1');
