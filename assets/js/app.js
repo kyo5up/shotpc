@@ -13,9 +13,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnCompareClose = document.getElementById('btn-compare-close');
     const compareModal = document.getElementById('compare-modal');
     const compareTableBody = document.getElementById('compare-table-body');
+    const siteTitleLink = document.querySelector('header h1 a');
 
     // Admin状態の管理 (localStorageに保存)
     let isAdmin = localStorage.getItem('shotpc_admin') === 'true';
+
+    // Admin中は対象ページのタイトルを明示表示
+    function updateAdminTitle() {
+        if (!siteTitleLink) return;
+        const path = window.location.pathname || '/';
+        const isTopPage = path === '/' || path.endsWith('/index.html') || path.endsWith('/shotpc/');
+        const isComparePage = path.includes('/ja/compare/');
+        if (isAdmin && (isTopPage || isComparePage)) {
+            siteTitleLink.textContent = 'ShotPC(admin mode)';
+        } else {
+            siteTitleLink.textContent = 'ShotPC';
+        }
+    }
+    updateAdminTitle();
     
     // 隠しコマンド (フッターのコピーライト5連打でAdmin切替)
     const footerCopy = document.querySelector('footer p');

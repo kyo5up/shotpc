@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MinisforumミニPC完全ガイド：AI・ローカルLLM構築に最適な理由 - ShotPC</title>
+    <link rel="stylesheet" href="/shotpc/assets/css/style.css">
+    <link rel="icon" href="/shotpc/assets/img/favicon.ico" sizes="any">
+    <link rel="icon" href="/shotpc/assets/img/favicon-32x32.png" type="image/png">
+    <link rel="apple-touch-icon" href="/shotpc/assets/img/favicon-192x192.png">
+</head>
+<body class="article-page">
+    <header>
+        <div class="container">
+            <h1><a href="/shotpc/">ShotPC</a></h1>
+            <p>AI構築のためのミニPC比較・在庫確認ポータル</p>
+        </div>
+    </header>
+
+    <div class="article-header-container">
+        <div class="container">
+            <h1>Minisforum完全ガイド：AI・ローカルLLM構築に最適な理由</h1>
+            <div class="article-meta">
+                <span>📅 2026年3月27日</span>
+                <span>📂 メーカー解説・AI</span>
+                <span>⏱️ 読了目安: 6分</span>
+            </div>
+        </div>
+    </div>
+
+    <main class="container article-layout">
+        <aside class="article-toc">
+            <h3>目次</h3>
+            <ul>
+                <li><a href="#overview">1. Minisforumとは？</a></li>
+                <li><a href="#ai-strength">2. AIユーザーに支持される3つの強み</a></li>
+                <li><a href="#typical-models">3. AI推論向け代表モデル</a></li>
+                <li><a href="#bios">4. 独自のVRAM割り当て設定</a></li>
+                <li><a href="#summary">まとめ</a></li>
+            </ul>
+        </aside>
+
+        <section class="article-main">
+            <div class="article-body">
+                <p id="overview">ミニPC業界において、最もアグレッシブに最新技術を投入しているのが<strong>Minisforum（ミニスフォーラム）</strong>です。単なる事務用PCの枠を超え、ワークステーション級の性能を凝縮した彼らの製品は、現在ローカルLLMを動かすエンジニアの間で「事実上の標準」となりつつあります。</p>
+
+                <h2 id="ai-strength">2. AIユーザーに支持される3つの強み</h2>
+                
+                <h3>① 圧倒的な「冷却性能」と液体金属</h3>
+                <p>LLMの推論（特にLlama 3 8Bのフル回転など）は、GPU/NPUに長時間の負荷をかけます。Minisforumのハイエンドモデル（UMシリーズ等）は、<strong>「液体金属」</strong>をCPU/GPUの熱伝導材に採用しており、従来のグリスよりも圧倒的に効率的な排熱が可能です。これにより、サーマルスロットリングによる速度低下を防ぎ、安定した推論速度を維持できます。</p>
+
+                <h3>② Oculink端子によるeGPU（外付けGPU）拡張</h3>
+                <p>Minisforumが他社に先駆けて普及させたのが<strong>Oculink（オキュリンク）</strong>端子です。USB4(40Gbps)よりも遥かに高速な帯域(64Gbps)で外付けGPUを接続できるため、ミニPC本体の内蔵メモリが足りなくなった場合でも、RTX 3090/4090などの巨大なVRAMを持つビデオカードを「外付け」してAI性能を爆発させることが可能です。</p>
+
+                <h3>③ 自由度の高いBIOS設定</h3>
+                <p>多くの大手メーカーがBIOS（UEFI）の設定を制限する中、Minisforumはメモリ電圧やVRAM割り当て、消費電力（TDP）の制限解除などをユーザーに開放しています。これにより、32GBのメインメモリのうち<strong>最大16GBをVRAMとして固定</strong>し、モデルをVRAM内に完全にロードして推論を高速化することができます。</p>
+
+                <h2 id="typical-models">3. AI推論向け代表モデル</h2>
+                
+                <div class="recommend-pc-grid">
+                    <div class="info-card">
+                        <h4>🔥 UM890 Pro (Ryzen 9 8945HS)</h4>
+                        <p>最新のHawk Point搭載機。AI処理専用の「NPU」を内蔵しており、省電力でのAI推論に強い。デュアル2.5G LAN搭載でホームサーバー化にも最適。</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>💎 UM780 XTX (Ryzen 7 7840HS)</h4>
+                        <p>Oculink端子を初めて標準搭載し、一世を風靡した名機。価格が落ち着いており、eGPU前提のAI学習・推論機として今なおトップクラスのコスパ。</p>
+                    </div>
+                </div>
+
+                <h2 id="bios">4. 独自のVRAM割り当て設定</h2>
+                <p>Minisforum機のBIOS設定画面では、<code>Advanced -> GFX Configuration -> UMA Frame Buffer Size</code> からVRAM容量を指定できます。メインメモリが32GBなら「16G」、64GBなら「32G」を指定することで、OS起動時からビデオメモリとして確保され、推論時の安定性が格段に向上します。</p>
+
+                <h2 id="summary">まとめ</h2>
+                <p><strong>「最新スペックへの追従速度」</strong>と<strong>「マニアックな拡張性」</strong>において、Minisforumの右に出るメーカーはありません。本格的にローカルLLM環境を構築したいなら、まずはUMシリーズのチェックから始めるべきです。</p>
+            </div>
+
+            <div class="back-to-home">
+                <a href="/shotpc/" class="btn-outline">← 比較ポータルに戻る</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 ShotPC. 掲載情報はAmazon等の各ECサイトのものです。</p>
+            <p class="disclaimer">※Amazonアソシエイトとして、ShotPCは適格販売により収入を得ています。</p>
+        </div>
+    </footer>
+
+    <script src="/shotpc/assets/js/app.js"></script>
+</body>
+</html>
