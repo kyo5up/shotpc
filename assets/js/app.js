@@ -1,83 +1,178 @@
 document.addEventListener('DOMContentLoaded', () => {
     let allMinis = [];
     let selectedIds = new Set();
+
     const productList = document.getElementById('product-list');
     const brandList = document.getElementById('brand-list');
     const articleList = document.getElementById('article-list');
     const filters = document.querySelectorAll('#sidebar input');
-    
-    // 比較用DOM
+
     const compareBar = document.getElementById('compare-bar');
     const compareCount = document.getElementById('compare-count');
     const btnCompareOpen = document.getElementById('btn-compare-open');
     const btnCompareClose = document.getElementById('btn-compare-close');
     const compareModal = document.getElementById('compare-modal');
     const compareTableBody = document.getElementById('compare-table-body');
-    const siteTitleLink = document.querySelector('header h1 a');
 
-    // Admin状態の管理 (localStorageに保存)
+    const siteTitleLink = document.querySelector('header h1 a');
+    const headerContainer = document.querySelector('header .container');
+    const footerCopy = document.querySelector('footer p');
+
     let isAdmin = localStorage.getItem('shotpc_admin') === 'true';
 
-    // Admin中は対象ページのタイトルを明示表示
+    const UI_TEXT = {
+        currentView: '\u73fe\u5728\u306e\u8868\u793a\u306f',
+        adminView: '\u30a2\u30c9\u30df\u30f3\u30e2\u30fc\u30c9\u3067\u5168\u8868\u793a',
+        userView: '\u30e6\u30fc\u30b6\u30fc\u76ee\u7dda',
+        switchUser: '\u30e6\u30fc\u30b6\u30fc\u76ee\u7dda\u306b\u5207\u66ff',
+        switchAdmin: '\u30a2\u30c9\u30df\u30f3\u30e2\u30fc\u30c9\u3067\u5168\u8868\u793a',
+        enterPassword: '\u7ba1\u7406\u8005\u30d1\u30b9\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044:',
+        wrongPassword: '\u30d1\u30b9\u30ef\u30fc\u30c9\u304c\u9055\u3044\u307e\u3059\u3002',
+        loadError: '\u30c7\u30fc\u30bf\u306e\u8aad\u307f\u8fbc\u307f\u306b\u5931\u6557\u3057\u307e\u3057\u305f\u3002',
+        noResults: '\u6761\u4ef6\u306b\u5408\u3046\u30df\u30cbPC\u304c\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3002',
+        compare: '\u6bd4\u8f03',
+        inStock: '\u5728\u5eab\u3042\u308a',
+        outOfStock: '\u5728\u5eab\u5207\u308c',
+        unknown: '\u672a\u8a18\u8f09',
+        none: '\u306a\u3057',
+        couponApplied: '\u30af\u30fc\u30dd\u30f3\u9069\u7528\u6e08\u307f',
+        viewOnAmazon: 'Amazon\u3067\u8a73\u7d30\u3092\u898b\u308b',
+        yes: '\u5bfe\u5fdc',
+        no: '-',
+        notes: '\u5099\u8003',
+        models: '\u4ee3\u8868\u30e2\u30c7\u30eb',
+        rows: {
+            model: '\u30e2\u30c7\u30eb',
+            price: '\u4fa1\u683c',
+            aiSuitability: 'AI\u9069\u6027',
+            cpu: 'CPU',
+            ram: 'RAM',
+            vram: 'VRAM\u5272\u5f53',
+            oculink: 'Oculink',
+            storage: 'Storage',
+            thermal: '\u51b7\u5374 / \u71b1\u8a2d\u8a08',
+            amazon: 'Amazon'
+        }
+    };
+
+    function isAdminVisiblePage() {
+        const path = window.location.pathname || '/';
+        return path === '/' || path.endsWith('/index.html') || path.endsWith('/shotpc/') || path.includes('/ja/compare/');
+    }
+
+    function persistAdminMode(nextIsAdmin) {
+        isAdmin = nextIsAdmin;
+        localStorage.setItem('shotpc_admin', String(isAdmin));
+    }
+
     function updateAdminTitle() {
         if (!siteTitleLink) return;
-        const path = window.location.pathname || '/';
-        const isTopPage = path === '/' || path.endsWith('/index.html') || path.endsWith('/shotpc/');
-        const isComparePage = path.includes('/ja/compare/');
-        if (isAdmin && (isTopPage || isComparePage)) {
-            siteTitleLink.textContent = 'ShotPC(admin mode)';
-        } else {
-            siteTitleLink.textContent = 'ShotPC';
-        }
+        siteTitleLink.textContent = isAdmin && isAdminVisiblePage() ? 'ShotPC(admin mode)' : 'ShotPC';
     }
-    updateAdminTitle();
-    
-    // 隠しコマンド (フッターのコピーライト5連打でAdmin切替)
-    const footerCopy = document.querySelector('footer p');
+
+    function updateAdminUi() {
+        updateAdminTitle();
+
+        const status = document.getElementById('admin-view-status');
+        const btnUser = document.getElementById('admin-view-user');
+        const btnAdmin = document.getElementById('admin-view-admin');
+
+        if (status) {
+            status.textContent = `${UI_TEXT.currentView}${isAdmin ? UI_TEXT.adminView : UI_TEXT.userView}\u3067\u3059`;
+        }
+        if (btnUser) btnUser.disabled = !isAdmin;
+        if (btnAdmin) btnAdmin.disabled = isAdmin;
+    }
+
+    function setAdminMode(nextIsAdmin, options = {}) {
+        const { requirePassword = false } = options;
+
+        if (nextIsAdmin === isAdmin) {
+            updateAdminUi();
+            return;
+        }
+
+        if (requirePassword && nextIsAdmin) {
+            const pass = prompt(UI_TEXT.enterPassword);
+            if (pass === null) return;
+            if (pass !== 'admin') {
+                alert(UI_TEXT.wrongPassword);
+                return;
+            }
+        }
+
+        persistAdminMode(nextIsAdmin);
+        alert(`Admin Mode: ${isAdmin ? 'ON (Full Data)' : 'OFF (Standard)'}`);
+        updateAdminUi();
+        location.reload();
+    }
+
+    function initAdminControls() {
+        if (!headerContainer || !isAdminVisiblePage() || document.getElementById('admin-view-toggle')) return;
+
+        const controls = document.createElement('div');
+        controls.id = 'admin-view-toggle';
+        controls.className = 'admin-view-toggle';
+        controls.innerHTML = `
+            <span class="admin-view-status" id="admin-view-status"></span>
+            <button type="button" class="admin-view-button" id="admin-view-user">${UI_TEXT.switchUser}</button>
+            <button type="button" class="admin-view-button" id="admin-view-admin">${UI_TEXT.switchAdmin}</button>
+        `;
+        headerContainer.appendChild(controls);
+
+        document.getElementById('admin-view-user')?.addEventListener('click', () => {
+            setAdminMode(false);
+        });
+        document.getElementById('admin-view-admin')?.addEventListener('click', () => {
+            setAdminMode(true, { requirePassword: true });
+        });
+
+        updateAdminUi();
+    }
+
+    initAdminControls();
+
     if (footerCopy) {
         let adminClickCount = 0;
         let adminClickTimer = null;
+
         footerCopy.addEventListener('click', () => {
-            adminClickCount++;
+            adminClickCount += 1;
             clearTimeout(adminClickTimer);
-            adminClickTimer = setTimeout(() => { adminClickCount = 0; }, 2000);
+            adminClickTimer = setTimeout(() => {
+                adminClickCount = 0;
+            }, 2000);
 
             if (adminClickCount >= 5) {
-                const pass = prompt('管理者パスワードを入力してください:');
-                if (pass === 'admin') {
-                    isAdmin = !isAdmin;
-                    localStorage.setItem('shotpc_admin', isAdmin);
-                    alert(`Admin Mode: ${isAdmin ? 'ON (Full Data)' : 'OFF (Standard)'}`);
-                    location.reload();
-                } else if (pass !== null) {
-                    alert('パスワードが違います。');
-                }
+                setAdminMode(!isAdmin, { requirePassword: true });
                 adminClickCount = 0;
             }
         });
     }
 
-    // データ読み込み
     async function loadData() {
         try {
             const pcResponse = await fetch('/shotpc/data/minis.json');
             allMinis = await pcResponse.json();
             if (productList) renderProducts(allMinis);
 
-            const brandResponse = await fetch('/shotpc/data/brands.json');
-            const brands = await brandResponse.json();
-            if (brandList) renderBrands(brands);
+            if (brandList) {
+                const brandResponse = await fetch('/shotpc/data/brands.json');
+                const brands = await brandResponse.json();
+                renderBrands(brands);
+            }
 
-            const articleResponse = await fetch('/shotpc/data/articles.json');
-            const articles = await articleResponse.json();
-            if (articleList) renderArticles(articles);
+            if (articleList) {
+                const articleResponse = await fetch('/shotpc/data/articles.json');
+                const articles = await articleResponse.json();
+                renderArticles(articles);
+            }
         } catch (error) {
-            console.error('データの読み込みに失敗しました:', error);
-            if (productList) productList.innerHTML = '<p class="error">データの読み込みに失敗しました。</p>';
+            console.error('Failed to load data:', error);
+            if (productList) productList.innerHTML = `<p class="error">${UI_TEXT.loadError}</p>`;
         }
     }
 
-    // 記事一覧
     function renderArticles(articles) {
         if (!articleList) return;
         articleList.innerHTML = articles.map(article => `
@@ -87,13 +182,13 @@ document.addEventListener('DOMContentLoaded', () => {
         `).join('');
     }
 
-    // メーカー一覧
     function renderBrands(brands) {
         if (!brandList) return;
+
         brandList.innerHTML = brands.map(brand => {
             let statusClass = 'status-unknown';
-            if (brand.mini_pc_status.includes('製造中')) statusClass = 'status-active';
-            if (brand.mini_pc_status.includes('なし')) statusClass = 'status-none';
+            if ((brand.mini_pc_status || '').includes('\u53d6\u6271\u4e2d')) statusClass = 'status-active';
+            if ((brand.mini_pc_status || '').includes('\u306a\u3057')) statusClass = 'status-none';
 
             return `
                 <div class="brand-card">
@@ -105,127 +200,131 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="brand-ai-strength">${brand.ai_strength}</div>
                     <p class="brand-desc">${brand.description}</p>
                     <div class="brand-models">
-                        代表モデル: ${brand.typical_models.map(m => `<span>${m}</span>`).join('')}
+                        ${UI_TEXT.models}: ${brand.typical_models.map(model => `<span>${model}</span>`).join('')}
                     </div>
                 </div>
             `;
         }).join('');
     }
 
-    // 商品一覧
+    function getSuitabilityClass(suitability) {
+        const value = suitability || UI_TEXT.none;
+        if (value.includes('S')) return 'badge-s';
+        if (value.includes('A')) return 'badge-a';
+        if (value.toLowerCase().includes('entry') || value.includes('\u5165\u9580')) return 'badge-entry';
+        return 'badge-standard';
+    }
+
     function renderProducts(minis) {
+        if (!productList) return;
+
         if (minis.length === 0) {
-            productList.innerHTML = '<p>条件に一致するミニPCが見つかりませんでした。</p>';
+            productList.innerHTML = `<p>${UI_TEXT.noResults}</p>`;
             return;
         }
 
         productList.innerHTML = minis.map(pc => {
-            let suitabilityClass = 'badge-standard';
-            const suitability = pc.ai_features.ai_inference_suitability || '不明';
-            if (suitability.includes('Sクラス') || suitability.includes('非常に高い')) suitabilityClass = 'badge-s';
-            else if (suitability.includes('Aクラス') || suitability.includes('高い')) suitabilityClass = 'badge-a';
-            else if (suitability.includes('エントリー') || suitability.includes('入門')) suitabilityClass = 'badge-entry';
-
+            const suitability = pc.ai_features?.ai_inference_suitability || UI_TEXT.none;
+            const suitabilityClass = getSuitabilityClass(suitability);
             const isChecked = selectedIds.has(pc.id);
 
             return `
-            <article class="pc-card" data-id="${pc.id}">
-                <label class="compare-checkbox-label">
-                    <input type="checkbox" class="compare-check" data-id="${pc.id}" ${isChecked ? 'checked' : ''}> 比較
-                </label>
-                <div class="brand-line">
-                    <span class="brand">${pc.brand}</span>
-                    <span class="stock-badge ${pc.stock}">${pc.stock === 'in_stock' ? '● 在庫あり' : '× 在庫切れ'}</span>
-                </div>
-                <h2 class="model">${pc.model}</h2>
-                <div class="ai-badge ${suitabilityClass}">${suitability}</div>
-                
-                <div class="specs-grid">
-                    <div class="spec-node full-width">
-                        <span class="label">CPU / GPU</span>
-                        <span class="value">${pc.cpu.name} (${pc.cpu.cores || '-'}C/${pc.cpu.threads || '-'}T) / ${pc.gpu || '-'}</span>
+                <article class="pc-card" data-id="${pc.id}">
+                    <label class="compare-checkbox-label">
+                        <input type="checkbox" class="compare-check" data-id="${pc.id}" ${isChecked ? 'checked' : ''}> ${UI_TEXT.compare}
+                    </label>
+                    <div class="brand-line">
+                        <span class="brand">${pc.brand}</span>
+                        <span class="stock-badge ${pc.stock}">${pc.stock === 'in_stock' ? UI_TEXT.inStock : UI_TEXT.outOfStock}</span>
+                    </div>
+                    <h2 class="model">${pc.model}</h2>
+                    <div class="ai-badge ${suitabilityClass}">${suitability}</div>
+
+                    <div class="specs-grid">
+                        <div class="spec-node full-width">
+                            <span class="label">CPU / GPU</span>
+                            <span class="value">${pc.cpu.name} (${pc.cpu.cores || '-'}C/${pc.cpu.threads || '-'}T) / ${pc.gpu || '-'}</span>
+                        </div>
+
+                        ${isAdmin ? `
+                            <div class="spec-node">
+                                <span class="label">CPU Benchmark</span>
+                                <span class="value">${pc.cpu.benchmark_score || UI_TEXT.unknown}</span>
+                            </div>
+                            <div class="spec-node">
+                                <span class="label">NPU (AI Engine)</span>
+                                <span class="value">${pc.ai_features?.npu_tops ? `${pc.ai_features.npu_tops} TOPS` : UI_TEXT.none}</span>
+                            </div>
+                        ` : ''}
+
+                        <div class="spec-node">
+                            <span class="label">RAM</span>
+                            <span class="value">${pc.ram.capacity_gb}GB (${pc.ram.type || '-'})</span>
+                        </div>
+                        <div class="spec-node">
+                            <span class="label">VRAM</span>
+                            <span class="value">${pc.ai_features?.vram_allocation || UI_TEXT.none}</span>
+                        </div>
+
+                        ${isAdmin ? `
+                            <div class="spec-node">
+                                <span class="label">RAM Expandability</span>
+                                <span class="value">${pc.ram.slots || '-'} Slot / Max ${pc.ram.max_capacity_gb || '-'}GB</span>
+                            </div>
+                        ` : ''}
+
+                        <div class="spec-node">
+                            <span class="label">Oculink</span>
+                            <span class="value">${pc.ai_features?.oculink_support ? UI_TEXT.yes : UI_TEXT.no}</span>
+                        </div>
+                        <div class="spec-node">
+                            <span class="label">Storage</span>
+                            <span class="value">${pc.storage.capacity_gb}GB (${pc.storage.slots || '-'} Slot)</span>
+                        </div>
+
+                        ${isAdmin ? `
+                            <div class="spec-node">
+                                <span class="label">USB4 / Thunderbolt</span>
+                                <span class="value">${pc.io_ports?.usb4_count ?? UI_TEXT.unknown} Port</span>
+                            </div>
+                            <div class="spec-node">
+                                <span class="label">LAN / Network</span>
+                                <span class="value">${pc.io_ports?.lan_speed || UI_TEXT.unknown}</span>
+                            </div>
+                            <div class="spec-node">
+                                <span class="label">Thermal Design</span>
+                                <span class="value">${pc.ai_features?.thermal_design || '-'}</span>
+                            </div>
+                            <div class="spec-node">
+                                <span class="label">Size / Weight</span>
+                                <span class="value">${pc.physical?.dimensions || '-'} / ${pc.physical?.weight || '-'}</span>
+                            </div>
+                        ` : ''}
                     </div>
 
-                    ${isAdmin ? `
-                    <div class="spec-node">
-                        <span class="label">CPU Benchmark</span>
-                        <span class="value">${pc.cpu.benchmark_score || '未計測'}</span>
-                    </div>
-                    <div class="spec-node">
-                        <span class="label">NPU (AI Engine)</span>
-                        <span class="value">${pc.ai_features.npu_tops ? pc.ai_features.npu_tops + ' TOPS' : '非搭載 / 不明'}</span>
-                    </div>
+                    ${(isAdmin && pc.notes) ? `
+                        <div class="pc-notes">
+                            <span class="label">${UI_TEXT.notes}</span> ${pc.notes}
+                        </div>
                     ` : ''}
 
-                    <div class="spec-node">
-                        <span class="label">RAM</span>
-                        <span class="value">${pc.ram.capacity_gb}GB (${pc.ram.type || '-'})</span>
-                    </div>
-                    <div class="spec-node">
-                        <span class="label">VRAM設定</span>
-                        <span class="value">${pc.ai_features.vram_allocation || '不明'}</span>
-                    </div>
-
-                    ${isAdmin ? `
-                    <div class="spec-node">
-                        <span class="label">RAM 拡張性</span>
-                        <span class="value">${pc.ram.slots || '-'} Slot / Max ${pc.ram.max_capacity_gb || '-'}GB</span>
-                    </div>
-                    ` : ''}
-
-                    <div class="spec-node">
-                        <span class="label">Oculink</span>
-                        <span class="value">${pc.ai_features.oculink_support ? '✅ 対応' : 'ー'}</span>
-                    </div>
-                    <div class="spec-node">
-                        <span class="label">Storage</span>
-                        <span class="value">${pc.storage.capacity_gb}GB (${pc.storage.slots || '-'} Slot)</span>
+                    <div class="price-box">
+                        ${pc.coupon_jpy > 0 ? `<div class="original-price">\u00a5${pc.price_jpy.toLocaleString()}</div>` : ''}
+                        <div class="effective-price">
+                            <span class="currency">\u00a5</span>${pc.effective_price_jpy.toLocaleString()}
+                            ${pc.coupon_jpy > 0 ? `<span class="price-note">${UI_TEXT.couponApplied}</span>` : ''}
+                        </div>
                     </div>
 
-                    ${isAdmin ? `
-                    <div class="spec-node">
-                        <span class="label">USB4 / Thunderbolt</span>
-                        <span class="value">${pc.io_ports?.usb4_count || '未調査'} Port</span>
-                    </div>
-                    <div class="spec-node">
-                        <span class="label">LAN / Network</span>
-                        <span class="value">${pc.io_ports?.lan_speed || '未調査'}</span>
-                    </div>
-                    <div class="spec-node">
-                        <span class="label">冷却 / 構造</span>
-                        <span class="value">${pc.ai_features.thermal_design || '-'}</span>
-                    </div>
-                    <div class="spec-node">
-                        <span class="label">サイズ / 重量</span>
-                        <span class="value">${pc.physical?.dimensions || '-'} / ${pc.physical?.weight || '-'}</span>
-                    </div>
-                    ` : ''}
-                </div>
-
-                ${(isAdmin && pc.notes) ? `
-                <div class="pc-notes">
-                    <span class="label">備考:</span> ${pc.notes}
-                </div>
-                ` : ''}
-
-                <div class="price-box">
-                    ${pc.coupon_jpy > 0 ? `<div class="original-price">¥${pc.price_jpy.toLocaleString()}</div>` : ''}
-                    <div class="effective-price">
-                        <span class="currency">¥</span>${pc.effective_price_jpy.toLocaleString()}
-                        ${pc.coupon_jpy > 0 ? '<span class="price-note">（クーポン適用後）</span>' : ''}
-                    </div>
-                </div>
-
-                <a href="${pc.amazon_url}" target="_blank" class="btn-amazon">Amazonで詳細を見る</a>
-            </article>
+                    <a href="${pc.amazon_url}" target="_blank" class="btn-amazon">${UI_TEXT.viewOnAmazon}</a>
+                </article>
             `;
         }).join('');
 
-        // チェックボックスのイベント
-        document.querySelectorAll('.compare-check').forEach(cb => {
-            cb.addEventListener('change', (e) => {
-                const id = e.target.dataset.id;
-                if (e.target.checked) {
+        document.querySelectorAll('.compare-check').forEach(checkbox => {
+            checkbox.addEventListener('change', event => {
+                const { id } = event.target.dataset;
+                if (event.target.checked) {
                     selectedIds.add(id);
                 } else {
                     selectedIds.delete(id);
@@ -235,49 +334,41 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 比較バーの更新
     function updateCompareBar() {
-        if (!compareBar) return;
-        const count = selectedIds.size;
-        compareCount.textContent = count;
-        if (count > 0) {
-            compareBar.classList.add('active');
-        } else {
-            compareBar.classList.remove('active');
-        }
+        if (!compareBar || !compareCount) return;
+
+        compareCount.textContent = String(selectedIds.size);
+        compareBar.classList.toggle('active', selectedIds.size > 0);
     }
 
-    // 比較モーダルを開く
     if (btnCompareOpen) {
         btnCompareOpen.addEventListener('click', () => {
             const selectedMinis = allMinis.filter(pc => selectedIds.has(pc.id));
             renderCompareTable(selectedMinis);
-            compareModal.classList.add('active');
+            compareModal?.classList.add('active');
         });
     }
 
-    // 比較モーダルを閉じる
     if (btnCompareClose) {
         btnCompareClose.addEventListener('click', () => {
-            compareModal.classList.remove('active');
+            compareModal?.classList.remove('active');
         });
     }
 
-    // 比較テーブルの描画
     function renderCompareTable(minis) {
         if (!compareTableBody) return;
-        
+
         const rows = [
-            { label: 'モデル', field: (pc) => `<div class="pc-name">${pc.brand}<br>${pc.model}</div>` },
-            { label: '価格', field: (pc) => `<div class="pc-price">¥${pc.effective_price_jpy.toLocaleString()}</div>` },
-            { label: 'AI適合度', field: (pc) => pc.ai_features.ai_inference_suitability },
-            { label: 'CPU', field: (pc) => pc.cpu.name },
-            { label: 'RAM', field: (pc) => `${pc.ram.capacity_gb}GB (${pc.ram.type || '-'})` },
-            { label: 'VRAM割り当て', field: (pc) => pc.ai_features.vram_allocation || '不明' },
-            { label: 'Oculink', field: (pc) => pc.ai_features.oculink_support ? '✅ 対応' : 'ー' },
-            { label: 'Storage', field: (pc) => `${pc.storage.capacity_gb}GB` },
-            { label: '冷却構造', field: (pc) => pc.ai_features.thermal_design || '-' },
-            { label: 'Amazon', field: (pc) => `<a href="${pc.amazon_url}" target="_blank" class="btn-amazon" style="margin-top:0; padding:0.5rem;">Amazon</a>` }
+            { label: UI_TEXT.rows.model, field: pc => `<div class="pc-name">${pc.brand}<br>${pc.model}</div>` },
+            { label: UI_TEXT.rows.price, field: pc => `<div class="pc-price">\u00a5${pc.effective_price_jpy.toLocaleString()}</div>` },
+            { label: UI_TEXT.rows.aiSuitability, field: pc => pc.ai_features?.ai_inference_suitability || UI_TEXT.none },
+            { label: UI_TEXT.rows.cpu, field: pc => pc.cpu.name },
+            { label: UI_TEXT.rows.ram, field: pc => `${pc.ram.capacity_gb}GB (${pc.ram.type || '-'})` },
+            { label: UI_TEXT.rows.vram, field: pc => pc.ai_features?.vram_allocation || UI_TEXT.none },
+            { label: UI_TEXT.rows.oculink, field: pc => pc.ai_features?.oculink_support ? UI_TEXT.yes : UI_TEXT.no },
+            { label: UI_TEXT.rows.storage, field: pc => `${pc.storage.capacity_gb}GB` },
+            { label: UI_TEXT.rows.thermal, field: pc => pc.ai_features?.thermal_design || '-' },
+            { label: UI_TEXT.rows.amazon, field: pc => `<a href="${pc.amazon_url}" target="_blank" class="btn-amazon" style="margin-top:0; padding:0.5rem;">Amazon</a>` }
         ];
 
         compareTableBody.innerHTML = rows.map(row => `
@@ -288,38 +379,42 @@ document.addEventListener('DOMContentLoaded', () => {
         `).join('');
     }
 
-    // フィルタリング処理
     function applyFilters() {
         const selectedCpus = Array.from(document.querySelectorAll('input[name="cpu"]:checked')).map(el => el.value);
         const selectedRams = Array.from(document.querySelectorAll('input[name="ram"]:checked')).map(el => el.value);
         const selectedAiFeatures = Array.from(document.querySelectorAll('input[name="ai"]:checked')).map(el => el.value);
-        const onlyInStock = document.querySelector('input[name="stock"]').checked;
+        const stockCheckbox = document.querySelector('input[name="stock"]');
+        const onlyInStock = stockCheckbox ? stockCheckbox.checked : false;
 
         const filtered = allMinis.filter(pc => {
-            const cpuMatch = selectedCpus.length === 0 || selectedCpus.some(val => 
-                pc.cpu.name.toLowerCase().includes(val.toLowerCase())
-            );
-            const ramMatch = selectedRams.length === 0 || selectedRams.some(val => 
-                pc.ram.capacity_gb >= parseInt(val)
-            );
+            const cpuName = pc.cpu?.name?.toLowerCase() || '';
+            const cpuMatch = selectedCpus.length === 0 || selectedCpus.some(value => cpuName.includes(value.toLowerCase()));
+
+            const ramCapacity = Number(pc.ram?.capacity_gb || 0);
+            const maxRam = Number(pc.ram?.max_capacity_gb || 0);
+            const ramMatch = selectedRams.length === 0 || selectedRams.some(value => ramCapacity >= Number(value));
+
             const stockMatch = !onlyInStock || pc.stock === 'in_stock';
-            const aiMatch = selectedAiFeatures.length === 0 || selectedAiFeatures.every(val => {
-                if (val === 'vram16') return pc.ai_features.vram_allocation && pc.ai_features.vram_allocation.includes('16GB');
-                if (val === 'oculink') return pc.ai_features.oculink_support === true;
-                if (val === 'ram64') {
-                    const currentRam = pc.ram.capacity_gb || 0;
-                    const maxRam = pc.ram.max_capacity_gb || 0;
-                    return currentRam >= 64 || maxRam >= 64 || (typeof maxRam === 'string' && parseInt(maxRam) >= 64);
+
+            const aiMatch = selectedAiFeatures.length === 0 || selectedAiFeatures.every(value => {
+                if (value === 'vram16') {
+                    return (pc.ai_features?.vram_allocation || '').includes('16GB');
+                }
+                if (value === 'oculink') {
+                    return pc.ai_features?.oculink_support === true;
+                }
+                if (value === 'ram64') {
+                    return ramCapacity >= 64 || maxRam >= 64;
                 }
                 return true;
             });
+
             return cpuMatch && ramMatch && stockMatch && aiMatch;
         });
 
         renderProducts(filtered);
     }
 
-    // イベントリスナー
     filters.forEach(filter => {
         filter.addEventListener('change', applyFilters);
     });
