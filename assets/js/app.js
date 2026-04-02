@@ -153,10 +153,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function initAdminControls() {
         if (!headerContainer || !isAdminVisiblePage() || document.getElementById('admin-view-toggle')) return;
+        if (!isAdminAuthenticated) return;
 
         const controls = document.createElement('div');
         controls.id = 'admin-view-toggle';
         controls.className = 'admin-view-toggle';
+        controls.hidden = false;
         controls.innerHTML = `
             <span class="admin-view-status" id="admin-view-status"></span>
             <button type="button" class="admin-view-button" id="admin-view-user">${UI_TEXT.switchUser}</button>
