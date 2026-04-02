@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function isAdminVisiblePage() {
         const path = window.location.pathname || '/';
-        return path === '/' || path.endsWith('/index.html') || path.endsWith('/shotpc/') || path.includes('/ja/compare/');
+        return path === '/' || path.endsWith('/index.html') || path.endsWith('/shotpc/') || path.includes('/ja/compare/') || path.includes('/ja/catalog/');
     }
 
     function isAdminViewEnabled() {
@@ -188,9 +188,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const status = document.getElementById('admin-view-status');
         const btnUser = document.getElementById('admin-view-user');
         const btnAdmin = document.getElementById('admin-view-admin');
+        const navLink = document.getElementById('admin-page-switch-link');
 
         if (controls) {
             controls.hidden = !isAdminAuthenticated;
+        }
+        if (navLink) {
+            navLink.hidden = !isAdminAuthenticated;
         }
         if (status) {
             status.textContent = `${UI_TEXT.currentView}${isAdminViewEnabled() ? UI_TEXT.adminView : UI_TEXT.userView}\u3067\u3059`;
@@ -249,6 +253,9 @@ document.addEventListener('DOMContentLoaded', () => {
     function initAdminControls() {
         if (!headerContainer || !isAdminVisiblePage() || document.getElementById('admin-view-toggle')) return;
         if (!isAdminAuthenticated) return;
+        const path = window.location.pathname || '/';
+        const switchHref = path.includes('/ja/catalog/') ? '/ja/compare/' : '/ja/catalog/';
+        const switchLabel = path.includes('/ja/catalog/') ? 'old' : 'new';
 
         const controls = document.createElement('div');
         controls.id = 'admin-view-toggle';
@@ -258,6 +265,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <span class="admin-view-status" id="admin-view-status"></span>
             <button type="button" class="admin-view-button" id="admin-view-user">${UI_TEXT.switchUser}</button>
             <button type="button" class="admin-view-button" id="admin-view-admin">${UI_TEXT.switchAdmin}</button>
+            <a href="${switchHref}" class="admin-view-button" id="admin-page-switch-link">${switchLabel}</a>
         `;
         headerContainer.appendChild(controls);
 
