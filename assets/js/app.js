@@ -5,7 +5,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const productList = document.getElementById('product-list');
     const brandList = document.getElementById('brand-list');
     const articleList = document.getElementById('article-list');
-    const filters = document.querySelectorAll('#sidebar input');
+    const sidebar = document.getElementById('sidebar');
+    const brandFilterList = document.getElementById('brand-filter-list');
+    const cpuFilterList = document.getElementById('cpu-filter-list');
+    const ramFilterList = document.getElementById('ram-filter-list');
 
     const compareBar = document.getElementById('compare-bar');
     const compareCount = document.getElementById('compare-count');
@@ -84,6 +87,98 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateAdminTitle() {
         if (!siteTitleLink) return;
         siteTitleLink.textContent = isAdminAuthenticated && isAdminVisiblePage() ? 'ShotPC(admin mode)' : 'ShotPC';
+    }
+
+    function getDisplayBrandName(brand) {
+        return brand === 'Unknown' ? 'その他' : brand;
+    }
+
+    function renderFilterOptions() {
+        renderBrandFilters();
+        renderCpuFilters();
+        renderRamFilters();
+    }
+
+    function renderBrandFilters() {
+        if (!brandFilterList) return;
+
+        const counts = new Map();
+        allMinis.forEach(pc => {
+            const brand = pc.brand || 'Unknown';
+            counts.set(brand, (counts.get(brand) || 0) + 1);
+        });
+
+        const brands = Array.from(counts.entries()).sort((a, b) => {
+            if (b[1] !== a[1]) return b[1] - a[1];
+            return getDisplayBrandName(a[0]).localeCompare(getDisplayBrandName(b[0]), 'ja');
+        });
+
+        brandFilterList.innerHTML = brands.map(([brand, count]) => `
+            <label>
+                <input type="checkbox" name="brand" value="${brand}">
+                ${getDisplayBrandName(brand)}
+                <span class="filter-option-meta">(${count})</span>
+            </label>
+        `).join('');
+    }
+
+    function renderCpuFilters() {
+        if (!cpuFilterList) return;
+
+        const cpuOptions = [
+            { value: 'ryzen_ai', label: 'Ryzen AI', match: cpuName => cpuName.includes('ryzen ai') },
+            { value: 'ryzen9', label: 'Ryzen 9', match: cpuName => cpuName.includes('ryzen 9') },
+            { value: 'ryzen7', label: 'Ryzen 7', match: cpuName => cpuName.includes('ryzen 7') },
+            { value: 'ryzen5', label: 'Ryzen 5', match: cpuName => cpuName.includes('ryzen 5') },
+            { value: 'core_ultra', label: 'Core Ultra', match: cpuName => cpuName.includes('core ultra') },
+            { value: 'core_i9', label: 'Core i9', match: cpuName => cpuName.includes('core i9') },
+            { value: 'core_i7', label: 'Core i7', match: cpuName => cpuName.includes('core i7') },
+            { value: 'core_i5', label: 'Core i5', match: cpuName => cpuName.includes('core i5') },
+            { value: 'intel_n', label: 'Intel N', match: cpuName => /\bn\d{3}\b/.test(cpuName) },
+        ];
+
+        const activeOptions = cpuOptions
+            .map(option => ({
+                ...option,
+                count: allMinis.filter(pc => option.match((pc.cpu?.name || '').toLowerCase())).length,
+            }))
+            .filter(option => option.count > 0);
+
+        cpuFilterList.innerHTML = activeOptions.map(option => `
+            <label>
+                <input type="checkbox" name="cpu" value="${option.value}">
+                ${option.label}
+                <span class="filter-option-meta">(${option.count})</span>
+            </label>
+        `).join('');
+    }
+
+    function renderRamFilters() {
+        if (!ramFilterList) return;
+
+        const ramOptions = [
+            { value: '8', label: '8GB以上', min: 8 },
+            { value: '16', label: '16GB以上', min: 16 },
+            { value: '24', label: '24GB以上', min: 24 },
+            { value: '32', label: '32GB以上', min: 32 },
+            { value: '64', label: '64GB以上', min: 64 },
+            { value: '128', label: '128GB以上', min: 128 },
+        ];
+
+        const activeOptions = ramOptions
+            .map(option => ({
+                ...option,
+                count: allMinis.filter(pc => Number(pc.ram?.capacity_gb || 0) >= option.min).length,
+            }))
+            .filter(option => option.count > 0);
+
+        ramFilterList.innerHTML = activeOptions.map(option => `
+            <label>
+                <input type="checkbox" name="ram" value="${option.value}">
+                ${option.label}
+                <span class="filter-option-meta">(${option.count})</span>
+            </label>
+        `).join('');
     }
 
     function updateAdminUi() {
@@ -208,6 +303,7 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             const pcResponse = await fetch('/shotpc/data/minis.json');
             allMinis = await pcResponse.json();
+            renderFilterOptions();
             if (productList) renderProducts(allMinis);
 
             if (brandList) {
@@ -435,6 +531,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function applyFilters() {
         const selectedCpus = Array.from(document.querySelectorAll('input[name="cpu"]:checked')).map(el => el.value);
+        const selectedBrands = Array.from(document.querySelectorAll('input[name="brand"]:checked')).map(el => el.value);
         const selectedRams = Array.from(document.querySelectorAll('input[name="ram"]:checked')).map(el => el.value);
         const selectedAiFeatures = Array.from(document.querySelectorAll('input[name="ai"]:checked')).map(el => el.value);
         const stockCheckbox = document.querySelector('input[name="stock"]');
@@ -442,7 +539,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const filtered = allMinis.filter(pc => {
             const cpuName = pc.cpu?.name?.toLowerCase() || '';
-            const cpuMatch = selectedCpus.length === 0 || selectedCpus.some(value => cpuName.includes(value.toLowerCase()));
+            const cpuMatchers = {
+                ryzen_ai: name => name.includes('ryzen ai'),
+                ryzen9: name => name.includes('ryzen 9'),
+                ryzen7: name => name.includes('ryzen 7'),
+                ryzen5: name => name.includes('ryzen 5'),
+                core_ultra: name => name.includes('core ultra'),
+                core_i9: name => name.includes('core i9'),
+                core_i7: name => name.includes('core i7'),
+                core_i5: name => name.includes('core i5'),
+                intel_n: name => /\bn\d{3}\b/.test(name),
+            };
+            const cpuMatch = selectedCpus.length === 0 || selectedCpus.some(value => cpuMatchers[value]?.(cpuName));
+            const brandMatch = selectedBrands.length === 0 || selectedBrands.includes(pc.brand || 'Unknown');
 
             const ramCapacity = Number(pc.ram?.capacity_gb || 0);
             const maxRam = Number(pc.ram?.max_capacity_gb || 0);
@@ -463,14 +572,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 return true;
             });
 
-            return cpuMatch && ramMatch && stockMatch && aiMatch;
+            return brandMatch && cpuMatch && ramMatch && stockMatch && aiMatch;
         });
 
         renderProducts(filtered);
     }
 
-    filters.forEach(filter => {
-        filter.addEventListener('change', applyFilters);
+    sidebar?.addEventListener('change', event => {
+        if (event.target instanceof HTMLInputElement) {
+            applyFilters();
+        }
     });
 
     loadData();

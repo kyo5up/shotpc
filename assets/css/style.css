@@ -194,6 +194,20 @@ main.container {
     font-size: 0.9rem;
 }
 
+.filter-options {
+    display: grid;
+    gap: 0.45rem;
+    max-height: 240px;
+    overflow-y: auto;
+    padding-right: 0.2rem;
+}
+
+.filter-option-meta {
+    color: var(--text-sub);
+    font-size: 0.75rem;
+    margin-left: 0.35rem;
+}
+
 .article-item {
     margin-bottom: 0.75rem;
     padding-bottom: 0.5rem;
