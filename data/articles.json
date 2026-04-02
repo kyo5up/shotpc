@@ -1,34 +1,229 @@
 [
   {
     "id": "best-mini-pc-for-local-llm-2026",
-    "title": "2026年最新：ローカルLLM推論に最適なミニPCの選び方",
-    "summary": "AI構築、特にLlama 3等のLLM推論において、どのミニPCを選ぶべきか？VRAM割り当てから冷却性能まで、失敗しない選び方を徹底解説。",
+    "title": "2026年版 ローカルLLM向けミニPCの選び方",
+    "summary": "ローカルLLMを回す前提で、VRAM割り当て、メモリ容量、冷却性まで含めてミニPCを選ぶための基準を整理したガイドです。",
     "tags": ["AI", "LLM", "選び方", "Ryzen"],
     "published_at": "2026-03-24",
     "url": "/shotpc/ja/articles/best-mini-pc-for-local-llm-2026.html"
   },
   {
     "id": "brand-minisforum-guide",
-    "title": "Minisforum完全ガイド：AI・ローカルLLM構築に最適な理由",
-    "summary": "Oculink搭載や液体金属冷却など、マニアックな拡張性でAIユーザーに最も支持されるMinisforumの魅力を深掘り。",
-    "tags": ["Minisforum", "Oculink", "冷却", "eGPU"],
+    "title": "Minisforumガイド AI・ローカルLLM用途で強い理由",
+    "summary": "Oculink対応や拡張性の高いモデルが多いMinisforumについて、AI用途で注目すべきポイントを整理します。",
+    "tags": ["Minisforum", "Oculink", "拡張性", "eGPU"],
     "published_at": "2026-03-27",
-    "url": "/shotpc/ja/articles/brand-minisforum-guide.html"
+    "url": "/shotpc/ja/articles/brand-minisforum-guide.html",
+    "updated": "2026-03-29 18:32"
   },
   {
     "id": "brand-beelink-guide",
-    "title": "Beelink完全ガイド：静音性と大容量メモリの最適解",
-    "summary": "最新のRyzen AI 9を搭載したSER9など、静音性と高性能を両立するBeelinkのAI対応モデルを解説。",
-    "tags": ["Beelink", "SER9", "RyzenAI", "静音"],
+    "title": "Beelinkガイド 静音性と完成度を重視する人向けの選択肢",
+    "summary": "SER9のような上位機から省スペースの定番機まで、BeelinkのAI向けミニPCを用途別に整理したガイドです。",
+    "tags": ["Beelink", "SER9", "Ryzen AI", "静音"],
     "published_at": "2026-03-27",
-    "url": "/shotpc/ja/articles/brand-beelink-guide.html"
+    "url": "/shotpc/ja/articles/brand-beelink-guide.html",
+    "updated": "2026-03-29 18:32"
   },
   {
     "id": "brand-gmktec-guide",
-    "title": "GMKtec完全ガイド：コスパ最強のAI推論マシン",
-    "summary": "Ryzen 8845HS搭載のK8など、圧倒的な低価格で最新AIスペックを手に入れられるGMKtecのコスパの秘密。",
+    "title": "GMKtecガイド コスパ重視でAI用途に入るなら",
+    "summary": "Ryzen搭載の中位機からN100系の入門機まで、価格と拡張性のバランスで選ぶGMKtecの見方をまとめています。",
     "tags": ["GMKtec", "NucBox", "コスパ", "N100"],
     "published_at": "2026-03-27",
-    "url": "/shotpc/ja/articles/brand-gmktec-guide.html"
+    "url": "/shotpc/ja/articles/brand-gmktec-guide.html",
+    "updated": "2026-03-29 18:32"
+  },
+  {
+    "id": "intel-core-ultra-mini-pc-guide",
+    "title": "Core UltraミニPCガイド 生成AIの実用機としてどこまで使えるか",
+    "summary": "Core Ultra 5/7/9搭載ミニPCの立ち位置を整理し、NPU、静音性、日常作業との両立という観点から選び方をまとめます。",
+    "tags": ["Intel", "Core Ultra", "NPU", "Copilot+"],
+    "published_at": "2026-04-02",
+    "url": "/shotpc/ja/articles/intel-core-ultra-mini-pc-guide.html"
+  },
+  {
+    "id": "ryzen-ai-hx370-mini-pc-guide",
+    "title": "Ryzen AI HX 370 / HX470 ミニPC比較 AI重視ならどこを見るべきか",
+    "summary": "Ryzen AI 9 HX 370 や HX470 搭載の新世代ミニPCについて、メモリ、Oculink、価格差の見方を整理した比較ガイドです。",
+    "tags": ["AMD", "Ryzen AI", "HX 370", "HX470"],
+    "published_at": "2026-04-02",
+    "url": "/shotpc/ja/articles/ryzen-ai-hx370-mini-pc-guide.html"
+  },
+  {
+    "id": "n150-mini-pc-entry-guide",
+    "title": "N150 / N100 ミニPC入門 安い小型PCを失敗せず選ぶ基準",
+    "summary": "N150やN100搭載の低価格ミニPCで失敗しやすいポイントを整理し、用途に合う構成と避けるべき仕様をまとめます。",
+    "tags": ["Intel", "N150", "N100", "入門"],
+    "published_at": "2026-04-02",
+    "url": "/shotpc/ja/articles/n150-mini-pc-entry-guide.html"
+  },
+  {
+    "id": "mini-pc-32gb-vs-64gb-guide",
+    "title": "ミニPCは32GBで足りるか 64GBが必要になる境界線",
+    "summary": "AI用途と通常用途を分けながら、32GBで十分なケースと64GB以上を狙うべきケースを整理した実用ガイドです。",
+    "tags": ["RAM", "32GB", "64GB", "AI"],
+    "published_at": "2026-04-02",
+    "url": "/shotpc/ja/articles/mini-pc-32gb-vs-64gb-guide.html"
+  },
+  {
+    "id": "oculink-mini-pc-guide",
+    "title": "Oculinkは本当に必要か ミニPCで後悔しないための判断基準",
+    "summary": "eGPU前提で買うべき人と、Oculinkなしでも十分な人の違いを整理し、価格差に見合うかを判断しやすくする記事です。",
+    "tags": ["Oculink", "eGPU", "拡張性", "選び方"],
+    "published_at": "2026-04-02",
+    "url": "/shotpc/ja/articles/oculink-mini-pc-guide.html"
+  },
+  {
+    "id": "core-ultra-vs-ryzen-ai-guide",
+    "title": "Core Ultra と Ryzen AI はどっちを選ぶべきか",
+    "summary": "仕事用PCとしてのバランスと、ローカルAI用途での強さを軸に、Core Ultra系とRyzen AI系の選び分けを整理します。",
+    "tags": ["Core Ultra", "Ryzen AI", "比較", "CPU"],
+    "published_at": "2026-04-02",
+    "url": "/shotpc/ja/articles/core-ultra-vs-ryzen-ai-guide.html"
+  },
+  {
+    "id": "usb4-vs-oculink-mini-pc-guide",
+    "title": "USB4 と Oculink の違い ミニPCの拡張性をどう見るか",
+    "summary": "USB4 と Oculink の違いを、eGPU、外付けSSD、将来の拡張性という観点から整理し、どちらを優先すべきか判断しやすくする比較記事です。",
+    "tags": ["USB4", "Oculink", "eGPU", "拡張性"],
+    "published_at": "2026-04-02",
+    "url": "/shotpc/ja/articles/usb4-vs-oculink-mini-pc-guide.html"
+  },
+  {
+    "id": "how-to-read-mini-pc-specs-on-amazon",
+    "title": "Amazon商品名から本当のスペックを読むコツ ミニPC編",
+    "summary": "長くて分かりにくいAmazonの商品名から、CPU、メモリ、ストレージ、拡張性の本当に見るべき部分を抜き出すための実用ガイドです。",
+    "tags": ["Amazon", "スペック", "選び方", "注意点"],
+    "published_at": "2026-04-02",
+    "url": "/shotpc/ja/articles/how-to-read-mini-pc-specs-on-amazon.html"
+  },
+  {
+    "id": "mini-pc-budget-guide-5man-10man-15man",
+    "title": "5万円 10万円 15万円で選ぶミニPC 予算別の考え方",
+    "summary": "予算 5万円、10万円、15万円の3段階で、どのクラスのミニPCが狙えるか、AI用途も含めて選び方を整理したガイドです。",
+    "tags": ["価格帯", "5万円", "10万円", "15万円"],
+    "published_at": "2026-04-02",
+    "url": "/shotpc/ja/articles/mini-pc-budget-guide-5man-10man-15man.html"
+  },
+  {
+    "id": "vram-16gb-mini-pc-guide",
+    "title": "VRAM 16GB割り当て対応ミニPCの見分け方",
+    "summary": "ミニPCでVRAMを大きく割り当てられるかどうかを、CPU世代、BIOS設定、メモリ容量の観点から見分けるためのガイドです。",
+    "tags": ["VRAM", "16GB", "BIOS", "AI"],
+    "published_at": "2026-04-02",
+    "url": "/shotpc/ja/articles/vram-16gb-mini-pc-guide.html"
+  },
+  {
+    "id": "network-2-5gbe-vs-10gbe-mini-pc-guide",
+    "title": "2.5GbE と 10GbE は必要か ミニPCのネットワーク選び",
+    "summary": "家庭用、NAS連携、AI母艦という3つの使い方から、2.5GbE と 10GbE のどちらが必要かを整理します。",
+    "tags": ["2.5GbE", "10GbE", "LAN", "NAS"],
+    "published_at": "2026-04-02",
+    "url": "/shotpc/ja/articles/network-2-5gbe-vs-10gbe-mini-pc-guide.html"
+  },
+  {
+    "id": "cooling-mini-pc-guide",
+    "title": "小さいのに冷えるミニPCの条件 冷却で失敗しない見方",
+    "summary": "サイズだけで選ばず、長時間負荷でも安定しやすいミニPCを見分けるための冷却観点のガイドです。",
+    "tags": ["冷却", "静音", "熱設計", "AI"],
+    "published_at": "2026-04-02",
+    "url": "/shotpc/ja/articles/cooling-mini-pc-guide.html"
+  },
+  {
+    "id": "wifi7-mini-pc-guide",
+    "title": "AI用途で Wi-Fi 7 は必要か ミニPCの無線選び",
+    "summary": "Wi-Fi 7 対応を重視すべきケースと、優先順位を下げてよいケースを整理した無線仕様のガイドです。",
+    "tags": ["Wi-Fi 7", "無線", "AI", "通信"],
+    "published_at": "2026-04-02",
+    "url": "/shotpc/ja/articles/wifi7-mini-pc-guide.html"
+  },
+  {
+    "id": "ddr5-vs-lpddr5x-mini-pc-guide",
+    "title": "DDR5 と LPDDR5X の違い ミニPCで重視すべき点",
+    "summary": "増設性、帯域、静音性の観点から、DDR5 と LPDDR5X のどちらが向いているかを整理します。",
+    "tags": ["DDR5", "LPDDR5X", "メモリ", "比較"],
+    "published_at": "2026-04-02",
+    "url": "/shotpc/ja/articles/ddr5-vs-lpddr5x-mini-pc-guide.html"
+  },
+  {
+    "id": "copilot-plus-mini-pc-guide",
+    "title": "Copilot+ 向けにミニPCを選ぶならどこを見るべきか",
+    "summary": "NPU重視の使い方を前提に、Copilot+ 系ワークロードと相性の良いミニPCの見方を整理します。",
+    "tags": ["Copilot+", "NPU", "Core Ultra", "AI"],
+    "published_at": "2026-04-02",
+    "url": "/shotpc/ja/articles/copilot-plus-mini-pc-guide.html"
+  },
+  {
+    "id": "ai-host-mini-pc-guide",
+    "title": "据え置きAI母艦としてミニPCを使う構成例",
+    "summary": "デスク据え置きでAI処理を受け持つミニPCをどう組むか、メモリ、LAN、拡張性の観点から整理した構成ガイドです。",
+    "tags": ["AI母艦", "構成例", "LAN", "Oculink"],
+    "published_at": "2026-04-02",
+    "url": "/shotpc/ja/articles/ai-host-mini-pc-guide.html"
+  },
+  {
+    "id": "display-output-mini-pc-guide",
+    "title": "HDMI DisplayPort USB4 の画面出力をどう見るか",
+    "summary": "ミニPCの商品ページで迷いやすい画面出力まわりを、実際の使い方ベースで整理した出力端子ガイドです。",
+    "tags": ["HDMI", "DisplayPort", "USB4", "画面出力"],
+    "published_at": "2026-04-02",
+    "url": "/shotpc/ja/articles/display-output-mini-pc-guide.html"
+  },
+  {
+    "id": "ryzen-ai-max-395-mini-pc-guide",
+    "title": "Ryzen AI Max+ 395 搭載ミニPCは誰向けか",
+    "summary": "価格が一段高い Ryzen AI Max+ 395 搭載機について、刺さるユーザー像と過剰投資になりやすいケースを整理します。",
+    "tags": ["Ryzen AI Max+ 395", "AMD", "上位機", "AI"],
+    "published_at": "2026-04-02",
+    "url": "/shotpc/ja/articles/ryzen-ai-max-395-mini-pc-guide.html"
+  },
+  {
+    "id": "brand-64gb-plus-mini-pc-guide",
+    "title": "64GB以上を狙うならどのメーカーが強いか",
+    "summary": "大容量メモリ構成を狙うときに、メーカーごとの傾向と見方を整理したブランド横断ガイドです。",
+    "tags": ["64GB", "メーカー比較", "Minisforum", "GMKtec"],
+    "published_at": "2026-04-02",
+    "url": "/shotpc/ja/articles/brand-64gb-plus-mini-pc-guide.html"
+  },
+  {
+    "id": "work-dev-ai-mini-pc-guide",
+    "title": "仕事用 開発用 AI実験用で分けるミニPCの選び方",
+    "summary": "同じミニPCでも、仕事用、開発用、AI実験用では優先順位が違うことを整理した用途別ガイドです。",
+    "tags": ["仕事用", "開発用", "AI実験", "用途別"],
+    "published_at": "2026-04-02",
+    "url": "/shotpc/ja/articles/work-dev-ai-mini-pc-guide.html"
+  },
+  {
+    "id": "nas-vs-normal-mini-pc-guide",
+    "title": "NAS寄りミニPCと通常ミニPCの違い どちらを選ぶべきか",
+    "summary": "ストレージ重視のNAS寄りミニPCと、通常の小型デスクトップの違いを整理した選び分けガイドです。",
+    "tags": ["NAS", "ストレージ", "比較", "AI"],
+    "published_at": "2026-04-02",
+    "url": "/shotpc/ja/articles/nas-vs-normal-mini-pc-guide.html"
+  },
+  {
+    "id": "mini-pc-buying-mistakes-2026",
+    "title": "失敗しやすいミニPCの買い方 2026年版",
+    "summary": "スペック表記、メモリ容量、ベアボーン表記など、2026年時点でよくある買い方の失敗をまとめた注意喚起記事です。",
+    "tags": ["失敗例", "注意点", "Amazon", "選び方"],
+    "published_at": "2026-04-02",
+    "url": "/shotpc/ja/articles/mini-pc-buying-mistakes-2026.html"
+  },
+  {
+    "id": "ryzen-8845hs-vs-8945hs-vs-hx370-guide",
+    "title": "Ryzen 8845HS 8945HS HX 370 の違いをざっくり整理する",
+    "summary": "よく並べて比較される Ryzen 7 8845HS、Ryzen 9 8945HS、Ryzen AI 9 HX 370 の立ち位置を整理します。",
+    "tags": ["8845HS", "8945HS", "HX 370", "比較"],
+    "published_at": "2026-04-02",
+    "url": "/shotpc/ja/articles/ryzen-8845hs-vs-8945hs-vs-hx370-guide.html"
+  },
+  {
+    "id": "barebone-vs-complete-mini-pc-guide",
+    "title": "ベアボーンと完成品 どちらのミニPCを選ぶべきか",
+    "summary": "価格、自由度、初期コスト、トラブルの出やすさから、ベアボーンと完成品の向き不向きを整理します。",
+    "tags": ["ベアボーン", "完成品", "価格", "選び方"],
+    "published_at": "2026-04-02",
+    "url": "/shotpc/ja/articles/barebone-vs-complete-mini-pc-guide.html"
   }
 ]

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ミニPCは32GBで足りるか 64GBが必要になる境界線 - ShotPC</title>
+    <link rel="stylesheet" href="/shotpc/assets/css/style.css">
+    <link rel="icon" href="/shotpc/assets/img/favicon.ico" sizes="any">
+    <link rel="icon" href="/shotpc/assets/img/favicon-32x32.png" type="image/png">
+    <link rel="apple-touch-icon" href="/shotpc/assets/img/favicon-192x192.png">
+</head>
+<body class="article-page">
+    <header>
+        <div class="container">
+            <h1><a href="/shotpc/">ShotPC</a></h1>
+            <p>AI用途のためのミニPC比較・実用メモ</p>
+        </div>
+    </header>
+
+    <div class="article-header-container">
+        <div class="container">
+            <h1>ミニPCは32GBで足りるか 64GBが必要になる境界線</h1>
+            <div class="article-meta">
+                <span>公開 2026年4月2日</span>
+                <span>カテゴリ RAM / AI</span>
+                <span>読了目安 4分</span>
+            </div>
+        </div>
+    </div>
+
+    <main class="container article-layout">
+        <aside class="article-toc">
+            <h3>目次</h3>
+            <ul>
+                <li><a href="#conclusion">1. 結論</a></li>
+                <li><a href="#32gb">2. 32GBで十分なケース</a></li>
+                <li><a href="#64gb">3. 64GBを選ぶべきケース</a></li>
+                <li><a href="#summary">まとめ</a></li>
+            </ul>
+        </aside>
+
+        <section class="article-main">
+            <div class="article-body">
+                <p>ミニPC選びでいちばん迷いやすいのが、32GBで止めるか、64GB以上を見に行くかです。価格差が小さくないので悩みますが、結論から言うと、<strong>日常用途と軽いAI用途なら32GB、本気でローカルAIを触るなら64GB以上</strong>と考えるのが分かりやすいです。</p>
+
+                <h2 id="conclusion">1. 結論</h2>
+                <p>32GBが向いているのは、ブラウザ、開発作業、軽い画像処理、文章生成補助、軽量モデルのローカル推論までを1台で回したいケースです。逆に、複数のAIツールを並行で動かす、VRAM割り当てを大きめに取る、長く使う前提で余力を持ちたいなら 64GB 以上の価値が出ます。</p>
+
+                <div class="info-card">
+                    <h4>先に結論だけ見るなら</h4>
+                    <ul>
+                        <li><strong>32GB:</strong> 迷ったら最初の基準はここ</li>
+                        <li><strong>64GB:</strong> ローカルLLMや重めのAI実験を考えるなら有力</li>
+                        <li><strong>96GB以上:</strong> 明確に用途がある人向け</li>
+                    </ul>
+                </div>
+
+                <h2 id="32gb">2. 32GBで十分なケース</h2>
+                <p>32GBで問題ないのは、仕事用PCを兼ねながらAI補助も使いたい人です。例えば、Core Ultra 機や Ryzen 7 クラスのミニPCで、要約、議事録補助、コード補完、軽いローカル推論を使う程度なら、32GBでも全体のバランスが取りやすいです。</p>
+                <p>また、予算をメモリに振り切るより、SSDや冷却、USB4/Oculink の有無に回したほうが満足度が高いケースもあります。32GBは「足りないと困る最低ライン」ではなく、「コスパと実用性の分岐点」と捉えると判断しやすくなります。</p>
+
+                <h2 id="64gb">3. 64GBを選ぶべきケース</h2>
+                <p>64GBの価値が出るのは、ローカルLLM、複数コンテナ、仮想環境、ベクトルDB、同時並行のAI実験を前提にしている人です。メモリ共有型の iGPU を使うミニPCでは、システムRAMを広めに持っていたほうが明らかに扱いやすくなります。</p>
+                <p>とくに Ryzen AI や Ryzen 8845HS / 8945HS 系の上位機では、後から「やっぱり 64GB にしておけばよかった」となりやすいです。AI目的が少しでも主役なら、CPU名より先にメモリ上限を確認したほうが失敗しにくくなります。</p>
+
+                <h2 id="summary">まとめ</h2>
+                <p>32GBで足りるかどうかは、AIを補助で使うのか、主役で使うのかで決まります。<strong>普段使い中心なら32GB、ローカルAIを本格的に試すなら64GB以上</strong>と割り切るのがいちばん実務的です。迷うなら、将来の増設余地があるモデルを優先しておくのが安全です。</p>
+            </div>
+
+            <div class="back-to-home">
+                <a href="/shotpc/" class="btn-outline">比較一覧に戻る</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 ShotPC. 価格情報はAmazon掲載をベースにしています。</p>
+            <p class="disclaimer">Amazonアソシエイトとして、ShotPCは適格販売により収入を得る場合があります。</p>
+        </div>
+    </footer>
+
+    <script src="/shotpc/assets/js/app.js"></script>
+</body>
+</html>

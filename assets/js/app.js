@@ -18,7 +18,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const headerContainer = document.querySelector('header .container');
     const footerCopy = document.querySelector('footer p');
 
-    let isAdmin = localStorage.getItem('shotpc_admin') === 'true';
+    let isAdminAuthenticated = localStorage.getItem('shotpc_admin') === 'true';
+    let adminViewMode = localStorage.getItem('shotpc_admin_view') || 'admin';
 
     const UI_TEXT = {
         currentView: '\u73fe\u5728\u306e\u8868\u793a\u306f',
@@ -26,6 +27,8 @@ document.addEventListener('DOMContentLoaded', () => {
         userView: '\u30e6\u30fc\u30b6\u30fc\u76ee\u7dda',
         switchUser: '\u30e6\u30fc\u30b6\u30fc\u76ee\u7dda\u306b\u5207\u66ff',
         switchAdmin: '\u30a2\u30c9\u30df\u30f3\u30e2\u30fc\u30c9\u3067\u5168\u8868\u793a',
+        adminSessionOn: 'Admin Mode: ON',
+        adminSessionOff: 'Admin Mode: OFF',
         enterPassword: '\u7ba1\u7406\u8005\u30d1\u30b9\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044:',
         wrongPassword: '\u30d1\u30b9\u30ef\u30fc\u30c9\u304c\u9055\u3044\u307e\u3059\u3002',
         loadError: '\u30c7\u30fc\u30bf\u306e\u8aad\u307f\u8fbc\u307f\u306b\u5931\u6557\u3057\u307e\u3057\u305f\u3002',
@@ -60,39 +63,58 @@ document.addEventListener('DOMContentLoaded', () => {
         return path === '/' || path.endsWith('/index.html') || path.endsWith('/shotpc/') || path.includes('/ja/compare/');
     }
 
-    function persistAdminMode(nextIsAdmin) {
-        isAdmin = nextIsAdmin;
-        localStorage.setItem('shotpc_admin', String(isAdmin));
+    function isAdminViewEnabled() {
+        return isAdminAuthenticated && adminViewMode === 'admin';
+    }
+
+    function persistAdminSession(nextIsAdminAuthenticated) {
+        isAdminAuthenticated = nextIsAdminAuthenticated;
+        localStorage.setItem('shotpc_admin', String(isAdminAuthenticated));
+        if (!isAdminAuthenticated) {
+            adminViewMode = 'user';
+            localStorage.setItem('shotpc_admin_view', adminViewMode);
+        }
+    }
+
+    function persistAdminView(nextViewMode) {
+        adminViewMode = nextViewMode;
+        localStorage.setItem('shotpc_admin_view', adminViewMode);
     }
 
     function updateAdminTitle() {
         if (!siteTitleLink) return;
-        siteTitleLink.textContent = isAdmin && isAdminVisiblePage() ? 'ShotPC(admin mode)' : 'ShotPC';
+        siteTitleLink.textContent = isAdminAuthenticated && isAdminVisiblePage() ? 'ShotPC(admin mode)' : 'ShotPC';
     }
 
     function updateAdminUi() {
         updateAdminTitle();
 
+        const controls = document.getElementById('admin-view-toggle');
         const status = document.getElementById('admin-view-status');
         const btnUser = document.getElementById('admin-view-user');
         const btnAdmin = document.getElementById('admin-view-admin');
 
-        if (status) {
-            status.textContent = `${UI_TEXT.currentView}${isAdmin ? UI_TEXT.adminView : UI_TEXT.userView}\u3067\u3059`;
+        if (controls) {
+            controls.hidden = !isAdminAuthenticated;
         }
-        if (btnUser) btnUser.disabled = !isAdmin;
-        if (btnAdmin) btnAdmin.disabled = isAdmin;
+        if (status) {
+            status.textContent = `${UI_TEXT.currentView}${isAdminViewEnabled() ? UI_TEXT.adminView : UI_TEXT.userView}\u3067\u3059`;
+        }
+        if (btnUser) btnUser.disabled = !isAdminAuthenticated || adminViewMode === 'user';
+        if (btnAdmin) btnAdmin.disabled = !isAdminAuthenticated || adminViewMode === 'admin';
     }
 
-    function setAdminMode(nextIsAdmin, options = {}) {
+    function enableAdminSession(options = {}) {
         const { requirePassword = false } = options;
 
-        if (nextIsAdmin === isAdmin) {
+        if (isAdminAuthenticated) {
+            persistAdminView('admin');
             updateAdminUi();
+            location.reload();
             return;
         }
 
-        if (requirePassword && nextIsAdmin) {
+        if (requirePassword) {
             const pass = prompt(UI_TEXT.enterPassword);
             if (pass === null) return;
             if (pass !== 'admin') {
@@ -101,8 +123,30 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        persistAdminMode(nextIsAdmin);
-        alert(`Admin Mode: ${isAdmin ? 'ON (Full Data)' : 'OFF (Standard)'}`);
+        persistAdminSession(true);
+        persistAdminView('admin');
+        alert(UI_TEXT.adminSessionOn);
+        updateAdminUi();
+        location.reload();
+    }
+
+    function disableAdminSession() {
+        if (!isAdminAuthenticated) {
+            updateAdminUi();
+            return;
+        }
+        persistAdminSession(false);
+        alert(UI_TEXT.adminSessionOff);
+        updateAdminUi();
+        location.reload();
+    }
+
+    function setAdminViewMode(nextViewMode) {
+        if (!isAdminAuthenticated || adminViewMode === nextViewMode) {
+            updateAdminUi();
+            return;
+        }
+        persistAdminView(nextViewMode);
         updateAdminUi();
         location.reload();
     }
@@ -121,10 +165,14 @@ document.addEventListener('DOMContentLoaded', () => {
         headerContainer.appendChild(controls);
 
         document.getElementById('admin-view-user')?.addEventListener('click', () => {
-            setAdminMode(false);
+            setAdminViewMode('user');
         });
         document.getElementById('admin-view-admin')?.addEventListener('click', () => {
-            setAdminMode(true, { requirePassword: true });
+            if (!isAdminAuthenticated) {
+                enableAdminSession({ requirePassword: true });
+                return;
+            }
+            setAdminViewMode('admin');
         });
 
         updateAdminUi();
@@ -144,7 +192,11 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 2000);
 
             if (adminClickCount >= 5) {
-                setAdminMode(!isAdmin, { requirePassword: true });
+                if (isAdminAuthenticated) {
+                    disableAdminSession();
+                } else {
+                    enableAdminSession({ requirePassword: true });
+                }
                 adminClickCount = 0;
             }
         });
@@ -246,7 +298,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <span class="value">${pc.cpu.name} (${pc.cpu.cores || '-'}C/${pc.cpu.threads || '-'}T) / ${pc.gpu || '-'}</span>
                         </div>
 
-                        ${isAdmin ? `
+                        ${isAdminViewEnabled() ? `
                             <div class="spec-node">
                                 <span class="label">CPU Benchmark</span>
                                 <span class="value">${pc.cpu.benchmark_score || UI_TEXT.unknown}</span>
@@ -266,7 +318,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <span class="value">${pc.ai_features?.vram_allocation || UI_TEXT.none}</span>
                         </div>
 
-                        ${isAdmin ? `
+                        ${isAdminViewEnabled() ? `
                             <div class="spec-node">
                                 <span class="label">RAM Expandability</span>
                                 <span class="value">${pc.ram.slots || '-'} Slot / Max ${pc.ram.max_capacity_gb || '-'}GB</span>
@@ -282,7 +334,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <span class="value">${pc.storage.capacity_gb}GB (${pc.storage.slots || '-'} Slot)</span>
                         </div>
 
-                        ${isAdmin ? `
+                        ${isAdminViewEnabled() ? `
                             <div class="spec-node">
                                 <span class="label">USB4 / Thunderbolt</span>
                                 <span class="value">${pc.io_ports?.usb4_count ?? UI_TEXT.unknown} Port</span>
@@ -302,7 +354,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         ` : ''}
                     </div>
 
-                    ${(isAdmin && pc.notes) ? `
+                    ${(isAdminViewEnabled() && pc.notes) ? `
                         <div class="pc-notes">
                             <span class="label">${UI_TEXT.notes}</span> ${pc.notes}
                         </div>

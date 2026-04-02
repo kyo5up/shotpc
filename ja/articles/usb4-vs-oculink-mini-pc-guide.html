@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USB4 と Oculink の違い ミニPCの拡張性をどう見るか - ShotPC</title>
+    <link rel="stylesheet" href="/shotpc/assets/css/style.css">
+    <link rel="icon" href="/shotpc/assets/img/favicon.ico" sizes="any">
+    <link rel="icon" href="/shotpc/assets/img/favicon-32x32.png" type="image/png">
+    <link rel="apple-touch-icon" href="/shotpc/assets/img/favicon-192x192.png">
+</head>
+<body class="article-page">
+    <header>
+        <div class="container">
+            <h1><a href="/shotpc/">ShotPC</a></h1>
+            <p>AI用途のためのミニPC比較・実用メモ</p>
+        </div>
+    </header>
+
+    <div class="article-header-container">
+        <div class="container">
+            <h1>USB4 と Oculink の違い ミニPCの拡張性をどう見るか</h1>
+            <div class="article-meta">
+                <span>公開 2026年4月2日</span>
+                <span>カテゴリ 拡張性 / eGPU</span>
+                <span>読了目安 4分</span>
+            </div>
+        </div>
+    </div>
+
+    <main class="container article-layout">
+        <aside class="article-toc">
+            <h3>目次</h3>
+            <ul>
+                <li><a href="#difference">1. まず何が違うか</a></li>
+                <li><a href="#usb4">2. USB4が向いている人</a></li>
+                <li><a href="#oculink">3. Oculinkが向いている人</a></li>
+                <li><a href="#summary">まとめ</a></li>
+            </ul>
+        </aside>
+
+        <section class="article-main">
+            <div class="article-body">
+                <p>ミニPCの上位モデルを見ていると、USB4 と Oculink が並んで書かれていることがあります。どちらも拡張性に関わる端子ですが、役割は同じではありません。結論から言うと、<strong>汎用性なら USB4、eGPU を強く意識するなら Oculink</strong> と整理すると分かりやすいです。</p>
+
+                <h2 id="difference">1. まず何が違うか</h2>
+                <p>USB4 は、映像出力、高速ストレージ、ドック接続、場合によっては外付けGPUまでまとめて扱える、かなり汎用的な端子です。一方の Oculink は用途がより尖っていて、主に高速な外部PCIe接続、つまり eGPU や一部の特殊な拡張を意識した端子です。</p>
+                <p>言い換えると、USB4 は「普段使いの拡張に強い」、Oculink は「性能を伸ばすための拡張に強い」と考えると整理しやすいです。</p>
+
+                <div class="info-card">
+                    <h4>ざっくり比較</h4>
+                    <ul>
+                        <li><strong>USB4:</strong> 汎用性が高く、ドックや外付けSSDにも使いやすい</li>
+                        <li><strong>Oculink:</strong> eGPUや高帯域拡張を強く意識する人向け</li>
+                        <li><strong>両方ある機種:</strong> 拡張性重視の上位構成として魅力が出やすい</li>
+                    </ul>
+                </div>
+
+                <h2 id="usb4">2. USB4が向いている人</h2>
+                <p>USB4 が向いているのは、まず仕事や普段使いを優先しつつ、必要に応じて高速周辺機器を足したい人です。外付けSSD、モニター、ドック、LANアダプタなどをまとめて扱いやすく、使い勝手の良さではかなり有利です。</p>
+                <p>AI用途でも、まずはミニPC単体で運用し、ストレージや画面周りを快適にしたいなら USB4 の優先度は高いです。eGPU前提でなくても価値があるので、迷ったときに外しにくい仕様です。</p>
+
+                <h2 id="oculink">3. Oculinkが向いている人</h2>
+                <p>Oculink が向いているのは、あとから eGPU を足す可能性が高い人です。ミニPC単体では静かに運用しつつ、必要なときだけGPU性能を足したいなら、Oculink対応機の価値はかなり高くなります。</p>
+                <p>ただし、Oculink は使い道がはっきりしている人向けです。普段の利便性では USB4 のほうが広く効くので、eGPUの予定が曖昧なら Oculink を最優先にしなくても問題ありません。</p>
+
+                <h2 id="summary">まとめ</h2>
+                <p>USB4 と Oculink は競合というより、拡張の方向性が違います。<strong>普段使いも含めた汎用拡張なら USB4、将来の eGPU まで考えるなら Oculink</strong>です。予算が限られるなら USB4 を先に見て、AI用途の拡張が明確なら Oculink を重視するのが現実的です。</p>
+            </div>
+
+            <div class="back-to-home">
+                <a href="/shotpc/" class="btn-outline">比較一覧に戻る</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 ShotPC. 価格情報はAmazon掲載をベースにしています。</p>
+            <p class="disclaimer">Amazonアソシエイトとして、ShotPCは適格販売により収入を得る場合があります。</p>
+        </div>
+    </footer>
+
+    <script src="/shotpc/assets/js/app.js"></script>
+</body>
+</html>
