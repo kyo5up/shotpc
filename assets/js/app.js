@@ -66,6 +66,11 @@ document.addEventListener('DOMContentLoaded', () => {
         return path === '/' || path.endsWith('/index.html') || path.endsWith('/shotpc/') || path.includes('/ja/compare/') || path.includes('/ja/catalog/');
     }
 
+    function getSiteBasePath() {
+        const path = window.location.pathname || '/';
+        return path.startsWith('/shotpc/') ? '/shotpc' : '';
+    }
+
     function isAdminViewEnabled() {
         return isAdminAuthenticated && adminViewMode === 'admin';
     }
@@ -254,7 +259,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!headerContainer || !isAdminVisiblePage() || document.getElementById('admin-view-toggle')) return;
         if (!isAdminAuthenticated) return;
         const path = window.location.pathname || '/';
-        const switchHref = path.includes('/ja/catalog/') ? '/ja/compare/' : '/ja/catalog/';
+        const basePath = getSiteBasePath();
+        const switchHref = path.includes('/ja/catalog/') ? `${basePath}/ja/compare/` : `${basePath}/ja/catalog/`;
         const switchLabel = path.includes('/ja/catalog/') ? 'old' : 'new';
 
         const controls = document.createElement('div');
