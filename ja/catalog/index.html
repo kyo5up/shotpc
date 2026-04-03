@@ -144,10 +144,11 @@
 
         .catalog-table .sticky-a,
         .catalog-table .sticky-b,
-        .catalog-table .sticky-c {
+        .catalog-table .sticky-c,
+        .catalog-table .sticky-d {
             position: sticky;
             z-index: 6;
-            background: inherit;
+            background: #fff;
         }
 
         .catalog-table .sticky-a {
@@ -162,6 +163,11 @@
 
         .catalog-table .sticky-c {
             left: 152px;
+            min-width: 74px;
+        }
+
+        .catalog-table .sticky-d {
+            left: 226px;
             min-width: 140px;
             border-right: 2px solid #cbd5e1;
         }
@@ -170,7 +176,21 @@
             background: #fbfdff;
         }
 
+        .catalog-table tbody tr:nth-child(even) .sticky-a,
+        .catalog-table tbody tr:nth-child(even) .sticky-b,
+        .catalog-table tbody tr:nth-child(even) .sticky-c,
+        .catalog-table tbody tr:nth-child(even) .sticky-d {
+            background: #fbfdff;
+        }
+
         .catalog-table tbody tr:hover td {
+            background: #eef6ff;
+        }
+
+        .catalog-table tbody tr:hover .sticky-a,
+        .catalog-table tbody tr:hover .sticky-b,
+        .catalog-table tbody tr:hover .sticky-c,
+        .catalog-table tbody tr:hover .sticky-d {
             background: #eef6ff;
         }
 
@@ -197,6 +217,33 @@
 
         .catalog-link:hover {
             text-decoration: underline;
+        }
+
+        .catalog-thumb-cell {
+            width: 74px;
+            min-width: 74px;
+            text-align: center;
+        }
+
+        .catalog-thumb {
+            width: 52px;
+            height: 52px;
+            object-fit: contain;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .catalog-thumb-fallback {
+            width: 52px;
+            height: 52px;
+            display: grid;
+            place-items: center;
+            margin: 0 auto;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-sub);
+            font-size: 0.68rem;
+            background: #f8fafc;
         }
 
         .catalog-empty {
@@ -281,7 +328,8 @@
                         <tr>
                             <th class="sticky-a">#</th>
                             <th class="sticky-b">Brand</th>
-                            <th class="sticky-c">Model</th>
+                            <th class="sticky-c catalog-thumb-cell">Img</th>
+                            <th class="sticky-d">Model</th>
                             <th>CPU</th>
                             <th>RAM</th>
                             <th>Storage</th>
@@ -292,7 +340,7 @@
                         </tr>
                     </thead>
                     <tbody id="catalog-body">
-                        <tr><td colspan="10" class="catalog-empty">読み込み中...</td></tr>
+                        <tr><td colspan="11" class="catalog-empty">読み込み中...</td></tr>
                     </tbody>
                 </table>
             </div>
@@ -408,7 +456,7 @@
 
         function renderCatalogTable(rows) {
             if (!rows.length) {
-                catalogBody.innerHTML = '<tr><td colspan="10" class="catalog-empty">条件に合うミニPCがありません。</td></tr>';
+                catalogBody.innerHTML = '<tr><td colspan="11" class="catalog-empty">条件に合うミニPCがありません。</td></tr>';
                 return;
             }
 
@@ -423,7 +471,8 @@
                     <tr>
                         <td class="sticky-a catalog-num">${index + 1}</td>
                         <td class="sticky-b">${displayBrand(row.brand)}</td>
-                        <td class="sticky-c"><strong>${row.model}</strong></td>
+                        <td class="sticky-c catalog-thumb-cell">${row.image_url ? `<img src="${row.image_url}" alt="${row.model}" class="catalog-thumb" loading="lazy">` : `<div class="catalog-thumb-fallback">No Img</div>`}</td>
+                        <td class="sticky-d"><strong>${row.model}</strong></td>
                         <td>${row.cpu?.name || '-'}</td>
                         <td>${row.ram?.capacity_gb || '-'}GB</td>
                         <td>${row.storage?.capacity_gb || '-'}GB</td>
@@ -454,7 +503,7 @@
                 });
             } catch (error) {
                 console.error(error);
-                catalogBody.innerHTML = '<tr><td colspan="10" class="catalog-empty">データの読み込みに失敗しました。</td></tr>';
+                catalogBody.innerHTML = '<tr><td colspan="11" class="catalog-empty">データの読み込みに失敗しました。</td></tr>';
             }
         }
 
