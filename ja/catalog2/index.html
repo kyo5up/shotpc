@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIミニPC カタログ一覧 2 - ShotPC</title>
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="icon" href="../../assets/img/favicon.ico" sizes="any">
+    <link rel="icon" href="../../assets/img/favicon-32x32.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../assets/img/favicon-192x192.png">
+    <style>
+        header {
+            padding: 1rem 0 !important;
+            margin-bottom: 1rem !important;
+        }
+
+        header h1 a {
+            font-size: 1.8rem !important;
+        }
+
+        header p {
+            font-size: 0.9rem !important;
+        }
+
+        .catalog-shell {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 1rem;
+            align-items: start;
+        }
+
+        .catalog-sidebar {
+            background: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1rem;
+            position: sticky;
+            top: 16px;
+        }
+
+        .catalog-filter-group {
+            margin-bottom: 1rem;
+        }
+
+        .catalog-filter-group h3 {
+            font-size: 0.9rem;
+            margin-bottom: 0.55rem;
+            padding-bottom: 0.4rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .catalog-filter-list {
+            display: grid;
+            gap: 0.35rem;
+            max-height: 220px;
+            overflow-y: auto;
+            padding-right: 0.2rem;
+        }
+
+        .catalog-filter-list label {
+            display: flex;
+            justify-content: space-between;
+            gap: 0.5rem;
+            font-size: 0.82rem;
+            cursor: pointer;
+        }
+
+        .catalog-filter-list span {
+            color: var(--text-sub);
+            font-size: 0.75rem;
+            white-space: nowrap;
+        }
+
+        .catalog-main {
+            min-width: 0;
+        }
+
+        .catalog-toolbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            gap: 1rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .catalog-toolbar h2 {
+            font-size: 1.1rem;
+            margin: 0;
+        }
+
+        .catalog-toolbar p {
+            font-size: 0.8rem;
+            color: var(--text-sub);
+            margin: 0.15rem 0 0;
+        }
+
+        .catalog-sort {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.8rem;
+        }
+
+        .catalog-sort select {
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            background: #fff;
+            padding: 0.45rem 0.6rem;
+            font-size: 0.82rem;
+        }
+
+        .catalog-table-wrap {
+            background: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: auto;
+            max-height: calc(100vh - 145px);
+        }
+
+        .catalog-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            font-size: 0.78rem;
+            white-space: nowrap;
+        }
+
+        .catalog-table th,
+        .catalog-table td {
+            padding: 0.55rem 0.7rem;
+            border-bottom: 1px solid #edf2f7;
+            border-right: 1px solid #edf2f7;
+            text-align: left;
+            background: #fff;
+        }
+
+        .catalog-table th {
+            position: sticky;
+            top: 0;
+            z-index: 5;
+            background: #f8fafc;
+            font-weight: 700;
+        }
+
+        .catalog-table .sticky-a,
+        .catalog-table .sticky-b,
+        .catalog-table .sticky-c,
+        .catalog-table .sticky-d {
+            position: sticky;
+            z-index: 6;
+            background: #fff;
+        }
+
+        .catalog-table .sticky-a {
+            left: 0;
+            min-width: 52px;
+        }
+
+        .catalog-table .sticky-b {
+            left: 52px;
+            min-width: 100px;
+        }
+
+        .catalog-table .sticky-c {
+            left: 152px;
+            min-width: 74px;
+        }
+
+        .catalog-table .sticky-d {
+            left: 226px;
+            min-width: 140px;
+            border-right: 2px solid #cbd5e1;
+        }
+
+        .catalog-table tbody tr:nth-child(even) td {
+            background: #fbfdff;
+        }
+
+        .catalog-table tbody tr:nth-child(even) .sticky-a,
+        .catalog-table tbody tr:nth-child(even) .sticky-b,
+        .catalog-table tbody tr:nth-child(even) .sticky-c,
+        .catalog-table tbody tr:nth-child(even) .sticky-d {
+            background: #fbfdff;
+        }
+
+        .catalog-table tbody tr:hover td {
+            background: #eef6ff;
+        }
+
+        .catalog-table tbody tr:hover .sticky-a,
+        .catalog-table tbody tr:hover .sticky-b,
+        .catalog-table tbody tr:hover .sticky-c,
+        .catalog-table tbody tr:hover .sticky-d {
+            background: #eef6ff;
+        }
+
+        .catalog-num {
+            text-align: right;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .catalog-badge {
+            display: inline-block;
+            padding: 0.14rem 0.38rem;
+            border-radius: 999px;
+            font-size: 0.69rem;
+            font-weight: 700;
+            background: #eff6ff;
+            color: #1d4ed8;
+        }
+
+        .catalog-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .catalog-link:hover {
+            text-decoration: underline;
+        }
+
+        .catalog-thumb {
+            width: 58px;
+            height: 58px;
+            border-radius: 6px;
+            border: 1px solid #e2e8f0;
+            background: #fff;
+            object-fit: contain;
+            display: block;
+        }
+
+        .catalog-stock {
+            font-weight: 700;
+            color: #166534;
+        }
+
+        .catalog-stock.is-out {
+            color: #b91c1c;
+        }
+
+        .catalog-price {
+            font-weight: 700;
+            font-size: 0.86rem;
+        }
+
+        .catalog-model {
+            display: grid;
+            gap: 0.15rem;
+        }
+
+        .catalog-model strong {
+            font-size: 0.84rem;
+        }
+
+        .catalog-sub {
+            color: var(--text-sub);
+            font-size: 0.72rem;
+        }
+
+        .catalog-placeholder {
+            color: var(--text-sub);
+        }
+
+        @media (max-width: 1024px) {
+            .catalog-shell {
+                grid-template-columns: 1fr;
+            }
+
+            .catalog-sidebar {
+                position: static;
+            }
+
+            .catalog-table-wrap {
+                max-height: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1><a href="../../">ShotPC</a></h1>
+            <p>catalog2: PCPartPicker風の一覧UIを詰めるための試作ページ</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="catalog-shell">
+            <aside class="catalog-sidebar">
+                <div class="catalog-filter-group">
+                    <h3>Brand</h3>
+                    <div class="catalog-filter-list" id="catalog2-brand-list"></div>
+                </div>
+                <div class="catalog-filter-group">
+                    <h3>CPU</h3>
+                    <div class="catalog-filter-list" id="catalog2-cpu-list"></div>
+                </div>
+                <div class="catalog-filter-group">
+                    <h3>RAM</h3>
+                    <div class="catalog-filter-list" id="catalog2-ram-list"></div>
+                </div>
+                <div class="catalog-filter-group">
+                    <h3>拡張</h3>
+                    <div class="catalog-filter-list">
+                        <label><input type="checkbox" id="catalog2-filter-stock"> <span>在庫ありのみ</span></label>
+                        <label><input type="checkbox" id="catalog2-filter-oculink"> <span>Oculink対応</span></label>
+                        <label><input type="checkbox" id="catalog2-filter-usb4"> <span>USB4対応</span></label>
+                    </div>
+                </div>
+            </aside>
+
+            <section class="catalog-main">
+                <div class="catalog-toolbar">
+                    <div>
+                        <h2>AIミニPC カタログ一覧 2</h2>
+                        <p id="catalog2-count">読み込み中...</p>
+                    </div>
+                    <label class="catalog-sort">
+                        Sort
+                        <select id="catalog2-sort">
+                            <option value="price_asc">価格が安い順</option>
+                            <option value="price_desc">価格が高い順</option>
+                            <option value="ram_desc">RAMが大きい順</option>
+                            <option value="brand_asc">Brand順</option>
+                        </select>
+                    </label>
+                </div>
+
+                <div class="catalog-table-wrap">
+                    <table class="catalog-table">
+                        <thead>
+                            <tr>
+                                <th class="sticky-a">Brand</th>
+                                <th class="sticky-b">Image</th>
+                                <th class="sticky-c">Stock</th>
+                                <th class="sticky-d">Model</th>
+                                <th>CPU</th>
+                                <th>RAM</th>
+                                <th>Storage</th>
+                                <th>VRAM</th>
+                                <th>Oculink</th>
+                                <th>USB4</th>
+                                <th>Price</th>
+                                <th>Amazon</th>
+                            </tr>
+                        </thead>
+                        <tbody id="catalog2-table-body"></tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 ShotPC.</p>
+        </div>
+    </footer>
+
+    <script src="../../assets/js/app.js"></script>
+    <script>
+        const siteBasePath = window.location.pathname.startsWith('/shotpc/') ? '/shotpc' : '';
+        const dataUrl = `${siteBasePath}/data/minis.json`;
+
+        const state = {
+            minis: [],
+            brand: new Set(),
+            cpu: new Set(),
+            ram: new Set(),
+            stockOnly: false,
+            oculinkOnly: false,
+            usb4Only: false,
+            sort: 'price_asc',
+        };
+
+        const brandList = document.getElementById('catalog2-brand-list');
+        const cpuList = document.getElementById('catalog2-cpu-list');
+        const ramList = document.getElementById('catalog2-ram-list');
+        const countLabel = document.getElementById('catalog2-count');
+        const tableBody = document.getElementById('catalog2-table-body');
+        const sortSelect = document.getElementById('catalog2-sort');
+
+        const cpuOptions = [
+            { value: 'ryzen_ai', label: 'Ryzen AI', match: cpu => cpu.includes('ryzen ai') },
+            { value: 'ryzen9', label: 'Ryzen 9', match: cpu => cpu.includes('ryzen 9') },
+            { value: 'ryzen7', label: 'Ryzen 7', match: cpu => cpu.includes('ryzen 7') },
+            { value: 'ryzen5', label: 'Ryzen 5', match: cpu => cpu.includes('ryzen 5') },
+            { value: 'core_ultra', label: 'Core Ultra', match: cpu => cpu.includes('core ultra') },
+            { value: 'core_i7', label: 'Core i7', match: cpu => cpu.includes('core i7') },
+            { value: 'core_i5', label: 'Core i5', match: cpu => cpu.includes('core i5') },
+            { value: 'intel_n', label: 'Intel N', match: cpu => /\bn\d{3}\b/.test(cpu) },
+        ];
+
+        const ramOptions = [
+            { value: '16', label: '16GB以上', min: 16 },
+            { value: '32', label: '32GB以上', min: 32 },
+            { value: '64', label: '64GB以上', min: 64 },
+            { value: '128', label: '128GB以上', min: 128 },
+        ];
+
+        function normalizeBrand(brand) {
+            return brand === 'Unknown' ? 'その他' : (brand || 'その他');
+        }
+
+        function getPriceValue(item) {
+            return Number(item.price?.current_price || item.price?.base_price || 0);
+        }
+
+        function hasUsb4(item) {
+            const ports = item.io?.ports || [];
+            return ports.some(port => String(port).toLowerCase().includes('usb4'));
+        }
+
+        function hasOculink(item) {
+            return Boolean(item.io?.oculink);
+        }
+
+        function isInStock(item) {
+            return item.stock?.status === 'in_stock';
+        }
+
+        function matchesFilters(item) {
+            const brandName = normalizeBrand(item.brand);
+            const cpuName = String(item.cpu?.name || '').toLowerCase();
+            const ramCapacity = Number(item.ram?.capacity_gb || 0);
+
+            if (state.brand.size && !state.brand.has(brandName)) return false;
+            if (state.cpu.size && !cpuOptions.some(option => state.cpu.has(option.value) && option.match(cpuName))) return false;
+            if (state.ram.size && !ramOptions.some(option => state.ram.has(option.value) && ramCapacity >= option.min)) return false;
+            if (state.stockOnly && !isInStock(item)) return false;
+            if (state.oculinkOnly && !hasOculink(item)) return false;
+            if (state.usb4Only && !hasUsb4(item)) return false;
+
+            return true;
+        }
+
+        function sortItems(items) {
+            const next = [...items];
+            next.sort((a, b) => {
+                if (state.sort === 'price_desc') return getPriceValue(b) - getPriceValue(a);
+                if (state.sort === 'ram_desc') return Number(b.ram?.capacity_gb || 0) - Number(a.ram?.capacity_gb || 0);
+                if (state.sort === 'brand_asc') return normalizeBrand(a.brand).localeCompare(normalizeBrand(b.brand), 'ja');
+                return getPriceValue(a) - getPriceValue(b);
+            });
+            return next;
+        }
+
+        function renderTable(items) {
+            if (!items.length) {
+                tableBody.innerHTML = `<tr><td colspan="12" class="catalog-placeholder">条件に合うミニPCがありません。</td></tr>`;
+                return;
+            }
+
+            tableBody.innerHTML = items.map(item => {
+                const brand = normalizeBrand(item.brand);
+                const model = item.model || item.title || '未記載';
+                const stockLabel = isInStock(item) ? '在庫あり' : '在庫切れ';
+                const stockClass = isInStock(item) ? 'catalog-stock' : 'catalog-stock is-out';
+                const priceValue = getPriceValue(item);
+                const priceLabel = priceValue ? `¥${priceValue.toLocaleString('ja-JP')}` : '-';
+                const storage = item.storage?.capacity || item.storage?.type || '-';
+                const vram = item.ai_features?.vram_allocation_gb ? `${item.ai_features.vram_allocation_gb}GB` : '-';
+                const oculink = hasOculink(item) ? '<span class="catalog-badge">Yes</span>' : '-';
+                const usb4 = hasUsb4(item) ? '<span class="catalog-badge">Yes</span>' : '-';
+                const image = item.image_url
+                    ? `<img class="catalog-thumb" src="${item.image_url}" alt="${model}">`
+                    : '<div class="catalog-thumb"></div>';
+                const amazonUrl = item.url || item.amazon_url || '#';
+
+                return `
+                    <tr>
+                        <td class="sticky-a">${brand}</td>
+                        <td class="sticky-b">${image}</td>
+                        <td class="sticky-c"><span class="${stockClass}">${stockLabel}</span></td>
+                        <td class="sticky-d">
+                            <div class="catalog-model">
+                                <strong>${model}</strong>
+                                <span class="catalog-sub">${item.brand || 'Unknown'}</span>
+                            </div>
+                        </td>
+                        <td>${item.cpu?.name || '-'}</td>
+                        <td class="catalog-num">${item.ram?.capacity_gb ? `${item.ram.capacity_gb}GB` : '-'}</td>
+                        <td>${storage}</td>
+                        <td class="catalog-num">${vram}</td>
+                        <td>${oculink}</td>
+                        <td>${usb4}</td>
+                        <td class="catalog-num catalog-price">${priceLabel}</td>
+                        <td><a class="catalog-link" href="${amazonUrl}" target="_blank" rel="noopener noreferrer">見る</a></td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        function renderFilterList(target, entries, group) {
+            target.innerHTML = entries.map(entry => `
+                <label>
+                    <input type="checkbox" data-group="${group}" value="${entry.value}">
+                    <span>${entry.label}</span>
+                    <span>(${entry.count})</span>
+                </label>
+            `).join('');
+        }
+
+        function renderFilters() {
+            const brandCounts = new Map();
+            state.minis.forEach(item => {
+                const brand = normalizeBrand(item.brand);
+                brandCounts.set(brand, (brandCounts.get(brand) || 0) + 1);
+            });
+
+            const brandEntries = [...brandCounts.entries()]
+                .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], 'ja'))
+                .map(([label, count]) => ({ value: label, label, count }));
+            renderFilterList(brandList, brandEntries, 'brand');
+
+            const cpuEntries = cpuOptions
+                .map(option => ({
+                    value: option.value,
+                    label: option.label,
+                    count: state.minis.filter(item => option.match(String(item.cpu?.name || '').toLowerCase())).length,
+                }))
+                .filter(entry => entry.count > 0);
+            renderFilterList(cpuList, cpuEntries, 'cpu');
+
+            const ramEntries = ramOptions
+                .map(option => ({
+                    value: option.value,
+                    label: option.label,
+                    count: state.minis.filter(item => Number(item.ram?.capacity_gb || 0) >= option.min).length,
+                }))
+                .filter(entry => entry.count > 0);
+            renderFilterList(ramList, ramEntries, 'ram');
+        }
+
+        function render() {
+            const filtered = sortItems(state.minis.filter(matchesFilters));
+            countLabel.textContent = `${filtered.length}件 / 全${state.minis.length}件`;
+            renderTable(filtered);
+        }
+
+        document.addEventListener('change', event => {
+            const checkbox = event.target;
+            if (checkbox.matches('input[data-group="brand"]')) {
+                checkbox.checked ? state.brand.add(checkbox.value) : state.brand.delete(checkbox.value);
+                render();
+            }
+            if (checkbox.matches('input[data-group="cpu"]')) {
+                checkbox.checked ? state.cpu.add(checkbox.value) : state.cpu.delete(checkbox.value);
+                render();
+            }
+            if (checkbox.matches('input[data-group="ram"]')) {
+                checkbox.checked ? state.ram.add(checkbox.value) : state.ram.delete(checkbox.value);
+                render();
+            }
+            if (checkbox.id === 'catalog2-filter-stock') {
+                state.stockOnly = checkbox.checked;
+                render();
+            }
+            if (checkbox.id === 'catalog2-filter-oculink') {
+                state.oculinkOnly = checkbox.checked;
+                render();
+            }
+            if (checkbox.id === 'catalog2-filter-usb4') {
+                state.usb4Only = checkbox.checked;
+                render();
+            }
+        });
+
+        sortSelect.addEventListener('change', () => {
+            state.sort = sortSelect.value;
+            render();
+        });
+
+        fetch(dataUrl)
+            .then(response => response.json())
+            .then(minis => {
+                state.minis = minis;
+                renderFilters();
+                render();
+            })
+            .catch(() => {
+                countLabel.textContent = 'データの読み込みに失敗しました。';
+                tableBody.innerHTML = `<tr><td colspan="12" class="catalog-placeholder">データの読み込みに失敗しました。</td></tr>`;
+            });
+    </script>
+</body>
+</html>

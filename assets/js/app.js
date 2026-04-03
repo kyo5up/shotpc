@@ -63,7 +63,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function isAdminVisiblePage() {
         const path = window.location.pathname || '/';
-        return path === '/' || path.endsWith('/index.html') || path.endsWith('/shotpc/') || path.includes('/ja/compare/') || path.includes('/ja/catalog/');
+        return path === '/'
+            || path.endsWith('/index.html')
+            || path.endsWith('/shotpc/')
+            || path.includes('/ja/compare/')
+            || path.includes('/ja/catalog/')
+            || path.includes('/ja/catalog2/')
+            || path.includes('/ja/catalog3/')
+            || path.includes('/ja/catalog4/')
+            || path.includes('/ja/catalog5/');
     }
 
     function getSiteBasePath() {
@@ -258,10 +266,22 @@ document.addEventListener('DOMContentLoaded', () => {
     function initAdminControls() {
         if (!headerContainer || !isAdminVisiblePage() || document.getElementById('admin-view-toggle')) return;
         if (!isAdminAuthenticated) return;
-        const path = window.location.pathname || '/';
         const basePath = getSiteBasePath();
-        const switchHref = path.includes('/ja/catalog/') ? `${basePath}/ja/compare/` : `${basePath}/ja/catalog/`;
-        const switchLabel = path.includes('/ja/catalog/') ? 'old' : 'new';
+        const adminPageLinks = [
+            { href: `${basePath}/ja/compare/`, label: 'old' },
+            { href: `${basePath}/ja/catalog/`, label: 'new' },
+            { href: `${basePath}/ja/catalog2/`, label: '2へ' },
+            { href: `${basePath}/ja/catalog3/`, label: '3へ' },
+            { href: `${basePath}/ja/catalog4/`, label: '4へ' },
+            { href: `${basePath}/ja/catalog5/`, label: '5へ' },
+        ];
+        const currentPath = window.location.pathname || '/';
+        const navLinksHtml = adminPageLinks.map(link => {
+            const isCurrentPage = currentPath === link.href || currentPath === `${link.href}index.html`;
+            const className = isCurrentPage ? 'admin-view-button is-current' : 'admin-view-button';
+            const ariaCurrent = isCurrentPage ? ' aria-current="page"' : '';
+            return `<a href="${link.href}" class="${className}"${ariaCurrent}>${link.label}</a>`;
+        }).join('');
 
         const controls = document.createElement('div');
         controls.id = 'admin-view-toggle';
@@ -271,7 +291,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <span class="admin-view-status" id="admin-view-status"></span>
             <button type="button" class="admin-view-button" id="admin-view-user">${UI_TEXT.switchUser}</button>
             <button type="button" class="admin-view-button" id="admin-view-admin">${UI_TEXT.switchAdmin}</button>
-            <a href="${switchHref}" class="admin-view-button" id="admin-page-switch-link">${switchLabel}</a>
+            ${navLinksHtml}
         `;
         headerContainer.appendChild(controls);
 
