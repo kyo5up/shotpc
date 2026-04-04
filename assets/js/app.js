@@ -62,21 +62,15 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     function isAdminVisiblePage() {
-        const path = window.location.pathname || '/';
-        return path === '/'
+        const path = window.location.pathname || '/shotpc/';
+        return path === '/shotpc/'
             || path.endsWith('/index.html')
-            || path.endsWith('/shotpc/')
-            || path.includes('/ja/compare/')
-            || path.includes('/ja/catalog/')
-            || path.includes('/ja/catalog2/')
-            || path.includes('/ja/catalog3/')
-            || path.includes('/ja/catalog4/')
-            || path.includes('/ja/catalog5/');
-    }
-
-    function getSiteBasePath() {
-        const path = window.location.pathname || '/';
-        return path.startsWith('/shotpc/') ? '/shotpc' : '';
+            || path.includes('/shotpc/ja/compare/')
+            || path.includes('/shotpc/ja/catalog/')
+            || path.includes('/shotpc/ja/catalog2/')
+            || path.includes('/shotpc/ja/catalog3/')
+            || path.includes('/shotpc/ja/catalog4/')
+            || path.includes('/shotpc/ja/catalog5/');
     }
 
     function isAdminViewEnabled() {
@@ -266,16 +260,15 @@ document.addEventListener('DOMContentLoaded', () => {
     function initAdminControls() {
         if (!headerContainer || !isAdminVisiblePage() || document.getElementById('admin-view-toggle')) return;
         if (!isAdminAuthenticated) return;
-        const basePath = getSiteBasePath();
         const adminPageLinks = [
-            { href: `${basePath}/ja/compare/`, label: 'old' },
-            { href: `${basePath}/ja/catalog/`, label: 'new' },
-            { href: `${basePath}/ja/catalog2/`, label: '2へ' },
-            { href: `${basePath}/ja/catalog3/`, label: '3へ' },
-            { href: `${basePath}/ja/catalog4/`, label: '4へ' },
-            { href: `${basePath}/ja/catalog5/`, label: '5へ' },
+            { href: '/shotpc/ja/compare/', label: 'old' },
+            { href: '/shotpc/ja/catalog/', label: 'new' },
+            { href: '/shotpc/ja/catalog2/', label: '2へ' },
+            { href: '/shotpc/ja/catalog3/', label: '3へ' },
+            { href: '/shotpc/ja/catalog4/', label: '4へ' },
+            { href: '/shotpc/ja/catalog5/', label: '5へ' },
         ];
-        const currentPath = window.location.pathname || '/';
+        const currentPath = window.location.pathname || '/shotpc/';
         const navLinksHtml = adminPageLinks.map(link => {
             const isCurrentPage = currentPath === link.href || currentPath === `${link.href}index.html`;
             const className = isCurrentPage ? 'admin-view-button is-current' : 'admin-view-button';

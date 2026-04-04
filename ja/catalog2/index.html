@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AIミニPC カタログ一覧 2 - ShotPC</title>
-    <link rel="stylesheet" href="../../assets/css/style.css">
-    <link rel="icon" href="../../assets/img/favicon.ico" sizes="any">
-    <link rel="icon" href="../../assets/img/favicon-32x32.png" type="image/png">
-    <link rel="apple-touch-icon" href="../../assets/img/favicon-192x192.png">
+    <link rel="stylesheet" href="/shotpc/assets/css/style.css">
+    <link rel="icon" href="/shotpc/assets/img/favicon.ico" sizes="any">
+    <link rel="icon" href="/shotpc/assets/img/favicon-32x32.png" type="image/png">
+    <link rel="apple-touch-icon" href="/shotpc/assets/img/favicon-192x192.png">
     <style>
         header {
             padding: 1rem 0 !important;
@@ -279,7 +279,7 @@
 <body>
     <header>
         <div class="container">
-            <h1><a href="../../">ShotPC</a></h1>
+            <h1><a href="/shotpc/">ShotPC</a></h1>
             <p>catalog2: PCPartPicker風の一覧UIを詰めるための試作ページ</p>
         </div>
     </header>
@@ -357,10 +357,9 @@
         </div>
     </footer>
 
-    <script src="../../assets/js/app.js"></script>
+    <script src="/shotpc/assets/js/app.js"></script>
     <script>
-        const siteBasePath = window.location.pathname.startsWith('/shotpc/') ? '/shotpc' : '';
-        const dataUrl = `${siteBasePath}/data/minis.json`;
+        const dataUrl = '/shotpc/data/minis.json';
 
         const state = {
             minis: [],
