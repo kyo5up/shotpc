@@ -262,7 +262,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!isAdminAuthenticated) return;
         const adminPageLinks = [
             { href: '/shotpc/ja/compare/', label: 'old' },
-            { href: '/shotpc/ja/catalog/', label: 'new' },
+            { href: '/shotpc/ja/catalog/', label: '1へ' },
             { href: '/shotpc/ja/catalog2/', label: '2へ' },
             { href: '/shotpc/ja/catalog3/', label: '3へ' },
             { href: '/shotpc/ja/catalog4/', label: '4へ' },
