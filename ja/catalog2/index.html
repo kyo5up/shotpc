@@ -402,20 +402,33 @@
         }
 
         function getPriceValue(item) {
-            return Number(item.price?.current_price || item.price?.base_price || 0);
+            return Number(item.effective_price_jpy || item.price_jpy || item.price?.current_price || item.price?.base_price || 0);
         }
 
         function hasUsb4(item) {
+            if (Number(item.io_ports?.usb4_count || 0) > 0) return true;
             const ports = item.io?.ports || [];
             return ports.some(port => String(port).toLowerCase().includes('usb4'));
         }
 
         function hasOculink(item) {
-            return Boolean(item.io?.oculink);
+            return item.ai_features?.oculink_support === true || Boolean(item.io?.oculink);
         }
 
         function isInStock(item) {
-            return item.stock?.status === 'in_stock';
+            return item.stock === 'in_stock' || item.stock?.status === 'in_stock';
+        }
+
+        function getStorageLabel(item) {
+            const capacity = item.storage?.capacity_gb ? `${item.storage.capacity_gb}GB` : (item.storage?.capacity || '');
+            const type = item.storage?.type || '';
+            return `${capacity} ${type}`.trim() || '-';
+        }
+
+        function getVramLabel(item) {
+            if (item.ai_features?.vram_allocation) return item.ai_features.vram_allocation;
+            if (item.ai_features?.vram_allocation_gb) return `${item.ai_features.vram_allocation_gb}GB`;
+            return '-';
         }
 
         function matchesFilters(item) {
@@ -457,14 +470,14 @@
                 const stockClass = isInStock(item) ? 'catalog-stock' : 'catalog-stock is-out';
                 const priceValue = getPriceValue(item);
                 const priceLabel = priceValue ? `¥${priceValue.toLocaleString('ja-JP')}` : '-';
-                const storage = item.storage?.capacity || item.storage?.type || '-';
-                const vram = item.ai_features?.vram_allocation_gb ? `${item.ai_features.vram_allocation_gb}GB` : '-';
+                const storage = getStorageLabel(item);
+                const vram = getVramLabel(item);
                 const oculink = hasOculink(item) ? '<span class="catalog-badge">Yes</span>' : '-';
                 const usb4 = hasUsb4(item) ? '<span class="catalog-badge">Yes</span>' : '-';
                 const image = item.image_url
                     ? `<img class="catalog-thumb" src="${item.image_url}" alt="${model}">`
                     : '<div class="catalog-thumb"></div>';
-                const amazonUrl = item.url || item.amazon_url || '#';
+                const amazonUrl = item.amazon_url || item.url || '#';
 
                 return `
                     <tr>
@@ -571,7 +584,10 @@
         });
 
         fetch(dataUrl)
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                return response.json();
+            })
             .then(minis => {
                 state.minis = minis;
                 renderFilters();
