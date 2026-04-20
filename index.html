@@ -3,114 +3,154 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ShotPC - ミニPC比較・在庫確認ポータル</title>
+    <title>ShotPC - AI向けミニPCの比較と選び方</title>
     <link rel="stylesheet" href="/shotpc/assets/css/style.css">
     <link rel="icon" href="/shotpc/assets/img/favicon.ico" sizes="any">
     <link rel="icon" href="/shotpc/assets/img/favicon-32x32.png" type="image/png">
     <link rel="apple-touch-icon" href="/shotpc/assets/img/favicon-192x192.png">
 </head>
-<body>
+<body class="home-page">
     <header>
         <div class="container">
             <h1><a href="/shotpc/">ShotPC</a></h1>
-            <p>AI構築のためのミニPC比較・在庫確認ポータル</p>
+            <p>AI用途に向くミニPCを、用途別に探して比較できるガイドサイト</p>
         </div>
     </header>
 
-    <main class="container">
-        <!-- (サイドバーと製品リスト) -->
-        <aside id="sidebar">
-            <section class="filter-group">
-                <h3>Brand</h3>
-                <div id="brand-filter-list" class="filter-options">
-                    <div class="loading">ブランドを読み込み中...</div>
+    <main class="home-main">
+        <section class="home-hero">
+            <div class="container home-hero-grid">
+                <div class="home-hero-copy">
+                    <span class="home-eyebrow">Mini PC for AI workflows</span>
+                    <h2>ローカルLLM、開発、日常作業まで。<br>用途からミニPCを探す。</h2>
+                    <p class="home-lead">
+                        ShotPC は、AI用途に向くミニPCを比較しやすく整理するための入口です。
+                        まずは用途別ガイドで方向を決めて、一覧ページで候補を絞り込めます。
+                    </p>
+                    <div class="home-hero-actions">
+                        <a class="btn-primary" href="/shotpc/ja/catalog/">一覧から探す</a>
+                        <a class="btn-secondary" href="/shotpc/ja/compare/">比較ページを見る</a>
+                    </div>
                 </div>
-            </section>
-            <section class="filter-group">
-                <h3>CPU</h3>
-                <div id="cpu-filter-list" class="filter-options">
-                    <div class="loading">CPUを読み込み中...</div>
-                </div>
-            </section>
-            <section class="filter-group">
-                <h3>RAM</h3>
-                <div id="ram-filter-list" class="filter-options">
-                    <div class="loading">RAMを読み込み中...</div>
-                </div>
-            </section>
-            <section class="filter-group">
-                <label><input type="checkbox" name="stock" value="in_stock"> 在庫ありのみ表示</label>
-            </section>
+                <aside class="home-stats-panel">
+                    <h3>いま見られる内容</h3>
+                    <div class="home-stats-grid">
+                        <div class="stat-card">
+                            <span class="stat-label">公開モデル</span>
+                            <strong id="hero-product-count">-</strong>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-label">掲載ブランド</span>
+                            <strong id="hero-brand-count">-</strong>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-label">価格帯</span>
+                            <strong id="hero-price-range">-</strong>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-label">在庫あり</span>
+                            <strong id="hero-stock-count">-</strong>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </section>
 
-            <section class="filter-group">
-                <h3>AI / 拡張性</h3>
-                <label title="BIOS設定等でVRAMを16GB以上割り当て可能な機種"><input type="checkbox" name="ai" value="vram16"> VRAM 16GB以上可</label>
-                <label title="eGPU(外付けGPU)を高速接続できるOculink端子搭載機種"><input type="checkbox" name="ai" value="oculink"> Oculink対応</label>
-                <label title="メモリを64GB以上搭載または増設可能な機種"><input type="checkbox" name="ai" value="ram64"> メモリ64GB以上可</label>
-            </section>
-
-            <section class="filter-group">
-                <h3>ツール</h3>
-                <div class="article-item">
-                    <a href="/shotpc/ja/compare/" style="font-weight: bold; color: var(--primary-color);">📊 全機種スペック比較表</a>
+        <section class="home-routes">
+            <div class="container">
+                <div class="section-heading">
+                    <span class="section-kicker">Quick routes</span>
+                    <h2>まずは目的から入る</h2>
+                    <p>迷っている段階では、全件一覧より用途別の入口から見たほうが絞りやすいです。</p>
                 </div>
-            </section>
-
-            <section class="filter-group" id="ai-guide">
-                <h3>AI活用ガイド</h3>
-                <div id="article-list">
-                    <!-- JavaScript でここに記事一覧を表示 -->
-                    <div class="loading">記事を読み込み中...</div>
+                <div class="route-grid">
+                    <a class="route-card route-llm" href="/shotpc/ja/articles/best-mini-pc-for-local-llm-2026.html">
+                        <span class="route-tag">Local LLM</span>
+                        <h3>ローカルLLM向け</h3>
+                        <p>VRAM割り当て、32GB以上のメモリ、冷却と拡張性を優先して探す入口。</p>
+                    </a>
+                    <a class="route-card route-work" href="/shotpc/ja/articles/work-dev-ai-mini-pc-guide.html">
+                        <span class="route-tag">Work / Dev</span>
+                        <h3>仕事・開発向け</h3>
+                        <p>静音性、安定性、メモリ余力のバランスが取りやすい構成を確認する。</p>
+                    </a>
+                    <a class="route-card route-budget" href="/shotpc/ja/articles/mini-pc-budget-guide-5man-10man-15man.html">
+                        <span class="route-tag">Budget</span>
+                        <h3>予算から探す</h3>
+                        <p>5万、10万、15万円台の見方を先に把握して、過不足のない価格帯へ寄せる。</p>
+                    </a>
+                    <a class="route-card route-expand" href="/shotpc/ja/articles/usb4-vs-oculink-mini-pc-guide.html">
+                        <span class="route-tag">Expansion</span>
+                        <h3>Oculink / USB4重視</h3>
+                        <p>eGPUや外部拡張まで見るなら、端子と拡張性を先に見ておく。</p>
+                    </a>
                 </div>
-            </section>
-        </aside>
+            </div>
+        </section>
 
-        <section id="product-list">
-            <!-- JavaScript でここにミニPCの一覧を表示 -->
-            <div class="loading">データを読み込み中...</div>
+        <section class="home-featured">
+            <div class="container">
+                <div class="section-heading section-heading-inline">
+                    <div>
+                        <span class="section-kicker">Curated picks</span>
+                        <h2>入口として見やすい6台</h2>
+                        <p>全件を並べずに、用途別に見始めやすい候補だけを先に置きます。</p>
+                    </div>
+                    <a class="text-link" href="/shotpc/ja/catalog/">全モデルを一覧で見る</a>
+                </div>
+                <div id="featured-product-grid" class="featured-product-grid">
+                    <div class="loading">おすすめ候補を読み込み中...</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="home-actions">
+            <div class="container action-strip">
+                <div class="action-card">
+                    <span class="action-tag">Catalog</span>
+                    <h3>一覧で絞り込む</h3>
+                    <p>ブランド、CPU、RAM、Oculinkなどでまとめて探索できます。</p>
+                    <a class="btn-secondary" href="/shotpc/ja/catalog/">一覧ページへ</a>
+                </div>
+                <div class="action-card">
+                    <span class="action-tag">Compare</span>
+                    <h3>比較ページで差を見る</h3>
+                    <p>複数機種を横並びにして、用途に対して何が違うかを確認します。</p>
+                    <a class="btn-secondary" href="/shotpc/ja/compare/">比較ページへ</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="home-guides">
+            <div class="container home-guides-grid">
+                <div class="guide-column">
+                    <div class="section-heading compact">
+                        <span class="section-kicker">Guides</span>
+                        <h2>まず読むガイド</h2>
+                    </div>
+                    <div id="article-list" class="guide-list">
+                        <div class="loading">記事を読み込み中...</div>
+                    </div>
+                </div>
+                <div class="guide-column">
+                    <div class="section-heading compact">
+                        <span class="section-kicker">Brands</span>
+                        <h2>ブランドの傾向</h2>
+                    </div>
+                    <div class="brand-grid" id="brand-list">
+                        <div class="loading">ブランド情報を読み込み中...</div>
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
 
-    <section id="featured-brands" class="container">
-        <hr>
-        <h2>注目のAI向けメーカー</h2>
-        <div class="brand-grid" id="brand-list">
-            <!-- JavaScript でここにメーカー一覧を表示 -->
-            <div class="loading">メーカー情報を読み込み中...</div>
-        </div>
-    </section>
-
     <footer>
         <div class="container">
-            <p><span style="color:#f1c40f;">&copy; 2026 ShotPC.</span> 掲載情報はAmazon等の各ECサイトのものです。</p>
-            <p class="disclaimer">※Amazonアソシエイトとして,ShotPCは適格販売により収入を得ています。</p>
+            <p>&copy; 2026 ShotPC. 価格情報は Amazon 掲載をベースにしています。</p>
+            <p class="disclaimer">Amazonアソシエイトとして、ShotPC は適格販売により収入を得る場合があります。</p>
         </div>
     </footer>
-
-    <!-- 比較用フローティングバー -->
-    <div id="compare-bar">
-        <div class="compare-info">選択中: <span id="compare-count">0</span> 件</div>
-        <button class="btn-compare-start" id="btn-compare-open">選択した機種を比較する</button>
-    </div>
-
-    <!-- 比較モーダル -->
-    <div class="modal-overlay" id="compare-modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>スペック比較</h2>
-                <button class="btn-close-modal" id="btn-compare-close">&times;</button>
-            </div>
-            <div class="modal-body">
-                <div class="compare-table-wrapper">
-                    <table class="compare-modal-table">
-                        <tbody id="compare-table-body">
-                            <!-- JSで生成 -->
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <script src="/shotpc/assets/js/app.js"></script>
 </body>
