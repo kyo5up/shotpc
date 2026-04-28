@@ -1,8 +1,13 @@
 [
   {
-    "id": "AMZ-B0DWZZXR18",
+    "id": "SP010A",
     "brand": "Unknown",
     "model": "AOOSTAR GT37 aiミニpc AMD Ryzen AI 9 HX 370(最大5.1GHz 12C/24T)+ Radeon 890M iGPU搭載",
+    "source_ids": {
+      "asin": "B0DWZZXR18",
+      "model_id": "SP010",
+      "variant_id": "SP010A"
+    },
     "cpu": {
       "name": "Ryzen AI 9 HX 370",
       "cores": 12,
@@ -25,6 +30,7 @@
     "coupon_jpy": 0,
     "effective_price_jpy": 139270,
     "stock": "in_stock",
+    "fetched_at": "2026-04-09T16:04:20",
     "amazon_url": "https://www.amazon.co.jp/dp/B0DWZZXR18?tag=shotsim-22",
     "image_url": "https://m.media-amazon.com/images/I/713q98RbdFL._AC_SX679_.jpg",
     "ai_features": {
@@ -37,9 +43,14 @@
     "notes": "Generated from ShotPC pipeline"
   },
   {
-    "id": "AMZ-B0FSZWVM38",
+    "id": "SP025A",
     "brand": "Unknown",
     "model": "AOOSTAR ai ミニpc ryzen AI9 HX370+890M(12C/24T 5.1GHz 80TOPS) HDモニター付き+指紋ロック解除 DDR",
+    "source_ids": {
+      "asin": "B0FSZWVM38",
+      "model_id": "SP025",
+      "variant_id": "SP025A"
+    },
     "cpu": {
       "name": "Ryzen AI 9 HX 370",
       "cores": 12,
@@ -62,6 +73,7 @@
     "coupon_jpy": 0,
     "effective_price_jpy": 114500,
     "stock": "in_stock",
+    "fetched_at": "2026-04-09T16:06:52",
     "amazon_url": "https://www.amazon.co.jp/dp/B0FSZWVM38?tag=shotsim-22",
     "image_url": "https://m.media-amazon.com/images/I/719dp3lbp2L._AC_SX679_.jpg",
     "ai_features": {
@@ -74,9 +86,14 @@
     "notes": "Generated from ShotPC pipeline"
   },
   {
-    "id": "AMZ-B0FWC7ZMFS",
+    "id": "SP038A",
     "brand": "Unknown",
     "model": "Thdeukoty ミニ PC Ryzen AI 9 HX 370",
+    "source_ids": {
+      "asin": "B0FWC7ZMFS",
+      "model_id": "SP038",
+      "variant_id": "SP038A"
+    },
     "cpu": {
       "name": "Ryzen AI 9 HX 370",
       "cores": 12,
@@ -99,6 +116,7 @@
     "coupon_jpy": 0,
     "effective_price_jpy": 197209,
     "stock": "in_stock",
+    "fetched_at": "2026-04-09T16:08:35",
     "amazon_url": "https://www.amazon.co.jp/dp/B0FWC7ZMFS?tag=shotsim-22",
     "image_url": "https://m.media-amazon.com/images/I/611cQhgJwsL._AC_SX679_.jpg",
     "ai_features": {
@@ -111,9 +129,14 @@
     "notes": "Generated from ShotPC pipeline"
   },
   {
-    "id": "AMZ-B0FPLH31CS",
+    "id": "SP018A",
     "brand": "ACEMAGIC",
     "model": "ミニpc ゲーミング AMD Ryzen7 8745HS 【96GB DDR5+4TB M.2 SSD拡張対応】mini pc Windows 11 Pro 8",
+    "source_ids": {
+      "asin": "B0FPLH31CS",
+      "model_id": "SP018",
+      "variant_id": "SP018A"
+    },
     "cpu": {
       "name": "Ryzen 7 8745HS",
       "cores": null,
@@ -136,6 +159,7 @@
     "coupon_jpy": 0,
     "effective_price_jpy": 97680,
     "stock": "in_stock",
+    "fetched_at": "2026-04-09T16:05:36",
     "amazon_url": "https://www.amazon.co.jp/dp/B0FPLH31CS?tag=shotsim-22",
     "image_url": "https://m.media-amazon.com/images/I/71xYCyXmRyL._AC_SX679_.jpg",
     "ai_features": {
@@ -148,9 +172,14 @@
     "notes": "Generated from ShotPC pipeline"
   },
   {
-    "id": "AMZ-B0DHRHDK5P",
+    "id": "SP029A",
     "brand": "Beelink",
     "model": "SER9 HX370 ミニ PC",
+    "source_ids": {
+      "asin": "B0DHRHDK5P",
+      "model_id": "SP029",
+      "variant_id": "SP029A"
+    },
     "cpu": {
       "name": "Ryzen AI 9 HX 370",
       "cores": 12,
@@ -173,6 +202,7 @@
     "coupon_jpy": 0,
     "effective_price_jpy": 191900,
     "stock": "in_stock",
+    "fetched_at": "2026-04-09T16:07:24",
     "amazon_url": "https://www.amazon.co.jp/dp/B0DHRHDK5P?tag=shotsim-22",
     "image_url": "https://m.media-amazon.com/images/I/41dZ1FlexML._AC_SX679_.jpg",
     "ai_features": {
@@ -185,9 +215,14 @@
     "notes": "Generated from ShotPC pipeline"
   },
   {
-    "id": "AMZ-B0DPCH1NQN",
+    "id": "SP005A",
     "brand": "GMKtec",
     "model": "AI Mini PC AMD Ryzen AI 9 HX-370(最大5.1GHz 12コア/24スレッド)搭載 32GB LPDDR5X 7500MHz +",
+    "source_ids": {
+      "asin": "B0DPCH1NQN",
+      "model_id": "SP005",
+      "variant_id": "SP005A"
+    },
     "cpu": {
       "name": "Ryzen AI 9 HX 370",
       "cores": 12,
@@ -210,6 +245,7 @@
     "coupon_jpy": 0,
     "effective_price_jpy": 166900,
     "stock": "in_stock",
+    "fetched_at": "2026-04-09T16:03:40",
     "amazon_url": "https://www.amazon.co.jp/dp/B0DPCH1NQN?tag=shotsim-22",
     "image_url": "https://m.media-amazon.com/images/I/712sEmYgoRL._AC_SX679_.jpg",
     "ai_features": {
@@ -222,9 +258,57 @@
     "notes": "Generated from ShotPC pipeline"
   },
   {
-    "id": "AMZ-B0GK5D2XC7",
+    "id": "SP007B",
     "brand": "GMKtec",
     "model": "EVO-T1 AI ミニPC【第14世代】Intel Core U9 285H搭載 最 大5.4GHz【64G+2TB PCIe 4.0 SSD】 Arc GP",
+    "source_ids": {
+      "asin": "B0FH4NZ6DX",
+      "model_id": "SP007",
+      "variant_id": "SP007B"
+    },
+    "cpu": {
+      "name": "Core Ultra 9 285H",
+      "cores": null,
+      "threads": null,
+      "score": null
+    },
+    "ram": {
+      "capacity_gb": 64,
+      "type": "DDR5/DDR4",
+      "slots": null,
+      "max_capacity_gb": null
+    },
+    "storage": {
+      "capacity_gb": 2048,
+      "type": "NVMe",
+      "slots": null
+    },
+    "gpu": "Integrated Graphics",
+    "price_jpy": 226209,
+    "coupon_jpy": 0,
+    "effective_price_jpy": 226209,
+    "stock": "in_stock",
+    "fetched_at": "2026-04-17T18:03:40",
+    "amazon_url": "https://www.amazon.co.jp/dp/B0FH4NZ6DX?tag=shotsim-22",
+    "image_url": "https://m.media-amazon.com/images/I/61bWaOiaOrL._AC_SY879_.jpg",
+    "ai_features": {
+      "vram_allocation": "Check BIOS",
+      "oculink_support": true,
+      "thermal_design": "Active Cooling",
+      "expansion_score": 5,
+      "ai_inference_suitability": "Standard Use"
+    },
+    "notes": "Generated from ShotPC pipeline"
+  },
+  {
+    "id": "SP007A",
+    "brand": "GMKtec",
+    "model": "EVO-T1 AI ミニPC【第14世代】Intel Core U9 285H搭載 最 大5.4GHz【64G+2TB PCIe 4.0 SSD】 Arc GP",
+    "source_ids": {
+      "asin": "B0GK5D2XC7",
+      "model_id": "SP007",
+      "variant_id": "SP007A"
+    },
     "cpu": {
       "name": "Core Ultra 9 285H",
       "cores": null,
@@ -247,6 +331,7 @@
     "coupon_jpy": 0,
     "effective_price_jpy": 266168,
     "stock": "in_stock",
+    "fetched_at": "2026-04-09T16:03:55",
     "amazon_url": "https://www.amazon.co.jp/dp/B0GK5D2XC7?tag=shotsim-22",
     "image_url": "https://m.media-amazon.com/images/I/61ozT1NI3PL._AC_SX679_.jpg",
     "ai_features": {
@@ -259,9 +344,14 @@
     "notes": "Generated from ShotPC pipeline"
   },
   {
-    "id": "AMZ-B0FJFM8WC1",
+    "id": "SP014A",
     "brand": "GMKtec",
     "model": "EVO-T1 AIミニPC【第14世代 96GB DDR5メモリ+2TB M.2 NVMe SSD】Intel Core Ultra 9 285H/Arc GP",
+    "source_ids": {
+      "asin": "B0FJFM8WC1",
+      "model_id": "SP014",
+      "variant_id": "SP014A"
+    },
     "cpu": {
       "name": "Core Ultra 9 285H",
       "cores": null,
@@ -284,6 +374,7 @@
     "coupon_jpy": 0,
     "effective_price_jpy": 282500,
     "stock": "in_stock",
+    "fetched_at": "2026-04-09T16:05:02",
     "amazon_url": "https://www.amazon.co.jp/dp/B0FJFM8WC1?tag=shotsim-22",
     "image_url": "https://m.media-amazon.com/images/I/61++J8xd7XL._AC_SX679_.jpg",
     "ai_features": {
@@ -296,9 +387,14 @@
     "notes": "Generated from ShotPC pipeline"
   },
   {
-    "id": "AMZ-B0FH4M1SZM",
+    "id": "SP006A",
     "brand": "GMKtec",
     "model": "EVO-T1 Intel Core Ultra 9 285H搭載【2025最新AIミニPC】64GB DDR5 1TB NVMe SSD(最大128GB+24T",
+    "source_ids": {
+      "asin": "B0FH4M1SZM",
+      "model_id": "SP006",
+      "variant_id": "SP006A"
+    },
     "cpu": {
       "name": "Core Ultra 9 285H",
       "cores": null,
@@ -321,6 +417,7 @@
     "coupon_jpy": 0,
     "effective_price_jpy": 216999,
     "stock": "in_stock",
+    "fetched_at": "2026-04-09T16:03:47",
     "amazon_url": "https://www.amazon.co.jp/dp/B0FH4M1SZM?tag=shotsim-22",
     "image_url": "https://m.media-amazon.com/images/I/51yoW2Hbg8L._AC_SX679_.jpg",
     "ai_features": {
@@ -333,9 +430,14 @@
     "notes": "Generated from ShotPC pipeline"
   },
   {
-    "id": "AMZ-B0GKNR7S9D",
+    "id": "SP023A",
     "brand": "GMKtec",
     "model": "EVO-X2 AI ミニPC AMD Ryzen AI Max+ 395",
+    "source_ids": {
+      "asin": "B0GKNR7S9D",
+      "model_id": "SP023",
+      "variant_id": "SP023A"
+    },
     "cpu": {
       "name": "Ryzen AI Max+ 395",
       "cores": null,
@@ -358,6 +460,7 @@
     "coupon_jpy": 0,
     "effective_price_jpy": 556469,
     "stock": "in_stock",
+    "fetched_at": "2026-04-09T16:06:25",
     "amazon_url": "https://www.amazon.co.jp/dp/B0GKNR7S9D?tag=shotsim-22",
     "image_url": "https://m.media-amazon.com/images/I/61gYLwjYRsL._AC_SX679_.jpg",
     "ai_features": {
@@ -370,9 +473,14 @@
     "notes": "Generated from ShotPC pipeline"
   },
   {
-    "id": "AMZ-B0F5HDWNKR",
+    "id": "SP020A",
     "brand": "GMKtec",
     "model": "EVO-X2 AIミニPC AMD Ryzen AI MAX+ 395(16コア/32スレッド 最大5.1GHz)搭載｜最大126TOPS AI性能｜64GB",
+    "source_ids": {
+      "asin": "B0F5HDWNKR",
+      "model_id": "SP020",
+      "variant_id": "SP020A"
+    },
     "cpu": {
       "name": "Ryzen AI MAX+ 395",
       "cores": null,
@@ -395,6 +503,7 @@
     "coupon_jpy": 0,
     "effective_price_jpy": 324990,
     "stock": "in_stock",
+    "fetched_at": "2026-04-09T16:05:52",
     "amazon_url": "https://www.amazon.co.jp/dp/B0F5HDWNKR?tag=shotsim-22",
     "image_url": "https://m.media-amazon.com/images/I/61n899eVgSL._AC_SX679_.jpg",
     "ai_features": {
@@ -407,9 +516,14 @@
     "notes": "Generated from ShotPC pipeline"
   },
   {
-    "id": "AMZ-B0GKF7N73W",
+    "id": "SP021A",
     "brand": "GMKtec",
     "model": "EVO-X2 AIミニPC AMD Ryzen AI MAX+ 395(16コア/32スレッド 最大5.1GHz)搭載｜最大126TOPS AI性能｜96GB",
+    "source_ids": {
+      "asin": "B0GKF7N73W",
+      "model_id": "SP021",
+      "variant_id": "SP021A"
+    },
     "cpu": {
       "name": "Ryzen AI MAX+ 395",
       "cores": null,
@@ -432,6 +546,7 @@
     "coupon_jpy": 0,
     "effective_price_jpy": 436469,
     "stock": "in_stock",
+    "fetched_at": "2026-04-09T16:06:08",
     "amazon_url": "https://www.amazon.co.jp/dp/B0GKF7N73W?tag=shotsim-22",
     "image_url": "https://m.media-amazon.com/images/I/61gYLwjYRsL._AC_SX679_.jpg",
     "ai_features": {
@@ -444,9 +559,14 @@
     "notes": "Generated from ShotPC pipeline"
   },
   {
-    "id": "AMZ-B0FRMDHSD6",
+    "id": "SP017A",
     "brand": "GMKtec",
     "model": "EVO-X2 AIミニPC AMD Ryzen AI Max+ 395搭載(16コア32スレッド 最大5.1GHz)小型PC 高性能デスクトップ Radeon",
+    "source_ids": {
+      "asin": "B0FRMDHSD6",
+      "model_id": "SP017",
+      "variant_id": "SP017A"
+    },
     "cpu": {
       "name": "Ryzen AI Max+ 395",
       "cores": null,
@@ -469,6 +589,7 @@
     "coupon_jpy": 0,
     "effective_price_jpy": 479999,
     "stock": "in_stock",
+    "fetched_at": "2026-04-09T16:05:29",
     "amazon_url": "https://www.amazon.co.jp/dp/B0FRMDHSD6?tag=shotsim-22",
     "image_url": "https://m.media-amazon.com/images/I/61gYLwjYRsL._AC_SX679_.jpg",
     "ai_features": {
@@ -481,9 +602,14 @@
     "notes": "Generated from ShotPC pipeline"
   },
   {
-    "id": "AMZ-B0FR13DQP8",
+    "id": "SP022B",
     "brand": "GMKtec",
     "model": "EVO-X2 ミニPC AMD Ryzen AI Max+ 395搭載(16コア32スレッド 最大5.1GHz)小型PC 高性能デスクトップ Radeon 80",
+    "source_ids": {
+      "asin": "B0FR13DQP8",
+      "model_id": "SP022",
+      "variant_id": "SP022B"
+    },
     "cpu": {
       "name": "Ryzen AI Max+ 395",
       "cores": null,
@@ -506,6 +632,7 @@
     "coupon_jpy": 0,
     "effective_price_jpy": 378499,
     "stock": "in_stock",
+    "fetched_at": "2026-04-09T16:06:43",
     "amazon_url": "https://www.amazon.co.jp/dp/B0FR13DQP8?tag=shotsim-22",
     "image_url": "https://m.media-amazon.com/images/I/61gYLwjYRsL._AC_SX679_.jpg",
     "ai_features": {
@@ -518,9 +645,14 @@
     "notes": "Generated from ShotPC pipeline"
   },
   {
-    "id": "AMZ-B0GKDQGQV1",
+    "id": "SP022A",
     "brand": "GMKtec",
     "model": "EVO-X2 ミニPC AMD Ryzen AI Max+ 395搭載(16コア32スレッド 最大5.1GHz)小型PC 高性能デスクトップ Radeon 80",
+    "source_ids": {
+      "asin": "B0GKDQGQV1",
+      "model_id": "SP022",
+      "variant_id": "SP022A"
+    },
     "cpu": {
       "name": "Ryzen AI Max+ 395",
       "cores": null,
@@ -543,6 +675,7 @@
     "coupon_jpy": 0,
     "effective_price_jpy": 556469,
     "stock": "in_stock",
+    "fetched_at": "2026-04-09T16:06:17",
     "amazon_url": "https://www.amazon.co.jp/dp/B0GKDQGQV1?tag=shotsim-22",
     "image_url": "https://m.media-amazon.com/images/I/61gYLwjYRsL._AC_SX679_.jpg",
     "ai_features": {
@@ -555,9 +688,14 @@
     "notes": "Generated from ShotPC pipeline"
   },
   {
-    "id": "AMZ-B0GCLNC947",
+    "id": "SP044A",
     "brand": "GMKtec",
     "model": "Full Spec 版NucBox K11 ミニpc  ミニpc AMD Ryzen9 8945HS 64G+1T Windows11 Pro Mini pc",
+    "source_ids": {
+      "asin": "B0GCLNC947",
+      "model_id": "SP044",
+      "variant_id": "SP044A"
+    },
     "cpu": {
       "name": "Ryzen 9 8945HS",
       "cores": 8,
@@ -580,6 +718,7 @@
     "coupon_jpy": 0,
     "effective_price_jpy": 197499,
     "stock": "in_stock",
+    "fetched_at": "2026-04-09T16:09:20",
     "amazon_url": "https://www.amazon.co.jp/dp/B0GCLNC947?tag=shotsim-22",
     "image_url": "https://m.media-amazon.com/images/I/71CwJnGnMYL._AC_SX679_.jpg",
     "ai_features": {
@@ -592,9 +731,57 @@
     "notes": "Generated from ShotPC pipeline"
   },
   {
-    "id": "AMZ-B0GG9TLRFD",
+    "id": "SP069A",
+    "brand": "GMKtec",
+    "model": "Full Spec版 NucBox K15 ミニPC【オフィス 作業最強 ミニPC】インテル Core Ultra5 125U Win11 Pro【96GB D",
+    "source_ids": {
+      "asin": "B0G91RGMVP",
+      "model_id": "SP069",
+      "variant_id": "SP069A"
+    },
+    "cpu": {
+      "name": "Core Ultra 5 125U",
+      "cores": 12,
+      "threads": 14,
+      "score": 14500
+    },
+    "ram": {
+      "capacity_gb": 32,
+      "type": "DDR5/DDR4",
+      "slots": null,
+      "max_capacity_gb": null
+    },
+    "storage": {
+      "capacity_gb": 1024,
+      "type": "NVMe",
+      "slots": null
+    },
+    "gpu": "Intel Graphics",
+    "price_jpy": 109498,
+    "coupon_jpy": 0,
+    "effective_price_jpy": 109498,
+    "stock": "in_stock",
+    "fetched_at": "2026-04-17T18:03:27",
+    "amazon_url": "https://www.amazon.co.jp/dp/B0G91RGMVP?tag=shotsim-22",
+    "image_url": "https://m.media-amazon.com/images/I/61IzDAl0jUL._AC_SX679_.jpg",
+    "ai_features": {
+      "vram_allocation": "Check BIOS",
+      "oculink_support": true,
+      "thermal_design": "Active Cooling",
+      "expansion_score": 5,
+      "ai_inference_suitability": "Standard Use"
+    },
+    "notes": "Generated from ShotPC pipeline"
+  },
+  {
+    "id": "SP004A",
     "brand": "GMKtec",
     "model": "K16 ミニPC ゲーミングデスクトップPCAMD Ryzen 7 7735HS(8コア／12スレッド 最大4.75GHz) 32GB LPDDR5 6400M",
+    "source_ids": {
+      "asin": "B0GG9TLRFD",
+      "model_id": "SP004",
+      "variant_id": "SP004A"
+    },
     "cpu": {
       "name": "Ryzen 7 7735HS",
       "cores": 8,
@@ -617,6 +804,7 @@
     "coupon_jpy": 0,
     "effective_price_jpy": 133749,
     "stock": "in_stock",
+    "fetched_at": "2026-04-09T16:03:33",
     "amazon_url": "https://www.amazon.co.jp/dp/B0GG9TLRFD?tag=shotsim-22",
     "image_url": "https://m.media-amazon.com/images/I/616mfZEKHbL._AC_SX679_.jpg",
     "ai_features": {
@@ -629,9 +817,14 @@
     "notes": "Generated from ShotPC pipeline"
   },
   {
-    "id": "AMZ-B0GGDYVQQS",
+    "id": "SP051A",
     "brand": "GMKtec",
     "model": "M5 Ultra ゲーミングミニPC AMD Ryzen 7 7730U(7430U／5825U アップグレード版) 16GB RAM 512GB SSD デュ",
+    "source_ids": {
+      "asin": "B0GGDYVQQS",
+      "model_id": "SP051",
+      "variant_id": "SP051A"
+    },
     "cpu": {
       "name": "Ryzen 7 7730U",
       "cores": 8,
@@ -654,6 +847,7 @@
     "coupon_jpy": 0,
     "effective_price_jpy": 78749,
     "stock": "in_stock",
+    "fetched_at": "2026-04-09T16:10:12",
     "amazon_url": "https://www.amazon.co.jp/dp/B0GGDYVQQS?tag=shotsim-22",
     "image_url": "https://m.media-amazon.com/images/I/61Ry5ir++SL._AC_SX679_.jpg",
     "ai_features": {
@@ -666,9 +860,14 @@
     "notes": "Generated from ShotPC pipeline"
   },
   {
-    "id": "AMZ-B0GD6SBH7B",
+    "id": "SP003A",
     "brand": "GMKtec",
     "model": "M6 Ultra ミニPC",
+    "source_ids": {
+      "asin": "B0GD6SBH7B",
+      "model_id": "SP003",
+      "variant_id": "SP003A"
+    },
     "cpu": {
       "name": "Ryzen 5 7640HS",
       "cores": 6,
@@ -691,6 +890,7 @@
     "coupon_jpy": 0,
     "effective_price_jpy": 78999,
     "stock": "in_stock",
+    "fetched_at": "2026-04-09T16:03:22",
     "amazon_url": "https://www.amazon.co.jp/dp/B0GD6SBH7B?tag=shotsim-22",
     "image_url": "https://m.media-amazon.com/images/I/61HYKY2cTnL._AC_SX679_.jpg",
     "ai_features": {
@@ -703,9 +903,14 @@
     "notes": "Generated from ShotPC pipeline"
   },
   {
-    "id": "AMZ-B0FLPCL75V",
+    "id": "SP002A",
     "brand": "GMKtec",
     "model": "M6 Ultra ミニPC | AMD Ryzen 5 7640HS",
+    "source_ids": {
+      "asin": "B0FLPCL75V",
+      "model_id": "SP002",
+      "variant_id": "SP002A"
+    },
     "cpu": {
       "name": "Ryzen 5 7640HS",
       "cores": 6,
@@ -728,6 +933,7 @@
     "coupon_jpy": 0,
     "effective_price_jpy": 81999,
     "stock": "in_stock",
+    "fetched_at": "2026-04-09T16:03:11",
     "amazon_url": "https://www.amazon.co.jp/dp/B0FLPCL75V?tag=shotsim-22",
     "image_url": "https://m.media-amazon.com/images/I/61ndvhBxDZL._AC_SX679_.jpg",
     "ai_features": {
@@ -740,9 +946,14 @@
     "notes": "Generated from ShotPC pipeline"
   },
   {
-    "id": "AMZ-B0GKHHQ1YZ",
+    "id": "SP032A",
     "brand": "GMKtec",
     "model": "M6 Ultra ミニPC 【 AMD Ryzen 5 7640HS",
+    "source_ids": {
+      "asin": "B0GKHHQ1YZ",
+      "model_id": "SP032",
+      "variant_id": "SP032A"
+    },
     "cpu": {
       "name": "Ryzen 5 7640HS",
       "cores": 6,
@@ -765,6 +976,7 @@
     "coupon_jpy": 0,
     "effective_price_jpy": 78822,
     "stock": "in_stock",
+    "fetched_at": "2026-04-09T16:07:48",
     "amazon_url": "https://www.amazon.co.jp/dp/B0GKHHQ1YZ?tag=shotsim-22",
     "image_url": "https://m.media-amazon.com/images/I/71ar3XvF7kL._AC_SX679_.jpg",
     "ai_features": {
@@ -777,9 +989,14 @@
     "notes": "Generated from ShotPC pipeline"
   },
   {
-    "id": "AMZ-B0DPCH1232",
+    "id": "SP013A",
     "brand": "GMKtec",
     "model": "NucBox K11 ミニpc AMD Ryzen9 8945HS 8コア/16スレッド5.2GHz DDR5 32GB+1TB PCIe 4.0 M.2 22",
+    "source_ids": {
+      "asin": "B0DPCH1232",
+      "model_id": "SP013",
+      "variant_id": "SP013A"
+    },
     "cpu": {
       "name": "Ryzen 9 8945HS",
       "cores": 8,
@@ -802,6 +1019,7 @@
     "coupon_jpy": 0,
     "effective_price_jpy": 138500,
     "stock": "in_stock",
+    "fetched_at": "2026-04-09T16:04:46",
     "amazon_url": "https://www.amazon.co.jp/dp/B0DPCH1232?tag=shotsim-22",
     "image_url": "https://m.media-amazon.com/images/I/61AbLcN8vIL._AC_SX679_.jpg",
     "ai_features": {
@@ -814,9 +1032,57 @@
     "notes": "Generated from ShotPC pipeline"
   },
   {
-    "id": "AMZ-B0GD6VK2RL",
+    "id": "SP064A",
+    "brand": "GMKtec",
+    "model": "NucBox M7 UltraミニPC AMD Ryzen 7 Pro 6850U (8コア/16スレッド 最大4.70GHz) | 16GB DDR5 RAM",
+    "source_ids": {
+      "asin": "B0FY2JCNM7",
+      "model_id": "SP064",
+      "variant_id": "SP064A"
+    },
+    "cpu": {
+      "name": "Ryzen 7 Pro 6850U",
+      "cores": null,
+      "threads": null,
+      "score": null
+    },
+    "ram": {
+      "capacity_gb": 16,
+      "type": "DDR5/DDR4",
+      "slots": null,
+      "max_capacity_gb": null
+    },
+    "storage": {
+      "capacity_gb": 1024,
+      "type": "NVMe",
+      "slots": null
+    },
+    "gpu": "Integrated Graphics",
+    "price_jpy": 78999,
+    "coupon_jpy": 0,
+    "effective_price_jpy": 78999,
+    "stock": "in_stock",
+    "fetched_at": "2026-04-17T18:02:56",
+    "amazon_url": "https://www.amazon.co.jp/dp/B0FY2JCNM7?tag=shotsim-22",
+    "image_url": "https://m.media-amazon.com/images/I/61EkevolCYL._AC_SX679_.jpg",
+    "ai_features": {
+      "vram_allocation": "Check BIOS",
+      "oculink_support": true,
+      "thermal_design": "Active Cooling",
+      "expansion_score": 5,
+      "ai_inference_suitability": "Standard Use"
+    },
+    "notes": "Generated from ShotPC pipeline"
+  },
+  {
+    "id": "SP027A",
     "brand": "GMKtec",
     "model": "NucBox M8 ミニpc AMD Ryzen 5 PRO 6650H LPDDR5 16GB+512GB PCIe 4.0 M.2 2280 AMD Rad",
+    "source_ids": {
+      "asin": "B0GD6VK2RL",
+      "model_id": "SP027",
+      "variant_id": "SP027A"
+    },
     "cpu": {
       "name": "Ryzen 5 PRO 6650H",
       "cores": null,
@@ -839,6 +1105,7 @@
     "coupon_jpy": 0,
     "effective_price_jpy": 59999,
     "stock": "in_stock",
+    "fetched_at": "2026-04-09T16:07:06",
     "amazon_url": "https://www.amazon.co.jp/dp/B0GD6VK2RL?tag=shotsim-22",
     "image_url": "https://m.media-amazon.com/images/I/61cukenrhML._AC_SX679_.jpg",
     "ai_features": {
@@ -851,9 +1118,57 @@
     "notes": "Generated from ShotPC pipeline"
   },
   {
-    "id": "AMZ-B0GDGC1PVM",
+    "id": "SP066A",
+    "brand": "GMKtec",
+    "model": "Nucbox M3 Windows 11 Pro ミニPC インテル Core i5 12450H Mini PC",
+    "source_ids": {
+      "asin": "B0CHJTN7GG",
+      "model_id": "SP066",
+      "variant_id": "SP066A"
+    },
+    "cpu": {
+      "name": "Core i5-12450H",
+      "cores": null,
+      "threads": null,
+      "score": null
+    },
+    "ram": {
+      "capacity_gb": 16,
+      "type": "DDR5/DDR4",
+      "slots": null,
+      "max_capacity_gb": null
+    },
+    "storage": {
+      "capacity_gb": 512,
+      "type": "NVMe",
+      "slots": null
+    },
+    "gpu": "Integrated Graphics",
+    "price_jpy": 66999,
+    "coupon_jpy": 0,
+    "effective_price_jpy": 66999,
+    "stock": "in_stock",
+    "fetched_at": "2026-04-17T18:03:10",
+    "amazon_url": "https://www.amazon.co.jp/dp/B0CHJTN7GG?tag=shotsim-22",
+    "image_url": "https://m.media-amazon.com/images/I/51FCkEVp8LL._AC_SX679_.jpg",
+    "ai_features": {
+      "vram_allocation": "Check BIOS",
+      "oculink_support": false,
+      "thermal_design": "Active Cooling",
+      "expansion_score": 5,
+      "ai_inference_suitability": "Standard Use"
+    },
+    "notes": "Generated from ShotPC pipeline"
+  },
+  {
+    "id": "SP059A",
     "brand": "GMKtec",
     "model": "【 ミニPC 最強 ゲーミング PC】 ミニPC 【AMD Ryzen7 8845HS搭載 R7 H255/8745HS より速い】128GB DDR5+8TB",
+    "source_ids": {
+      "asin": "B0GDGC1PVM",
+      "model_id": "SP059",
+      "variant_id": "SP059A"
+    },
     "cpu": {
       "name": "Ryzen 7 8845HS",
       "cores": 8,
@@ -876,6 +1191,7 @@
     "coupon_jpy": 0,
     "effective_price_jpy": 139880,
     "stock": "in_stock",
+    "fetched_at": "2026-04-09T16:11:46",
     "amazon_url": "https://www.amazon.co.jp/dp/B0GDGC1PVM?tag=shotsim-22",
     "image_url": "https://m.media-amazon.com/images/I/61IRmlvPHyL._AC_SX679_.jpg",
     "ai_features": {
@@ -888,9 +1204,57 @@
     "notes": "Generated from ShotPC pipeline"
   },
   {
-    "id": "AMZ-B0GHN51K3K",
+    "id": "SP070A",
+    "brand": "GMKtec",
+    "model": "【AI PC AI性能に 桁違いの高性能】  K13 ミニPC ゲーミング Intel Core Ultra 7 256V(最大4.8GHz)/ 16GB LP",
+    "source_ids": {
+      "asin": "B0GGB39TZ4",
+      "model_id": "SP070",
+      "variant_id": "SP070A"
+    },
+    "cpu": {
+      "name": "Core Ultra 7 256V",
+      "cores": null,
+      "threads": null,
+      "score": null
+    },
+    "ram": {
+      "capacity_gb": 16,
+      "type": "DDR5/DDR4",
+      "slots": null,
+      "max_capacity_gb": null
+    },
+    "storage": {
+      "capacity_gb": 512,
+      "type": "NVMe",
+      "slots": null
+    },
+    "gpu": "Integrated Graphics",
+    "price_jpy": 105599,
+    "coupon_jpy": 0,
+    "effective_price_jpy": 105599,
+    "stock": "in_stock",
+    "fetched_at": "2026-04-17T18:03:34",
+    "amazon_url": "https://www.amazon.co.jp/dp/B0GGB39TZ4?tag=shotsim-22",
+    "image_url": "https://m.media-amazon.com/images/I/61ONswPrUrL._AC_SX679_.jpg",
+    "ai_features": {
+      "vram_allocation": "Check BIOS",
+      "oculink_support": false,
+      "thermal_design": "Active Cooling",
+      "expansion_score": 5,
+      "ai_inference_suitability": "Standard Use"
+    },
+    "notes": "Generated from ShotPC pipeline"
+  },
+  {
+    "id": "SP037A",
     "brand": "GMKtec",
     "model": "【Intel Core i3-10110U初登場】 ミニPC G3 Pro mini pc 最大4.1GHz 64GB DDR4+8TB SSD拡張可能｜｜ミニ",
+    "source_ids": {
+      "asin": "B0GHN51K3K",
+      "model_id": "SP037",
+      "variant_id": "SP037A"
+    },
     "cpu": {
       "name": "Core i3-10110U",
       "cores": null,
@@ -913,6 +1277,7 @@
     "coupon_jpy": 0,
     "effective_price_jpy": 47290,
     "stock": "in_stock",
+    "fetched_at": "2026-04-09T16:08:28",
     "amazon_url": "https://www.amazon.co.jp/dp/B0GHN51K3K?tag=shotsim-22",
     "image_url": "https://m.media-amazon.com/images/I/71i9e6tpCoL._AC_SX679_.jpg",
     "ai_features": {
@@ -925,9 +1290,14 @@
     "notes": "Generated from ShotPC pipeline"
   },
   {
-    "id": "AMZ-B0FR7MLNGX",
+    "id": "SP019A",
     "brand": "GMKtec",
     "model": "【ミニPC Ryzen 5 3500U搭載 N150より速い】 G10 mini pc 動作より安定最大3.7GHz 4コア8スレッド DDR4 16GB+1T",
+    "source_ids": {
+      "asin": "B0FR7MLNGX",
+      "model_id": "SP019",
+      "variant_id": "SP019A"
+    },
     "cpu": {
       "name": "Ryzen 5 3500U",
       "cores": null,
@@ -950,6 +1320,7 @@
     "coupon_jpy": 0,
     "effective_price_jpy": 49961,
     "stock": "in_stock",
+    "fetched_at": "2026-04-09T16:05:44",
     "amazon_url": "https://www.amazon.co.jp/dp/B0FR7MLNGX?tag=shotsim-22",
     "image_url": "https://m.media-amazon.com/images/I/61yfLY6-SYL._AC_SX679_.jpg",
     "ai_features": {
@@ -962,9 +1333,14 @@
     "notes": "Generated from ShotPC pipeline"
   },
   {
-    "id": "AMZ-B0GD6QZBLD",
+    "id": "SP050A",
     "brand": "GMKtec",
     "model": "【ミニPC Ryzen 5 3500U搭載 N150より速い】 G10 mini pc 動作より安定最大3.7GHz 4コア8スレッド DDR4 16GB+51",
+    "source_ids": {
+      "asin": "B0GD6QZBLD",
+      "model_id": "SP050",
+      "variant_id": "SP050A"
+    },
     "cpu": {
       "name": "Ryzen 5 3500U",
       "cores": null,
@@ -987,6 +1363,7 @@
     "coupon_jpy": 0,
     "effective_price_jpy": 49961,
     "stock": "in_stock",
+    "fetched_at": "2026-04-09T16:10:06",
     "amazon_url": "https://www.amazon.co.jp/dp/B0GD6QZBLD?tag=shotsim-22",
     "image_url": "https://m.media-amazon.com/images/I/61iXajhyTaL._AC_SX679_.jpg",
     "ai_features": {
@@ -999,9 +1376,14 @@
     "notes": "Generated from ShotPC pipeline"
   },
   {
-    "id": "AMZ-B0GQGY13FB",
+    "id": "SP042A",
     "brand": "GMKtec",
     "model": "【ミニPC Ryzen 5 3500U搭載】 G10 mini pc 動作より安定最大3.7GHz 4コア8スレッドWiFi5/BT5.0 2.5G LAN対応",
+    "source_ids": {
+      "asin": "B0GQGY13FB",
+      "model_id": "SP042",
+      "variant_id": "SP042A"
+    },
     "cpu": {
       "name": "Ryzen 5 3500U",
       "cores": null,
@@ -1024,6 +1406,7 @@
     "coupon_jpy": 0,
     "effective_price_jpy": 62499,
     "stock": "in_stock",
+    "fetched_at": "2026-04-09T16:09:06",
     "amazon_url": "https://www.amazon.co.jp/dp/B0GQGY13FB?tag=shotsim-22",
     "image_url": "https://m.media-amazon.com/images/I/61yfLY6-SYL._AC_SX679_.jpg",
     "ai_features": {
@@ -1036,9 +1419,14 @@
     "notes": "Generated from ShotPC pipeline"
   },
   {
-    "id": "AMZ-B0G8D9L1WP",
+    "id": "SP012A",
     "brand": "GMKtec",
     "model": "【最新AI搭載 OCuLink対応】Intel Core Ultra 5 125U プロセッサ (最大4.3GHz) 搭載",
+    "source_ids": {
+      "asin": "B0G8D9L1WP",
+      "model_id": "SP012",
+      "variant_id": "SP012A"
+    },
     "cpu": {
       "name": "Core Ultra 5 125U",
       "cores": 12,
@@ -1061,6 +1449,7 @@
     "coupon_jpy": 0,
     "effective_price_jpy": 144629,
     "stock": "in_stock",
+    "fetched_at": "2026-04-09T16:04:38",
     "amazon_url": "https://www.amazon.co.jp/dp/B0G8D9L1WP?tag=shotsim-22",
     "image_url": "https://m.media-amazon.com/images/I/61HOjuZ3TNL._AC_SX679_.jpg",
     "ai_features": {
@@ -1073,14 +1462,62 @@
     "notes": "Generated from ShotPC pipeline"
   },
   {
-    "id": "AMZ-B0FRB19ZZ1",
+    "id": "SP067A",
     "brand": "GMKtec",
-    "model": "ゲーミングミニPC AMD Ryzen 7 7730U (8C/16T Max4.5GHz) mini pc 16GB SSD 512GB Windows 11",
+    "model": "【次世代AI ミニ PC】 ミニpc K13 Intel Core Ultra 7 256V 最大4.8GHz 115TOPS LPDDR5X 16GB SSD",
+    "source_ids": {
+      "asin": "B0GHNTCDK8",
+      "model_id": "SP067",
+      "variant_id": "SP067A"
+    },
     "cpu": {
-      "name": "Ryzen 7 7730U",
+      "name": "Core Ultra 7 256V",
       "cores": null,
       "threads": null,
       "score": null
+    },
+    "ram": {
+      "capacity_gb": 16,
+      "type": "DDR5/DDR4",
+      "slots": null,
+      "max_capacity_gb": 16
+    },
+    "storage": {
+      "capacity_gb": 1024,
+      "type": "NVMe",
+      "slots": null
+    },
+    "gpu": "Integrated Graphics",
+    "price_jpy": 113599,
+    "coupon_jpy": 0,
+    "effective_price_jpy": 113599,
+    "stock": "in_stock",
+    "fetched_at": "2026-04-17T18:03:15",
+    "amazon_url": "https://www.amazon.co.jp/dp/B0GHNTCDK8?tag=shotsim-22",
+    "image_url": "https://m.media-amazon.com/images/I/51W9rJ0IudL._AC_SX679_.jpg",
+    "ai_features": {
+      "vram_allocation": "Check BIOS",
+      "oculink_support": false,
+      "thermal_design": "Active Cooling",
+      "expansion_score": 5,
+      "ai_inference_suitability": "Standard Use"
+    },
+    "notes": "Generated from ShotPC pipeline"
+  },
+  {
+    "id": "SP063B",
+    "brand": "GMKtec",
+    "model": "ゲーミングミニPC AMD Ryzen 7 7730U (8C/16T Max4.5GHz) mini pc 16GB SSD 512GB Windows 11",
+    "source_ids": {
+      "asin": "B0CCSLMGM1",
+      "model_id": "SP063",
+      "variant_id": "SP063B"
+    },
+    "cpu": {
+      "name": "Ryzen 7 7730U",
+      "cores": 8,
+      "threads": 16,
+      "score": 18200
     },
     "ram": {
       "capacity_gb": 16,
@@ -1093,11 +1530,55 @@
       "type": "NVMe",
       "slots": null
     },
-    "gpu": "Integrated Graphics",
+    "gpu": "Radeon Graphics",
     "price_jpy": 59999,
     "coupon_jpy": 0,
     "effective_price_jpy": 59999,
     "stock": "in_stock",
+    "fetched_at": "2026-04-17T18:02:49",
+    "amazon_url": "https://www.amazon.co.jp/dp/B0CCSLMGM1?tag=shotsim-22",
+    "image_url": "https://m.media-amazon.com/images/I/61sE+bFQuQL._AC_SX679_.jpg",
+    "ai_features": {
+      "vram_allocation": "Check BIOS",
+      "oculink_support": false,
+      "thermal_design": "Active Cooling",
+      "expansion_score": 5,
+      "ai_inference_suitability": "Standard Use"
+    },
+    "notes": "Generated from ShotPC pipeline"
+  },
+  {
+    "id": "SP063A",
+    "brand": "GMKtec",
+    "model": "ゲーミングミニPC AMD Ryzen 7 7730U (8C/16T Max4.5GHz) mini pc 16GB SSD 512GB Windows 11",
+    "source_ids": {
+      "asin": "B0FRB19ZZ1",
+      "model_id": "SP063",
+      "variant_id": "SP063A"
+    },
+    "cpu": {
+      "name": "Ryzen 7 7730U",
+      "cores": 8,
+      "threads": 16,
+      "score": 18200
+    },
+    "ram": {
+      "capacity_gb": 16,
+      "type": "DDR5/DDR4",
+      "slots": null,
+      "max_capacity_gb": null
+    },
+    "storage": {
+      "capacity_gb": 512,
+      "type": "NVMe",
+      "slots": null
+    },
+    "gpu": "Radeon Graphics",
+    "price_jpy": 59999,
+    "coupon_jpy": 0,
+    "effective_price_jpy": 59999,
+    "stock": "in_stock",
+    "fetched_at": "2026-04-17T13:00:54",
     "amazon_url": "https://www.amazon.co.jp/dp/B0FRB19ZZ1?tag=shotsim-22",
     "image_url": "https://m.media-amazon.com/images/I/61sE+bFQuQL._AC_SX679_.jpg",
     "ai_features": {
@@ -1110,9 +1591,14 @@
     "notes": "Generated from ShotPC pipeline"
   },
   {
-    "id": "AMZ-B0GK6DCRF2",
+    "id": "SP033A",
     "brand": "GMKtec",
     "model": "ミニPC AMD Ryzen 5 7640HS(最大5.0GHz)搭載｜DDR5 128GB+8TB拡張可 SSD拡張可 Win11 Pro｜ミニPC Ryze",
+    "source_ids": {
+      "asin": "B0GK6DCRF2",
+      "model_id": "SP033",
+      "variant_id": "SP033A"
+    },
     "cpu": {
       "name": "Ryzen 5 7640HS",
       "cores": 6,
@@ -1135,6 +1621,7 @@
     "coupon_jpy": 0,
     "effective_price_jpy": 69499,
     "stock": "in_stock",
+    "fetched_at": "2026-04-09T16:07:57",
     "amazon_url": "https://www.amazon.co.jp/dp/B0GK6DCRF2?tag=shotsim-22",
     "image_url": "https://m.media-amazon.com/images/I/61sE+bFQuQL._AC_SX679_.jpg",
     "ai_features": {
@@ -1147,9 +1634,14 @@
     "notes": "Generated from ShotPC pipeline"
   },
   {
-    "id": "AMZ-B0FLQGQV3J",
+    "id": "SP062A",
     "brand": "GMKtec",
     "model": "ミニPC AMD Ryzen 5 7640HS(最大5.0GHz)搭載｜DDR5 128GB+8TB拡張可 SSD拡張可 Windows11 Pro｜ミニPC",
+    "source_ids": {
+      "asin": "B0FLQGQV3J",
+      "model_id": "SP062",
+      "variant_id": "SP062A"
+    },
     "cpu": {
       "name": "Ryzen 5 7640HS",
       "cores": 6,
@@ -1172,6 +1664,7 @@
     "coupon_jpy": 0,
     "effective_price_jpy": 70499,
     "stock": "in_stock",
+    "fetched_at": "2026-04-09T16:12:07",
     "amazon_url": "https://www.amazon.co.jp/dp/B0FLQGQV3J?tag=shotsim-22",
     "image_url": "https://m.media-amazon.com/images/I/71ar3XvF7kL._AC_SX679_.jpg",
     "ai_features": {
@@ -1184,9 +1677,14 @@
     "notes": "Generated from ShotPC pipeline"
   },
   {
-    "id": "AMZ-B0GQGCVLGR",
+    "id": "SP001A",
     "brand": "GMKtec",
     "model": "ミニPC AMD Ryzen 5 PRO 6650H 【Ryzen 7 5825Uより速い】DDR5 16GB + M.2 2280 512GB(16TB拡張可",
+    "source_ids": {
+      "asin": "B0GQGCVLGR",
+      "model_id": "SP001",
+      "variant_id": "SP001A"
+    },
     "cpu": {
       "name": "Ryzen 5 PRO 6650H",
       "cores": null,
@@ -1209,6 +1707,7 @@
     "coupon_jpy": 0,
     "effective_price_jpy": 49999,
     "stock": "in_stock",
+    "fetched_at": "2026-04-09T19:01:00",
     "amazon_url": "https://www.amazon.co.jp/dp/B0GQGCVLGR?tag=shotsim-22",
     "image_url": "https://m.media-amazon.com/images/I/61cukenrhML._AC_SX679_.jpg",
     "ai_features": {
@@ -1221,9 +1720,14 @@
     "notes": "Generated from ShotPC pipeline"
   },
   {
-    "id": "AMZ-B0GQGZCXDV",
+    "id": "SP039A",
     "brand": "GMKtec",
     "model": "ミニPC AMD Ryzen 7 7730U (アップグレード版 7430U/5825U) 搭載",
+    "source_ids": {
+      "asin": "B0GQGZCXDV",
+      "model_id": "SP039",
+      "variant_id": "SP039A"
+    },
     "cpu": {
       "name": "Ryzen 7 7730U",
       "cores": 8,
@@ -1246,6 +1750,7 @@
     "coupon_jpy": 0,
     "effective_price_jpy": 103999,
     "stock": "in_stock",
+    "fetched_at": "2026-04-09T16:08:43",
     "amazon_url": "https://www.amazon.co.jp/dp/B0GQGZCXDV?tag=shotsim-22",
     "image_url": "https://m.media-amazon.com/images/I/61a7BW4lSBL._AC_SX679_.jpg",
     "ai_features": {
@@ -1258,9 +1763,14 @@
     "notes": "Generated from ShotPC pipeline"
   },
   {
-    "id": "AMZ-B0DB7XGNDD",
+    "id": "SP055A",
     "brand": "GMKtec",
     "model": "ミニPC AMD Ryzen 7 PRO 6850H搭載 【96GB DDR5 +16TB SSD (拡張可能)】Oculink 搭載 USB4.0*2 Win",
+    "source_ids": {
+      "asin": "B0DB7XGNDD",
+      "model_id": "SP055",
+      "variant_id": "SP055A"
+    },
     "cpu": {
       "name": "Ryzen 7 PRO 6850H",
       "cores": null,
@@ -1283,6 +1793,7 @@
     "coupon_jpy": 0,
     "effective_price_jpy": 87580,
     "stock": "in_stock",
+    "fetched_at": "2026-04-09T16:10:58",
     "amazon_url": "https://www.amazon.co.jp/dp/B0DB7XGNDD?tag=shotsim-22",
     "image_url": "https://m.media-amazon.com/images/I/61h7WhLpj6L._AC_SX679_.jpg",
     "ai_features": {
@@ -1295,9 +1806,14 @@
     "notes": "Generated from ShotPC pipeline"
   },
   {
-    "id": "AMZ-B0GS1ZM6DW",
+    "id": "SP057A",
     "brand": "GMKtec",
     "model": "ミニPC AMD Ryzen 7 Pro 6850U 【64GB DDR5+ 16TB SSD 拡張】 Oculink USB4.0×2 HDMI2.1 8K@",
+    "source_ids": {
+      "asin": "B0GS1ZM6DW",
+      "model_id": "SP057",
+      "variant_id": "SP057A"
+    },
     "cpu": {
       "name": "Ryzen 7 Pro 6850U",
       "cores": null,
@@ -1320,6 +1836,7 @@
     "coupon_jpy": 0,
     "effective_price_jpy": 121238,
     "stock": "in_stock",
+    "fetched_at": "2026-04-09T16:11:29",
     "amazon_url": "https://www.amazon.co.jp/dp/B0GS1ZM6DW?tag=shotsim-22",
     "image_url": "https://m.media-amazon.com/images/I/61wNqrpAo0L._AC_SX679_.jpg",
     "ai_features": {
@@ -1332,9 +1849,14 @@
     "notes": "Generated from ShotPC pipeline"
   },
   {
-    "id": "AMZ-B0G3PLYN89",
+    "id": "SP052A",
     "brand": "GMKtec",
     "model": "ミニPC AMD Ryzen7 8845HS搭載 【R7 H255/8745HS より速い】128GB DDR5+8TB SSD拡張可｜Oculink+USB4",
+    "source_ids": {
+      "asin": "B0G3PLYN89",
+      "model_id": "SP052",
+      "variant_id": "SP052A"
+    },
     "cpu": {
       "name": "Ryzen 7 8845HS",
       "cores": 8,
@@ -1357,6 +1879,7 @@
     "coupon_jpy": 0,
     "effective_price_jpy": 58999,
     "stock": "in_stock",
+    "fetched_at": "2026-04-09T16:10:24",
     "amazon_url": "https://www.amazon.co.jp/dp/B0G3PLYN89?tag=shotsim-22",
     "image_url": "https://m.media-amazon.com/images/I/61IRmlvPHyL._AC_SX679_.jpg",
     "ai_features": {
@@ -1369,9 +1892,14 @@
     "notes": "Generated from ShotPC pipeline"
   },
   {
-    "id": "AMZ-B0GGBF6YMK",
+    "id": "SP011A",
     "brand": "GMKtec",
     "model": "ミニPC G3S 第12世代 Intel N95 【N97より高速】Windows11 Pro 搭載 ミニPC｜4コア4スレッド｜最大3.4GHz｜小型PC 超",
+    "source_ids": {
+      "asin": "B0GGBF6YMK",
+      "model_id": "SP011",
+      "variant_id": "SP011A"
+    },
     "cpu": {
       "name": "N95",
       "cores": null,
@@ -1394,6 +1922,7 @@
     "coupon_jpy": 0,
     "effective_price_jpy": 37045,
     "stock": "in_stock",
+    "fetched_at": "2026-04-09T16:04:30",
     "amazon_url": "https://www.amazon.co.jp/dp/B0GGBF6YMK?tag=shotsim-22",
     "image_url": "https://m.media-amazon.com/images/I/71Ws6DTRROL._AC_SX679_.jpg",
     "ai_features": {
@@ -1406,9 +1935,14 @@
     "notes": "Generated from ShotPC pipeline"
   },
   {
-    "id": "AMZ-B0GG9PGM2C",
+    "id": "SP043A",
     "brand": "GMKtec",
     "model": "ミニPC Intel Core Ultra 7 256V (8コア/8スレッド 最大4.8GHz) 16GB LPDDR5X 512GB PCIe 4.0 SS",
+    "source_ids": {
+      "asin": "B0GG9PGM2C",
+      "model_id": "SP043",
+      "variant_id": "SP043A"
+    },
     "cpu": {
       "name": "Core Ultra 7 256V",
       "cores": null,
@@ -1431,6 +1965,7 @@
     "coupon_jpy": 0,
     "effective_price_jpy": 131999,
     "stock": "in_stock",
+    "fetched_at": "2026-04-09T16:09:13",
     "amazon_url": "https://www.amazon.co.jp/dp/B0GG9PGM2C?tag=shotsim-22",
     "image_url": "https://m.media-amazon.com/images/I/61J59lxp1DL._AC_SX679_.jpg",
     "ai_features": {
@@ -1443,9 +1978,14 @@
     "notes": "Generated from ShotPC pipeline"
   },
   {
-    "id": "AMZ-B0GSKGBXM1",
+    "id": "SP026A",
     "brand": "GMKtec",
     "model": "ミニPC K8 Plus AMD Ryzen 7 8845HS(8コア/16スレッド",
+    "source_ids": {
+      "asin": "B0GSKGBXM1",
+      "model_id": "SP026",
+      "variant_id": "SP026A"
+    },
     "cpu": {
       "name": "Ryzen 7 8845HS",
       "cores": 8,
@@ -1468,6 +2008,7 @@
     "coupon_jpy": 0,
     "effective_price_jpy": 116095,
     "stock": "in_stock",
+    "fetched_at": "2026-04-09T16:07:00",
     "amazon_url": "https://www.amazon.co.jp/dp/B0GSKGBXM1?tag=shotsim-22",
     "image_url": "https://m.media-amazon.com/images/I/61tCtSNtZQL._AC_SX679_.jpg",
     "ai_features": {
@@ -1480,9 +2021,14 @@
     "notes": "Generated from ShotPC pipeline"
   },
   {
-    "id": "AMZ-B0GD4S2JPC",
+    "id": "SP054A",
     "brand": "GMKtec",
     "model": "ミニPC M8 AMD Ryzen 5 PRO 6650H 【Ryzen 7 5825Uより速い】DDR5 16GB + M.2 2280 512GB(16TB",
+    "source_ids": {
+      "asin": "B0GD4S2JPC",
+      "model_id": "SP054",
+      "variant_id": "SP054A"
+    },
     "cpu": {
       "name": "Ryzen 5 PRO 6650H",
       "cores": null,
@@ -1505,6 +2051,7 @@
     "coupon_jpy": 0,
     "effective_price_jpy": 67249,
     "stock": "in_stock",
+    "fetched_at": "2026-04-09T16:10:45",
     "amazon_url": "https://www.amazon.co.jp/dp/B0GD4S2JPC?tag=shotsim-22",
     "image_url": "https://m.media-amazon.com/images/I/61cukenrhML._AC_SX679_.jpg",
     "ai_features": {
@@ -1517,9 +2064,14 @@
     "notes": "Generated from ShotPC pipeline"
   },
   {
-    "id": "AMZ-B0GDGHZ9LN",
+    "id": "SP056A",
     "brand": "GMKtec",
     "model": "ミニPC Ryzen 7 7730U搭載【64GB DDR4 16TB M.2 SSD(拡張可能)】 8コア16スレッド MAX4.5GHz Win11 pro",
+    "source_ids": {
+      "asin": "B0GDGHZ9LN",
+      "model_id": "SP056",
+      "variant_id": "SP056A"
+    },
     "cpu": {
       "name": "Ryzen 7 7730U",
       "cores": 8,
@@ -1542,6 +2094,7 @@
     "coupon_jpy": 0,
     "effective_price_jpy": 139880,
     "stock": "in_stock",
+    "fetched_at": "2026-04-09T16:11:11",
     "amazon_url": "https://www.amazon.co.jp/dp/B0GDGHZ9LN?tag=shotsim-22",
     "image_url": "https://m.media-amazon.com/images/I/617st73NpML._AC_SX679_.jpg",
     "ai_features": {
@@ -1554,9 +2107,14 @@
     "notes": "Generated from ShotPC pipeline"
   },
   {
-    "id": "AMZ-B0GD6ZS99W",
+    "id": "SP036A",
     "brand": "GMKtec",
     "model": "ミニPC | AMD Ryzen 5 7640HS",
+    "source_ids": {
+      "asin": "B0GD6ZS99W",
+      "model_id": "SP036",
+      "variant_id": "SP036A"
+    },
     "cpu": {
       "name": "Ryzen 5 7640HS",
       "cores": 6,
@@ -1579,6 +2137,7 @@
     "coupon_jpy": 0,
     "effective_price_jpy": 81999,
     "stock": "in_stock",
+    "fetched_at": "2026-04-09T16:08:19",
     "amazon_url": "https://www.amazon.co.jp/dp/B0GD6ZS99W?tag=shotsim-22",
     "image_url": "https://m.media-amazon.com/images/I/61FHk26k5GL._AC_SX679_.jpg",
     "ai_features": {
@@ -1591,9 +2150,14 @@
     "notes": "Generated from ShotPC pipeline"
   },
   {
-    "id": "AMZ-B0G3PMGNQ4",
+    "id": "SP041A",
     "brand": "GMKtec",
     "model": "ミニPC 【G10 ブラック 初登場 Ryzen 5 3500U搭載 R3 4300Uより速い】 64GB DDR4+16TB SSD拡張対応｜動作より安定 最",
+    "source_ids": {
+      "asin": "B0G3PMGNQ4",
+      "model_id": "SP041",
+      "variant_id": "SP041A"
+    },
     "cpu": {
       "name": "Ryzen 5 3500U",
       "cores": null,
@@ -1616,6 +2180,7 @@
     "coupon_jpy": 0,
     "effective_price_jpy": 58812,
     "stock": "in_stock",
+    "fetched_at": "2026-04-09T16:08:58",
     "amazon_url": "https://www.amazon.co.jp/dp/B0G3PMGNQ4?tag=shotsim-22",
     "image_url": "https://m.media-amazon.com/images/I/61yfLY6-SYL._AC_SX679_.jpg",
     "ai_features": {
@@ -1628,9 +2193,14 @@
     "notes": "Generated from ShotPC pipeline"
   },
   {
-    "id": "AMZ-B0GGBR5YFF",
+    "id": "SP058A",
     "brand": "GMKtec",
     "model": "ミニPC 初登場 AMD Ryzen7 7735HS搭載【DDR5 32GB 6400MT/s +1TB SSD】Oculink搭載 USB4.0 WiFi6E",
+    "source_ids": {
+      "asin": "B0GGBR5YFF",
+      "model_id": "SP058",
+      "variant_id": "SP058A"
+    },
     "cpu": {
       "name": "Ryzen 7 7735HS",
       "cores": 8,
@@ -1653,6 +2223,7 @@
     "coupon_jpy": 0,
     "effective_price_jpy": 99999,
     "stock": "in_stock",
+    "fetched_at": "2026-04-09T16:11:37",
     "amazon_url": "https://www.amazon.co.jp/dp/B0GGBR5YFF?tag=shotsim-22",
     "image_url": "https://m.media-amazon.com/images/I/613wYxrJfkL._AC_SX679_.jpg",
     "ai_features": {
@@ -1665,9 +2236,57 @@
     "notes": "Generated from ShotPC pipeline"
   },
   {
-    "id": "AMZ-B0GD6MWRYD",
+    "id": "SP065A",
+    "brand": "GMKtec",
+    "model": "ミニPC 高性能 AMD Ryzen 7 7735HS(8C/16T 最大4.75GHz)32GB LPDDR5 1TB SSD 小型デスクトップPC ゲーミン",
+    "source_ids": {
+      "asin": "B0GG9KLG54",
+      "model_id": "SP065",
+      "variant_id": "SP065A"
+    },
+    "cpu": {
+      "name": "Ryzen 7 7735HS",
+      "cores": 8,
+      "threads": 16,
+      "score": 20500
+    },
+    "ram": {
+      "capacity_gb": 32,
+      "type": "DDR5/DDR4",
+      "slots": null,
+      "max_capacity_gb": null
+    },
+    "storage": {
+      "capacity_gb": 1024,
+      "type": "NVMe",
+      "slots": null
+    },
+    "gpu": "Radeon 680M",
+    "price_jpy": 99999,
+    "coupon_jpy": 0,
+    "effective_price_jpy": 99999,
+    "stock": "in_stock",
+    "fetched_at": "2026-04-17T18:03:03",
+    "amazon_url": "https://www.amazon.co.jp/dp/B0GG9KLG54?tag=shotsim-22",
+    "image_url": "https://m.media-amazon.com/images/I/613wYxrJfkL._AC_SX679_.jpg",
+    "ai_features": {
+      "vram_allocation": "Check BIOS",
+      "oculink_support": true,
+      "thermal_design": "Active Cooling",
+      "expansion_score": 5,
+      "ai_inference_suitability": "Great for AI Models"
+    },
+    "notes": "Generated from ShotPC pipeline"
+  },
+  {
+    "id": "SP046A",
     "brand": "GMKtec",
     "model": "ミニPC【G10 16G+1TB 初登場 Ryzen 5 3500U搭載 R3 4300Uより速い】 64GB DDR4+16TB SSD拡張対応｜動作より安定",
+    "source_ids": {
+      "asin": "B0GD6MWRYD",
+      "model_id": "SP046",
+      "variant_id": "SP046A"
+    },
     "cpu": {
       "name": "Ryzen 5 3500U",
       "cores": null,
@@ -1690,6 +2309,7 @@
     "coupon_jpy": 0,
     "effective_price_jpy": 58812,
     "stock": "in_stock",
+    "fetched_at": "2026-04-09T16:09:35",
     "amazon_url": "https://www.amazon.co.jp/dp/B0GD6MWRYD?tag=shotsim-22",
     "image_url": "https://m.media-amazon.com/images/I/61sWqz-TweL._AC_SX679_.jpg",
     "ai_features": {
@@ -1702,9 +2322,14 @@
     "notes": "Generated from ShotPC pipeline"
   },
   {
-    "id": "AMZ-B0FFGQ7K4W",
+    "id": "SP053A",
     "brand": "GMKtec",
     "model": "ミニPC【G10 16GB+1TB 初登場 Ryzen 5 3500U搭載 R3 4300Uより速い】 64GB DDR4+16TB SSD拡張対応｜動作より安",
+    "source_ids": {
+      "asin": "B0FFGQ7K4W",
+      "model_id": "SP053",
+      "variant_id": "SP053A"
+    },
     "cpu": {
       "name": "Ryzen 5 3500U",
       "cores": null,
@@ -1727,6 +2352,7 @@
     "coupon_jpy": 0,
     "effective_price_jpy": 51578,
     "stock": "in_stock",
+    "fetched_at": "2026-04-09T16:10:33",
     "amazon_url": "https://www.amazon.co.jp/dp/B0FFGQ7K4W?tag=shotsim-22",
     "image_url": "https://m.media-amazon.com/images/I/61sWqz-TweL._AC_SX679_.jpg",
     "ai_features": {
@@ -1739,9 +2365,14 @@
     "notes": "Generated from ShotPC pipeline"
   },
   {
-    "id": "AMZ-B0FK1FY341",
+    "id": "SP061A",
     "brand": "GMKtec",
     "model": "ミニPc  K12 ミニPC ゲーミング AMD Ryzen7 H255 96GB+24TB SSD(拡張可能)Windows11 Pro Mini pc 基本",
+    "source_ids": {
+      "asin": "B0FK1FY341",
+      "model_id": "SP061",
+      "variant_id": "SP061A"
+    },
     "cpu": {
       "name": "Ryzen 7 2550",
       "cores": null,
@@ -1764,6 +2395,7 @@
     "coupon_jpy": 0,
     "effective_price_jpy": 103999,
     "stock": "in_stock",
+    "fetched_at": "2026-04-09T16:11:59",
     "amazon_url": "https://www.amazon.co.jp/dp/B0FK1FY341?tag=shotsim-22",
     "image_url": "https://m.media-amazon.com/images/I/61VegLf9KhL._AC_SX679_.jpg",
     "ai_features": {
@@ -1776,9 +2408,14 @@
     "notes": "Generated from ShotPC pipeline"
   },
   {
-    "id": "AMZ-B0GD7CBC7W",
+    "id": "SP047A",
     "brand": "GMKtec",
     "model": "ミニpc AMD Ryzen 7 PRO 6850U【64GB DDR5 +4TB SSD(拡張可能)】Oculink 搭載 USB4.0*2 Windows",
+    "source_ids": {
+      "asin": "B0GD7CBC7W",
+      "model_id": "SP047",
+      "variant_id": "SP047A"
+    },
     "cpu": {
       "name": "Ryzen 7 PRO 6850U",
       "cores": null,
@@ -1801,6 +2438,7 @@
     "coupon_jpy": 0,
     "effective_price_jpy": 73999,
     "stock": "in_stock",
+    "fetched_at": "2026-04-09T16:09:43",
     "amazon_url": "https://www.amazon.co.jp/dp/B0GD7CBC7W?tag=shotsim-22",
     "image_url": "https://m.media-amazon.com/images/I/61EkevolCYL._AC_SX679_.jpg",
     "ai_features": {
@@ -1813,9 +2451,14 @@
     "notes": "Generated from ShotPC pipeline"
   },
   {
-    "id": "AMZ-B0F2DP7WSH",
+    "id": "SP030A",
     "brand": "GMKtec",
     "model": "ミニpc NucBox K11 AMD Ryzen9 8945HS DDR5 96GB +16TB M.2 2280(16TB拡張可能)Win11 Pro Mi",
+    "source_ids": {
+      "asin": "B0F2DP7WSH",
+      "model_id": "SP030",
+      "variant_id": "SP030A"
+    },
     "cpu": {
       "name": "Ryzen 9 8945HS",
       "cores": 8,
@@ -1838,6 +2481,7 @@
     "coupon_jpy": 0,
     "effective_price_jpy": 116095,
     "stock": "in_stock",
+    "fetched_at": "2026-04-09T16:07:32",
     "amazon_url": "https://www.amazon.co.jp/dp/B0F2DP7WSH?tag=shotsim-22",
     "image_url": "https://m.media-amazon.com/images/I/71CwJnGnMYL._AC_SX679_.jpg",
     "ai_features": {
@@ -1850,9 +2494,14 @@
     "notes": "Generated from ShotPC pipeline"
   },
   {
-    "id": "AMZ-B0GQGRLJVB",
+    "id": "SP060A",
     "brand": "GMKtec",
     "model": "ミニpc NucBox K11 AMD Ryzen9 8945HS 最大 5.4GHz DDR5 96GB+16TB 拡張可能 PCIe4.0 M.2 2280",
+    "source_ids": {
+      "asin": "B0GQGRLJVB",
+      "model_id": "SP060",
+      "variant_id": "SP060A"
+    },
     "cpu": {
       "name": "Ryzen 9 8945HS",
       "cores": 8,
@@ -1875,6 +2524,7 @@
     "coupon_jpy": 0,
     "effective_price_jpy": 116095,
     "stock": "in_stock",
+    "fetched_at": "2026-04-09T16:11:52",
     "amazon_url": "https://www.amazon.co.jp/dp/B0GQGRLJVB?tag=shotsim-22",
     "image_url": "https://m.media-amazon.com/images/I/61AbLcN8vIL._AC_SX679_.jpg",
     "ai_features": {
@@ -1887,9 +2537,14 @@
     "notes": "Generated from ShotPC pipeline"
   },
   {
-    "id": "AMZ-B0GKLWHTNM",
+    "id": "SP028A",
     "brand": "GMKtec",
     "model": "世界初EVO-X2 AIミニPC AMD Ryzen AI Max+ 395 搭載 128GB LPDDR5+2TB SSD(最大5.1GHz 16C/32T)",
+    "source_ids": {
+      "asin": "B0GKLWHTNM",
+      "model_id": "SP028",
+      "variant_id": "SP028A"
+    },
     "cpu": {
       "name": "Ryzen AI Max+ 395",
       "cores": null,
@@ -1912,6 +2567,7 @@
     "coupon_jpy": 0,
     "effective_price_jpy": 476499,
     "stock": "in_stock",
+    "fetched_at": "2026-04-09T16:07:14",
     "amazon_url": "https://www.amazon.co.jp/dp/B0GKLWHTNM?tag=shotsim-22",
     "image_url": "https://m.media-amazon.com/images/I/61MWVIU-dqL._AC_SX679_.jpg",
     "ai_features": {
@@ -1924,9 +2580,57 @@
     "notes": "Generated from ShotPC pipeline"
   },
   {
-    "id": "AMZ-B0FYFZ4F43",
+    "id": "SP068A",
+    "brand": "GMKtec",
+    "model": "高性能AIミニPC  NucBox K15 Intel Core Ultra 5 125U(最大4.3GHz)16GB+1TB標準搭載 mini pc【128G",
+    "source_ids": {
+      "asin": "B0GDSD6GLG",
+      "model_id": "SP068",
+      "variant_id": "SP068A"
+    },
+    "cpu": {
+      "name": "Core Ultra 5 125U",
+      "cores": 12,
+      "threads": 14,
+      "score": 14500
+    },
+    "ram": {
+      "capacity_gb": 16,
+      "type": "DDR5/DDR4",
+      "slots": null,
+      "max_capacity_gb": null
+    },
+    "storage": {
+      "capacity_gb": 0,
+      "type": "NVMe",
+      "slots": null
+    },
+    "gpu": "Intel Graphics",
+    "price_jpy": 90899,
+    "coupon_jpy": 0,
+    "effective_price_jpy": 90899,
+    "stock": "in_stock",
+    "fetched_at": "2026-04-17T18:03:21",
+    "amazon_url": "https://www.amazon.co.jp/dp/B0GDSD6GLG?tag=shotsim-22",
+    "image_url": "https://m.media-amazon.com/images/I/51TPBp2zzvL._AC_SX679_.jpg",
+    "ai_features": {
+      "vram_allocation": "Check BIOS",
+      "oculink_support": true,
+      "thermal_design": "Active Cooling",
+      "expansion_score": 5,
+      "ai_inference_suitability": "Standard Use"
+    },
+    "notes": "Generated from ShotPC pipeline"
+  },
+  {
+    "id": "SP015A",
     "brand": "Minisforum",
     "model": "AI M1 Pro-285H ミニ PC",
+    "source_ids": {
+      "asin": "B0FYFZ4F43",
+      "model_id": "SP015",
+      "variant_id": "SP015A"
+    },
     "cpu": {
       "name": "Core Ultra 9 285H",
       "cores": null,
@@ -1949,6 +2653,7 @@
     "coupon_jpy": 0,
     "effective_price_jpy": 189990,
     "stock": "in_stock",
+    "fetched_at": "2026-04-09T16:05:11",
     "amazon_url": "https://www.amazon.co.jp/dp/B0FYFZ4F43?tag=shotsim-22",
     "image_url": "https://m.media-amazon.com/images/I/51DGFau1KcL._AC_SY879_.jpg",
     "ai_features": {
@@ -1961,9 +2666,14 @@
     "notes": "Generated from ShotPC pipeline"
   },
   {
-    "id": "AMZ-B0FG3691PP",
+    "id": "SP024A",
     "brand": "Minisforum",
     "model": "AI NAS N5 pro",
+    "source_ids": {
+      "asin": "B0FG3691PP",
+      "model_id": "SP024",
+      "variant_id": "SP024A"
+    },
     "cpu": {
       "name": "Ryzen AI 9 HX Pro 370",
       "cores": null,
@@ -1986,6 +2696,7 @@
     "coupon_jpy": 0,
     "effective_price_jpy": 176898,
     "stock": "in_stock",
+    "fetched_at": "2026-04-09T16:06:34",
     "amazon_url": "https://www.amazon.co.jp/dp/B0FG3691PP?tag=shotsim-22",
     "image_url": "https://m.media-amazon.com/images/I/61fkkd+CduL._AC_SX679_.jpg",
     "ai_features": {
@@ -1998,9 +2709,14 @@
     "notes": "Generated from ShotPC pipeline"
   },
   {
-    "id": "AMZ-B0GJ5GYVRK",
+    "id": "SP016A",
     "brand": "Minisforum",
     "model": "AI X1 Pro-370 ミニPC｜AMD Ryzen AI 9 HX370｜32GB DDR5｜512GB SSD｜Windows 11 Pro搭載｜RJ4",
+    "source_ids": {
+      "asin": "B0GJ5GYVRK",
+      "model_id": "SP016",
+      "variant_id": "SP016A"
+    },
     "cpu": {
       "name": "Ryzen AI 9 HX 370",
       "cores": 12,
@@ -2023,6 +2739,7 @@
     "coupon_jpy": 0,
     "effective_price_jpy": 239999,
     "stock": "in_stock",
+    "fetched_at": "2026-04-09T16:05:20",
     "amazon_url": "https://www.amazon.co.jp/dp/B0GJ5GYVRK?tag=shotsim-22",
     "image_url": "https://m.media-amazon.com/images/I/51HxN95IFdL._AC_SX679_.jpg",
     "ai_features": {
@@ -2035,9 +2752,143 @@
     "notes": "Generated from ShotPC pipeline"
   },
   {
-    "id": "AMZ-B0GSZKWGNM",
+    "id": "SP079A",
+    "brand": "Minisforum",
+    "model": "AI X1 Pro-470 ミニ PC AMD Ryzen AI 9 HX470 32GB DDR5 1TB SSD Windows 11 Pro 搭載 Rad",
+    "source_ids": {
+      "asin": "B0GHY7NZCP",
+      "model_id": "SP079",
+      "variant_id": "SP079A"
+    },
+    "cpu": {
+      "name": "Ryzen AI 9 HX 470",
+      "cores": null,
+      "threads": null,
+      "score": null
+    },
+    "ram": {
+      "capacity_gb": 32,
+      "type": "DDR5/DDR4",
+      "slots": null,
+      "max_capacity_gb": null
+    },
+    "storage": {
+      "capacity_gb": 1024,
+      "type": "NVMe",
+      "slots": null
+    },
+    "gpu": "Integrated Graphics",
+    "price_jpy": 115993,
+    "coupon_jpy": 0,
+    "effective_price_jpy": 115993,
+    "stock": "in_stock",
+    "fetched_at": "2026-04-17T18:04:33",
+    "amazon_url": "https://www.amazon.co.jp/dp/B0GHY7NZCP?tag=shotsim-22",
+    "image_url": "https://m.media-amazon.com/images/I/519sAbeA5OL._AC_SX679_.jpg",
+    "ai_features": {
+      "vram_allocation": "Check BIOS",
+      "oculink_support": true,
+      "thermal_design": "Active Cooling",
+      "expansion_score": 5,
+      "ai_inference_suitability": "Standard Use"
+    },
+    "notes": "Generated from ShotPC pipeline"
+  },
+  {
+    "id": "SP078A",
+    "brand": "Minisforum",
+    "model": "AI X1 Pro-470 ミニ PC AMD Ryzen AI 9 HX470 ベアボーンキットPC OCulink (PCIe4.0 x4) 対応 Copi",
+    "source_ids": {
+      "asin": "B0GHXVFJ11",
+      "model_id": "SP078",
+      "variant_id": "SP078A"
+    },
+    "cpu": {
+      "name": "Ryzen AI 9 HX 470",
+      "cores": null,
+      "threads": null,
+      "score": null
+    },
+    "ram": {
+      "capacity_gb": 0,
+      "type": "DDR5/DDR4",
+      "slots": null,
+      "max_capacity_gb": null
+    },
+    "storage": {
+      "capacity_gb": 0,
+      "type": "NVMe",
+      "slots": null
+    },
+    "gpu": "Integrated Graphics",
+    "price_jpy": 227800,
+    "coupon_jpy": 0,
+    "effective_price_jpy": 227800,
+    "stock": "in_stock",
+    "fetched_at": "2026-04-17T18:04:27",
+    "amazon_url": "https://www.amazon.co.jp/dp/B0GHXVFJ11?tag=shotsim-22",
+    "image_url": "https://m.media-amazon.com/images/I/519sAbeA5OL._AC_SX679_.jpg",
+    "ai_features": {
+      "vram_allocation": "Check BIOS",
+      "oculink_support": true,
+      "thermal_design": "Active Cooling",
+      "expansion_score": 5,
+      "ai_inference_suitability": "Standard Use"
+    },
+    "notes": "Generated from ShotPC pipeline"
+  },
+  {
+    "id": "SP083A",
+    "brand": "Minisforum",
+    "model": "AI X1 Proミニ PC",
+    "source_ids": {
+      "asin": "B0GT8X15HB",
+      "model_id": "SP083",
+      "variant_id": "SP083A"
+    },
+    "cpu": {
+      "name": "Ryzen AI 9 HX 370",
+      "cores": 12,
+      "threads": 24,
+      "score": 35500
+    },
+    "ram": {
+      "capacity_gb": 32,
+      "type": "DDR5/DDR4",
+      "slots": null,
+      "max_capacity_gb": null
+    },
+    "storage": {
+      "capacity_gb": 0,
+      "type": "NVMe",
+      "slots": null
+    },
+    "gpu": "Radeon 890M",
+    "price_jpy": 241999,
+    "coupon_jpy": 0,
+    "effective_price_jpy": 241999,
+    "stock": "in_stock",
+    "fetched_at": "2026-04-17T18:19:54",
+    "amazon_url": "https://www.amazon.co.jp/dp/B0GT8X15HB?tag=shotsim-22",
+    "image_url": "https://m.media-amazon.com/images/I/51+npGzMsEL._AC_SY300_SX300_QL70_ML2_.jpg",
+    "ai_features": {
+      "vram_allocation": "Check BIOS",
+      "oculink_support": false,
+      "thermal_design": "Active Cooling",
+      "expansion_score": 5,
+      "ai_inference_suitability": "Excellent for 7B/8B Models"
+    },
+    "notes": "Generated from ShotPC pipeline"
+  },
+  {
+    "id": "SP040A",
     "brand": "Minisforum",
     "model": "AI X1 ミニ PC",
+    "source_ids": {
+      "asin": "B0GSZKWGNM",
+      "model_id": "SP040",
+      "variant_id": "SP040A"
+    },
     "cpu": {
       "name": "Ryzen 7 255",
       "cores": null,
@@ -2060,6 +2911,7 @@
     "coupon_jpy": 0,
     "effective_price_jpy": 117599,
     "stock": "in_stock",
+    "fetched_at": "2026-04-09T16:08:50",
     "amazon_url": "https://www.amazon.co.jp/dp/B0GSZKWGNM?tag=shotsim-22",
     "image_url": "https://m.media-amazon.com/images/I/51tsX-bzLmL._AC_SX679_.jpg",
     "ai_features": {
@@ -2072,9 +2924,186 @@
     "notes": "Generated from ShotPC pipeline"
   },
   {
-    "id": "AMZ-B0F58MZBR4",
+    "id": "SP072A",
+    "brand": "Minisforum",
+    "model": "AI X1 ミニPC｜AMD Ryzen 7 255|16GB DDR5 メモリ|512GB SSD｜Windows11Pro搭載小型pc HDMI2.1 |D",
+    "source_ids": {
+      "asin": "B0GJDFV5Y4",
+      "model_id": "SP072",
+      "variant_id": "SP072A"
+    },
+    "cpu": {
+      "name": "Ryzen 7 255",
+      "cores": null,
+      "threads": null,
+      "score": null
+    },
+    "ram": {
+      "capacity_gb": 16,
+      "type": "DDR5/DDR4",
+      "slots": null,
+      "max_capacity_gb": null
+    },
+    "storage": {
+      "capacity_gb": 512,
+      "type": "NVMe",
+      "slots": null
+    },
+    "gpu": "Integrated Graphics",
+    "price_jpy": 103599,
+    "coupon_jpy": 0,
+    "effective_price_jpy": 103599,
+    "stock": "in_stock",
+    "fetched_at": "2026-04-17T18:03:52",
+    "amazon_url": "https://www.amazon.co.jp/dp/B0GJDFV5Y4?tag=shotsim-22",
+    "image_url": "https://m.media-amazon.com/images/I/51tsX-bzLmL._AC_SX679_.jpg",
+    "ai_features": {
+      "vram_allocation": "Check BIOS",
+      "oculink_support": false,
+      "thermal_design": "Active Cooling",
+      "expansion_score": 5,
+      "ai_inference_suitability": "Standard Use"
+    },
+    "notes": "Generated from ShotPC pipeline"
+  },
+  {
+    "id": "SP074A",
+    "brand": "Minisforum",
+    "model": "AI X1 ミニPC｜AMD Ryzen 7 255|32GB DDR5 メモリ|512GB SSD｜Windows 11 Pro搭載",
+    "source_ids": {
+      "asin": "B0GDWQVXSY",
+      "model_id": "SP074",
+      "variant_id": "SP074A"
+    },
+    "cpu": {
+      "name": "Ryzen 7 255",
+      "cores": null,
+      "threads": null,
+      "score": null
+    },
+    "ram": {
+      "capacity_gb": 32,
+      "type": "DDR5/DDR4",
+      "slots": null,
+      "max_capacity_gb": null
+    },
+    "storage": {
+      "capacity_gb": 512,
+      "type": "NVMe",
+      "slots": null
+    },
+    "gpu": "Integrated Graphics",
+    "price_jpy": 119599,
+    "coupon_jpy": 0,
+    "effective_price_jpy": 119599,
+    "stock": "in_stock",
+    "fetched_at": "2026-04-17T18:04:04",
+    "amazon_url": "https://www.amazon.co.jp/dp/B0GDWQVXSY?tag=shotsim-22",
+    "image_url": "https://m.media-amazon.com/images/I/61e2H2yk3zL._AC_SX679_.jpg",
+    "ai_features": {
+      "vram_allocation": "Check BIOS",
+      "oculink_support": false,
+      "thermal_design": "Active Cooling",
+      "expansion_score": 5,
+      "ai_inference_suitability": "Standard Use"
+    },
+    "notes": "Generated from ShotPC pipeline"
+  },
+  {
+    "id": "SP073A",
+    "brand": "Minisforum",
+    "model": "AI X1 ミニPC｜AMD Ryzen 7 255｜32GB DDR5 メモリ｜1TB SSD｜Windows 11 Pro搭載小型PC｜HDMI2.1｜DP",
+    "source_ids": {
+      "asin": "B0GJDHYKDS",
+      "model_id": "SP073",
+      "variant_id": "SP073A"
+    },
+    "cpu": {
+      "name": "Ryzen 7 255",
+      "cores": null,
+      "threads": null,
+      "score": null
+    },
+    "ram": {
+      "capacity_gb": 32,
+      "type": "DDR5/DDR4",
+      "slots": null,
+      "max_capacity_gb": null
+    },
+    "storage": {
+      "capacity_gb": 1024,
+      "type": "NVMe",
+      "slots": null
+    },
+    "gpu": "Integrated Graphics",
+    "price_jpy": 124798,
+    "coupon_jpy": 0,
+    "effective_price_jpy": 124798,
+    "stock": "in_stock",
+    "fetched_at": "2026-04-17T18:03:58",
+    "amazon_url": "https://www.amazon.co.jp/dp/B0GJDHYKDS?tag=shotsim-22",
+    "image_url": "https://m.media-amazon.com/images/I/51tsX-bzLmL._AC_SX679_.jpg",
+    "ai_features": {
+      "vram_allocation": "Check BIOS",
+      "oculink_support": false,
+      "thermal_design": "Active Cooling",
+      "expansion_score": 5,
+      "ai_inference_suitability": "Standard Use"
+    },
+    "notes": "Generated from ShotPC pipeline"
+  },
+  {
+    "id": "SP071A",
+    "brand": "Minisforum",
+    "model": "AI X1 ミニpc AMD Ryzen 7 255プロセッサ DDR5-5600MT/s 2xPCIE4.0 SSDスロット ベアボーンキット Radeon",
+    "source_ids": {
+      "asin": "B0F8B1SMVP",
+      "model_id": "SP071",
+      "variant_id": "SP071A"
+    },
+    "cpu": {
+      "name": "Ryzen 7 255",
+      "cores": null,
+      "threads": null,
+      "score": null
+    },
+    "ram": {
+      "capacity_gb": 0,
+      "type": "DDR5/DDR4",
+      "slots": null,
+      "max_capacity_gb": null
+    },
+    "storage": {
+      "capacity_gb": 0,
+      "type": "NVMe",
+      "slots": null
+    },
+    "gpu": "Integrated Graphics",
+    "price_jpy": 53882,
+    "coupon_jpy": 0,
+    "effective_price_jpy": 53882,
+    "stock": "in_stock",
+    "fetched_at": "2026-04-17T18:03:46",
+    "amazon_url": "https://www.amazon.co.jp/dp/B0F8B1SMVP?tag=shotsim-22",
+    "image_url": "https://m.media-amazon.com/images/I/61nTAl5mThL._AC_SX679_.jpg",
+    "ai_features": {
+      "vram_allocation": "Check BIOS",
+      "oculink_support": true,
+      "thermal_design": "Active Cooling",
+      "expansion_score": 5,
+      "ai_inference_suitability": "Standard Use"
+    },
+    "notes": "Generated from ShotPC pipeline"
+  },
+  {
+    "id": "SP045A",
     "brand": "Minisforum",
     "model": "AI X1-255 Mini PC AMD Ryzen 7 255 (8C/16T",
+    "source_ids": {
+      "asin": "B0F58MZBR4",
+      "model_id": "SP045",
+      "variant_id": "SP045A"
+    },
     "cpu": {
       "name": "Ryzen 7 255",
       "cores": null,
@@ -2097,6 +3126,7 @@
     "coupon_jpy": 0,
     "effective_price_jpy": 48998,
     "stock": "in_stock",
+    "fetched_at": "2026-04-09T16:09:27",
     "amazon_url": "https://www.amazon.co.jp/dp/B0F58MZBR4?tag=shotsim-22",
     "image_url": "https://m.media-amazon.com/images/I/515UnQqOkEL._AC_SX679_.jpg",
     "ai_features": {
@@ -2109,9 +3139,14 @@
     "notes": "Generated from ShotPC pipeline"
   },
   {
-    "id": "AMZ-B0F89ZR3QB",
+    "id": "SP049A",
     "brand": "Minisforum",
     "model": "AI X1-255 Mini PC ベアボーン AMD Ryzen 7 255 (8C/16T",
+    "source_ids": {
+      "asin": "B0F89ZR3QB",
+      "model_id": "SP049",
+      "variant_id": "SP049A"
+    },
     "cpu": {
       "name": "Ryzen 7 255",
       "cores": null,
@@ -2134,6 +3169,7 @@
     "coupon_jpy": 0,
     "effective_price_jpy": 115935,
     "stock": "in_stock",
+    "fetched_at": "2026-04-09T16:09:57",
     "amazon_url": "https://www.amazon.co.jp/dp/B0F89ZR3QB?tag=shotsim-22",
     "image_url": "https://m.media-amazon.com/images/I/515UnQqOkEL._AC_SX679_.jpg",
     "ai_features": {
@@ -2146,9 +3182,14 @@
     "notes": "Generated from ShotPC pipeline"
   },
   {
-    "id": "AMZ-B0G3WVWGTR",
+    "id": "SP034A",
     "brand": "Minisforum",
     "model": "MS-02 Ultra ミニワークステーション",
+    "source_ids": {
+      "asin": "B0G3WVWGTR",
+      "model_id": "SP034",
+      "variant_id": "SP034A"
+    },
     "cpu": {
       "name": "Core Ultra 9 285HX",
       "cores": null,
@@ -2171,6 +3212,7 @@
     "coupon_jpy": 0,
     "effective_price_jpy": 316999,
     "stock": "in_stock",
+    "fetched_at": "2026-04-09T16:08:05",
     "amazon_url": "https://www.amazon.co.jp/dp/B0G3WVWGTR?tag=shotsim-22",
     "image_url": "https://m.media-amazon.com/images/I/71e8w8XYo9L._AC_SX679_.jpg",
     "ai_features": {
@@ -2183,9 +3225,14 @@
     "notes": "Generated from ShotPC pipeline"
   },
   {
-    "id": "AMZ-B0GL329LZ5",
+    "id": "SP048A",
     "brand": "Minisforum",
     "model": "MS-A2 ミニワークステーション",
+    "source_ids": {
+      "asin": "B0GL329LZ5",
+      "model_id": "SP048",
+      "variant_id": "SP048A"
+    },
     "cpu": {
       "name": "Ryzen 9 9955HX",
       "cores": null,
@@ -2208,6 +3255,7 @@
     "coupon_jpy": 0,
     "effective_price_jpy": 351999,
     "stock": "in_stock",
+    "fetched_at": "2026-04-09T16:09:50",
     "amazon_url": "https://www.amazon.co.jp/dp/B0GL329LZ5?tag=shotsim-22",
     "image_url": "https://m.media-amazon.com/images/I/518uLFDW4YL._AC_SX679_.jpg",
     "ai_features": {
@@ -2220,9 +3268,57 @@
     "notes": "Generated from ShotPC pipeline"
   },
   {
-    "id": "AMZ-B0D866QGTD",
+    "id": "SP080A",
+    "brand": "Minisforum",
+    "model": "MS-S1 MAX ミニAIワークステーション AMD Ryzen AI Max+ 395 128GB LPDDR5x 8000MT/s UMAメモリ 2TB",
+    "source_ids": {
+      "asin": "B0FSN9NDDF",
+      "model_id": "SP080",
+      "variant_id": "SP080A"
+    },
+    "cpu": {
+      "name": "Ryzen AI Max+ 395",
+      "cores": null,
+      "threads": null,
+      "score": null
+    },
+    "ram": {
+      "capacity_gb": 128,
+      "type": "DDR5/DDR4",
+      "slots": null,
+      "max_capacity_gb": null
+    },
+    "storage": {
+      "capacity_gb": 8192,
+      "type": "NVMe",
+      "slots": null
+    },
+    "gpu": "Integrated Graphics",
+    "price_jpy": 511998,
+    "coupon_jpy": 0,
+    "effective_price_jpy": 511998,
+    "stock": "in_stock",
+    "fetched_at": "2026-04-17T18:04:39",
+    "amazon_url": "https://www.amazon.co.jp/dp/B0FSN9NDDF?tag=shotsim-22",
+    "image_url": "https://m.media-amazon.com/images/I/61aiiSIskIL._AC_SX679_.jpg",
+    "ai_features": {
+      "vram_allocation": "Check BIOS",
+      "oculink_support": false,
+      "thermal_design": "Active Cooling",
+      "expansion_score": 5,
+      "ai_inference_suitability": "Standard Use"
+    },
+    "notes": "Generated from ShotPC pipeline"
+  },
+  {
+    "id": "SP031A",
     "brand": "Minisforum",
     "model": "UM890 Pro ミニPC",
+    "source_ids": {
+      "asin": "B0D866QGTD",
+      "model_id": "SP031",
+      "variant_id": "SP031A"
+    },
     "cpu": {
       "name": "Ryzen 9 8945HS",
       "cores": 8,
@@ -2245,6 +3341,7 @@
     "coupon_jpy": 0,
     "effective_price_jpy": 147599,
     "stock": "in_stock",
+    "fetched_at": "2026-04-09T16:07:41",
     "amazon_url": "https://www.amazon.co.jp/dp/B0D866QGTD?tag=shotsim-22",
     "image_url": "https://m.media-amazon.com/images/I/617UcfNftxL._AC_SX679_.jpg",
     "ai_features": {
@@ -2257,9 +3354,14 @@
     "notes": "Generated from ShotPC pipeline"
   },
   {
-    "id": "AMZ-B0GR9D5CS1",
+    "id": "SP035A",
     "brand": "Minisforum",
     "model": "UM890Pro ミニPC",
+    "source_ids": {
+      "asin": "B0GR9D5CS1",
+      "model_id": "SP035",
+      "variant_id": "SP035A"
+    },
     "cpu": {
       "name": "Ryzen 9 8945HS",
       "cores": 8,
@@ -2282,6 +3384,7 @@
     "coupon_jpy": 0,
     "effective_price_jpy": 95998,
     "stock": "in_stock",
+    "fetched_at": "2026-04-09T16:08:13",
     "amazon_url": "https://www.amazon.co.jp/dp/B0GR9D5CS1?tag=shotsim-22",
     "image_url": "https://m.media-amazon.com/images/I/6104lOVp0HL._AC_SX679_.jpg",
     "ai_features": {
@@ -2294,9 +3397,229 @@
     "notes": "Generated from ShotPC pipeline"
   },
   {
-    "id": "AMZ-B0DP7P3W4G",
+    "id": "SP082A",
+    "brand": "Minisforum",
+    "model": "X1 Lite-255 ミニ PC AMD Ryzen 7 255 32GB 512GB SSD Windows 11 Pro 搭載 小型パソコンHDMI2.1",
+    "source_ids": {
+      "asin": "B0GQB56QD6",
+      "model_id": "SP082",
+      "variant_id": "SP082A"
+    },
+    "cpu": {
+      "name": "Ryzen 7 255",
+      "cores": null,
+      "threads": null,
+      "score": null
+    },
+    "ram": {
+      "capacity_gb": 0,
+      "type": "DDR5/DDR4",
+      "slots": null,
+      "max_capacity_gb": 128
+    },
+    "storage": {
+      "capacity_gb": 512,
+      "type": "NVMe",
+      "slots": null
+    },
+    "gpu": "Integrated Graphics",
+    "price_jpy": 103998,
+    "coupon_jpy": 0,
+    "effective_price_jpy": 103998,
+    "stock": "in_stock",
+    "fetched_at": "2026-04-17T18:04:50",
+    "amazon_url": "https://www.amazon.co.jp/dp/B0GQB56QD6?tag=shotsim-22",
+    "image_url": "https://m.media-amazon.com/images/I/71q3VUKMfPL._AC_SX679_.jpg",
+    "ai_features": {
+      "vram_allocation": "Check BIOS",
+      "oculink_support": true,
+      "thermal_design": "Active Cooling",
+      "expansion_score": 5,
+      "ai_inference_suitability": "Standard Use"
+    },
+    "notes": "Generated from ShotPC pipeline"
+  },
+  {
+    "id": "SP081A",
+    "brand": "Minisforum",
+    "model": "X1 Lite-255 ミニ PC AMD Ryzen 7 255 32GB DDR5 1TB SSD Windows 11 Pro 小型パソコン HDMI2.",
+    "source_ids": {
+      "asin": "B0GQRXTXZ2",
+      "model_id": "SP081",
+      "variant_id": "SP081A"
+    },
+    "cpu": {
+      "name": "Ryzen 7 255",
+      "cores": null,
+      "threads": null,
+      "score": null
+    },
+    "ram": {
+      "capacity_gb": 32,
+      "type": "DDR5/DDR4",
+      "slots": null,
+      "max_capacity_gb": null
+    },
+    "storage": {
+      "capacity_gb": 1024,
+      "type": "NVMe",
+      "slots": null
+    },
+    "gpu": "Integrated Graphics",
+    "price_jpy": 119992,
+    "coupon_jpy": 0,
+    "effective_price_jpy": 119992,
+    "stock": "in_stock",
+    "fetched_at": "2026-04-17T18:04:45",
+    "amazon_url": "https://www.amazon.co.jp/dp/B0GQRXTXZ2?tag=shotsim-22",
+    "image_url": "https://m.media-amazon.com/images/I/71q3VUKMfPL._AC_SX679_.jpg",
+    "ai_features": {
+      "vram_allocation": "Check BIOS",
+      "oculink_support": true,
+      "thermal_design": "Active Cooling",
+      "expansion_score": 5,
+      "ai_inference_suitability": "Standard Use"
+    },
+    "notes": "Generated from ShotPC pipeline"
+  },
+  {
+    "id": "SP076A",
+    "brand": "Minisforum",
+    "model": "X1 Lite-255 ミニ PC AMD Ryzen 7 255 DDR5-5600MHz 32GB 512GB SSD 小型パソコンHDMI2.1/DP1.",
+    "source_ids": {
+      "asin": "B0GFD645ZW",
+      "model_id": "SP076",
+      "variant_id": "SP076A"
+    },
+    "cpu": {
+      "name": "Ryzen 7 255",
+      "cores": null,
+      "threads": null,
+      "score": null
+    },
+    "ram": {
+      "capacity_gb": 0,
+      "type": "DDR5/DDR4",
+      "slots": null,
+      "max_capacity_gb": null
+    },
+    "storage": {
+      "capacity_gb": 512,
+      "type": "NVMe",
+      "slots": null
+    },
+    "gpu": "Integrated Graphics",
+    "price_jpy": 103998,
+    "coupon_jpy": 0,
+    "effective_price_jpy": 103998,
+    "stock": "in_stock",
+    "fetched_at": "2026-04-17T18:04:15",
+    "amazon_url": "https://www.amazon.co.jp/dp/B0GFD645ZW?tag=shotsim-22",
+    "image_url": "https://m.media-amazon.com/images/I/61aDedRLIgL._AC_SY879_.jpg",
+    "ai_features": {
+      "vram_allocation": "Check BIOS",
+      "oculink_support": true,
+      "thermal_design": "Active Cooling",
+      "expansion_score": 5,
+      "ai_inference_suitability": "Standard Use"
+    },
+    "notes": "Generated from ShotPC pipeline"
+  },
+  {
+    "id": "SP077A",
+    "brand": "Minisforum",
+    "model": "X1 Lite-255 ミニ PC AMD Ryzen 7 255 DDR5-5600MHz 64GB 1TB SSD 小型パソコンHDMI2.1/DP1.4/",
+    "source_ids": {
+      "asin": "B0G1MDH8Q8",
+      "model_id": "SP077",
+      "variant_id": "SP077A"
+    },
+    "cpu": {
+      "name": "Ryzen 7 255",
+      "cores": null,
+      "threads": null,
+      "score": null
+    },
+    "ram": {
+      "capacity_gb": 0,
+      "type": "DDR5/DDR4",
+      "slots": null,
+      "max_capacity_gb": null
+    },
+    "storage": {
+      "capacity_gb": 1024,
+      "type": "NVMe",
+      "slots": null
+    },
+    "gpu": "Integrated Graphics",
+    "price_jpy": 103998,
+    "coupon_jpy": 0,
+    "effective_price_jpy": 103998,
+    "stock": "in_stock",
+    "fetched_at": "2026-04-17T18:04:21",
+    "amazon_url": "https://www.amazon.co.jp/dp/B0G1MDH8Q8?tag=shotsim-22",
+    "image_url": "https://m.media-amazon.com/images/I/61avvoR6beL._AC_SX679_.jpg",
+    "ai_features": {
+      "vram_allocation": "Check BIOS",
+      "oculink_support": true,
+      "thermal_design": "Active Cooling",
+      "expansion_score": 5,
+      "ai_inference_suitability": "Standard Use"
+    },
+    "notes": "Generated from ShotPC pipeline"
+  },
+  {
+    "id": "SP075A",
+    "brand": "Minisforum",
+    "model": "X1 Lite-255 ミニpc AMD Ryzen 7 255プロセッサ Radeon 780M グラフィック DDR5-5600 32GB 1TB SSD",
+    "source_ids": {
+      "asin": "B0G1MMZVFM",
+      "model_id": "SP075",
+      "variant_id": "SP075A"
+    },
+    "cpu": {
+      "name": "Ryzen 7 255",
+      "cores": null,
+      "threads": null,
+      "score": null
+    },
+    "ram": {
+      "capacity_gb": 0,
+      "type": "DDR5/DDR4",
+      "slots": null,
+      "max_capacity_gb": null
+    },
+    "storage": {
+      "capacity_gb": 1024,
+      "type": "NVMe",
+      "slots": null
+    },
+    "gpu": "Integrated Graphics",
+    "price_jpy": 115993,
+    "coupon_jpy": 0,
+    "effective_price_jpy": 115993,
+    "stock": "in_stock",
+    "fetched_at": "2026-04-17T18:04:10",
+    "amazon_url": "https://www.amazon.co.jp/dp/B0G1MMZVFM?tag=shotsim-22",
+    "image_url": "https://m.media-amazon.com/images/I/612ifSz5H5L._AC_SX679_.jpg",
+    "ai_features": {
+      "vram_allocation": "Check BIOS",
+      "oculink_support": true,
+      "thermal_design": "Active Cooling",
+      "expansion_score": 5,
+      "ai_inference_suitability": "Standard Use"
+    },
+    "notes": "Generated from ShotPC pipeline"
+  },
+  {
+    "id": "SP008B",
     "brand": "Minisforum",
     "model": "X1 Pro 370ミニPC",
+    "source_ids": {
+      "asin": "B0DP7P3W4G",
+      "model_id": "SP008",
+      "variant_id": "SP008B"
+    },
     "cpu": {
       "name": "Ryzen AI 9 HX 370",
       "cores": 12,
@@ -2319,6 +3642,7 @@
     "coupon_jpy": 0,
     "effective_price_jpy": 203199,
     "stock": "in_stock",
+    "fetched_at": "2026-04-09T16:04:55",
     "amazon_url": "https://www.amazon.co.jp/dp/B0DP7P3W4G?tag=shotsim-22",
     "image_url": "https://m.media-amazon.com/images/I/51aawUf6ndL._AC_SX679_.jpg",
     "ai_features": {
@@ -2331,9 +3655,14 @@
     "notes": "Generated from ShotPC pipeline"
   },
   {
-    "id": "AMZ-B0G39PNQS5",
+    "id": "SP008A",
     "brand": "Minisforum",
     "model": "X1 Pro 370ミニPC",
+    "source_ids": {
+      "asin": "B0G39PNQS5",
+      "model_id": "SP008",
+      "variant_id": "SP008A"
+    },
     "cpu": {
       "name": "Ryzen AI 9 HX 370",
       "cores": 12,
@@ -2356,6 +3685,7 @@
     "coupon_jpy": 0,
     "effective_price_jpy": 156990,
     "stock": "in_stock",
+    "fetched_at": "2026-04-09T16:04:04",
     "amazon_url": "https://www.amazon.co.jp/dp/B0G39PNQS5?tag=shotsim-22",
     "image_url": "https://m.media-amazon.com/images/I/51HxN95IFdL._AC_SX679_.jpg",
     "ai_features": {
@@ -2368,9 +3698,14 @@
     "notes": "Generated from ShotPC pipeline"
   },
   {
-    "id": "AMZ-B0DZNHJWS4",
+    "id": "SP009A",
     "brand": "Minisforum",
     "model": "X1 Pro ミニPC",
+    "source_ids": {
+      "asin": "B0DZNHJWS4",
+      "model_id": "SP009",
+      "variant_id": "SP009A"
+    },
     "cpu": {
       "name": "Ryzen AI 9 HX 370",
       "cores": 12,
@@ -2393,6 +3728,7 @@
     "coupon_jpy": 0,
     "effective_price_jpy": 203199,
     "stock": "in_stock",
+    "fetched_at": "2026-04-09T16:04:12",
     "amazon_url": "https://www.amazon.co.jp/dp/B0DZNHJWS4?tag=shotsim-22",
     "image_url": "https://m.media-amazon.com/images/I/51aawUf6ndL._AC_SX679_.jpg",
     "ai_features": {
@@ -2405,9 +3741,14 @@
     "notes": "Generated from ShotPC pipeline"
   },
   {
-    "id": "AMZ-B0DZNM6MMH",
+    "id": "SP009B",
     "brand": "Minisforum",
     "model": "X1 Pro ミニPC",
+    "source_ids": {
+      "asin": "B0DZNM6MMH",
+      "model_id": "SP009",
+      "variant_id": "SP009B"
+    },
     "cpu": {
       "name": "Ryzen AI 9 HX 370",
       "cores": 12,
@@ -2430,6 +3771,7 @@
     "coupon_jpy": 0,
     "effective_price_jpy": 332999,
     "stock": "in_stock",
+    "fetched_at": "2026-04-09T16:06:00",
     "amazon_url": "https://www.amazon.co.jp/dp/B0DZNM6MMH?tag=shotsim-22",
     "image_url": "https://m.media-amazon.com/images/I/51aawUf6ndL._AC_SX679_.jpg",
     "ai_features": {
