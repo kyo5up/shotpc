@@ -284,28 +284,22 @@
       }
 
       .catalog-table col.model {
-        width: 350px;
+        width: 380px;
       }
 
       .catalog-table col.cpu {
-        width: 200px;
-      }
-
-      .catalog-table col.gpu {
-        width: 150px;
+        width: 220px;
       }
 
       .catalog-table col.ram,
       .catalog-table col.ssd,
-      .catalog-table col.score,
       .catalog-table col.ai,
-      .catalog-table col.ports,
-      .catalog-table col.stock {
+      .catalog-table col.ports {
         width: 92px;
       }
 
       .catalog-table col.price {
-        width: 124px;
+        width: 132px;
       }
 
       .catalog-table col.action {
@@ -398,6 +392,20 @@
         color: #8a95a5;
         overflow: hidden;
         text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .cpu-main {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .cpu-sub,
+      .action-sub {
+        margin-top: 2px;
+        font-size: 0.68rem;
+        color: #8a95a5;
         white-space: nowrap;
       }
 
@@ -659,13 +667,10 @@
               <col class="thumb" />
               <col class="model" />
               <col class="cpu" />
-              <col class="gpu" />
               <col class="ram" />
               <col class="ssd" />
-              <col class="score" />
               <col class="ai" />
               <col class="ports" />
-              <col class="stock" />
               <col class="price" />
               <col class="action" />
             </colgroup>
@@ -675,20 +680,17 @@
                 <th>Img</th>
                 <th>Model</th>
                 <th>CPU</th>
-                <th>GPU</th>
                 <th>RAM</th>
                 <th>SSD</th>
-                <th>Score</th>
                 <th>AI</th>
                 <th>Ports</th>
-                <th>Stock</th>
                 <th>価格</th>
                 <th></th>
               </tr>
             </thead>
             <tbody id="product-body">
               <tr>
-                <td colspan="13" class="loading-msg">読み込み中...</td>
+                <td colspan="10" class="loading-msg">読み込み中...</td>
               </tr>
             </tbody>
           </table>
@@ -855,21 +857,24 @@
             <td><div class="thumb-box">${thumb_html}</div></td>
             <td>
               <div class="model-main" title="${escape_html(short_name(item))}">${escape_html(short_name(item))}</div>
-              <div class="model-meta" title="${escape_html(`${item.id || ""} / ${asin} / ${brand} / ${fetched || "-"}`)}">${escape_html(item.id || "")} / ${escape_html(asin)} / ${escape_html(brand)} / ${escape_html(fetched || "-")}</div>
+              <div class="model-meta" title="${escape_html(`${brand} / ${item.id || ""} / ${asin}`)}">${escape_html(brand)} / ${escape_html(item.id || "")} / ${escape_html(asin)}</div>
             </td>
-            <td><div class="cell-nowrap" title="${escape_html(item.cpu?.name || "-")}">${escape_html(item.cpu?.name || "-")}</div></td>
-            <td><div class="cell-nowrap" title="${escape_html(item.gpu || "-")}">${escape_html(item.gpu || "-")}</div></td>
+            <td>
+              <div class="cpu-main" title="${escape_html(item.cpu?.name || "-")}">${escape_html(item.cpu?.name || "-")}</div>
+              <div class="cpu-sub">${score > 0 ? `Score ${score.toLocaleString()}` : "Score -"}</div>
+            </td>
             <td class="cell-center">${ram > 0 ? `${ram}GB` : "-"}</td>
             <td class="cell-center">${ssd > 0 ? `${ssd}GB` : "-"}</td>
-            <td class="cell-right">${score > 0 ? score.toLocaleString() : "-"}</td>
             <td class="cell-center">${render_ai_badge(item)}</td>
             <td class="cell-center">${render_port_badge(item)}</td>
-            <td class="cell-center">${stock ? '<span class="stock-in">在庫あり</span>' : '<span class="stock-out">-</span>'}</td>
             <td class="cell-right">
               <span class="price-main">${format_yen(price)}</span>
-              <span class="price-sub">${escape_html(fetched || "")}</span>
+              <span class="price-sub">${escape_html(fetched || "-")}時点</span>
             </td>
-            <td><a href="${escape_html(url)}" class="amazon-btn" target="_blank" rel="noopener">Amazonで見る</a></td>
+            <td>
+              <a href="${escape_html(url)}" class="amazon-btn" target="_blank" rel="noopener">Amazonで見る</a>
+              <div class="action-sub ${stock ? "stock-in" : "stock-out"}">${stock ? "在庫あり" : "在庫なし"}</div>
+            </td>
           </tr>
         `;
       }
@@ -913,7 +918,7 @@
         document.getElementById("result-count").textContent = `${total.toLocaleString()}件`;
         document.getElementById("product-body").innerHTML = page.length
           ? page.map((item, index) => build_row(item, start + index + 1)).join("")
-          : '<tr><td colspan="13" class="loading-msg">条件に合うミニPCがありません</td></tr>';
+          : '<tr><td colspan="10" class="loading-msg">条件に合うミニPCがありません</td></tr>';
 
         render_pagination(total);
       }
@@ -1030,7 +1035,7 @@
           render();
         } catch (error) {
           document.getElementById("product-body").innerHTML =
-            '<tr><td colspan="13" class="loading-msg">データの読み込みに失敗しました</td></tr>';
+            '<tr><td colspan="10" class="loading-msg">データの読み込みに失敗しました</td></tr>';
         }
       }
 
