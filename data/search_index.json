@@ -1,0 +1,169 @@
+{
+  "brands": [
+    {
+      "id": "Unknown",
+      "name": "Unknown",
+      "url": "/shotpc/ja/brands/Unknown.html",
+      "count": 3
+    },
+    {
+      "id": "ACEMAGIC",
+      "name": "ACEMAGIC",
+      "url": "/shotpc/ja/brands/ACEMAGIC.html",
+      "count": 1
+    },
+    {
+      "id": "Beelink",
+      "name": "Beelink",
+      "url": "/shotpc/ja/brands/Beelink.html",
+      "count": 1
+    },
+    {
+      "id": "GMKtec",
+      "name": "GMKtec",
+      "url": "/shotpc/ja/brands/GMKtec.html",
+      "count": 47
+    },
+    {
+      "id": "Minisforum",
+      "name": "Minisforum",
+      "url": "/shotpc/ja/brands/Minisforum.html",
+      "count": 14
+    }
+  ],
+  "cpus": [
+    {
+      "name": "Ryzen AI 9 HX 370",
+      "count": 10
+    },
+    {
+      "name": "Ryzen 9 8945HS",
+      "count": 6
+    },
+    {
+      "name": "Ryzen 5 7640HS",
+      "count": 6
+    },
+    {
+      "name": "Ryzen 5 3500U",
+      "count": 6
+    },
+    {
+      "name": "Ryzen AI Max+ 395",
+      "count": 5
+    },
+    {
+      "name": "Core Ultra 9 285H",
+      "count": 4
+    },
+    {
+      "name": "Ryzen 7 7730U",
+      "count": 4
+    },
+    {
+      "name": "Ryzen 5 PRO 6650H",
+      "count": 3
+    },
+    {
+      "name": "Ryzen 7 8845HS",
+      "count": 3
+    },
+    {
+      "name": "Ryzen 7 255",
+      "count": 3
+    },
+    {
+      "name": "Ryzen AI MAX+ 395",
+      "count": 2
+    },
+    {
+      "name": "Ryzen 7 7735HS",
+      "count": 2
+    },
+    {
+      "name": "Ryzen 7 8745HS",
+      "count": 1
+    },
+    {
+      "name": "Core i3-10110U",
+      "count": 1
+    },
+    {
+      "name": "Core Ultra 5 125U",
+      "count": 1
+    },
+    {
+      "name": "Ryzen 7 PRO 6850H",
+      "count": 1
+    },
+    {
+      "name": "Ryzen 7 Pro 6850U",
+      "count": 1
+    },
+    {
+      "name": "N95",
+      "count": 1
+    },
+    {
+      "name": "Core Ultra 7 256V",
+      "count": 1
+    },
+    {
+      "name": "Ryzen 7 2550",
+      "count": 1
+    },
+    {
+      "name": "Ryzen 7 PRO 6850U",
+      "count": 1
+    },
+    {
+      "name": "Ryzen AI 9 HX Pro 370",
+      "count": 1
+    },
+    {
+      "name": "Core Ultra 9 285HX",
+      "count": 1
+    },
+    {
+      "name": "Ryzen 9 9955HX",
+      "count": 1
+    }
+  ],
+  "ram_options": [
+    8,
+    16,
+    24,
+    32,
+    64,
+    128
+  ],
+  "price_ranges": [
+    {
+      "label": "〜3万円",
+      "min": 0,
+      "max": 30000
+    },
+    {
+      "label": "3〜5万円",
+      "min": 30000,
+      "max": 50000
+    },
+    {
+      "label": "5〜10万円",
+      "min": 50000,
+      "max": 100000
+    },
+    {
+      "label": "10〜15万円",
+      "min": 100000,
+      "max": 150000
+    },
+    {
+      "label": "15万円〜",
+      "min": 150000,
+      "max": null
+    }
+  ],
+  "total_count": 66,
+  "generated_at": "2026-04-28T18:54:09.840668"
+}

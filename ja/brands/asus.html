@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ASUS | ShotPC</title>
+  <link rel="stylesheet" href="/shotpc/assets/css/style.css">
+  <style>
+    .brand-header {
+      padding: 2rem;
+      background: linear-gradient(135deg, var(--primary-color, #0066cc), var(--secondary-color, #00cc99));
+      color: white;
+    }
+
+    .brand-header h1 {
+      margin: 0 0 1rem 0;
+      font-size: 2.5rem;
+    }
+
+    .brand-info {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 1rem;
+      font-size: 0.95rem;
+    }
+
+    .brand-info dt {
+      font-weight: bold;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .brand-info dd {
+      margin: 0;
+    }
+
+    .brand-description {
+      padding: 2rem;
+      background: #f5f5f5;
+      line-height: 1.6;
+    }
+
+    .products {
+      padding: 2rem;
+    }
+
+    .products h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .products-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+
+    .products-table th {
+      background: var(--primary-color, #0066cc);
+      color: white;
+      padding: 0.75rem;
+      text-align: left;
+      font-weight: bold;
+    }
+
+    .products-table td {
+      padding: 0.75rem;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .products-table tr:hover {
+      background: #f9f9f9;
+    }
+
+    .products-table a {
+      color: var(--primary-color, #0066cc);
+      text-decoration: none;
+    }
+
+    .products-table a:hover {
+      text-decoration: underline;
+    }
+
+    .no-products {
+      padding: 3rem 2rem;
+      text-align: center;
+      color: #666;
+      font-size: 1.1rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container">
+      <a href="/shotpc/" class="site-logo">ShotPC</a>
+      <nav class="site-nav">
+        <a href="/shotpc/ja/">ホーム</a>
+        <a href="/shotpc/ja/brands/">ブランド一覧</a>
+        <a href="/shotpc/ja/minis/">全製品</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Brand Header -->
+  <div class="brand-header">
+    <div class="container">
+      <h1>ASUS</h1>
+      <dl class="brand-info">
+        <dt>国</dt>
+        <dd>台湾</dd>
+        <dt>ミニPC製造状況</dt>
+        <dd>製造中</dd>
+        <dt>AI用途の強み</dt>
+        <dd>Intel NUCの正統継承</dd>
+      </dl>
+    </div>
+  </div>
+
+  <!-- Description -->
+  <div class="brand-description">
+    <div class="container">
+      Intel NUC事業を引き継ぎ、最新のIntelチップ搭載機を展開。ROGブランドで外部GPU搭載の大型ミニPCも手掛ける。
+    </div>
+  </div>
+
+  <!-- Products -->
+  <main class="container">
+  <section class="no-products">
+    <p>このブランドのミニPCはまだ登録されていません</p>
+  </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 ShotPC. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>
