@@ -1,1612 +1,1240 @@
-<!DOCTYPE html>
+﻿<!doctype html>
 <html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AIミニPC カタログ一覧 - ShotPC</title>
-    <meta name="description" content="AIローカル実行・推論向けミニPCを一覧比較。CPU・RAM・価格でフィルタリングできます。">
-    <link rel="stylesheet" href="/shotpc/assets/css/style.css">
-    <link rel="icon" href="/shotpc/assets/img/favicon.ico" sizes="any">
-    <link rel="icon" href="/shotpc/assets/img/favicon-32x32.png" type="image/png">
-    <link rel="apple-touch-icon" href="/shotpc/assets/img/favicon-192x192.png">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ミニPC カタログ一覧 | ShotPC</title>
+    <meta
+      name="description"
+      content="ShotPCが収集したAIローカル実行向けミニPCを、CPU、GPU、RAM、価格、OCuLink対応で一覧比較できます。"
+    />
+    <link rel="stylesheet" href="/shotpc/assets/css/style.css" />
+    <link rel="icon" href="/shotpc/assets/img/favicon.ico" sizes="any" />
+    <link rel="icon" href="/shotpc/assets/img/favicon-32x32.png" type="image/png" />
+    <link rel="apple-touch-icon" href="/shotpc/assets/img/favicon-192x192.png" />
     <style>
-        header {
-            padding: 1rem 0 !important;
-            margin-bottom: 1rem !important;
+      header {
+        padding: 0.95rem 0 !important;
+        margin-bottom: 0 !important;
+      }
+
+      header h1 a {
+        font-size: 1.75rem !important;
+      }
+
+      header p {
+        font-size: 0.88rem !important;
+      }
+
+      .page-wrap {
+        display: flex;
+        gap: 0;
+        padding: 0 16px 36px;
+        align-items: flex-start;
+      }
+
+      .sidebar {
+        width: 208px;
+        flex-shrink: 0;
+        position: sticky;
+        top: 14px;
+        max-height: calc(100vh - 28px);
+        overflow-y: auto;
+        padding: 8px 0;
+      }
+
+      .sidebar::-webkit-scrollbar {
+        width: 4px;
+      }
+
+      .sidebar::-webkit-scrollbar-thumb {
+        background: #cbd5e1;
+        border-radius: 999px;
+      }
+
+      .filter-section {
+        border-bottom: 1px solid #e2e8f0;
+        padding: 8px 0;
+      }
+
+      .filter-section:last-child {
+        border-bottom: none;
+      }
+
+      .filter-section-title {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 4px;
+        margin-bottom: 6px;
+        font-size: 0.7rem;
+        font-weight: 800;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: #64748b;
+        cursor: pointer;
+        user-select: none;
+      }
+
+      .filter-section-title:hover {
+        color: #0f172a;
+      }
+
+      .toggle-icon {
+        color: #94a3b8;
+        font-size: 0.92rem;
+        line-height: 1;
+      }
+
+      .filter-section-body {
+        overflow: hidden;
+        transition: max-height 0.2s ease;
+      }
+
+      .filter-section.collapsed .filter-section-body {
+        max-height: 0 !important;
+      }
+
+      .filter-section.collapsed .toggle-icon::after {
+        content: "+";
+      }
+
+      .filter-section:not(.collapsed) .toggle-icon::after {
+        content: "-";
+      }
+
+      .filter-option {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+        padding: 3px 4px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 0.8rem;
+        color: #334155;
+        user-select: none;
+      }
+
+      .filter-option:hover {
+        background: #f8fafc;
+      }
+
+      .filter-option input[type="checkbox"],
+      .filter-option input[type="radio"] {
+        width: 14px;
+        height: 14px;
+        accent-color: #2563eb;
+        flex-shrink: 0;
+        cursor: pointer;
+      }
+
+      .filter-option-label {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        min-width: 0;
+      }
+
+      .filter-option-count {
+        color: #94a3b8;
+        font-size: 0.72rem;
+        white-space: nowrap;
+      }
+
+      .range-slider-wrap {
+        padding: 4px 4px 8px;
+      }
+
+      .range-label {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 8px;
+        font-size: 0.75rem;
+        color: #1d4ed8;
+        font-weight: 700;
+      }
+
+      .range-track {
+        position: relative;
+        height: 4px;
+        background: #dbe4f0;
+        border-radius: 999px;
+        margin: 10px 4px;
+      }
+
+      .range-track-fill {
+        position: absolute;
+        height: 100%;
+        background: #2563eb;
+        border-radius: 999px;
+      }
+
+      .range-track input[type="range"] {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        margin: 0;
+        appearance: none;
+        -webkit-appearance: none;
+        background: transparent;
+        pointer-events: none;
+      }
+
+      .range-track input[type="range"]::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        border: 2px solid #fff;
+        background: #2563eb;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+        pointer-events: all;
+        cursor: pointer;
+      }
+
+      .range-track input[type="range"]::-moz-range-thumb {
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        border: 2px solid #fff;
+        background: #2563eb;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+        pointer-events: all;
+        cursor: pointer;
+      }
+
+      .btn-clear-all {
+        width: 100%;
+        margin-top: 10px;
+        padding: 7px 0;
+        border: 1px solid #dc2626;
+        border-radius: 6px;
+        background: #fff;
+        color: #dc2626;
+        font-size: 0.78rem;
+        cursor: pointer;
+      }
+
+      .btn-clear-all:hover {
+        background: #fef2f2;
+      }
+
+      .main-content {
+        flex: 1;
+        min-width: 0;
+        padding: 8px 0 0 16px;
+      }
+
+      .main-header {
+        display: flex;
+        align-items: baseline;
+        gap: 12px;
+        margin-bottom: 2px;
+      }
+
+      .main-header h1 {
+        font-size: 1.24rem;
+        font-weight: 800;
+        line-height: 1.2;
+      }
+
+      .result-count {
+        font-size: 0.82rem;
+        color: #64748b;
+      }
+
+      .data-note {
+        margin-bottom: 8px;
+        font-size: 0.71rem;
+        color: #94a3b8;
+      }
+
+      .list-controls {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        padding: 6px 0;
+        border-top: 2px solid #2563eb;
+        border-bottom: 1px solid #e2e8f0;
+      }
+
+      .control-wrap {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.78rem;
+        color: #475569;
+      }
+
+      .control-wrap select {
+        padding: 3px 8px;
+        border: 1px solid #cbd5e1;
+        border-radius: 4px;
+        background: #fff;
+        font-size: 0.78rem;
+      }
+
+      .list-header,
+      .product-item {
+        display: grid;
+        grid-template-columns:
+          24px
+          52px
+          78px
+          minmax(240px, 2.25fr)
+          minmax(144px, 1.1fr)
+          minmax(104px, 0.9fr)
+          56px
+          64px
+          72px
+          78px
+          110px;
+        align-items: center;
+        gap: 0 6px;
+      }
+
+      .list-header {
+        padding: 8px 0 6px;
+        border-bottom: 1px solid #e2e8f0;
+        font-size: 0.66rem;
+        font-weight: 800;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: #64748b;
+      }
+
+      .product-list {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .product-item {
+        padding: 8px 0;
+        border-bottom: 1px solid #edf2f7;
+      }
+
+      .product-item:hover {
+        background: #f8fbff;
+      }
+
+      .product-item > div {
+        min-width: 0;
+      }
+
+      .col-rank,
+      .col-center,
+      .col-right {
+        font-size: 0.75rem;
+      }
+
+      .col-rank {
+        text-align: center;
+        color: #94a3b8;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .product-thumb {
+        width: 48px;
+        height: 48px;
+        display: grid;
+        place-items: center;
+        border: 1px solid #e2e8f0;
+        border-radius: 6px;
+        background: #fff;
+        overflow: hidden;
+      }
+
+      .product-thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+
+      .no-thumb {
+        color: #94a3b8;
+        font-size: 0.66rem;
+        line-height: 1.15;
+        text-align: center;
+      }
+
+      .col-brand {
+        font-size: 0.71rem;
+        font-weight: 700;
+        color: #334155;
+        line-height: 1.25;
+      }
+
+      .col-name-wrap {
+        min-width: 0;
+      }
+
+      .product-name a {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+        color: #0f172a;
+        font-weight: 700;
+        line-height: 1.33;
+        text-decoration: none;
+      }
+
+      .product-name a:hover {
+        color: #2563eb;
+        text-decoration: underline;
+      }
+
+      .product-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+        margin-top: 2px;
+        font-size: 0.68rem;
+        color: #64748b;
+      }
+
+      .meta-text {
+        white-space: nowrap;
+      }
+
+      .asin-chip,
+      .ai-badge,
+      .stock-badge,
+      .port-badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1px 6px;
+        border-radius: 999px;
+        font-size: 0.63rem;
+        font-weight: 800;
+        white-space: nowrap;
+      }
+
+      .asin-chip {
+        background: #eff6ff;
+        color: #1d4ed8;
+      }
+
+      .ai-badge {
+        background: #eef6ff;
+        color: #1d4ed8;
+      }
+
+      .stock-badge.in-stock {
+        background: #ecfdf5;
+        color: #047857;
+      }
+
+      .stock-badge.unknown {
+        background: #f8fafc;
+        color: #64748b;
+      }
+
+      .col-cpu,
+      .col-gpu {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+        font-size: 0.74rem;
+        line-height: 1.3;
+        color: #334155;
+      }
+
+      .col-gpu {
+        font-size: 0.71rem;
+        color: #475569;
+      }
+
+      .col-center {
+        text-align: center;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .score-chip {
+        color: #0f172a;
+        font-weight: 700;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .score-sub {
+        display: block;
+        margin-top: 1px;
+        color: #94a3b8;
+        font-size: 0.61rem;
+      }
+
+      .port-stack {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 4px;
+      }
+
+      .port-badge {
+        background: #f8fafc;
+        color: #334155;
+      }
+
+      .col-right {
+        text-align: right;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .price-main {
+        font-weight: 800;
+        color: #0f172a;
+      }
+
+      .price-sub {
+        display: block;
+        margin-top: 1px;
+        font-size: 0.63rem;
+        color: #94a3b8;
+      }
+
+      .price-actions {
+        margin-top: 4px;
+      }
+
+      .amazon-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 4px 8px;
+        border-radius: 4px;
+        background: #ff9900;
+        color: #fff;
+        text-decoration: none;
+        font-size: 0.69rem;
+        font-weight: 800;
+      }
+
+      .amazon-btn:hover {
+        background: #e98a00;
+      }
+
+      .loading-msg,
+      .empty-msg {
+        padding: 18px 0;
+        color: #64748b;
+        font-size: 0.88rem;
+      }
+
+      .pagination {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 6px;
+        padding-top: 14px;
+      }
+
+      .page-btn {
+        min-width: 32px;
+        padding: 6px 9px;
+        border: 1px solid #cbd5e1;
+        border-radius: 6px;
+        background: #fff;
+        color: #334155;
+        font-size: 0.76rem;
+        cursor: pointer;
+      }
+
+      .page-btn.active {
+        background: #2563eb;
+        border-color: #2563eb;
+        color: #fff;
+      }
+
+      @media (max-width: 1180px) {
+        .list-header,
+        .product-item {
+          grid-template-columns:
+            24px
+            52px
+            70px
+            minmax(210px, 2fr)
+            minmax(124px, 1fr)
+            minmax(88px, 0.85fr)
+            54px
+            60px
+            68px
+            72px
+            100px;
+        }
+      }
+
+      @media (max-width: 980px) {
+        .page-wrap {
+          display: block;
+          padding: 0 20px 34px;
         }
 
-        header h1 a {
-            font-size: 1.8rem !important;
+        .sidebar {
+          width: 100%;
+          position: static;
+          max-height: none;
+          margin-bottom: 18px;
         }
 
-        header p {
-            font-size: 0.9rem !important;
+        .main-content {
+          padding: 0;
         }
 
-        .catalog-shell {
-            display: grid;
-            grid-template-columns: 280px 1fr;
-            gap: 1rem;
-            align-items: start;
+        .main-header,
+        .list-controls {
+          flex-direction: column;
+          align-items: flex-start;
         }
 
-        .catalog-sidebar {
-            background: #fff;
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 1rem;
-            position: sticky;
-            top: 16px;
+        .list-header {
+          display: none;
         }
 
-        .catalog-filter-group {
-            margin-bottom: 1rem;
+        .product-item {
+          grid-template-columns: 52px 1fr;
+          gap: 10px 12px;
+          padding: 12px 0;
         }
 
-        .catalog-filter-group h3 {
-            font-size: 0.9rem;
-            margin-bottom: 0.55rem;
-            padding-bottom: 0.4rem;
-            border-bottom: 1px solid var(--border-color);
+        .product-item > *:not(.product-thumb):not(.col-name-wrap) {
+          grid-column: 2;
         }
 
-        .catalog-filter-list {
-            display: grid;
-            gap: 0.35rem;
-            max-height: 220px;
-            overflow-y: auto;
-            padding-right: 0.2rem;
+        .col-rank {
+          display: none;
         }
 
-        .catalog-filter-list label {
-            display: flex;
-            justify-content: space-between;
-            gap: 0.5rem;
-            font-size: 0.82rem;
-            cursor: pointer;
+        .col-brand,
+        .col-cpu,
+        .col-gpu,
+        .col-center,
+        .col-right {
+          text-align: left;
         }
 
-        .catalog-filter-list span {
-            color: var(--text-sub);
-            font-size: 0.75rem;
-            white-space: nowrap;
+        .port-stack {
+          justify-content: flex-start;
         }
-
-        .catalog-main {
-            min-width: 0;
-        }
-
-        .catalog-toolbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            gap: 1rem;
-            margin-bottom: 0.75rem;
-        }
-
-        .catalog-toolbar h2 {
-            font-size: 1.1rem;
-            margin: 0;
-        }
-
-        .catalog-toolbar p {
-            font-size: 0.8rem;
-            color: var(--text-sub);
-            margin: 0.15rem 0 0;
-        }
-
-        .catalog-sort {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 0.8rem;
-        }
-
-        .catalog-sort select {
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            background: #fff;
-            padding: 0.45rem 0.6rem;
-            font-size: 0.82rem;
-        }
-
-        .catalog-table-wrap {
-            background: #fff;
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            overflow: auto;
-            max-height: calc(100vh - 145px);
-        }
-
-        .catalog-table {
-            width: 100%;
-            border-collapse: separate;
-            border-spacing: 0;
-            font-size: 0.78rem;
-            white-space: nowrap;
-        }
-
-        .catalog-table th,
-        .catalog-table td {
-            padding: 0.55rem 0.7rem;
-            border-bottom: 1px solid #edf2f7;
-            border-right: 1px solid #edf2f7;
-            text-align: left;
-            background: #fff;
-        }
-
-        .catalog-table th {
-            position: sticky;
-            top: 0;
-            z-index: 5;
-            background: #f8fafc;
-            font-weight: 700;
-        }
-
-        .catalog-table .sticky-a,
-        .catalog-table .sticky-b,
-        .catalog-table .sticky-c,
-        .catalog-table .sticky-d {
-            position: sticky;
-            z-index: 6;
-            background: #fff;
-        }
-
-        .catalog-table .sticky-a { left: 0; min-width: 52px; }
-        .catalog-table .sticky-b { left: 52px; min-width: 100px; }
-        .catalog-table .sticky-c { left: 152px; min-width: 74px; }
-        .catalog-table .sticky-d { left: 226px; min-width: 140px; border-right: 2px solid #cbd5e1; }
-
-        .catalog-table tbody tr:nth-child(even) td { background: #fbfdff; }
-        .catalog-table tbody tr:nth-child(even) .sticky-a,
-        .catalog-table tbody tr:nth-child(even) .sticky-b,
-        .catalog-table tbody tr:nth-child(even) .sticky-c,
-        .catalog-table tbody tr:nth-child(even) .sticky-d { background: #fbfdff; }
-
-        .catalog-table tbody tr:hover td { background: #eef6ff; }
-        .catalog-table tbody tr:hover .sticky-a,
-        .catalog-table tbody tr:hover .sticky-b,
-        .catalog-table tbody tr:hover .sticky-c,
-        .catalog-table tbody tr:hover .sticky-d { background: #eef6ff; }
-
-        .catalog-num { text-align: right; font-variant-numeric: tabular-nums; }
-
-        .catalog-badge {
-            display: inline-block;
-            padding: 0.14rem 0.38rem;
-            border-radius: 999px;
-            font-size: 0.69rem;
-            font-weight: 700;
-            background: #eff6ff;
-            color: #1d4ed8;
-        }
-
-        .catalog-link {
-            color: var(--primary-color);
-            text-decoration: none;
-            font-weight: 700;
-        }
-
-        .catalog-link:hover { text-decoration: underline; }
-
-        .catalog-thumb-cell { width: 74px; min-width: 74px; text-align: center; }
-
-        .catalog-thumb {
-            width: 52px;
-            height: 52px;
-            object-fit: contain;
-            display: block;
-            margin: 0 auto;
-        }
-
-        .catalog-thumb-fallback {
-            width: 52px;
-            height: 52px;
-            display: grid;
-            place-items: center;
-            margin: 0 auto;
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            color: var(--text-sub);
-            font-size: 0.68rem;
-            background: #f8fafc;
-        }
-
-        .catalog-empty {
-            padding: 1.25rem;
-            color: var(--text-sub);
-            font-size: 0.9rem;
-        }
-
-        @media (max-width: 980px) {
-            .catalog-shell { grid-template-columns: 1fr; }
-            .catalog-sidebar { position: static; }
-            .catalog-table-wrap { max-height: none; }
-        }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <div class="container">
-            <h1><a href="/shotpc/">ShotPC</a></h1>
-            <p>AIミニPC カタログ一覧</p>
-        </div>
+      <div class="container">
+        <h1><a href="/shotpc/">ShotPC</a></h1>
+        <p>AIローカル実行向けミニPC カタログ一覧</p>
+      </div>
     </header>
 
-    <main class="container catalog-shell">
-        <aside class="catalog-sidebar" id="catalog-sidebar">
-            <section class="catalog-filter-group">
-                <h3>Brand</h3>
-                <div class="catalog-filter-list" id="catalog-brand-filters">
-                    <div class="loading">読み込み中...</div>
-                </div>
-            </section>
-            <section class="catalog-filter-group">
-                <h3>CPU</h3>
-                <div class="catalog-filter-list" id="catalog-cpu-filters">
-                    <div class="loading">読み込み中...</div>
-                </div>
-            </section>
-            <section class="catalog-filter-group">
-                <h3>RAM</h3>
-                <div class="catalog-filter-list" id="catalog-ram-filters">
-                    <div class="loading">読み込み中...</div>
-                </div>
-            </section>
-            <section class="catalog-filter-group">
-                <h3>Options</h3>
-                <div class="catalog-filter-list">
-                    <label><span><input type="checkbox" name="stock_only"> 在庫ありのみ</span></label>
-                    <label><span><input type="checkbox" name="oculink_only"> Oculink対応</span></label>
-                    <label><span><input type="checkbox" name="usb4_only"> USB4あり</span></label>
-                </div>
-            </section>
-        </aside>
-
-        <section class="catalog-main">
-            <div class="catalog-toolbar">
-                <div>
-                    <h2>AIミニPC 一覧（88件）</h2>
-                    <p>左で絞り込み、クリックで詳細を確認できます。</p>
-                </div>
-                <div class="catalog-sort">
-                    <label for="catalog-sort">Sort</label>
-                    <select id="catalog-sort">
-                        <option value="price_asc">価格が安い順</option>
-                        <option value="price_desc">価格が高い順</option>
-                        <option value="ram_desc">RAMが大きい順</option>
-                        <option value="brand_asc">Brand順</option>
-                    </select>
-                </div>
+    <main class="container page-wrap">
+      <aside class="sidebar" id="catalog-sidebar">
+        <section class="filter-section" data-section>
+          <div class="filter-section-title">
+            <span>Brand</span>
+            <span class="toggle-icon"></span>
+          </div>
+          <div class="filter-section-body">
+            <div id="brand-filters">
+              <div class="loading-msg">読み込み中...</div>
             </div>
-
-            <div class="catalog-table-wrap">
-                <table class="catalog-table">
-                    <thead>
-                        <tr>
-                            <th class="sticky-a">#</th>
-                            <th class="sticky-b">Brand</th>
-                            <th class="sticky-c catalog-thumb-cell">Img</th>
-                            <th class="sticky-d">Model</th>
-                            <th>CPU</th>
-                            <th>RAM</th>
-                            <th>Storage</th>
-                            <th>AI</th>
-                            <th>Ports</th>
-                            <th class="catalog-num">Price</th>
-                            <th>Amazon</th>
-                        </tr>
-                    </thead>
-                    <tbody id="catalog-body">
-                        <tr>
-                            <td class="sticky-a catalog-num">1</td>
-                            <td class="sticky-b">その他</td>
-                            <td class="sticky-c catalog-thumb-cell"><img src="https://m.media-amazon.com/images/I/713q98RbdFL._AC_SX679_.jpg" alt="AOOSTAR GT37 aiミニpc AMD Ryzen AI 9 HX 370(最大5.1GHz 12C/24T)+ Radeon 890M iGPU搭載" class="catalog-thumb" loading="lazy"></td>
-                            <td class="sticky-d"><a href="/shotpc/ja/minis/SP010A.html" class="catalog-link">AOOSTAR GT37 aiミニpc AMD Ryzen AI 9 HX 370(最大5.1GHz 12C/24T)+ Radeon 890M iGPU搭載</a></td>
-                            <td>Ryzen AI 9 HX 370</td>
-                            <td>32GB</td>
-                            <td>1024GB</td>
-                            <td><span class="catalog-badge">Excellent for 7B/8B Models</span></td>
-                            <td>Oculink</td>
-                            <td class="catalog-num">¥139,270</td>
-                            <td><a href="https://www.amazon.co.jp/dp/B0DWZZXR18?tag=shotsim-22" target="_blank" rel="noopener" class="catalog-link">View</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sticky-a catalog-num">2</td>
-                            <td class="sticky-b">その他</td>
-                            <td class="sticky-c catalog-thumb-cell"><img src="https://m.media-amazon.com/images/I/719dp3lbp2L._AC_SX679_.jpg" alt="AOOSTAR ai ミニpc ryzen AI9 HX370+890M(12C/24T 5.1GHz 80TOPS) HDモニター付き+指紋ロック解除 DDR" class="catalog-thumb" loading="lazy"></td>
-                            <td class="sticky-d"><a href="/shotpc/ja/minis/SP025A.html" class="catalog-link">AOOSTAR ai ミニpc ryzen AI9 HX370+890M(12C/24T 5.1GHz 80TOPS) HDモニター付き+指紋ロック解除 DDR</a></td>
-                            <td>Ryzen AI 9 HX 370</td>
-                            <td>0GB</td>
-                            <td>0GB</td>
-                            <td><span class="catalog-badge">Excellent for 7B/8B Models</span></td>
-                            <td>Oculink</td>
-                            <td class="catalog-num">¥114,500</td>
-                            <td><a href="https://www.amazon.co.jp/dp/B0FSZWVM38?tag=shotsim-22" target="_blank" rel="noopener" class="catalog-link">View</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sticky-a catalog-num">3</td>
-                            <td class="sticky-b">その他</td>
-                            <td class="sticky-c catalog-thumb-cell"><img src="https://m.media-amazon.com/images/I/611cQhgJwsL._AC_SX679_.jpg" alt="Thdeukoty ミニ PC Ryzen AI 9 HX 370" class="catalog-thumb" loading="lazy"></td>
-                            <td class="sticky-d"><a href="/shotpc/ja/minis/SP038A.html" class="catalog-link">Thdeukoty ミニ PC Ryzen AI 9 HX 370</a></td>
-                            <td>Ryzen AI 9 HX 370</td>
-                            <td>32GB</td>
-                            <td>1024GB</td>
-                            <td><span class="catalog-badge">Excellent for 7B/8B Models</span></td>
-                            <td>Oculink</td>
-                            <td class="catalog-num">¥197,209</td>
-                            <td><a href="https://www.amazon.co.jp/dp/B0FWC7ZMFS?tag=shotsim-22" target="_blank" rel="noopener" class="catalog-link">View</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sticky-a catalog-num">4</td>
-                            <td class="sticky-b">ACEMAGIC</td>
-                            <td class="sticky-c catalog-thumb-cell"><img src="https://m.media-amazon.com/images/I/71xYCyXmRyL._AC_SX679_.jpg" alt="ミニpc ゲーミング AMD Ryzen7 8745HS 【96GB DDR5+4TB M.2 SSD拡張対応】mini pc Windows 11 Pro 8" class="catalog-thumb" loading="lazy"></td>
-                            <td class="sticky-d"><a href="/shotpc/ja/minis/SP018A.html" class="catalog-link">ミニpc ゲーミング AMD Ryzen7 8745HS 【96GB DDR5+4TB M.2 SSD拡張対応】mini pc Windows 11 Pro 8</a></td>
-                            <td>Ryzen 7 8745HS</td>
-                            <td>96GB</td>
-                            <td>4096GB</td>
-                            <td><span class="catalog-badge">Standard Use</span></td>
-                            <td>-</td>
-                            <td class="catalog-num">¥97,680</td>
-                            <td><a href="https://www.amazon.co.jp/dp/B0FPLH31CS?tag=shotsim-22" target="_blank" rel="noopener" class="catalog-link">View</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sticky-a catalog-num">5</td>
-                            <td class="sticky-b">Beelink</td>
-                            <td class="sticky-c catalog-thumb-cell"><img src="https://m.media-amazon.com/images/I/41dZ1FlexML._AC_SX679_.jpg" alt="SER9 HX370 ミニ PC" class="catalog-thumb" loading="lazy"></td>
-                            <td class="sticky-d"><a href="/shotpc/ja/minis/SP029A.html" class="catalog-link">SER9 HX370 ミニ PC</a></td>
-                            <td>Ryzen AI 9 HX 370</td>
-                            <td>32GB</td>
-                            <td>1024GB</td>
-                            <td><span class="catalog-badge">Excellent for 7B/8B Models</span></td>
-                            <td>-</td>
-                            <td class="catalog-num">¥191,900</td>
-                            <td><a href="https://www.amazon.co.jp/dp/B0DHRHDK5P?tag=shotsim-22" target="_blank" rel="noopener" class="catalog-link">View</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sticky-a catalog-num">6</td>
-                            <td class="sticky-b">GMKtec</td>
-                            <td class="sticky-c catalog-thumb-cell"><img src="https://m.media-amazon.com/images/I/712sEmYgoRL._AC_SX679_.jpg" alt="AI Mini PC AMD Ryzen AI 9 HX-370(最大5.1GHz 12コア/24スレッド)搭載 32GB LPDDR5X 7500MHz +" class="catalog-thumb" loading="lazy"></td>
-                            <td class="sticky-d"><a href="/shotpc/ja/minis/SP005A.html" class="catalog-link">AI Mini PC AMD Ryzen AI 9 HX-370(最大5.1GHz 12コア/24スレッド)搭載 32GB LPDDR5X 7500MHz +</a></td>
-                            <td>Ryzen AI 9 HX 370</td>
-                            <td>32GB</td>
-                            <td>1024GB</td>
-                            <td><span class="catalog-badge">Excellent for 7B/8B Models</span></td>
-                            <td>Oculink</td>
-                            <td class="catalog-num">¥166,900</td>
-                            <td><a href="https://www.amazon.co.jp/dp/B0DPCH1NQN?tag=shotsim-22" target="_blank" rel="noopener" class="catalog-link">View</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sticky-a catalog-num">7</td>
-                            <td class="sticky-b">GMKtec</td>
-                            <td class="sticky-c catalog-thumb-cell"><img src="https://m.media-amazon.com/images/I/61bWaOiaOrL._AC_SY879_.jpg" alt="EVO-T1 AI ミニPC【第14世代】Intel Core U9 285H搭載 最 大5.4GHz【64G+2TB PCIe 4.0 SSD】 Arc GP" class="catalog-thumb" loading="lazy"></td>
-                            <td class="sticky-d"><a href="/shotpc/ja/minis/SP007B.html" class="catalog-link">EVO-T1 AI ミニPC【第14世代】Intel Core U9 285H搭載 最 大5.4GHz【64G+2TB PCIe 4.0 SSD】 Arc GP</a></td>
-                            <td>Core Ultra 9 285H</td>
-                            <td>64GB</td>
-                            <td>2048GB</td>
-                            <td><span class="catalog-badge">Standard Use</span></td>
-                            <td>Oculink</td>
-                            <td class="catalog-num">¥226,209</td>
-                            <td><a href="https://www.amazon.co.jp/dp/B0FH4NZ6DX?tag=shotsim-22" target="_blank" rel="noopener" class="catalog-link">View</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sticky-a catalog-num">8</td>
-                            <td class="sticky-b">GMKtec</td>
-                            <td class="sticky-c catalog-thumb-cell"><img src="https://m.media-amazon.com/images/I/61ozT1NI3PL._AC_SX679_.jpg" alt="EVO-T1 AI ミニPC【第14世代】Intel Core U9 285H搭載 最 大5.4GHz【64G+2TB PCIe 4.0 SSD】 Arc GP" class="catalog-thumb" loading="lazy"></td>
-                            <td class="sticky-d"><a href="/shotpc/ja/minis/SP007A.html" class="catalog-link">EVO-T1 AI ミニPC【第14世代】Intel Core U9 285H搭載 最 大5.4GHz【64G+2TB PCIe 4.0 SSD】 Arc GP</a></td>
-                            <td>Core Ultra 9 285H</td>
-                            <td>64GB</td>
-                            <td>2048GB</td>
-                            <td><span class="catalog-badge">Standard Use</span></td>
-                            <td>Oculink</td>
-                            <td class="catalog-num">¥266,168</td>
-                            <td><a href="https://www.amazon.co.jp/dp/B0GK5D2XC7?tag=shotsim-22" target="_blank" rel="noopener" class="catalog-link">View</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sticky-a catalog-num">9</td>
-                            <td class="sticky-b">GMKtec</td>
-                            <td class="sticky-c catalog-thumb-cell"><img src="https://m.media-amazon.com/images/I/61++J8xd7XL._AC_SX679_.jpg" alt="EVO-T1 AIミニPC【第14世代 96GB DDR5メモリ+2TB M.2 NVMe SSD】Intel Core Ultra 9 285H/Arc GP" class="catalog-thumb" loading="lazy"></td>
-                            <td class="sticky-d"><a href="/shotpc/ja/minis/SP014A.html" class="catalog-link">EVO-T1 AIミニPC【第14世代 96GB DDR5メモリ+2TB M.2 NVMe SSD】Intel Core Ultra 9 285H/Arc GP</a></td>
-                            <td>Core Ultra 9 285H</td>
-                            <td>0GB</td>
-                            <td>2048GB</td>
-                            <td><span class="catalog-badge">Standard Use</span></td>
-                            <td>Oculink</td>
-                            <td class="catalog-num">¥282,500</td>
-                            <td><a href="https://www.amazon.co.jp/dp/B0FJFM8WC1?tag=shotsim-22" target="_blank" rel="noopener" class="catalog-link">View</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sticky-a catalog-num">10</td>
-                            <td class="sticky-b">GMKtec</td>
-                            <td class="sticky-c catalog-thumb-cell"><img src="https://m.media-amazon.com/images/I/51yoW2Hbg8L._AC_SX679_.jpg" alt="EVO-T1 Intel Core Ultra 9 285H搭載【2025最新AIミニPC】64GB DDR5 1TB NVMe SSD(最大128GB+24T" class="catalog-thumb" loading="lazy"></td>
-                            <td class="sticky-d"><a href="/shotpc/ja/minis/SP006A.html" class="catalog-link">EVO-T1 Intel Core Ultra 9 285H搭載【2025最新AIミニPC】64GB DDR5 1TB NVMe SSD(最大128GB+24T</a></td>
-                            <td>Core Ultra 9 285H</td>
-                            <td>64GB</td>
-                            <td>1024GB</td>
-                            <td><span class="catalog-badge">Standard Use</span></td>
-                            <td>Oculink</td>
-                            <td class="catalog-num">¥216,999</td>
-                            <td><a href="https://www.amazon.co.jp/dp/B0FH4M1SZM?tag=shotsim-22" target="_blank" rel="noopener" class="catalog-link">View</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sticky-a catalog-num">11</td>
-                            <td class="sticky-b">GMKtec</td>
-                            <td class="sticky-c catalog-thumb-cell"><img src="https://m.media-amazon.com/images/I/61gYLwjYRsL._AC_SX679_.jpg" alt="EVO-X2 AI ミニPC AMD Ryzen AI Max+ 395" class="catalog-thumb" loading="lazy"></td>
-                            <td class="sticky-d"><a href="/shotpc/ja/minis/SP023A.html" class="catalog-link">EVO-X2 AI ミニPC AMD Ryzen AI Max+ 395</a></td>
-                            <td>Ryzen AI Max+ 395</td>
-                            <td>128GB</td>
-                            <td>2048GB</td>
-                            <td><span class="catalog-badge">Standard Use</span></td>
-                            <td>-</td>
-                            <td class="catalog-num">¥556,469</td>
-                            <td><a href="https://www.amazon.co.jp/dp/B0GKNR7S9D?tag=shotsim-22" target="_blank" rel="noopener" class="catalog-link">View</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sticky-a catalog-num">12</td>
-                            <td class="sticky-b">GMKtec</td>
-                            <td class="sticky-c catalog-thumb-cell"><img src="https://m.media-amazon.com/images/I/61n899eVgSL._AC_SX679_.jpg" alt="EVO-X2 AIミニPC AMD Ryzen AI MAX+ 395(16コア/32スレッド 最大5.1GHz)搭載｜最大126TOPS AI性能｜64GB" class="catalog-thumb" loading="lazy"></td>
-                            <td class="sticky-d"><a href="/shotpc/ja/minis/SP020A.html" class="catalog-link">EVO-X2 AIミニPC AMD Ryzen AI MAX+ 395(16コア/32スレッド 最大5.1GHz)搭載｜最大126TOPS AI性能｜64GB</a></td>
-                            <td>Ryzen AI MAX+ 395</td>
-                            <td>64GB</td>
-                            <td>1024GB</td>
-                            <td><span class="catalog-badge">Standard Use</span></td>
-                            <td>-</td>
-                            <td class="catalog-num">¥324,990</td>
-                            <td><a href="https://www.amazon.co.jp/dp/B0F5HDWNKR?tag=shotsim-22" target="_blank" rel="noopener" class="catalog-link">View</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sticky-a catalog-num">13</td>
-                            <td class="sticky-b">GMKtec</td>
-                            <td class="sticky-c catalog-thumb-cell"><img src="https://m.media-amazon.com/images/I/61gYLwjYRsL._AC_SX679_.jpg" alt="EVO-X2 AIミニPC AMD Ryzen AI MAX+ 395(16コア/32スレッド 最大5.1GHz)搭載｜最大126TOPS AI性能｜96GB" class="catalog-thumb" loading="lazy"></td>
-                            <td class="sticky-d"><a href="/shotpc/ja/minis/SP021A.html" class="catalog-link">EVO-X2 AIミニPC AMD Ryzen AI MAX+ 395(16コア/32スレッド 最大5.1GHz)搭載｜最大126TOPS AI性能｜96GB</a></td>
-                            <td>Ryzen AI MAX+ 395</td>
-                            <td>96GB</td>
-                            <td>2048GB</td>
-                            <td><span class="catalog-badge">Standard Use</span></td>
-                            <td>-</td>
-                            <td class="catalog-num">¥436,469</td>
-                            <td><a href="https://www.amazon.co.jp/dp/B0GKF7N73W?tag=shotsim-22" target="_blank" rel="noopener" class="catalog-link">View</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sticky-a catalog-num">14</td>
-                            <td class="sticky-b">GMKtec</td>
-                            <td class="sticky-c catalog-thumb-cell"><img src="https://m.media-amazon.com/images/I/61gYLwjYRsL._AC_SX679_.jpg" alt="EVO-X2 AIミニPC AMD Ryzen AI Max+ 395搭載(16コア32スレッド 最大5.1GHz)小型PC 高性能デスクトップ Radeon" class="catalog-thumb" loading="lazy"></td>
-                            <td class="sticky-d"><a href="/shotpc/ja/minis/SP017A.html" class="catalog-link">EVO-X2 AIミニPC AMD Ryzen AI Max+ 395搭載(16コア32スレッド 最大5.1GHz)小型PC 高性能デスクトップ Radeon</a></td>
-                            <td>Ryzen AI Max+ 395</td>
-                            <td>128GB</td>
-                            <td>2048GB</td>
-                            <td><span class="catalog-badge">Standard Use</span></td>
-                            <td>-</td>
-                            <td class="catalog-num">¥479,999</td>
-                            <td><a href="https://www.amazon.co.jp/dp/B0FRMDHSD6?tag=shotsim-22" target="_blank" rel="noopener" class="catalog-link">View</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sticky-a catalog-num">15</td>
-                            <td class="sticky-b">GMKtec</td>
-                            <td class="sticky-c catalog-thumb-cell"><img src="https://m.media-amazon.com/images/I/61gYLwjYRsL._AC_SX679_.jpg" alt="EVO-X2 ミニPC AMD Ryzen AI Max+ 395搭載(16コア32スレッド 最大5.1GHz)小型PC 高性能デスクトップ Radeon 80" class="catalog-thumb" loading="lazy"></td>
-                            <td class="sticky-d"><a href="/shotpc/ja/minis/SP022B.html" class="catalog-link">EVO-X2 ミニPC AMD Ryzen AI Max+ 395搭載(16コア32スレッド 最大5.1GHz)小型PC 高性能デスクトップ Radeon 80</a></td>
-                            <td>Ryzen AI Max+ 395</td>
-                            <td>96GB</td>
-                            <td>2048GB</td>
-                            <td><span class="catalog-badge">Standard Use</span></td>
-                            <td>-</td>
-                            <td class="catalog-num">¥378,499</td>
-                            <td><a href="https://www.amazon.co.jp/dp/B0FR13DQP8?tag=shotsim-22" target="_blank" rel="noopener" class="catalog-link">View</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sticky-a catalog-num">16</td>
-                            <td class="sticky-b">GMKtec</td>
-                            <td class="sticky-c catalog-thumb-cell"><img src="https://m.media-amazon.com/images/I/61gYLwjYRsL._AC_SX679_.jpg" alt="EVO-X2 ミニPC AMD Ryzen AI Max+ 395搭載(16コア32スレッド 最大5.1GHz)小型PC 高性能デスクトップ Radeon 80" class="catalog-thumb" loading="lazy"></td>
-                            <td class="sticky-d"><a href="/shotpc/ja/minis/SP022A.html" class="catalog-link">EVO-X2 ミニPC AMD Ryzen AI Max+ 395搭載(16コア32スレッド 最大5.1GHz)小型PC 高性能デスクトップ Radeon 80</a></td>
-                            <td>Ryzen AI Max+ 395</td>
-                            <td>128GB</td>
-                            <td>2048GB</td>
-                            <td><span class="catalog-badge">Standard Use</span></td>
-                            <td>-</td>
-                            <td class="catalog-num">¥556,469</td>
-                            <td><a href="https://www.amazon.co.jp/dp/B0GKDQGQV1?tag=shotsim-22" target="_blank" rel="noopener" class="catalog-link">View</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sticky-a catalog-num">17</td>
-                            <td class="sticky-b">GMKtec</td>
-                            <td class="sticky-c catalog-thumb-cell"><img src="https://m.media-amazon.com/images/I/71CwJnGnMYL._AC_SX679_.jpg" alt="Full Spec 版NucBox K11 ミニpc  ミニpc AMD Ryzen9 8945HS 64G+1T Windows11 Pro Mini pc" class="catalog-thumb" loading="lazy"></td>
-                            <td class="sticky-d"><a href="/shotpc/ja/minis/SP044A.html" class="catalog-link">Full Spec 版NucBox K11 ミニpc  ミニpc AMD Ryzen9 8945HS 64G+1T Windows11 Pro Mini pc</a></td>
-                            <td>Ryzen 9 8945HS</td>
-                            <td>64GB</td>
-                            <td>1024GB</td>
-                            <td><span class="catalog-badge">Excellent for 7B/8B Models</span></td>
-                            <td>Oculink</td>
-                            <td class="catalog-num">¥197,499</td>
-                            <td><a href="https://www.amazon.co.jp/dp/B0GCLNC947?tag=shotsim-22" target="_blank" rel="noopener" class="catalog-link">View</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sticky-a catalog-num">18</td>
-                            <td class="sticky-b">GMKtec</td>
-                            <td class="sticky-c catalog-thumb-cell"><img src="https://m.media-amazon.com/images/I/61IzDAl0jUL._AC_SX679_.jpg" alt="Full Spec版 NucBox K15 ミニPC【オフィス 作業最強 ミニPC】インテル Core Ultra5 125U Win11 Pro【96GB D" class="catalog-thumb" loading="lazy"></td>
-                            <td class="sticky-d"><a href="/shotpc/ja/minis/SP069A.html" class="catalog-link">Full Spec版 NucBox K15 ミニPC【オフィス 作業最強 ミニPC】インテル Core Ultra5 125U Win11 Pro【96GB D</a></td>
-                            <td>Core Ultra 5 125U</td>
-                            <td>32GB</td>
-                            <td>1024GB</td>
-                            <td><span class="catalog-badge">Standard Use</span></td>
-                            <td>Oculink</td>
-                            <td class="catalog-num">¥109,498</td>
-                            <td><a href="https://www.amazon.co.jp/dp/B0G91RGMVP?tag=shotsim-22" target="_blank" rel="noopener" class="catalog-link">View</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sticky-a catalog-num">19</td>
-                            <td class="sticky-b">GMKtec</td>
-                            <td class="sticky-c catalog-thumb-cell"><img src="https://m.media-amazon.com/images/I/616mfZEKHbL._AC_SX679_.jpg" alt="K16 ミニPC ゲーミングデスクトップPCAMD Ryzen 7 7735HS(8コア／12スレッド 最大4.75GHz) 32GB LPDDR5 6400M" class="catalog-thumb" loading="lazy"></td>
-                            <td class="sticky-d"><a href="/shotpc/ja/minis/SP004A.html" class="catalog-link">K16 ミニPC ゲーミングデスクトップPCAMD Ryzen 7 7735HS(8コア／12スレッド 最大4.75GHz) 32GB LPDDR5 6400M</a></td>
-                            <td>Ryzen 7 7735HS</td>
-                            <td>32GB</td>
-                            <td>512GB</td>
-                            <td><span class="catalog-badge">Great for AI Models</span></td>
-                            <td>Oculink</td>
-                            <td class="catalog-num">¥133,749</td>
-                            <td><a href="https://www.amazon.co.jp/dp/B0GG9TLRFD?tag=shotsim-22" target="_blank" rel="noopener" class="catalog-link">View</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sticky-a catalog-num">20</td>
-                            <td class="sticky-b">GMKtec</td>
-                            <td class="sticky-c catalog-thumb-cell"><img src="https://m.media-amazon.com/images/I/61Ry5ir++SL._AC_SX679_.jpg" alt="M5 Ultra ゲーミングミニPC AMD Ryzen 7 7730U(7430U／5825U アップグレード版) 16GB RAM 512GB SSD デュ" class="catalog-thumb" loading="lazy"></td>
-                            <td class="sticky-d"><a href="/shotpc/ja/minis/SP051A.html" class="catalog-link">M5 Ultra ゲーミングミニPC AMD Ryzen 7 7730U(7430U／5825U アップグレード版) 16GB RAM 512GB SSD デュ</a></td>
-                            <td>Ryzen 7 7730U</td>
-                            <td>16GB</td>
-                            <td>512GB</td>
-                            <td><span class="catalog-badge">Standard Use</span></td>
-                            <td>-</td>
-                            <td class="catalog-num">¥78,749</td>
-                            <td><a href="https://www.amazon.co.jp/dp/B0GGDYVQQS?tag=shotsim-22" target="_blank" rel="noopener" class="catalog-link">View</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sticky-a catalog-num">21</td>
-                            <td class="sticky-b">GMKtec</td>
-                            <td class="sticky-c catalog-thumb-cell"><img src="https://m.media-amazon.com/images/I/61HYKY2cTnL._AC_SX679_.jpg" alt="M6 Ultra ミニPC" class="catalog-thumb" loading="lazy"></td>
-                            <td class="sticky-d"><a href="/shotpc/ja/minis/SP003A.html" class="catalog-link">M6 Ultra ミニPC</a></td>
-                            <td>Ryzen 5 7640HS</td>
-                            <td>128GB</td>
-                            <td>8192GB</td>
-                            <td><span class="catalog-badge">Great for AI Models</span></td>
-                            <td>-</td>
-                            <td class="catalog-num">¥78,999</td>
-                            <td><a href="https://www.amazon.co.jp/dp/B0GD6SBH7B?tag=shotsim-22" target="_blank" rel="noopener" class="catalog-link">View</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sticky-a catalog-num">22</td>
-                            <td class="sticky-b">GMKtec</td>
-                            <td class="sticky-c catalog-thumb-cell"><img src="https://m.media-amazon.com/images/I/61ndvhBxDZL._AC_SX679_.jpg" alt="M6 Ultra ミニPC | AMD Ryzen 5 7640HS" class="catalog-thumb" loading="lazy"></td>
-                            <td class="sticky-d"><a href="/shotpc/ja/minis/SP002A.html" class="catalog-link">M6 Ultra ミニPC | AMD Ryzen 5 7640HS</a></td>
-                            <td>Ryzen 5 7640HS</td>
-                            <td>16GB</td>
-                            <td>512GB</td>
-                            <td><span class="catalog-badge">Great for AI Models</span></td>
-                            <td>-</td>
-                            <td class="catalog-num">¥81,999</td>
-                            <td><a href="https://www.amazon.co.jp/dp/B0FLPCL75V?tag=shotsim-22" target="_blank" rel="noopener" class="catalog-link">View</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sticky-a catalog-num">23</td>
-                            <td class="sticky-b">GMKtec</td>
-                            <td class="sticky-c catalog-thumb-cell"><img src="https://m.media-amazon.com/images/I/71ar3XvF7kL._AC_SX679_.jpg" alt="M6 Ultra ミニPC 【 AMD Ryzen 5 7640HS" class="catalog-thumb" loading="lazy"></td>
-                            <td class="sticky-d"><a href="/shotpc/ja/minis/SP032A.html" class="catalog-link">M6 Ultra ミニPC 【 AMD Ryzen 5 7640HS</a></td>
-                            <td>Ryzen 5 7640HS</td>
-                            <td>128GB</td>
-                            <td>8192GB</td>
-                            <td><span class="catalog-badge">Great for AI Models</span></td>
-                            <td>-</td>
-                            <td class="catalog-num">¥78,822</td>
-                            <td><a href="https://www.amazon.co.jp/dp/B0GKHHQ1YZ?tag=shotsim-22" target="_blank" rel="noopener" class="catalog-link">View</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sticky-a catalog-num">24</td>
-                            <td class="sticky-b">GMKtec</td>
-                            <td class="sticky-c catalog-thumb-cell"><img src="https://m.media-amazon.com/images/I/61AbLcN8vIL._AC_SX679_.jpg" alt="NucBox K11 ミニpc AMD Ryzen9 8945HS 8コア/16スレッド5.2GHz DDR5 32GB+1TB PCIe 4.0 M.2 22" class="catalog-thumb" loading="lazy"></td>
-                            <td class="sticky-d"><a href="/shotpc/ja/minis/SP013A.html" class="catalog-link">NucBox K11 ミニpc AMD Ryzen9 8945HS 8コア/16スレッド5.2GHz DDR5 32GB+1TB PCIe 4.0 M.2 22</a></td>
-                            <td>Ryzen 9 8945HS</td>
-                            <td>32GB</td>
-                            <td>1024GB</td>
-                            <td><span class="catalog-badge">Excellent for 7B/8B Models</span></td>
-                            <td>Oculink</td>
-                            <td class="catalog-num">¥138,500</td>
-                            <td><a href="https://www.amazon.co.jp/dp/B0DPCH1232?tag=shotsim-22" target="_blank" rel="noopener" class="catalog-link">View</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sticky-a catalog-num">25</td>
-                            <td class="sticky-b">GMKtec</td>
-                            <td class="sticky-c catalog-thumb-cell"><img src="https://m.media-amazon.com/images/I/61EkevolCYL._AC_SX679_.jpg" alt="NucBox M7 UltraミニPC AMD Ryzen 7 Pro 6850U (8コア/16スレッド 最大4.70GHz) | 16GB DDR5 RAM" class="catalog-thumb" loading="lazy"></td>
-                            <td class="sticky-d"><a href="/shotpc/ja/minis/SP064A.html" class="catalog-link">NucBox M7 UltraミニPC AMD Ryzen 7 Pro 6850U (8コア/16スレッド 最大4.70GHz) | 16GB DDR5 RAM</a></td>
-                            <td>Ryzen 7 Pro 6850U</td>
-                            <td>16GB</td>
-                            <td>1024GB</td>
-                            <td><span class="catalog-badge">Standard Use</span></td>
-                            <td>Oculink</td>
-                            <td class="catalog-num">¥78,999</td>
-                            <td><a href="https://www.amazon.co.jp/dp/B0FY2JCNM7?tag=shotsim-22" target="_blank" rel="noopener" class="catalog-link">View</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sticky-a catalog-num">26</td>
-                            <td class="sticky-b">GMKtec</td>
-                            <td class="sticky-c catalog-thumb-cell"><img src="https://m.media-amazon.com/images/I/61cukenrhML._AC_SX679_.jpg" alt="NucBox M8 ミニpc AMD Ryzen 5 PRO 6650H LPDDR5 16GB+512GB PCIe 4.0 M.2 2280 AMD Rad" class="catalog-thumb" loading="lazy"></td>
-                            <td class="sticky-d"><a href="/shotpc/ja/minis/SP027A.html" class="catalog-link">NucBox M8 ミニpc AMD Ryzen 5 PRO 6650H LPDDR5 16GB+512GB PCIe 4.0 M.2 2280 AMD Rad</a></td>
-                            <td>Ryzen 5 PRO 6650H</td>
-                            <td>16GB</td>
-                            <td>512GB</td>
-                            <td><span class="catalog-badge">Standard Use</span></td>
-                            <td>Oculink</td>
-                            <td class="catalog-num">¥59,999</td>
-                            <td><a href="https://www.amazon.co.jp/dp/B0GD6VK2RL?tag=shotsim-22" target="_blank" rel="noopener" class="catalog-link">View</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sticky-a catalog-num">27</td>
-                            <td class="sticky-b">GMKtec</td>
-                            <td class="sticky-c catalog-thumb-cell"><img src="https://m.media-amazon.com/images/I/51FCkEVp8LL._AC_SX679_.jpg" alt="Nucbox M3 Windows 11 Pro ミニPC インテル Core i5 12450H Mini PC" class="catalog-thumb" loading="lazy"></td>
-                            <td class="sticky-d"><a href="/shotpc/ja/minis/SP066A.html" class="catalog-link">Nucbox M3 Windows 11 Pro ミニPC インテル Core i5 12450H Mini PC</a></td>
-                            <td>Core i5-12450H</td>
-                            <td>16GB</td>
-                            <td>512GB</td>
-                            <td><span class="catalog-badge">Standard Use</span></td>
-                            <td>-</td>
-                            <td class="catalog-num">¥66,999</td>
-                            <td><a href="https://www.amazon.co.jp/dp/B0CHJTN7GG?tag=shotsim-22" target="_blank" rel="noopener" class="catalog-link">View</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sticky-a catalog-num">28</td>
-                            <td class="sticky-b">GMKtec</td>
-                            <td class="sticky-c catalog-thumb-cell"><img src="https://m.media-amazon.com/images/I/61IRmlvPHyL._AC_SX679_.jpg" alt="【 ミニPC 最強 ゲーミング PC】 ミニPC 【AMD Ryzen7 8845HS搭載 R7 H255/8745HS より速い】128GB DDR5+8TB" class="catalog-thumb" loading="lazy"></td>
-                            <td class="sticky-d"><a href="/shotpc/ja/minis/SP059A.html" class="catalog-link">【 ミニPC 最強 ゲーミング PC】 ミニPC 【AMD Ryzen7 8845HS搭載 R7 H255/8745HS より速い】128GB DDR5+8TB</a></td>
-                            <td>Ryzen 7 8845HS</td>
-                            <td>32GB</td>
-                            <td>1024GB</td>
-                            <td><span class="catalog-badge">Excellent for 7B/8B Models</span></td>
-                            <td>Oculink</td>
-                            <td class="catalog-num">¥139,880</td>
-                            <td><a href="https://www.amazon.co.jp/dp/B0GDGC1PVM?tag=shotsim-22" target="_blank" rel="noopener" class="catalog-link">View</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sticky-a catalog-num">29</td>
-                            <td class="sticky-b">GMKtec</td>
-                            <td class="sticky-c catalog-thumb-cell"><img src="https://m.media-amazon.com/images/I/61ONswPrUrL._AC_SX679_.jpg" alt="【AI PC AI性能に 桁違いの高性能】  K13 ミニPC ゲーミング Intel Core Ultra 7 256V(最大4.8GHz)/ 16GB LP" class="catalog-thumb" loading="lazy"></td>
-                            <td class="sticky-d"><a href="/shotpc/ja/minis/SP070A.html" class="catalog-link">【AI PC AI性能に 桁違いの高性能】  K13 ミニPC ゲーミング Intel Core Ultra 7 256V(最大4.8GHz)/ 16GB LP</a></td>
-                            <td>Core Ultra 7 256V</td>
-                            <td>16GB</td>
-                            <td>512GB</td>
-                            <td><span class="catalog-badge">Standard Use</span></td>
-                            <td>-</td>
-                            <td class="catalog-num">¥105,599</td>
-                            <td><a href="https://www.amazon.co.jp/dp/B0GGB39TZ4?tag=shotsim-22" target="_blank" rel="noopener" class="catalog-link">View</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sticky-a catalog-num">30</td>
-                            <td class="sticky-b">GMKtec</td>
-                            <td class="sticky-c catalog-thumb-cell"><img src="https://m.media-amazon.com/images/I/71i9e6tpCoL._AC_SX679_.jpg" alt="【Intel Core i3-10110U初登場】 ミニPC G3 Pro mini pc 最大4.1GHz 64GB DDR4+8TB SSD拡張可能｜｜ミニ" class="catalog-thumb" loading="lazy"></td>
-                            <td class="sticky-d"><a href="/shotpc/ja/minis/SP037A.html" class="catalog-link">【Intel Core i3-10110U初登場】 ミニPC G3 Pro mini pc 最大4.1GHz 64GB DDR4+8TB SSD拡張可能｜｜ミニ</a></td>
-                            <td>Core i3-10110U</td>
-                            <td>16GB</td>
-                            <td>512GB</td>
-                            <td><span class="catalog-badge">Standard Use</span></td>
-                            <td>-</td>
-                            <td class="catalog-num">¥47,290</td>
-                            <td><a href="https://www.amazon.co.jp/dp/B0GHN51K3K?tag=shotsim-22" target="_blank" rel="noopener" class="catalog-link">View</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sticky-a catalog-num">31</td>
-                            <td class="sticky-b">GMKtec</td>
-                            <td class="sticky-c catalog-thumb-cell"><img src="https://m.media-amazon.com/images/I/61yfLY6-SYL._AC_SX679_.jpg" alt="【ミニPC Ryzen 5 3500U搭載 N150より速い】 G10 mini pc 動作より安定最大3.7GHz 4コア8スレッド DDR4 16GB+1T" class="catalog-thumb" loading="lazy"></td>
-                            <td class="sticky-d"><a href="/shotpc/ja/minis/SP019A.html" class="catalog-link">【ミニPC Ryzen 5 3500U搭載 N150より速い】 G10 mini pc 動作より安定最大3.7GHz 4コア8スレッド DDR4 16GB+1T</a></td>
-                            <td>Ryzen 5 3500U</td>
-                            <td>16GB</td>
-                            <td>1024GB</td>
-                            <td><span class="catalog-badge">Standard Use</span></td>
-                            <td>-</td>
-                            <td class="catalog-num">¥49,961</td>
-                            <td><a href="https://www.amazon.co.jp/dp/B0FR7MLNGX?tag=shotsim-22" target="_blank" rel="noopener" class="catalog-link">View</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sticky-a catalog-num">32</td>
-                            <td class="sticky-b">GMKtec</td>
-                            <td class="sticky-c catalog-thumb-cell"><img src="https://m.media-amazon.com/images/I/61iXajhyTaL._AC_SX679_.jpg" alt="【ミニPC Ryzen 5 3500U搭載 N150より速い】 G10 mini pc 動作より安定最大3.7GHz 4コア8スレッド DDR4 16GB+51" class="catalog-thumb" loading="lazy"></td>
-                            <td class="sticky-d"><a href="/shotpc/ja/minis/SP050A.html" class="catalog-link">【ミニPC Ryzen 5 3500U搭載 N150より速い】 G10 mini pc 動作より安定最大3.7GHz 4コア8スレッド DDR4 16GB+51</a></td>
-                            <td>Ryzen 5 3500U</td>
-                            <td>16GB</td>
-                            <td>512GB</td>
-                            <td><span class="catalog-badge">Standard Use</span></td>
-                            <td>-</td>
-                            <td class="catalog-num">¥49,961</td>
-                            <td><a href="https://www.amazon.co.jp/dp/B0GD6QZBLD?tag=shotsim-22" target="_blank" rel="noopener" class="catalog-link">View</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sticky-a catalog-num">33</td>
-                            <td class="sticky-b">GMKtec</td>
-                            <td class="sticky-c catalog-thumb-cell"><img src="https://m.media-amazon.com/images/I/61yfLY6-SYL._AC_SX679_.jpg" alt="【ミニPC Ryzen 5 3500U搭載】 G10 mini pc 動作より安定最大3.7GHz 4コア8スレッドWiFi5/BT5.0 2.5G LAN対応" class="catalog-thumb" loading="lazy"></td>
-                            <td class="sticky-d"><a href="/shotpc/ja/minis/SP042A.html" class="catalog-link">【ミニPC Ryzen 5 3500U搭載】 G10 mini pc 動作より安定最大3.7GHz 4コア8スレッドWiFi5/BT5.0 2.5G LAN対応</a></td>
-                            <td>Ryzen 5 3500U</td>
-                            <td>16GB</td>
-                            <td>1024GB</td>
-                            <td><span class="catalog-badge">Standard Use</span></td>
-                            <td>-</td>
-                            <td class="catalog-num">¥62,499</td>
-                            <td><a href="https://www.amazon.co.jp/dp/B0GQGY13FB?tag=shotsim-22" target="_blank" rel="noopener" class="catalog-link">View</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sticky-a catalog-num">34</td>
-                            <td class="sticky-b">GMKtec</td>
-                            <td class="sticky-c catalog-thumb-cell"><img src="https://m.media-amazon.com/images/I/61HOjuZ3TNL._AC_SX679_.jpg" alt="【最新AI搭載 OCuLink対応】Intel Core Ultra 5 125U プロセッサ (最大4.3GHz) 搭載" class="catalog-thumb" loading="lazy"></td>
-                            <td class="sticky-d"><a href="/shotpc/ja/minis/SP012A.html" class="catalog-link">【最新AI搭載 OCuLink対応】Intel Core Ultra 5 125U プロセッサ (最大4.3GHz) 搭載</a></td>
-                            <td>Core Ultra 5 125U</td>
-                            <td>48GB</td>
-                            <td>1024GB</td>
-                            <td><span class="catalog-badge">Standard Use</span></td>
-                            <td>Oculink</td>
-                            <td class="catalog-num">¥144,629</td>
-                            <td><a href="https://www.amazon.co.jp/dp/B0G8D9L1WP?tag=shotsim-22" target="_blank" rel="noopener" class="catalog-link">View</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sticky-a catalog-num">35</td>
-                            <td class="sticky-b">GMKtec</td>
-                            <td class="sticky-c catalog-thumb-cell"><img src="https://m.media-amazon.com/images/I/51W9rJ0IudL._AC_SX679_.jpg" alt="【次世代AI ミニ PC】 ミニpc K13 Intel Core Ultra 7 256V 最大4.8GHz 115TOPS LPDDR5X 16GB SSD" class="catalog-thumb" loading="lazy"></td>
-                            <td class="sticky-d"><a href="/shotpc/ja/minis/SP067A.html" class="catalog-link">【次世代AI ミニ PC】 ミニpc K13 Intel Core Ultra 7 256V 最大4.8GHz 115TOPS LPDDR5X 16GB SSD</a></td>
-                            <td>Core Ultra 7 256V</td>
-                            <td>16GB</td>
-                            <td>1024GB</td>
-                            <td><span class="catalog-badge">Standard Use</span></td>
-                            <td>-</td>
-                            <td class="catalog-num">¥113,599</td>
-                            <td><a href="https://www.amazon.co.jp/dp/B0GHNTCDK8?tag=shotsim-22" target="_blank" rel="noopener" class="catalog-link">View</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sticky-a catalog-num">36</td>
-                            <td class="sticky-b">GMKtec</td>
-                            <td class="sticky-c catalog-thumb-cell"><img src="https://m.media-amazon.com/images/I/61sE+bFQuQL._AC_SX679_.jpg" alt="ゲーミングミニPC AMD Ryzen 7 7730U (8C/16T Max4.5GHz) mini pc 16GB SSD 512GB Windows 11" class="catalog-thumb" loading="lazy"></td>
-                            <td class="sticky-d"><a href="/shotpc/ja/minis/SP063B.html" class="catalog-link">ゲーミングミニPC AMD Ryzen 7 7730U (8C/16T Max4.5GHz) mini pc 16GB SSD 512GB Windows 11</a></td>
-                            <td>Ryzen 7 7730U</td>
-                            <td>16GB</td>
-                            <td>512GB</td>
-                            <td><span class="catalog-badge">Standard Use</span></td>
-                            <td>-</td>
-                            <td class="catalog-num">¥59,999</td>
-                            <td><a href="https://www.amazon.co.jp/dp/B0CCSLMGM1?tag=shotsim-22" target="_blank" rel="noopener" class="catalog-link">View</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sticky-a catalog-num">37</td>
-                            <td class="sticky-b">GMKtec</td>
-                            <td class="sticky-c catalog-thumb-cell"><img src="https://m.media-amazon.com/images/I/61sE+bFQuQL._AC_SX679_.jpg" alt="ゲーミングミニPC AMD Ryzen 7 7730U (8C/16T Max4.5GHz) mini pc 16GB SSD 512GB Windows 11" class="catalog-thumb" loading="lazy"></td>
-                            <td class="sticky-d"><a href="/shotpc/ja/minis/SP063A.html" class="catalog-link">ゲーミングミニPC AMD Ryzen 7 7730U (8C/16T Max4.5GHz) mini pc 16GB SSD 512GB Windows 11</a></td>
-                            <td>Ryzen 7 7730U</td>
-                            <td>16GB</td>
-                            <td>512GB</td>
-                            <td><span class="catalog-badge">Standard Use</span></td>
-                            <td>-</td>
-                            <td class="catalog-num">¥59,999</td>
-                            <td><a href="https://www.amazon.co.jp/dp/B0FRB19ZZ1?tag=shotsim-22" target="_blank" rel="noopener" class="catalog-link">View</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sticky-a catalog-num">38</td>
-                            <td class="sticky-b">GMKtec</td>
-                            <td class="sticky-c catalog-thumb-cell"><img src="https://m.media-amazon.com/images/I/61sE+bFQuQL._AC_SX679_.jpg" alt="ミニPC AMD Ryzen 5 7640HS(最大5.0GHz)搭載｜DDR5 128GB+8TB拡張可 SSD拡張可 Win11 Pro｜ミニPC Ryze" class="catalog-thumb" loading="lazy"></td>
-                            <td class="sticky-d"><a href="/shotpc/ja/minis/SP033A.html" class="catalog-link">ミニPC AMD Ryzen 5 7640HS(最大5.0GHz)搭載｜DDR5 128GB+8TB拡張可 SSD拡張可 Win11 Pro｜ミニPC Ryze</a></td>
-                            <td>Ryzen 5 7640HS</td>
-                            <td>16GB</td>
-                            <td>1024GB</td>
-                            <td><span class="catalog-badge">Great for AI Models</span></td>
-                            <td>-</td>
-                            <td class="catalog-num">¥69,499</td>
-                            <td><a href="https://www.amazon.co.jp/dp/B0GK6DCRF2?tag=shotsim-22" target="_blank" rel="noopener" class="catalog-link">View</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sticky-a catalog-num">39</td>
-                            <td class="sticky-b">GMKtec</td>
-                            <td class="sticky-c catalog-thumb-cell"><img src="https://m.media-amazon.com/images/I/71ar3XvF7kL._AC_SX679_.jpg" alt="ミニPC AMD Ryzen 5 7640HS(最大5.0GHz)搭載｜DDR5 128GB+8TB拡張可 SSD拡張可 Windows11 Pro｜ミニPC" class="catalog-thumb" loading="lazy"></td>
-                            <td class="sticky-d"><a href="/shotpc/ja/minis/SP062A.html" class="catalog-link">ミニPC AMD Ryzen 5 7640HS(最大5.0GHz)搭載｜DDR5 128GB+8TB拡張可 SSD拡張可 Windows11 Pro｜ミニPC</a></td>
-                            <td>Ryzen 5 7640HS</td>
-                            <td>16GB</td>
-                            <td>1024GB</td>
-                            <td><span class="catalog-badge">Great for AI Models</span></td>
-                            <td>-</td>
-                            <td class="catalog-num">¥70,499</td>
-                            <td><a href="https://www.amazon.co.jp/dp/B0FLQGQV3J?tag=shotsim-22" target="_blank" rel="noopener" class="catalog-link">View</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sticky-a catalog-num">40</td>
-                            <td class="sticky-b">GMKtec</td>
-                            <td class="sticky-c catalog-thumb-cell"><img src="https://m.media-amazon.com/images/I/61cukenrhML._AC_SX679_.jpg" alt="ミニPC AMD Ryzen 5 PRO 6650H 【Ryzen 7 5825Uより速い】DDR5 16GB + M.2 2280 512GB(16TB拡張可" class="catalog-thumb" loading="lazy"></td>
-                            <td class="sticky-d"><a href="/shotpc/ja/minis/SP001A.html" class="catalog-link">ミニPC AMD Ryzen 5 PRO 6650H 【Ryzen 7 5825Uより速い】DDR5 16GB + M.2 2280 512GB(16TB拡張可</a></td>
-                            <td>Ryzen 5 PRO 6650H</td>
-                            <td>16GB</td>
-                            <td>512GB</td>
-                            <td><span class="catalog-badge">Standard Use</span></td>
-                            <td>Oculink</td>
-                            <td class="catalog-num">¥49,999</td>
-                            <td><a href="https://www.amazon.co.jp/dp/B0GQGCVLGR?tag=shotsim-22" target="_blank" rel="noopener" class="catalog-link">View</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sticky-a catalog-num">41</td>
-                            <td class="sticky-b">GMKtec</td>
-                            <td class="sticky-c catalog-thumb-cell"><img src="https://m.media-amazon.com/images/I/61a7BW4lSBL._AC_SX679_.jpg" alt="ミニPC AMD Ryzen 7 7730U (アップグレード版 7430U/5825U) 搭載" class="catalog-thumb" loading="lazy"></td>
-                            <td class="sticky-d"><a href="/shotpc/ja/minis/SP039A.html" class="catalog-link">ミニPC AMD Ryzen 7 7730U (アップグレード版 7430U/5825U) 搭載</a></td>
-                            <td>Ryzen 7 7730U</td>
-                            <td>32GB</td>
-                            <td>1024GB</td>
-                            <td><span class="catalog-badge">Standard Use</span></td>
-                            <td>-</td>
-                            <td class="catalog-num">¥103,999</td>
-                            <td><a href="https://www.amazon.co.jp/dp/B0GQGZCXDV?tag=shotsim-22" target="_blank" rel="noopener" class="catalog-link">View</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sticky-a catalog-num">42</td>
-                            <td class="sticky-b">GMKtec</td>
-                            <td class="sticky-c catalog-thumb-cell"><img src="https://m.media-amazon.com/images/I/61h7WhLpj6L._AC_SX679_.jpg" alt="ミニPC AMD Ryzen 7 PRO 6850H搭載 【96GB DDR5 +16TB SSD (拡張可能)】Oculink 搭載 USB4.0*2 Win" class="catalog-thumb" loading="lazy"></td>
-                            <td class="sticky-d"><a href="/shotpc/ja/minis/SP055A.html" class="catalog-link">ミニPC AMD Ryzen 7 PRO 6850H搭載 【96GB DDR5 +16TB SSD (拡張可能)】Oculink 搭載 USB4.0*2 Win</a></td>
-                            <td>Ryzen 7 PRO 6850H</td>
-                            <td>32GB</td>
-                            <td>1024GB</td>
-                            <td><span class="catalog-badge">Standard Use</span></td>
-                            <td>Oculink</td>
-                            <td class="catalog-num">¥87,580</td>
-                            <td><a href="https://www.amazon.co.jp/dp/B0DB7XGNDD?tag=shotsim-22" target="_blank" rel="noopener" class="catalog-link">View</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sticky-a catalog-num">43</td>
-                            <td class="sticky-b">GMKtec</td>
-                            <td class="sticky-c catalog-thumb-cell"><img src="https://m.media-amazon.com/images/I/61wNqrpAo0L._AC_SX679_.jpg" alt="ミニPC AMD Ryzen 7 Pro 6850U 【64GB DDR5+ 16TB SSD 拡張】 Oculink USB4.0×2 HDMI2.1 8K@" class="catalog-thumb" loading="lazy"></td>
-                            <td class="sticky-d"><a href="/shotpc/ja/minis/SP057A.html" class="catalog-link">ミニPC AMD Ryzen 7 Pro 6850U 【64GB DDR5+ 16TB SSD 拡張】 Oculink USB4.0×2 HDMI2.1 8K@</a></td>
-                            <td>Ryzen 7 Pro 6850U</td>
-                            <td>32GB</td>
-                            <td>1024GB</td>
-                            <td><span class="catalog-badge">Standard Use</span></td>
-                            <td>Oculink</td>
-                            <td class="catalog-num">¥121,238</td>
-                            <td><a href="https://www.amazon.co.jp/dp/B0GS1ZM6DW?tag=shotsim-22" target="_blank" rel="noopener" class="catalog-link">View</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sticky-a catalog-num">44</td>
-                            <td class="sticky-b">GMKtec</td>
-                            <td class="sticky-c catalog-thumb-cell"><img src="https://m.media-amazon.com/images/I/61IRmlvPHyL._AC_SX679_.jpg" alt="ミニPC AMD Ryzen7 8845HS搭載 【R7 H255/8745HS より速い】128GB DDR5+8TB SSD拡張可｜Oculink+USB4" class="catalog-thumb" loading="lazy"></td>
-                            <td class="sticky-d"><a href="/shotpc/ja/minis/SP052A.html" class="catalog-link">ミニPC AMD Ryzen7 8845HS搭載 【R7 H255/8745HS より速い】128GB DDR5+8TB SSD拡張可｜Oculink+USB4</a></td>
-                            <td>Ryzen 7 8845HS</td>
-                            <td>128GB</td>
-                            <td>0GB</td>
-                            <td><span class="catalog-badge">Excellent for 7B/8B Models</span></td>
-                            <td>Oculink</td>
-                            <td class="catalog-num">¥58,999</td>
-                            <td><a href="https://www.amazon.co.jp/dp/B0G3PLYN89?tag=shotsim-22" target="_blank" rel="noopener" class="catalog-link">View</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sticky-a catalog-num">45</td>
-                            <td class="sticky-b">GMKtec</td>
-                            <td class="sticky-c catalog-thumb-cell"><img src="https://m.media-amazon.com/images/I/71Ws6DTRROL._AC_SX679_.jpg" alt="ミニPC G3S 第12世代 Intel N95 【N97より高速】Windows11 Pro 搭載 ミニPC｜4コア4スレッド｜最大3.4GHz｜小型PC 超" class="catalog-thumb" loading="lazy"></td>
-                            <td class="sticky-d"><a href="/shotpc/ja/minis/SP011A.html" class="catalog-link">ミニPC G3S 第12世代 Intel N95 【N97より高速】Windows11 Pro 搭載 ミニPC｜4コア4スレッド｜最大3.4GHz｜小型PC 超</a></td>
-                            <td>N95</td>
-                            <td>8GB</td>
-                            <td>512GB</td>
-                            <td><span class="catalog-badge">Standard Use</span></td>
-                            <td>-</td>
-                            <td class="catalog-num">¥37,045</td>
-                            <td><a href="https://www.amazon.co.jp/dp/B0GGBF6YMK?tag=shotsim-22" target="_blank" rel="noopener" class="catalog-link">View</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sticky-a catalog-num">46</td>
-                            <td class="sticky-b">GMKtec</td>
-                            <td class="sticky-c catalog-thumb-cell"><img src="https://m.media-amazon.com/images/I/61J59lxp1DL._AC_SX679_.jpg" alt="ミニPC Intel Core Ultra 7 256V (8コア/8スレッド 最大4.8GHz) 16GB LPDDR5X 512GB PCIe 4.0 SS" class="catalog-thumb" loading="lazy"></td>
-                            <td class="sticky-d"><a href="/shotpc/ja/minis/SP043A.html" class="catalog-link">ミニPC Intel Core Ultra 7 256V (8コア/8スレッド 最大4.8GHz) 16GB LPDDR5X 512GB PCIe 4.0 SS</a></td>
-                            <td>Core Ultra 7 256V</td>
-                            <td>16GB</td>
-                            <td>512GB</td>
-                            <td><span class="catalog-badge">Standard Use</span></td>
-                            <td>-</td>
-                            <td class="catalog-num">¥131,999</td>
-                            <td><a href="https://www.amazon.co.jp/dp/B0GG9PGM2C?tag=shotsim-22" target="_blank" rel="noopener" class="catalog-link">View</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sticky-a catalog-num">47</td>
-                            <td class="sticky-b">GMKtec</td>
-                            <td class="sticky-c catalog-thumb-cell"><img src="https://m.media-amazon.com/images/I/61tCtSNtZQL._AC_SX679_.jpg" alt="ミニPC K8 Plus AMD Ryzen 7 8845HS(8コア/16スレッド" class="catalog-thumb" loading="lazy"></td>
-                            <td class="sticky-d"><a href="/shotpc/ja/minis/SP026A.html" class="catalog-link">ミニPC K8 Plus AMD Ryzen 7 8845HS(8コア/16スレッド</a></td>
-                            <td>Ryzen 7 8845HS</td>
-                            <td>32GB</td>
-                            <td>512GB</td>
-                            <td><span class="catalog-badge">Excellent for 7B/8B Models</span></td>
-                            <td>Oculink</td>
-                            <td class="catalog-num">¥116,095</td>
-                            <td><a href="https://www.amazon.co.jp/dp/B0GSKGBXM1?tag=shotsim-22" target="_blank" rel="noopener" class="catalog-link">View</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sticky-a catalog-num">48</td>
-                            <td class="sticky-b">GMKtec</td>
-                            <td class="sticky-c catalog-thumb-cell"><img src="https://m.media-amazon.com/images/I/61cukenrhML._AC_SX679_.jpg" alt="ミニPC M8 AMD Ryzen 5 PRO 6650H 【Ryzen 7 5825Uより速い】DDR5 16GB + M.2 2280 512GB(16TB" class="catalog-thumb" loading="lazy"></td>
-                            <td class="sticky-d"><a href="/shotpc/ja/minis/SP054A.html" class="catalog-link">ミニPC M8 AMD Ryzen 5 PRO 6650H 【Ryzen 7 5825Uより速い】DDR5 16GB + M.2 2280 512GB(16TB</a></td>
-                            <td>Ryzen 5 PRO 6650H</td>
-                            <td>16GB</td>
-                            <td>512GB</td>
-                            <td><span class="catalog-badge">Standard Use</span></td>
-                            <td>Oculink</td>
-                            <td class="catalog-num">¥67,249</td>
-                            <td><a href="https://www.amazon.co.jp/dp/B0GD4S2JPC?tag=shotsim-22" target="_blank" rel="noopener" class="catalog-link">View</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sticky-a catalog-num">49</td>
-                            <td class="sticky-b">GMKtec</td>
-                            <td class="sticky-c catalog-thumb-cell"><img src="https://m.media-amazon.com/images/I/617st73NpML._AC_SX679_.jpg" alt="ミニPC Ryzen 7 7730U搭載【64GB DDR4 16TB M.2 SSD(拡張可能)】 8コア16スレッド MAX4.5GHz Win11 pro" class="catalog-thumb" loading="lazy"></td>
-                            <td class="sticky-d"><a href="/shotpc/ja/minis/SP056A.html" class="catalog-link">ミニPC Ryzen 7 7730U搭載【64GB DDR4 16TB M.2 SSD(拡張可能)】 8コア16スレッド MAX4.5GHz Win11 pro</a></td>
-                            <td>Ryzen 7 7730U</td>
-                            <td>32GB</td>
-                            <td>1024GB</td>
-                            <td><span class="catalog-badge">Standard Use</span></td>
-                            <td>-</td>
-                            <td class="catalog-num">¥139,880</td>
-                            <td><a href="https://www.amazon.co.jp/dp/B0GDGHZ9LN?tag=shotsim-22" target="_blank" rel="noopener" class="catalog-link">View</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sticky-a catalog-num">50</td>
-                            <td class="sticky-b">GMKtec</td>
-                            <td class="sticky-c catalog-thumb-cell"><img src="https://m.media-amazon.com/images/I/61FHk26k5GL._AC_SX679_.jpg" alt="ミニPC | AMD Ryzen 5 7640HS" class="catalog-thumb" loading="lazy"></td>
-                            <td class="sticky-d"><a href="/shotpc/ja/minis/SP036A.html" class="catalog-link">ミニPC | AMD Ryzen 5 7640HS</a></td>
-                            <td>Ryzen 5 7640HS</td>
-                            <td>16GB</td>
-                            <td>512GB</td>
-                            <td><span class="catalog-badge">Great for AI Models</span></td>
-                            <td>-</td>
-                            <td class="catalog-num">¥81,999</td>
-                            <td><a href="https://www.amazon.co.jp/dp/B0GD6ZS99W?tag=shotsim-22" target="_blank" rel="noopener" class="catalog-link">View</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sticky-a catalog-num">51</td>
-                            <td class="sticky-b">GMKtec</td>
-                            <td class="sticky-c catalog-thumb-cell"><img src="https://m.media-amazon.com/images/I/61yfLY6-SYL._AC_SX679_.jpg" alt="ミニPC 【G10 ブラック 初登場 Ryzen 5 3500U搭載 R3 4300Uより速い】 64GB DDR4+16TB SSD拡張対応｜動作より安定 最" class="catalog-thumb" loading="lazy"></td>
-                            <td class="sticky-d"><a href="/shotpc/ja/minis/SP041A.html" class="catalog-link">ミニPC 【G10 ブラック 初登場 Ryzen 5 3500U搭載 R3 4300Uより速い】 64GB DDR4+16TB SSD拡張対応｜動作より安定 最</a></td>
-                            <td>Ryzen 5 3500U</td>
-                            <td>16GB</td>
-                            <td>256GB</td>
-                            <td><span class="catalog-badge">Standard Use</span></td>
-                            <td>-</td>
-                            <td class="catalog-num">¥58,812</td>
-                            <td><a href="https://www.amazon.co.jp/dp/B0G3PMGNQ4?tag=shotsim-22" target="_blank" rel="noopener" class="catalog-link">View</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sticky-a catalog-num">52</td>
-                            <td class="sticky-b">GMKtec</td>
-                            <td class="sticky-c catalog-thumb-cell"><img src="https://m.media-amazon.com/images/I/613wYxrJfkL._AC_SX679_.jpg" alt="ミニPC 初登場 AMD Ryzen7 7735HS搭載【DDR5 32GB 6400MT/s +1TB SSD】Oculink搭載 USB4.0 WiFi6E" class="catalog-thumb" loading="lazy"></td>
-                            <td class="sticky-d"><a href="/shotpc/ja/minis/SP058A.html" class="catalog-link">ミニPC 初登場 AMD Ryzen7 7735HS搭載【DDR5 32GB 6400MT/s +1TB SSD】Oculink搭載 USB4.0 WiFi6E</a></td>
-                            <td>Ryzen 7 7735HS</td>
-                            <td>32GB</td>
-                            <td>1024GB</td>
-                            <td><span class="catalog-badge">Great for AI Models</span></td>
-                            <td>Oculink</td>
-                            <td class="catalog-num">¥99,999</td>
-                            <td><a href="https://www.amazon.co.jp/dp/B0GGBR5YFF?tag=shotsim-22" target="_blank" rel="noopener" class="catalog-link">View</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sticky-a catalog-num">53</td>
-                            <td class="sticky-b">GMKtec</td>
-                            <td class="sticky-c catalog-thumb-cell"><img src="https://m.media-amazon.com/images/I/613wYxrJfkL._AC_SX679_.jpg" alt="ミニPC 高性能 AMD Ryzen 7 7735HS(8C/16T 最大4.75GHz)32GB LPDDR5 1TB SSD 小型デスクトップPC ゲーミン" class="catalog-thumb" loading="lazy"></td>
-                            <td class="sticky-d"><a href="/shotpc/ja/minis/SP065A.html" class="catalog-link">ミニPC 高性能 AMD Ryzen 7 7735HS(8C/16T 最大4.75GHz)32GB LPDDR5 1TB SSD 小型デスクトップPC ゲーミン</a></td>
-                            <td>Ryzen 7 7735HS</td>
-                            <td>32GB</td>
-                            <td>1024GB</td>
-                            <td><span class="catalog-badge">Great for AI Models</span></td>
-                            <td>Oculink</td>
-                            <td class="catalog-num">¥99,999</td>
-                            <td><a href="https://www.amazon.co.jp/dp/B0GG9KLG54?tag=shotsim-22" target="_blank" rel="noopener" class="catalog-link">View</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sticky-a catalog-num">54</td>
-                            <td class="sticky-b">GMKtec</td>
-                            <td class="sticky-c catalog-thumb-cell"><img src="https://m.media-amazon.com/images/I/61sWqz-TweL._AC_SX679_.jpg" alt="ミニPC【G10 16G+1TB 初登場 Ryzen 5 3500U搭載 R3 4300Uより速い】 64GB DDR4+16TB SSD拡張対応｜動作より安定" class="catalog-thumb" loading="lazy"></td>
-                            <td class="sticky-d"><a href="/shotpc/ja/minis/SP046A.html" class="catalog-link">ミニPC【G10 16G+1TB 初登場 Ryzen 5 3500U搭載 R3 4300Uより速い】 64GB DDR4+16TB SSD拡張対応｜動作より安定</a></td>
-                            <td>Ryzen 5 3500U</td>
-                            <td>16GB</td>
-                            <td>1024GB</td>
-                            <td><span class="catalog-badge">Standard Use</span></td>
-                            <td>-</td>
-                            <td class="catalog-num">¥58,812</td>
-                            <td><a href="https://www.amazon.co.jp/dp/B0GD6MWRYD?tag=shotsim-22" target="_blank" rel="noopener" class="catalog-link">View</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sticky-a catalog-num">55</td>
-                            <td class="sticky-b">GMKtec</td>
-                            <td class="sticky-c catalog-thumb-cell"><img src="https://m.media-amazon.com/images/I/61sWqz-TweL._AC_SX679_.jpg" alt="ミニPC【G10 16GB+1TB 初登場 Ryzen 5 3500U搭載 R3 4300Uより速い】 64GB DDR4+16TB SSD拡張対応｜動作より安" class="catalog-thumb" loading="lazy"></td>
-                            <td class="sticky-d"><a href="/shotpc/ja/minis/SP053A.html" class="catalog-link">ミニPC【G10 16GB+1TB 初登場 Ryzen 5 3500U搭載 R3 4300Uより速い】 64GB DDR4+16TB SSD拡張対応｜動作より安</a></td>
-                            <td>Ryzen 5 3500U</td>
-                            <td>16GB</td>
-                            <td>1024GB</td>
-                            <td><span class="catalog-badge">Standard Use</span></td>
-                            <td>-</td>
-                            <td class="catalog-num">¥51,578</td>
-                            <td><a href="https://www.amazon.co.jp/dp/B0FFGQ7K4W?tag=shotsim-22" target="_blank" rel="noopener" class="catalog-link">View</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sticky-a catalog-num">56</td>
-                            <td class="sticky-b">GMKtec</td>
-                            <td class="sticky-c catalog-thumb-cell"><img src="https://m.media-amazon.com/images/I/61VegLf9KhL._AC_SX679_.jpg" alt="ミニPc  K12 ミニPC ゲーミング AMD Ryzen7 H255 96GB+24TB SSD(拡張可能)Windows11 Pro Mini pc 基本" class="catalog-thumb" loading="lazy"></td>
-                            <td class="sticky-d"><a href="/shotpc/ja/minis/SP061A.html" class="catalog-link">ミニPc  K12 ミニPC ゲーミング AMD Ryzen7 H255 96GB+24TB SSD(拡張可能)Windows11 Pro Mini pc 基本</a></td>
-                            <td>Ryzen 7 2550</td>
-                            <td>96GB</td>
-                            <td>24576GB</td>
-                            <td><span class="catalog-badge">Standard Use</span></td>
-                            <td>Oculink</td>
-                            <td class="catalog-num">¥103,999</td>
-                            <td><a href="https://www.amazon.co.jp/dp/B0FK1FY341?tag=shotsim-22" target="_blank" rel="noopener" class="catalog-link">View</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sticky-a catalog-num">57</td>
-                            <td class="sticky-b">GMKtec</td>
-                            <td class="sticky-c catalog-thumb-cell"><img src="https://m.media-amazon.com/images/I/61EkevolCYL._AC_SX679_.jpg" alt="ミニpc AMD Ryzen 7 PRO 6850U【64GB DDR5 +4TB SSD(拡張可能)】Oculink 搭載 USB4.0*2 Windows" class="catalog-thumb" loading="lazy"></td>
-                            <td class="sticky-d"><a href="/shotpc/ja/minis/SP047A.html" class="catalog-link">ミニpc AMD Ryzen 7 PRO 6850U【64GB DDR5 +4TB SSD(拡張可能)】Oculink 搭載 USB4.0*2 Windows</a></td>
-                            <td>Ryzen 7 PRO 6850U</td>
-                            <td>16GB</td>
-                            <td>512GB</td>
-                            <td><span class="catalog-badge">Standard Use</span></td>
-                            <td>Oculink</td>
-                            <td class="catalog-num">¥73,999</td>
-                            <td><a href="https://www.amazon.co.jp/dp/B0GD7CBC7W?tag=shotsim-22" target="_blank" rel="noopener" class="catalog-link">View</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sticky-a catalog-num">58</td>
-                            <td class="sticky-b">GMKtec</td>
-                            <td class="sticky-c catalog-thumb-cell"><img src="https://m.media-amazon.com/images/I/71CwJnGnMYL._AC_SX679_.jpg" alt="ミニpc NucBox K11 AMD Ryzen9 8945HS DDR5 96GB +16TB M.2 2280(16TB拡張可能)Win11 Pro Mi" class="catalog-thumb" loading="lazy"></td>
-                            <td class="sticky-d"><a href="/shotpc/ja/minis/SP030A.html" class="catalog-link">ミニpc NucBox K11 AMD Ryzen9 8945HS DDR5 96GB +16TB M.2 2280(16TB拡張可能)Win11 Pro Mi</a></td>
-                            <td>Ryzen 9 8945HS</td>
-                            <td>96GB</td>
-                            <td>16384GB</td>
-                            <td><span class="catalog-badge">Excellent for 7B/8B Models</span></td>
-                            <td>Oculink</td>
-                            <td class="catalog-num">¥116,095</td>
-                            <td><a href="https://www.amazon.co.jp/dp/B0F2DP7WSH?tag=shotsim-22" target="_blank" rel="noopener" class="catalog-link">View</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sticky-a catalog-num">59</td>
-                            <td class="sticky-b">GMKtec</td>
-                            <td class="sticky-c catalog-thumb-cell"><img src="https://m.media-amazon.com/images/I/61AbLcN8vIL._AC_SX679_.jpg" alt="ミニpc NucBox K11 AMD Ryzen9 8945HS 最大 5.4GHz DDR5 96GB+16TB 拡張可能 PCIe4.0 M.2 2280" class="catalog-thumb" loading="lazy"></td>
-                            <td class="sticky-d"><a href="/shotpc/ja/minis/SP060A.html" class="catalog-link">ミニpc NucBox K11 AMD Ryzen9 8945HS 最大 5.4GHz DDR5 96GB+16TB 拡張可能 PCIe4.0 M.2 2280</a></td>
-                            <td>Ryzen 9 8945HS</td>
-                            <td>96GB</td>
-                            <td>16384GB</td>
-                            <td><span class="catalog-badge">Excellent for 7B/8B Models</span></td>
-                            <td>Oculink</td>
-                            <td class="catalog-num">¥116,095</td>
-                            <td><a href="https://www.amazon.co.jp/dp/B0GQGRLJVB?tag=shotsim-22" target="_blank" rel="noopener" class="catalog-link">View</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sticky-a catalog-num">60</td>
-                            <td class="sticky-b">GMKtec</td>
-                            <td class="sticky-c catalog-thumb-cell"><img src="https://m.media-amazon.com/images/I/61MWVIU-dqL._AC_SX679_.jpg" alt="世界初EVO-X2 AIミニPC AMD Ryzen AI Max+ 395 搭載 128GB LPDDR5+2TB SSD(最大5.1GHz 16C/32T)" class="catalog-thumb" loading="lazy"></td>
-                            <td class="sticky-d"><a href="/shotpc/ja/minis/SP028A.html" class="catalog-link">世界初EVO-X2 AIミニPC AMD Ryzen AI Max+ 395 搭載 128GB LPDDR5+2TB SSD(最大5.1GHz 16C/32T)</a></td>
-                            <td>Ryzen AI Max+ 395</td>
-                            <td>128GB</td>
-                            <td>2048GB</td>
-                            <td><span class="catalog-badge">Standard Use</span></td>
-                            <td>-</td>
-                            <td class="catalog-num">¥476,499</td>
-                            <td><a href="https://www.amazon.co.jp/dp/B0GKLWHTNM?tag=shotsim-22" target="_blank" rel="noopener" class="catalog-link">View</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sticky-a catalog-num">61</td>
-                            <td class="sticky-b">GMKtec</td>
-                            <td class="sticky-c catalog-thumb-cell"><img src="https://m.media-amazon.com/images/I/51TPBp2zzvL._AC_SX679_.jpg" alt="高性能AIミニPC  NucBox K15 Intel Core Ultra 5 125U(最大4.3GHz)16GB+1TB標準搭載 mini pc【128G" class="catalog-thumb" loading="lazy"></td>
-                            <td class="sticky-d"><a href="/shotpc/ja/minis/SP068A.html" class="catalog-link">高性能AIミニPC  NucBox K15 Intel Core Ultra 5 125U(最大4.3GHz)16GB+1TB標準搭載 mini pc【128G</a></td>
-                            <td>Core Ultra 5 125U</td>
-                            <td>16GB</td>
-                            <td>0GB</td>
-                            <td><span class="catalog-badge">Standard Use</span></td>
-                            <td>Oculink</td>
-                            <td class="catalog-num">¥90,899</td>
-                            <td><a href="https://www.amazon.co.jp/dp/B0GDSD6GLG?tag=shotsim-22" target="_blank" rel="noopener" class="catalog-link">View</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sticky-a catalog-num">62</td>
-                            <td class="sticky-b">Minisforum</td>
-                            <td class="sticky-c catalog-thumb-cell"><img src="https://m.media-amazon.com/images/I/51DGFau1KcL._AC_SY879_.jpg" alt="AI M1 Pro-285H ミニ PC" class="catalog-thumb" loading="lazy"></td>
-                            <td class="sticky-d"><a href="/shotpc/ja/minis/SP015A.html" class="catalog-link">AI M1 Pro-285H ミニ PC</a></td>
-                            <td>Core Ultra 9 285H</td>
-                            <td>32GB</td>
-                            <td>1024GB</td>
-                            <td><span class="catalog-badge">Standard Use</span></td>
-                            <td>Oculink</td>
-                            <td class="catalog-num">¥189,990</td>
-                            <td><a href="https://www.amazon.co.jp/dp/B0FYFZ4F43?tag=shotsim-22" target="_blank" rel="noopener" class="catalog-link">View</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sticky-a catalog-num">63</td>
-                            <td class="sticky-b">Minisforum</td>
-                            <td class="sticky-c catalog-thumb-cell"><img src="https://m.media-amazon.com/images/I/61fkkd+CduL._AC_SX679_.jpg" alt="AI NAS N5 pro" class="catalog-thumb" loading="lazy"></td>
-                            <td class="sticky-d"><a href="/shotpc/ja/minis/SP024A.html" class="catalog-link">AI NAS N5 pro</a></td>
-                            <td>Ryzen AI 9 HX Pro 370</td>
-                            <td>0GB</td>
-                            <td>128GB</td>
-                            <td><span class="catalog-badge">Standard Use</span></td>
-                            <td>Oculink</td>
-                            <td class="catalog-num">¥176,898</td>
-                            <td><a href="https://www.amazon.co.jp/dp/B0FG3691PP?tag=shotsim-22" target="_blank" rel="noopener" class="catalog-link">View</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sticky-a catalog-num">64</td>
-                            <td class="sticky-b">Minisforum</td>
-                            <td class="sticky-c catalog-thumb-cell"><img src="https://m.media-amazon.com/images/I/51HxN95IFdL._AC_SX679_.jpg" alt="AI X1 Pro-370 ミニPC｜AMD Ryzen AI 9 HX370｜32GB DDR5｜512GB SSD｜Windows 11 Pro搭載｜RJ4" class="catalog-thumb" loading="lazy"></td>
-                            <td class="sticky-d"><a href="/shotpc/ja/minis/SP016A.html" class="catalog-link">AI X1 Pro-370 ミニPC｜AMD Ryzen AI 9 HX370｜32GB DDR5｜512GB SSD｜Windows 11 Pro搭載｜RJ4</a></td>
-                            <td>Ryzen AI 9 HX 370</td>
-                            <td>32GB</td>
-                            <td>512GB</td>
-                            <td><span class="catalog-badge">Excellent for 7B/8B Models</span></td>
-                            <td>-</td>
-                            <td class="catalog-num">¥239,999</td>
-                            <td><a href="https://www.amazon.co.jp/dp/B0GJ5GYVRK?tag=shotsim-22" target="_blank" rel="noopener" class="catalog-link">View</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sticky-a catalog-num">65</td>
-                            <td class="sticky-b">Minisforum</td>
-                            <td class="sticky-c catalog-thumb-cell"><img src="https://m.media-amazon.com/images/I/519sAbeA5OL._AC_SX679_.jpg" alt="AI X1 Pro-470 ミニ PC AMD Ryzen AI 9 HX470 32GB DDR5 1TB SSD Windows 11 Pro 搭載 Rad" class="catalog-thumb" loading="lazy"></td>
-                            <td class="sticky-d"><a href="/shotpc/ja/minis/SP079A.html" class="catalog-link">AI X1 Pro-470 ミニ PC AMD Ryzen AI 9 HX470 32GB DDR5 1TB SSD Windows 11 Pro 搭載 Rad</a></td>
-                            <td>Ryzen AI 9 HX 470</td>
-                            <td>32GB</td>
-                            <td>1024GB</td>
-                            <td><span class="catalog-badge">Standard Use</span></td>
-                            <td>Oculink</td>
-                            <td class="catalog-num">¥115,993</td>
-                            <td><a href="https://www.amazon.co.jp/dp/B0GHY7NZCP?tag=shotsim-22" target="_blank" rel="noopener" class="catalog-link">View</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sticky-a catalog-num">66</td>
-                            <td class="sticky-b">Minisforum</td>
-                            <td class="sticky-c catalog-thumb-cell"><img src="https://m.media-amazon.com/images/I/519sAbeA5OL._AC_SX679_.jpg" alt="AI X1 Pro-470 ミニ PC AMD Ryzen AI 9 HX470 ベアボーンキットPC OCulink (PCIe4.0 x4) 対応 Copi" class="catalog-thumb" loading="lazy"></td>
-                            <td class="sticky-d"><a href="/shotpc/ja/minis/SP078A.html" class="catalog-link">AI X1 Pro-470 ミニ PC AMD Ryzen AI 9 HX470 ベアボーンキットPC OCulink (PCIe4.0 x4) 対応 Copi</a></td>
-                            <td>Ryzen AI 9 HX 470</td>
-                            <td>0GB</td>
-                            <td>0GB</td>
-                            <td><span class="catalog-badge">Standard Use</span></td>
-                            <td>Oculink</td>
-                            <td class="catalog-num">¥227,800</td>
-                            <td><a href="https://www.amazon.co.jp/dp/B0GHXVFJ11?tag=shotsim-22" target="_blank" rel="noopener" class="catalog-link">View</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sticky-a catalog-num">67</td>
-                            <td class="sticky-b">Minisforum</td>
-                            <td class="sticky-c catalog-thumb-cell"><img src="https://m.media-amazon.com/images/I/51+npGzMsEL._AC_SY300_SX300_QL70_ML2_.jpg" alt="AI X1 Proミニ PC" class="catalog-thumb" loading="lazy"></td>
-                            <td class="sticky-d"><a href="/shotpc/ja/minis/SP083A.html" class="catalog-link">AI X1 Proミニ PC</a></td>
-                            <td>Ryzen AI 9 HX 370</td>
-                            <td>32GB</td>
-                            <td>0GB</td>
-                            <td><span class="catalog-badge">Excellent for 7B/8B Models</span></td>
-                            <td>-</td>
-                            <td class="catalog-num">¥241,999</td>
-                            <td><a href="https://www.amazon.co.jp/dp/B0GT8X15HB?tag=shotsim-22" target="_blank" rel="noopener" class="catalog-link">View</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sticky-a catalog-num">68</td>
-                            <td class="sticky-b">Minisforum</td>
-                            <td class="sticky-c catalog-thumb-cell"><img src="https://m.media-amazon.com/images/I/51tsX-bzLmL._AC_SX679_.jpg" alt="AI X1 ミニ PC" class="catalog-thumb" loading="lazy"></td>
-                            <td class="sticky-d"><a href="/shotpc/ja/minis/SP040A.html" class="catalog-link">AI X1 ミニ PC</a></td>
-                            <td>Ryzen 7 255</td>
-                            <td>32GB</td>
-                            <td>512GB</td>
-                            <td><span class="catalog-badge">Standard Use</span></td>
-                            <td>-</td>
-                            <td class="catalog-num">¥117,599</td>
-                            <td><a href="https://www.amazon.co.jp/dp/B0GSZKWGNM?tag=shotsim-22" target="_blank" rel="noopener" class="catalog-link">View</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sticky-a catalog-num">69</td>
-                            <td class="sticky-b">Minisforum</td>
-                            <td class="sticky-c catalog-thumb-cell"><img src="https://m.media-amazon.com/images/I/51tsX-bzLmL._AC_SX679_.jpg" alt="AI X1 ミニPC｜AMD Ryzen 7 255|16GB DDR5 メモリ|512GB SSD｜Windows11Pro搭載小型pc HDMI2.1 |D" class="catalog-thumb" loading="lazy"></td>
-                            <td class="sticky-d"><a href="/shotpc/ja/minis/SP072A.html" class="catalog-link">AI X1 ミニPC｜AMD Ryzen 7 255|16GB DDR5 メモリ|512GB SSD｜Windows11Pro搭載小型pc HDMI2.1 |D</a></td>
-                            <td>Ryzen 7 255</td>
-                            <td>16GB</td>
-                            <td>512GB</td>
-                            <td><span class="catalog-badge">Standard Use</span></td>
-                            <td>-</td>
-                            <td class="catalog-num">¥103,599</td>
-                            <td><a href="https://www.amazon.co.jp/dp/B0GJDFV5Y4?tag=shotsim-22" target="_blank" rel="noopener" class="catalog-link">View</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sticky-a catalog-num">70</td>
-                            <td class="sticky-b">Minisforum</td>
-                            <td class="sticky-c catalog-thumb-cell"><img src="https://m.media-amazon.com/images/I/61e2H2yk3zL._AC_SX679_.jpg" alt="AI X1 ミニPC｜AMD Ryzen 7 255|32GB DDR5 メモリ|512GB SSD｜Windows 11 Pro搭載" class="catalog-thumb" loading="lazy"></td>
-                            <td class="sticky-d"><a href="/shotpc/ja/minis/SP074A.html" class="catalog-link">AI X1 ミニPC｜AMD Ryzen 7 255|32GB DDR5 メモリ|512GB SSD｜Windows 11 Pro搭載</a></td>
-                            <td>Ryzen 7 255</td>
-                            <td>32GB</td>
-                            <td>512GB</td>
-                            <td><span class="catalog-badge">Standard Use</span></td>
-                            <td>-</td>
-                            <td class="catalog-num">¥119,599</td>
-                            <td><a href="https://www.amazon.co.jp/dp/B0GDWQVXSY?tag=shotsim-22" target="_blank" rel="noopener" class="catalog-link">View</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sticky-a catalog-num">71</td>
-                            <td class="sticky-b">Minisforum</td>
-                            <td class="sticky-c catalog-thumb-cell"><img src="https://m.media-amazon.com/images/I/51tsX-bzLmL._AC_SX679_.jpg" alt="AI X1 ミニPC｜AMD Ryzen 7 255｜32GB DDR5 メモリ｜1TB SSD｜Windows 11 Pro搭載小型PC｜HDMI2.1｜DP" class="catalog-thumb" loading="lazy"></td>
-                            <td class="sticky-d"><a href="/shotpc/ja/minis/SP073A.html" class="catalog-link">AI X1 ミニPC｜AMD Ryzen 7 255｜32GB DDR5 メモリ｜1TB SSD｜Windows 11 Pro搭載小型PC｜HDMI2.1｜DP</a></td>
-                            <td>Ryzen 7 255</td>
-                            <td>32GB</td>
-                            <td>1024GB</td>
-                            <td><span class="catalog-badge">Standard Use</span></td>
-                            <td>-</td>
-                            <td class="catalog-num">¥124,798</td>
-                            <td><a href="https://www.amazon.co.jp/dp/B0GJDHYKDS?tag=shotsim-22" target="_blank" rel="noopener" class="catalog-link">View</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sticky-a catalog-num">72</td>
-                            <td class="sticky-b">Minisforum</td>
-                            <td class="sticky-c catalog-thumb-cell"><img src="https://m.media-amazon.com/images/I/61nTAl5mThL._AC_SX679_.jpg" alt="AI X1 ミニpc AMD Ryzen 7 255プロセッサ DDR5-5600MT/s 2xPCIE4.0 SSDスロット ベアボーンキット Radeon" class="catalog-thumb" loading="lazy"></td>
-                            <td class="sticky-d"><a href="/shotpc/ja/minis/SP071A.html" class="catalog-link">AI X1 ミニpc AMD Ryzen 7 255プロセッサ DDR5-5600MT/s 2xPCIE4.0 SSDスロット ベアボーンキット Radeon</a></td>
-                            <td>Ryzen 7 255</td>
-                            <td>0GB</td>
-                            <td>0GB</td>
-                            <td><span class="catalog-badge">Standard Use</span></td>
-                            <td>Oculink</td>
-                            <td class="catalog-num">¥53,882</td>
-                            <td><a href="https://www.amazon.co.jp/dp/B0F8B1SMVP?tag=shotsim-22" target="_blank" rel="noopener" class="catalog-link">View</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sticky-a catalog-num">73</td>
-                            <td class="sticky-b">Minisforum</td>
-                            <td class="sticky-c catalog-thumb-cell"><img src="https://m.media-amazon.com/images/I/515UnQqOkEL._AC_SX679_.jpg" alt="AI X1-255 Mini PC AMD Ryzen 7 255 (8C/16T" class="catalog-thumb" loading="lazy"></td>
-                            <td class="sticky-d"><a href="/shotpc/ja/minis/SP045A.html" class="catalog-link">AI X1-255 Mini PC AMD Ryzen 7 255 (8C/16T</a></td>
-                            <td>Ryzen 7 255</td>
-                            <td>32GB</td>
-                            <td>1024GB</td>
-                            <td><span class="catalog-badge">Standard Use</span></td>
-                            <td>Oculink</td>
-                            <td class="catalog-num">¥48,998</td>
-                            <td><a href="https://www.amazon.co.jp/dp/B0F58MZBR4?tag=shotsim-22" target="_blank" rel="noopener" class="catalog-link">View</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sticky-a catalog-num">74</td>
-                            <td class="sticky-b">Minisforum</td>
-                            <td class="sticky-c catalog-thumb-cell"><img src="https://m.media-amazon.com/images/I/515UnQqOkEL._AC_SX679_.jpg" alt="AI X1-255 Mini PC ベアボーン AMD Ryzen 7 255 (8C/16T" class="catalog-thumb" loading="lazy"></td>
-                            <td class="sticky-d"><a href="/shotpc/ja/minis/SP049A.html" class="catalog-link">AI X1-255 Mini PC ベアボーン AMD Ryzen 7 255 (8C/16T</a></td>
-                            <td>Ryzen 7 255</td>
-                            <td>0GB</td>
-                            <td>0GB</td>
-                            <td><span class="catalog-badge">Standard Use</span></td>
-                            <td>Oculink</td>
-                            <td class="catalog-num">¥115,935</td>
-                            <td><a href="https://www.amazon.co.jp/dp/B0F89ZR3QB?tag=shotsim-22" target="_blank" rel="noopener" class="catalog-link">View</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sticky-a catalog-num">75</td>
-                            <td class="sticky-b">Minisforum</td>
-                            <td class="sticky-c catalog-thumb-cell"><img src="https://m.media-amazon.com/images/I/71e8w8XYo9L._AC_SX679_.jpg" alt="MS-02 Ultra ミニワークステーション" class="catalog-thumb" loading="lazy"></td>
-                            <td class="sticky-d"><a href="/shotpc/ja/minis/SP034A.html" class="catalog-link">MS-02 Ultra ミニワークステーション</a></td>
-                            <td>Core Ultra 9 285HX</td>
-                            <td>32GB</td>
-                            <td>1024GB</td>
-                            <td><span class="catalog-badge">Standard Use</span></td>
-                            <td>-</td>
-                            <td class="catalog-num">¥316,999</td>
-                            <td><a href="https://www.amazon.co.jp/dp/B0G3WVWGTR?tag=shotsim-22" target="_blank" rel="noopener" class="catalog-link">View</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sticky-a catalog-num">76</td>
-                            <td class="sticky-b">Minisforum</td>
-                            <td class="sticky-c catalog-thumb-cell"><img src="https://m.media-amazon.com/images/I/518uLFDW4YL._AC_SX679_.jpg" alt="MS-A2 ミニワークステーション" class="catalog-thumb" loading="lazy"></td>
-                            <td class="sticky-d"><a href="/shotpc/ja/minis/SP048A.html" class="catalog-link">MS-A2 ミニワークステーション</a></td>
-                            <td>Ryzen 9 9955HX</td>
-                            <td>96GB</td>
-                            <td>2048GB</td>
-                            <td><span class="catalog-badge">Standard Use</span></td>
-                            <td>-</td>
-                            <td class="catalog-num">¥351,999</td>
-                            <td><a href="https://www.amazon.co.jp/dp/B0GL329LZ5?tag=shotsim-22" target="_blank" rel="noopener" class="catalog-link">View</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sticky-a catalog-num">77</td>
-                            <td class="sticky-b">Minisforum</td>
-                            <td class="sticky-c catalog-thumb-cell"><img src="https://m.media-amazon.com/images/I/61aiiSIskIL._AC_SX679_.jpg" alt="MS-S1 MAX ミニAIワークステーション AMD Ryzen AI Max+ 395 128GB LPDDR5x 8000MT/s UMAメモリ 2TB" class="catalog-thumb" loading="lazy"></td>
-                            <td class="sticky-d"><a href="/shotpc/ja/minis/SP080A.html" class="catalog-link">MS-S1 MAX ミニAIワークステーション AMD Ryzen AI Max+ 395 128GB LPDDR5x 8000MT/s UMAメモリ 2TB</a></td>
-                            <td>Ryzen AI Max+ 395</td>
-                            <td>128GB</td>
-                            <td>8192GB</td>
-                            <td><span class="catalog-badge">Standard Use</span></td>
-                            <td>-</td>
-                            <td class="catalog-num">¥511,998</td>
-                            <td><a href="https://www.amazon.co.jp/dp/B0FSN9NDDF?tag=shotsim-22" target="_blank" rel="noopener" class="catalog-link">View</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sticky-a catalog-num">78</td>
-                            <td class="sticky-b">Minisforum</td>
-                            <td class="sticky-c catalog-thumb-cell"><img src="https://m.media-amazon.com/images/I/617UcfNftxL._AC_SX679_.jpg" alt="UM890 Pro ミニPC" class="catalog-thumb" loading="lazy"></td>
-                            <td class="sticky-d"><a href="/shotpc/ja/minis/SP031A.html" class="catalog-link">UM890 Pro ミニPC</a></td>
-                            <td>Ryzen 9 8945HS</td>
-                            <td>0GB</td>
-                            <td>1024GB</td>
-                            <td><span class="catalog-badge">Excellent for 7B/8B Models</span></td>
-                            <td>Oculink</td>
-                            <td class="catalog-num">¥147,599</td>
-                            <td><a href="https://www.amazon.co.jp/dp/B0D866QGTD?tag=shotsim-22" target="_blank" rel="noopener" class="catalog-link">View</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sticky-a catalog-num">79</td>
-                            <td class="sticky-b">Minisforum</td>
-                            <td class="sticky-c catalog-thumb-cell"><img src="https://m.media-amazon.com/images/I/6104lOVp0HL._AC_SX679_.jpg" alt="UM890Pro ミニPC" class="catalog-thumb" loading="lazy"></td>
-                            <td class="sticky-d"><a href="/shotpc/ja/minis/SP035A.html" class="catalog-link">UM890Pro ミニPC</a></td>
-                            <td>Ryzen 9 8945HS</td>
-                            <td>16GB</td>
-                            <td>512GB</td>
-                            <td><span class="catalog-badge">Excellent for 7B/8B Models</span></td>
-                            <td>-</td>
-                            <td class="catalog-num">¥95,998</td>
-                            <td><a href="https://www.amazon.co.jp/dp/B0GR9D5CS1?tag=shotsim-22" target="_blank" rel="noopener" class="catalog-link">View</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sticky-a catalog-num">80</td>
-                            <td class="sticky-b">Minisforum</td>
-                            <td class="sticky-c catalog-thumb-cell"><img src="https://m.media-amazon.com/images/I/71q3VUKMfPL._AC_SX679_.jpg" alt="X1 Lite-255 ミニ PC AMD Ryzen 7 255 32GB 512GB SSD Windows 11 Pro 搭載 小型パソコンHDMI2.1" class="catalog-thumb" loading="lazy"></td>
-                            <td class="sticky-d"><a href="/shotpc/ja/minis/SP082A.html" class="catalog-link">X1 Lite-255 ミニ PC AMD Ryzen 7 255 32GB 512GB SSD Windows 11 Pro 搭載 小型パソコンHDMI2.1</a></td>
-                            <td>Ryzen 7 255</td>
-                            <td>0GB</td>
-                            <td>512GB</td>
-                            <td><span class="catalog-badge">Standard Use</span></td>
-                            <td>Oculink</td>
-                            <td class="catalog-num">¥103,998</td>
-                            <td><a href="https://www.amazon.co.jp/dp/B0GQB56QD6?tag=shotsim-22" target="_blank" rel="noopener" class="catalog-link">View</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sticky-a catalog-num">81</td>
-                            <td class="sticky-b">Minisforum</td>
-                            <td class="sticky-c catalog-thumb-cell"><img src="https://m.media-amazon.com/images/I/71q3VUKMfPL._AC_SX679_.jpg" alt="X1 Lite-255 ミニ PC AMD Ryzen 7 255 32GB DDR5 1TB SSD Windows 11 Pro 小型パソコン HDMI2." class="catalog-thumb" loading="lazy"></td>
-                            <td class="sticky-d"><a href="/shotpc/ja/minis/SP081A.html" class="catalog-link">X1 Lite-255 ミニ PC AMD Ryzen 7 255 32GB DDR5 1TB SSD Windows 11 Pro 小型パソコン HDMI2.</a></td>
-                            <td>Ryzen 7 255</td>
-                            <td>32GB</td>
-                            <td>1024GB</td>
-                            <td><span class="catalog-badge">Standard Use</span></td>
-                            <td>Oculink</td>
-                            <td class="catalog-num">¥119,992</td>
-                            <td><a href="https://www.amazon.co.jp/dp/B0GQRXTXZ2?tag=shotsim-22" target="_blank" rel="noopener" class="catalog-link">View</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sticky-a catalog-num">82</td>
-                            <td class="sticky-b">Minisforum</td>
-                            <td class="sticky-c catalog-thumb-cell"><img src="https://m.media-amazon.com/images/I/61aDedRLIgL._AC_SY879_.jpg" alt="X1 Lite-255 ミニ PC AMD Ryzen 7 255 DDR5-5600MHz 32GB 512GB SSD 小型パソコンHDMI2.1/DP1." class="catalog-thumb" loading="lazy"></td>
-                            <td class="sticky-d"><a href="/shotpc/ja/minis/SP076A.html" class="catalog-link">X1 Lite-255 ミニ PC AMD Ryzen 7 255 DDR5-5600MHz 32GB 512GB SSD 小型パソコンHDMI2.1/DP1.</a></td>
-                            <td>Ryzen 7 255</td>
-                            <td>0GB</td>
-                            <td>512GB</td>
-                            <td><span class="catalog-badge">Standard Use</span></td>
-                            <td>Oculink</td>
-                            <td class="catalog-num">¥103,998</td>
-                            <td><a href="https://www.amazon.co.jp/dp/B0GFD645ZW?tag=shotsim-22" target="_blank" rel="noopener" class="catalog-link">View</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sticky-a catalog-num">83</td>
-                            <td class="sticky-b">Minisforum</td>
-                            <td class="sticky-c catalog-thumb-cell"><img src="https://m.media-amazon.com/images/I/61avvoR6beL._AC_SX679_.jpg" alt="X1 Lite-255 ミニ PC AMD Ryzen 7 255 DDR5-5600MHz 64GB 1TB SSD 小型パソコンHDMI2.1/DP1.4/" class="catalog-thumb" loading="lazy"></td>
-                            <td class="sticky-d"><a href="/shotpc/ja/minis/SP077A.html" class="catalog-link">X1 Lite-255 ミニ PC AMD Ryzen 7 255 DDR5-5600MHz 64GB 1TB SSD 小型パソコンHDMI2.1/DP1.4/</a></td>
-                            <td>Ryzen 7 255</td>
-                            <td>0GB</td>
-                            <td>1024GB</td>
-                            <td><span class="catalog-badge">Standard Use</span></td>
-                            <td>Oculink</td>
-                            <td class="catalog-num">¥103,998</td>
-                            <td><a href="https://www.amazon.co.jp/dp/B0G1MDH8Q8?tag=shotsim-22" target="_blank" rel="noopener" class="catalog-link">View</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sticky-a catalog-num">84</td>
-                            <td class="sticky-b">Minisforum</td>
-                            <td class="sticky-c catalog-thumb-cell"><img src="https://m.media-amazon.com/images/I/612ifSz5H5L._AC_SX679_.jpg" alt="X1 Lite-255 ミニpc AMD Ryzen 7 255プロセッサ Radeon 780M グラフィック DDR5-5600 32GB 1TB SSD" class="catalog-thumb" loading="lazy"></td>
-                            <td class="sticky-d"><a href="/shotpc/ja/minis/SP075A.html" class="catalog-link">X1 Lite-255 ミニpc AMD Ryzen 7 255プロセッサ Radeon 780M グラフィック DDR5-5600 32GB 1TB SSD</a></td>
-                            <td>Ryzen 7 255</td>
-                            <td>0GB</td>
-                            <td>1024GB</td>
-                            <td><span class="catalog-badge">Standard Use</span></td>
-                            <td>Oculink</td>
-                            <td class="catalog-num">¥115,993</td>
-                            <td><a href="https://www.amazon.co.jp/dp/B0G1MMZVFM?tag=shotsim-22" target="_blank" rel="noopener" class="catalog-link">View</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sticky-a catalog-num">85</td>
-                            <td class="sticky-b">Minisforum</td>
-                            <td class="sticky-c catalog-thumb-cell"><img src="https://m.media-amazon.com/images/I/51aawUf6ndL._AC_SX679_.jpg" alt="X1 Pro 370ミニPC" class="catalog-thumb" loading="lazy"></td>
-                            <td class="sticky-d"><a href="/shotpc/ja/minis/SP008B.html" class="catalog-link">X1 Pro 370ミニPC</a></td>
-                            <td>Ryzen AI 9 HX 370</td>
-                            <td>32GB</td>
-                            <td>1024GB</td>
-                            <td><span class="catalog-badge">Excellent for 7B/8B Models</span></td>
-                            <td>Oculink</td>
-                            <td class="catalog-num">¥203,199</td>
-                            <td><a href="https://www.amazon.co.jp/dp/B0DP7P3W4G?tag=shotsim-22" target="_blank" rel="noopener" class="catalog-link">View</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sticky-a catalog-num">86</td>
-                            <td class="sticky-b">Minisforum</td>
-                            <td class="sticky-c catalog-thumb-cell"><img src="https://m.media-amazon.com/images/I/51HxN95IFdL._AC_SX679_.jpg" alt="X1 Pro 370ミニPC" class="catalog-thumb" loading="lazy"></td>
-                            <td class="sticky-d"><a href="/shotpc/ja/minis/SP008A.html" class="catalog-link">X1 Pro 370ミニPC</a></td>
-                            <td>Ryzen AI 9 HX 370</td>
-                            <td>0GB</td>
-                            <td>0GB</td>
-                            <td><span class="catalog-badge">Excellent for 7B/8B Models</span></td>
-                            <td>-</td>
-                            <td class="catalog-num">¥156,990</td>
-                            <td><a href="https://www.amazon.co.jp/dp/B0G39PNQS5?tag=shotsim-22" target="_blank" rel="noopener" class="catalog-link">View</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sticky-a catalog-num">87</td>
-                            <td class="sticky-b">Minisforum</td>
-                            <td class="sticky-c catalog-thumb-cell"><img src="https://m.media-amazon.com/images/I/51aawUf6ndL._AC_SX679_.jpg" alt="X1 Pro ミニPC" class="catalog-thumb" loading="lazy"></td>
-                            <td class="sticky-d"><a href="/shotpc/ja/minis/SP009A.html" class="catalog-link">X1 Pro ミニPC</a></td>
-                            <td>Ryzen AI 9 HX 370</td>
-                            <td>32GB</td>
-                            <td>1024GB</td>
-                            <td><span class="catalog-badge">Excellent for 7B/8B Models</span></td>
-                            <td>Oculink</td>
-                            <td class="catalog-num">¥203,199</td>
-                            <td><a href="https://www.amazon.co.jp/dp/B0DZNHJWS4?tag=shotsim-22" target="_blank" rel="noopener" class="catalog-link">View</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sticky-a catalog-num">88</td>
-                            <td class="sticky-b">Minisforum</td>
-                            <td class="sticky-c catalog-thumb-cell"><img src="https://m.media-amazon.com/images/I/51aawUf6ndL._AC_SX679_.jpg" alt="X1 Pro ミニPC" class="catalog-thumb" loading="lazy"></td>
-                            <td class="sticky-d"><a href="/shotpc/ja/minis/SP009B.html" class="catalog-link">X1 Pro ミニPC</a></td>
-                            <td>Ryzen AI 9 HX 370</td>
-                            <td>96GB</td>
-                            <td>2048GB</td>
-                            <td><span class="catalog-badge">Excellent for 7B/8B Models</span></td>
-                            <td>Oculink</td>
-                            <td class="catalog-num">¥332,999</td>
-                            <td><a href="https://www.amazon.co.jp/dp/B0DZNM6MMH?tag=shotsim-22" target="_blank" rel="noopener" class="catalog-link">View</a></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+          </div>
         </section>
+
+        <section class="filter-section" data-section>
+          <div class="filter-section-title">
+            <span>CPU</span>
+            <span class="toggle-icon"></span>
+          </div>
+          <div class="filter-section-body">
+            <div id="cpu-filters">
+              <div class="loading-msg">読み込み中...</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="filter-section" data-section>
+          <div class="filter-section-title">
+            <span>RAM</span>
+            <span class="toggle-icon"></span>
+          </div>
+          <div class="filter-section-body">
+            <div id="ram-filters">
+              <div class="loading-msg">読み込み中...</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="filter-section" data-section>
+          <div class="filter-section-title">
+            <span>Price</span>
+            <span class="toggle-icon"></span>
+          </div>
+          <div class="filter-section-body">
+            <div class="range-slider-wrap">
+              <div class="range-label">
+                <span id="price-label-min">¥50,000</span>
+                <span id="price-label-max">¥500,000</span>
+              </div>
+              <div class="range-track">
+                <div class="range-track-fill" id="price-fill"></div>
+                <input type="range" id="price-min" min="0" max="8" value="0" />
+                <input type="range" id="price-max" min="0" max="8" value="8" />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="filter-section" data-section>
+          <div class="filter-section-title">
+            <span>Options</span>
+            <span class="toggle-icon"></span>
+          </div>
+          <div class="filter-section-body">
+            <label class="filter-option">
+              <span class="filter-option-label">
+                <input type="checkbox" id="stock-only" />
+                <span>在庫ありのみ</span>
+              </span>
+            </label>
+            <label class="filter-option">
+              <span class="filter-option-label">
+                <input type="checkbox" id="oculink-only" />
+                <span>OCuLink対応のみ</span>
+              </span>
+            </label>
+            <button type="button" class="btn-clear-all" id="btn-clear">
+              フィルター解除
+            </button>
+          </div>
+        </section>
+      </aside>
+
+      <section class="main-content">
+        <div class="main-header">
+          <h1>ミニPC カタログ一覧</h1>
+          <div class="result-count" id="result-count">-件</div>
+        </div>
+        <div class="data-note" id="data-note">Amazon取得日時を読み込み中...</div>
+
+        <div class="list-controls">
+          <div class="control-wrap">
+            <label for="select-sort">並び替え</label>
+            <select id="select-sort">
+              <option value="price_asc">価格が安い順</option>
+              <option value="price_desc">価格が高い順</option>
+              <option value="score_desc">CPUスコア順</option>
+              <option value="ram_desc">RAMが多い順</option>
+              <option value="latest_desc">取得日が新しい順</option>
+              <option value="brand_asc">ブランド順</option>
+            </select>
+          </div>
+          <div class="control-wrap">
+            <label for="select-pagesize">表示件数</label>
+            <select id="select-pagesize">
+              <option value="50">50</option>
+              <option value="100" selected>100</option>
+              <option value="all">すべて</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="list-header">
+          <div>#</div>
+          <div>Img</div>
+          <div>Brand</div>
+          <div>Model</div>
+          <div>CPU</div>
+          <div>GPU</div>
+          <div>RAM</div>
+          <div>SSD</div>
+          <div>Score</div>
+          <div>Ports</div>
+          <div style="text-align: right">Price</div>
+        </div>
+
+        <ul class="product-list" id="product-list">
+          <li class="loading-msg">読み込み中...</li>
+        </ul>
+        <div class="pagination" id="pagination"></div>
+      </section>
     </main>
 
     <footer>
-        <div class="container">
-            <p>&copy; 2026 ShotPC. 掲載情報はAmazon等の各ECサイトのものです。</p>
-            <p class="disclaimer">※Amazonアソシエイトとして、ShotPCは適格販売により収入を得ています。</p>
-        </div>
+      <div class="container">
+        <p>&copy; 2026 ShotPC. 情報ソースはAmazon等の公開情報です。</p>
+        <p class="disclaimer">
+          ※Amazonアソシエイトとして、ShotPCは適格販売により収益を得ています。
+        </p>
+      </div>
     </footer>
 
     <script src="/shotpc/assets/js/app.js"></script>
     <script>
-        const brandFilters = document.getElementById('catalog-brand-filters');
-        const cpuFilters = document.getElementById('catalog-cpu-filters');
-        const ramFilters = document.getElementById('catalog-ram-filters');
-        const catalogBody = document.getElementById('catalog-body');
-        const catalogSidebar = document.getElementById('catalog-sidebar');
-        const catalogSort = document.getElementById('catalog-sort');
+      const MINIS_JSON_PATH = "/shotpc/data/minis.json";
+      const PRICE_STEPS = [50000, 80000, 100000, 120000, 150000, 200000, 250000, 350000, 500000];
 
-        let allCatalogMinis = [];
+      const state = {
+        allMinis: [],
+        filteredMinis: [],
+        currentPage: 1,
+        pageSize: 100,
+        sortKey: "price_asc",
+        filters: {
+          brands: new Set(),
+          cpus: new Set(),
+          ramMin: "all",
+          stockOnly: false,
+          oculinkOnly: false,
+        },
+        priceRange: { min: 0, max: PRICE_STEPS.length - 1 },
+      };
 
-        function displayBrand(brand) {
-            return brand === 'Unknown' ? 'その他' : brand;
+      const els = {
+        sidebar: document.getElementById("catalog-sidebar"),
+        brandFilters: document.getElementById("brand-filters"),
+        cpuFilters: document.getElementById("cpu-filters"),
+        ramFilters: document.getElementById("ram-filters"),
+        resultCount: document.getElementById("result-count"),
+        dataNote: document.getElementById("data-note"),
+        productList: document.getElementById("product-list"),
+        pagination: document.getElementById("pagination"),
+        sort: document.getElementById("select-sort"),
+        pageSize: document.getElementById("select-pagesize"),
+        stockOnly: document.getElementById("stock-only"),
+        oculinkOnly: document.getElementById("oculink-only"),
+        clear: document.getElementById("btn-clear"),
+        priceMin: document.getElementById("price-min"),
+        priceMax: document.getElementById("price-max"),
+        priceFill: document.getElementById("price-fill"),
+        priceLabelMin: document.getElementById("price-label-min"),
+        priceLabelMax: document.getElementById("price-label-max"),
+      };
+
+      function formatPrice(value) {
+        return `¥${Number(value || 0).toLocaleString("ja-JP")}`;
+      }
+
+      function displayBrand(brand) {
+        if (!brand || brand === "Unknown") return "不明";
+        return brand;
+      }
+
+      function normalizeCpuFamily(cpuName) {
+        const name = String(cpuName || "").toLowerCase();
+        if (name.includes("ryzen ai")) return "Ryzen AI";
+        if (name.includes("ryzen 9")) return "Ryzen 9";
+        if (name.includes("ryzen 7")) return "Ryzen 7";
+        if (name.includes("ryzen 5")) return "Ryzen 5";
+        if (name.includes("core ultra")) return "Core Ultra";
+        if (/\bn\d{3}\b/.test(name)) return "Intel N";
+        if (name.includes("intel")) return "Intel";
+        return "Other";
+      }
+
+      function getEffectivePrice(item) {
+        return Number(item.effective_price_jpy || item.price_jpy || 0);
+      }
+
+      function getFetchedDate(item) {
+        return String(item.fetched_at || "").slice(0, 10) || "-";
+      }
+
+      function getRamValue(item) {
+        return Number(item.ram?.capacity_gb || 0);
+      }
+
+      function getStorageValue(item) {
+        return Number(item.storage?.capacity_gb || 0);
+      }
+
+      function getCpuScore(item) {
+        return Number(item.cpu?.score || 0);
+      }
+
+      function getPorts(item) {
+        const parts = [];
+        if (item.ai_features?.oculink_support) parts.push("OCuLink");
+        return parts;
+      }
+
+      function buildCounts(items, keyFn) {
+        const map = new Map();
+        items.forEach((item) => {
+          const key = keyFn(item);
+          map.set(key, (map.get(key) || 0) + 1);
+        });
+        return map;
+      }
+
+      function renderBrandFilters() {
+        const counts = Array.from(
+          buildCounts(state.allMinis, (item) => displayBrand(item.brand)).entries()
+        ).sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], "ja"));
+
+        els.brandFilters.innerHTML = counts
+          .map(
+            ([brand, count]) => `
+              <label class="filter-option">
+                <span class="filter-option-label">
+                  <input type="checkbox" name="brand" value="${brand}">
+                  <span>${brand}</span>
+                </span>
+                <span class="filter-option-count">${count}</span>
+              </label>
+            `
+          )
+          .join("");
+      }
+
+      function renderCpuFilters() {
+        const counts = Array.from(
+          buildCounts(state.allMinis, (item) => normalizeCpuFamily(item.cpu?.name)).entries()
+        ).sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], "ja"));
+
+        els.cpuFilters.innerHTML = counts
+          .map(
+            ([cpu, count]) => `
+              <label class="filter-option">
+                <span class="filter-option-label">
+                  <input type="checkbox" name="cpu" value="${cpu}">
+                  <span>${cpu}</span>
+                </span>
+                <span class="filter-option-count">${count}</span>
+              </label>
+            `
+          )
+          .join("");
+      }
+
+      function renderRamFilters() {
+        const options = [
+          { value: "all", label: "指定なし" },
+          { value: "16", label: "16GB以上" },
+          { value: "32", label: "32GB以上" },
+          { value: "64", label: "64GB以上" },
+          { value: "128", label: "128GB以上" },
+        ];
+
+        els.ramFilters.innerHTML = options
+          .map((option) => {
+            const count =
+              option.value === "all"
+                ? state.allMinis.length
+                : state.allMinis.filter((item) => getRamValue(item) >= Number(option.value)).length;
+
+            return `
+              <label class="filter-option">
+                <span class="filter-option-label">
+                  <input type="radio" name="ram-min" value="${option.value}" ${
+                    option.value === "all" ? "checked" : ""
+                  }>
+                  <span>${option.label}</span>
+                </span>
+                <span class="filter-option-count">${count}</span>
+              </label>
+            `;
+          })
+          .join("");
+      }
+
+      function updatePriceRangeUi() {
+        const pct = 100 / (PRICE_STEPS.length - 1);
+        const minIndex = state.priceRange.min;
+        const maxIndex = state.priceRange.max;
+        els.priceFill.style.left = `${minIndex * pct}%`;
+        els.priceFill.style.width = `${(maxIndex - minIndex) * pct}%`;
+        els.priceLabelMin.textContent = formatPrice(PRICE_STEPS[minIndex]);
+        els.priceLabelMax.textContent = formatPrice(PRICE_STEPS[maxIndex]);
+      }
+
+      function sortMinis(items) {
+        const rows = [...items];
+        switch (state.sortKey) {
+          case "price_desc":
+            rows.sort((a, b) => getEffectivePrice(b) - getEffectivePrice(a));
+            break;
+          case "score_desc":
+            rows.sort((a, b) => getCpuScore(b) - getCpuScore(a) || getEffectivePrice(a) - getEffectivePrice(b));
+            break;
+          case "ram_desc":
+            rows.sort((a, b) => getRamValue(b) - getRamValue(a) || getCpuScore(b) - getCpuScore(a));
+            break;
+          case "latest_desc":
+            rows.sort((a, b) => String(b.fetched_at || "").localeCompare(String(a.fetched_at || "")));
+            break;
+          case "brand_asc":
+            rows.sort((a, b) => displayBrand(a.brand).localeCompare(displayBrand(b.brand), "ja"));
+            break;
+          case "price_asc":
+          default:
+            rows.sort((a, b) => getEffectivePrice(a) - getEffectivePrice(b));
+            break;
+        }
+        return rows;
+      }
+
+      function applyFilters() {
+        const minPrice = PRICE_STEPS[state.priceRange.min];
+        const maxPrice = PRICE_STEPS[state.priceRange.max];
+        const ramMin = state.filters.ramMin === "all" ? 0 : Number(state.filters.ramMin);
+
+        state.filteredMinis = state.allMinis.filter((item) => {
+          const brand = displayBrand(item.brand);
+          const cpuFamily = normalizeCpuFamily(item.cpu?.name);
+          const price = getEffectivePrice(item);
+          const ram = getRamValue(item);
+
+          if (state.filters.brands.size && !state.filters.brands.has(brand)) return false;
+          if (state.filters.cpus.size && !state.filters.cpus.has(cpuFamily)) return false;
+          if (ram < ramMin) return false;
+          if (price > 0 && (price < minPrice || price > maxPrice)) return false;
+          if (state.filters.stockOnly && item.stock !== "in_stock") return false;
+          if (state.filters.oculinkOnly && item.ai_features?.oculink_support !== true) return false;
+          return true;
+        });
+
+        state.currentPage = 1;
+        render();
+      }
+
+      function buildProductItem(item, rank) {
+        const price = getEffectivePrice(item);
+        const fetchedDate = getFetchedDate(item);
+        const ports = getPorts(item);
+        const stockClass = item.stock === "in_stock" ? "in-stock" : "unknown";
+        const stockLabel = item.stock === "in_stock" ? "在庫あり" : "在庫不明";
+        const priceNote = fetchedDate !== "-" ? `${fetchedDate}取得` : "取得日不明";
+        const thumbHtml = item.image_url
+          ? `<img src="${item.image_url}" alt="${item.model}" loading="lazy">`
+          : `<span class="no-thumb">NO<br>IMG</span>`;
+
+        return `
+          <li class="product-item">
+            <div class="col-rank">${rank}</div>
+            <div class="product-thumb">${thumbHtml}</div>
+            <div class="col-brand">${displayBrand(item.brand)}</div>
+            <div class="col-name-wrap">
+              <div class="product-name">
+                <a href="/shotpc/ja/minis/${item.id}.html">${item.model}</a>
+              </div>
+              <div class="product-meta">
+                <span class="asin-chip">${item.id}</span>
+                <span class="meta-text">ASIN ${item.source_ids?.asin || "-"}</span>
+                <span class="ai-badge">${item.ai_features?.ai_inference_suitability || "-"}</span>
+                <span class="stock-badge ${stockClass}">${stockLabel}</span>
+                <span class="meta-text">${priceNote}</span>
+              </div>
+            </div>
+            <div class="col-cpu">${item.cpu?.name || "-"}</div>
+            <div class="col-gpu">${item.gpu || "-"}</div>
+            <div class="col-center">${getRamValue(item) > 0 ? `${getRamValue(item)}GB` : "-"}</div>
+            <div class="col-center">${getStorageValue(item) > 0 ? `${getStorageValue(item)}GB` : "-"}</div>
+            <div class="col-center">
+              <span class="score-chip">${getCpuScore(item) > 0 ? getCpuScore(item).toLocaleString("ja-JP") : "-"}</span>
+              <span class="score-sub">R23</span>
+            </div>
+            <div class="col-center">
+              <div class="port-stack">
+                ${
+                  ports.length
+                    ? ports.map((port) => `<span class="port-badge">${port}</span>`).join("")
+                    : `<span class="port-badge">-</span>`
+                }
+              </div>
+            </div>
+            <div class="col-right">
+              <span class="price-main">${price > 0 ? formatPrice(price) : "-"}</span>
+              <span class="price-sub">${priceNote}</span>
+              <div class="price-actions">
+                <a href="${item.amazon_url || "#"}" class="amazon-btn" target="_blank" rel="noopener">Amazon</a>
+              </div>
+            </div>
+          </li>
+        `;
+      }
+
+      function renderPagination(total) {
+        if (state.pageSize === Infinity || total <= state.pageSize) {
+          els.pagination.innerHTML = "";
+          return;
         }
 
-        function buildCounts(rows, keyFn) {
-            const map = new Map();
-            rows.forEach(row => {
-                const key = keyFn(row);
-                map.set(key, (map.get(key) || 0) + 1);
-            });
-            return map;
+        const totalPages = Math.ceil(total / state.pageSize);
+        const buttons = [];
+        for (let page = 1; page <= totalPages; page += 1) {
+          buttons.push(
+            `<button type="button" class="page-btn ${
+              page === state.currentPage ? "active" : ""
+            }" data-page="${page}">${page}</button>`
+          );
+        }
+        els.pagination.innerHTML = buttons.join("");
+      }
+
+      function render() {
+        const sorted = sortMinis(state.filteredMinis);
+        const total = sorted.length;
+        const start = state.pageSize === Infinity ? 0 : (state.currentPage - 1) * state.pageSize;
+        const end = state.pageSize === Infinity ? total : Math.min(start + state.pageSize, total);
+        const pageItems = sorted.slice(start, end);
+
+        els.resultCount.textContent = `${total.toLocaleString("ja-JP")}件`;
+
+        if (!pageItems.length) {
+          els.productList.innerHTML = `<li class="empty-msg">条件に合うミニPCがありません。</li>`;
+          renderPagination(total);
+          return;
         }
 
-        function renderCatalogFilters() {
-            const brandCounts = Array.from(buildCounts(allCatalogMinis, row => row.brand || 'Unknown').entries())
-                .sort((a, b) => b[1] - a[1] || displayBrand(a[0]).localeCompare(displayBrand(b[0]), 'ja'));
+        els.productList.innerHTML = pageItems
+          .map((item, index) => buildProductItem(item, start + index + 1))
+          .join("");
 
-            brandFilters.innerHTML = brandCounts.map(([brand, count]) => `
-                <label><span><input type="checkbox" name="catalog_brand" value="${brand}"> ${displayBrand(brand)}</span><span>${count}</span></label>
-            `).join('');
+        renderPagination(total);
+      }
 
-            const cpuDefs = [
-                ['ryzen_ai', 'Ryzen AI', name => name.includes('ryzen ai')],
-                ['ryzen9', 'Ryzen 9', name => name.includes('ryzen 9')],
-                ['ryzen7', 'Ryzen 7', name => name.includes('ryzen 7')],
-                ['ryzen5', 'Ryzen 5', name => name.includes('ryzen 5')],
-                ['core_ultra', 'Core Ultra', name => name.includes('core ultra')],
-                ['core_i7', 'Core i7', name => name.includes('core i7')],
-                ['core_i5', 'Core i5', name => name.includes('core i5')],
-                ['intel_n', 'Intel N', name => /\bn\d{3}\b/.test(name)],
-            ];
+      function bindFilterEvents() {
+        els.sidebar.addEventListener("change", (event) => {
+          const target = event.target;
+          if (!(target instanceof HTMLInputElement)) return;
 
-            cpuFilters.innerHTML = cpuDefs.map(([value, label, matcher]) => {
-                const count = allCatalogMinis.filter(row => matcher((row.cpu?.name || '').toLowerCase())).length;
-                if (!count) return '';
-                return `<label><span><input type="checkbox" name="catalog_cpu" value="${value}"> ${label}</span><span>${count}</span></label>`;
-            }).join('');
+          if (target.name === "brand") {
+            if (target.checked) state.filters.brands.add(target.value);
+            else state.filters.brands.delete(target.value);
+          }
 
-            const ramDefs = [8, 16, 24, 32, 64, 128];
-            ramFilters.innerHTML = ramDefs.map(min => {
-                const count = allCatalogMinis.filter(row => Number(row.ram?.capacity_gb || 0) >= min).length;
-                if (!count) return '';
-                return `<label><span><input type="checkbox" name="catalog_ram" value="${min}"> ${min}GB以上</span><span>${count}</span></label>`;
-            }).join('');
-        }
+          if (target.name === "cpu") {
+            if (target.checked) state.filters.cpus.add(target.value);
+            else state.filters.cpus.delete(target.value);
+          }
 
-        function sortCatalog(rows) {
-            const value = catalogSort.value;
-            const sorted = [...rows];
-            if (value === 'price_asc') sorted.sort((a, b) => (a.effective_price_jpy || 0) - (b.effective_price_jpy || 0));
-            if (value === 'price_desc') sorted.sort((a, b) => (b.effective_price_jpy || 0) - (a.effective_price_jpy || 0));
-            if (value === 'ram_desc') sorted.sort((a, b) => (b.ram?.capacity_gb || 0) - (a.ram?.capacity_gb || 0));
-            if (value === 'brand_asc') sorted.sort((a, b) => displayBrand(a.brand || '').localeCompare(displayBrand(b.brand || ''), 'ja'));
-            return sorted;
-        }
+          if (target.name === "ram-min") {
+            state.filters.ramMin = target.value;
+          }
 
-        function applyCatalogFilters() {
-            const selectedBrands = Array.from(document.querySelectorAll('input[name="catalog_brand"]:checked')).map(el => el.value);
-            const selectedCpus = Array.from(document.querySelectorAll('input[name="catalog_cpu"]:checked')).map(el => el.value);
-            const selectedRams = Array.from(document.querySelectorAll('input[name="catalog_ram"]:checked')).map(el => Number(el.value));
-            const stockOnly = document.querySelector('input[name="stock_only"]')?.checked;
-            const oculinkOnly = document.querySelector('input[name="oculink_only"]')?.checked;
-            const usb4Only = document.querySelector('input[name="usb4_only"]')?.checked;
+          if (target.id === "stock-only") {
+            state.filters.stockOnly = target.checked;
+          }
 
-            const cpuMatchers = {
-                ryzen_ai: name => name.includes('ryzen ai'),
-                ryzen9: name => name.includes('ryzen 9'),
-                ryzen7: name => name.includes('ryzen 7'),
-                ryzen5: name => name.includes('ryzen 5'),
-                core_ultra: name => name.includes('core ultra'),
-                core_i7: name => name.includes('core i7'),
-                core_i5: name => name.includes('core i5'),
-                intel_n: name => /\bn\d{3}\b/.test(name),
-            };
+          if (target.id === "oculink-only") {
+            state.filters.oculinkOnly = target.checked;
+          }
 
-            const filtered = allCatalogMinis.filter(row => {
-                const brandMatch = selectedBrands.length === 0 || selectedBrands.includes(row.brand || 'Unknown');
-                const cpuName = (row.cpu?.name || '').toLowerCase();
-                const cpuMatch = selectedCpus.length === 0 || selectedCpus.some(key => cpuMatchers[key]?.(cpuName));
-                const ramMatch = selectedRams.length === 0 || selectedRams.some(min => Number(row.ram?.capacity_gb || 0) >= min);
-                const stockMatch = !stockOnly || row.stock === 'in_stock';
-                const oculinkMatch = !oculinkOnly || row.ai_features?.oculink_support === true;
-                const usb4Match = !usb4Only || Number(row.io_ports?.usb4_count || 0) > 0;
-                return brandMatch && cpuMatch && ramMatch && stockMatch && oculinkMatch && usb4Match;
-            });
+          applyFilters();
+        });
 
-            renderCatalogTable(sortCatalog(filtered));
-        }
+        els.sort.addEventListener("change", () => {
+          state.sortKey = els.sort.value;
+          render();
+        });
 
-        function renderCatalogTable(rows) {
-            if (!rows.length) {
-                catalogBody.innerHTML = '<tr><td colspan="11" class="catalog-empty">条件に合うミニPCがありません。</td></tr>';
-                return;
+        els.pageSize.addEventListener("change", () => {
+          state.pageSize = els.pageSize.value === "all" ? Infinity : Number(els.pageSize.value);
+          state.currentPage = 1;
+          render();
+        });
+
+        els.pagination.addEventListener("click", (event) => {
+          const button = event.target.closest("[data-page]");
+          if (!button) return;
+          state.currentPage = Number(button.dataset.page);
+          render();
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+
+        els.clear.addEventListener("click", () => {
+          state.filters.brands.clear();
+          state.filters.cpus.clear();
+          state.filters.ramMin = "all";
+          state.filters.stockOnly = false;
+          state.filters.oculinkOnly = false;
+          state.priceRange = { min: 0, max: PRICE_STEPS.length - 1 };
+
+          document.querySelectorAll('input[name="brand"], input[name="cpu"]').forEach((input) => {
+            input.checked = false;
+          });
+          document.querySelector('input[name="ram-min"][value="all"]').checked = true;
+          els.stockOnly.checked = false;
+          els.oculinkOnly.checked = false;
+          els.priceMin.value = "0";
+          els.priceMax.value = String(PRICE_STEPS.length - 1);
+          updatePriceRangeUi();
+          applyFilters();
+        });
+
+        function bindRange(input, edge) {
+          input.addEventListener("input", () => {
+            const value = Number(input.value);
+            if (edge === "min") {
+              state.priceRange.min = Math.min(value, state.priceRange.max);
+              input.value = String(state.priceRange.min);
+            } else {
+              state.priceRange.max = Math.max(value, state.priceRange.min);
+              input.value = String(state.priceRange.max);
             }
-
-            catalogBody.innerHTML = rows.map((row, index) => {
-                const ports = [
-                    row.ai_features?.oculink_support ? 'Oculink' : null,
-                    Number(row.io_ports?.usb4_count || 0) > 0 ? `USB4 x${row.io_ports.usb4_count}` : null,
-                    row.io_ports?.lan_speed || null,
-                ].filter(Boolean).join(' / ') || '-';
-
-                const imgHtml = row.image_url
-                    ? `<img src="${row.image_url}" alt="${row.model}" class="catalog-thumb" loading="lazy">`
-                    : `<div class="catalog-thumb-fallback">No Img</div>`;
-
-                return `
-                    <tr>
-                        <td class="sticky-a catalog-num">${index + 1}</td>
-                        <td class="sticky-b">${displayBrand(row.brand)}</td>
-                        <td class="sticky-c catalog-thumb-cell">${imgHtml}</td>
-                        <td class="sticky-d"><a href="/shotpc/ja/minis/${row.id}.html" class="catalog-link">${row.model}</a></td>
-                        <td>${row.cpu?.name || '-'}</td>
-                        <td>${row.ram?.capacity_gb || '-'}GB</td>
-                        <td>${row.storage?.capacity_gb || '-'}GB</td>
-                        <td><span class="catalog-badge">${row.ai_features?.ai_inference_suitability || '-'}</span></td>
-                        <td>${ports}</td>
-                        <td class="catalog-num">¥${Number(row.effective_price_jpy || 0).toLocaleString()}</td>
-                        <td><a href="${row.amazon_url}" target="_blank" rel="noopener" class="catalog-link">View</a></td>
-                    </tr>`;
-            }).join('\n');
+            updatePriceRangeUi();
+            applyFilters();
+          });
         }
 
-        async function initCatalogPage() {
-            try {
-                const response = await fetch('/shotpc/data/minis.json');
-                allCatalogMinis = await response.json();
-                renderCatalogFilters();
-                applyCatalogFilters();
+        bindRange(els.priceMin, "min");
+        bindRange(els.priceMax, "max");
+      }
 
-                catalogSidebar?.addEventListener('change', event => {
-                    if (event.target instanceof HTMLInputElement) applyCatalogFilters();
-                });
-                catalogSort?.addEventListener('change', () => applyCatalogFilters());
-            } catch (error) {
-                console.error(error);
-                catalogBody.innerHTML = '<tr><td colspan="11" class="catalog-empty">データの読み込みに失敗しました。</td></tr>';
+      function bindSectionToggles() {
+        document.querySelectorAll("[data-section]").forEach((section) => {
+          const title = section.querySelector(".filter-section-title");
+          const body = section.querySelector(".filter-section-body");
+          body.style.maxHeight = `${body.scrollHeight}px`;
+          title.addEventListener("click", () => {
+            if (section.classList.contains("collapsed")) {
+              section.classList.remove("collapsed");
+              body.style.maxHeight = `${body.scrollHeight}px`;
+            } else {
+              section.classList.add("collapsed");
             }
-        }
+          });
+        });
+      }
 
-        initCatalogPage();
+      async function init() {
+        try {
+          const response = await fetch(MINIS_JSON_PATH);
+          const minis = await response.json();
+          state.allMinis = Array.isArray(minis) ? minis : [];
+
+          renderBrandFilters();
+          renderCpuFilters();
+          renderRamFilters();
+          updatePriceRangeUi();
+          bindSectionToggles();
+          bindFilterEvents();
+
+          const fetchedDates = state.allMinis
+            .map((item) => String(item.fetched_at || "").slice(0, 10))
+            .filter(Boolean)
+            .sort();
+          const latestFetched = fetchedDates.length ? fetchedDates[fetchedDates.length - 1] : "不明";
+          els.dataNote.textContent = `価格と在庫は ${latestFetched} 時点で取得したAmazon公開情報です。`;
+
+          state.filteredMinis = [...state.allMinis];
+          render();
+        } catch (error) {
+          console.error(error);
+          els.productList.innerHTML = `<li class="empty-msg">データの読み込みに失敗しました。</li>`;
+          els.resultCount.textContent = "0件";
+          els.dataNote.textContent = "読み込みに失敗しました。";
+        }
+      }
+
+      init();
     </script>
-</body>
+  </body>
 </html>
