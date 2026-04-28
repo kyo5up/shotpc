@@ -2,146 +2,193 @@
 <html lang="ja">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ミニPC一覧 試作2 | ShotPC</title>
+    <meta
+      name="description"
+      content="ShotPCが収集したミニPCを、CPU、GPU、RAM、価格、OCuLink対応で高密度に比較できる試作一覧です。"
+    />
+    <meta name="robots" content="noindex" />
+    <link rel="stylesheet" href="/shotpc/assets/css/style.css" />
     <link rel="icon" type="image/x-icon" href="/shotpc/assets/img/favicon.ico" />
     <link rel="icon" type="image/png" sizes="32x32" href="/shotpc/assets/img/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/shotpc/assets/img/favicon-16x16.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/shotpc/assets/img/favicon-192x192.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ミニPC一覧 | ShotPC</title>
-    <meta name="description" content="ShotPCのミニPC一覧。CPU、GPU、RAM、SSD、価格、OCuLink対応を一覧で比較できます。" />
-    <meta name="robots" content="noindex" />
-    <link rel="stylesheet" href="/shotpc/assets/css/style.css" />
     <style>
+      :root {
+        --line: #d9e1ec;
+        --line-strong: #284b87;
+        --text: #1f2937;
+        --muted: #6b7280;
+        --bg-soft: #f5f7fb;
+        --bg-head: #eef3fb;
+        --blue: #284b87;
+        --blue-soft: #e8f0ff;
+        --green: #0f7b3d;
+        --green-soft: #e9f7ee;
+        --orange: #b45309;
+        --orange-soft: #fff2e2;
+      }
+
+      body {
+        color: var(--text);
+      }
+
+      header {
+        margin-bottom: 0;
+      }
+
       .page-wrap {
         display: flex;
         gap: 0;
-        padding: 0 24px 60px;
+        padding: 0 20px 48px;
         align-items: flex-start;
       }
 
       .sidebar {
-        width: 200px;
+        width: 220px;
         flex-shrink: 0;
         position: sticky;
         top: 16px;
         max-height: calc(100vh - 32px);
         overflow-y: auto;
-        padding: 16px 0;
+        padding: 14px 0 10px;
       }
-      .sidebar::-webkit-scrollbar { width: 4px; }
-      .sidebar::-webkit-scrollbar-thumb { background: #ccc; border-radius: 2px; }
+
+      .sidebar::-webkit-scrollbar {
+        width: 4px;
+      }
+
+      .sidebar::-webkit-scrollbar-thumb {
+        background: #c6cfdb;
+        border-radius: 999px;
+      }
 
       .filter-section {
-        border-bottom: 1px solid #e0e0e0;
+        border-bottom: 1px solid var(--line);
         padding: 10px 0;
       }
-      .filter-section:last-child { border-bottom: none; }
+
       .filter-section-title {
-        font-size: 0.72rem;
-        font-weight: 700;
-        color: #666;
-        text-transform: uppercase;
-        letter-spacing: 0.06em;
-        margin-bottom: 6px;
-        padding: 0 4px;
         display: flex;
         justify-content: space-between;
         align-items: center;
+        padding: 0 4px;
+        margin-bottom: 6px;
+        font-size: 0.73rem;
+        font-weight: 800;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: var(--muted);
         cursor: pointer;
         user-select: none;
       }
-      .filter-section-title:hover { color: #333; }
-      .filter-section-title .toggle-icon {
-        font-size: 0.9rem;
-        color: #aaa;
-        font-weight: 400;
-        line-height: 1;
+
+      .filter-section-title .toggle-icon::after {
+        content: "-";
       }
+
+      .filter-section.collapsed .filter-section-title .toggle-icon::after {
+        content: "+";
+      }
+
       .filter-section-body {
         overflow: hidden;
         transition: max-height 0.2s ease;
       }
+
       .filter-section.collapsed .filter-section-body {
         max-height: 0 !important;
       }
-      .filter-section.collapsed .toggle-icon::after { content: "+"; }
-      .filter-section:not(.collapsed) .toggle-icon::after { content: "-"; }
 
       .filter-option {
         display: flex;
         align-items: center;
         gap: 8px;
-        padding: 3px 4px;
+        padding: 4px;
+        border-radius: 4px;
+        font-size: 0.92rem;
         cursor: pointer;
-        border-radius: 3px;
-        font-size: 0.85rem;
-        color: #333;
         user-select: none;
       }
-      .filter-option:hover { background: #f5f5f5; }
-      .filter-option input[type="radio"] {
-        width: 14px;
-        height: 14px;
-        accent-color: #1a3263;
-        flex-shrink: 0;
-        cursor: pointer;
+
+      .filter-option:hover {
+        background: #f8fafc;
       }
-      .filter-option.active { color: #1a3263; font-weight: 600; }
+
+      .filter-option input[type="radio"] {
+        width: 15px;
+        height: 15px;
+        margin: 0;
+        accent-color: var(--blue);
+        flex-shrink: 0;
+      }
+
+      .filter-option.active {
+        color: var(--blue);
+        font-weight: 700;
+      }
 
       .range-slider-wrap {
-        padding: 4px 4px 8px;
+        padding: 6px 4px 10px;
       }
+
       .range-label {
         display: flex;
         justify-content: space-between;
-        font-size: 0.78rem;
-        color: #1a3263;
-        font-weight: 600;
         margin-bottom: 8px;
+        font-size: 0.78rem;
+        color: var(--blue);
+        font-weight: 700;
       }
+
       .range-track {
         position: relative;
         height: 4px;
-        background: #ddd;
-        border-radius: 2px;
         margin: 12px 4px;
+        background: #d8dfeb;
+        border-radius: 999px;
       }
+
       .range-track-fill {
         position: absolute;
         height: 100%;
-        background: #1a3263;
-        border-radius: 2px;
+        background: var(--blue);
+        border-radius: 999px;
       }
+
       .range-track input[type="range"] {
         position: absolute;
-        width: 100%;
-        height: 4px;
         top: 0;
         left: 0;
+        width: 100%;
+        height: 4px;
+        margin: 0;
         appearance: none;
         -webkit-appearance: none;
         background: transparent;
         pointer-events: none;
-        margin: 0;
       }
+
       .range-track input[type="range"]::-webkit-slider-thumb {
         -webkit-appearance: none;
         width: 14px;
         height: 14px;
         border-radius: 50%;
-        background: #1a3263;
         border: 2px solid #fff;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        background: var(--blue);
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
         pointer-events: all;
         cursor: pointer;
       }
+
       .range-track input[type="range"]::-moz-range-thumb {
         width: 14px;
         height: 14px;
         border-radius: 50%;
-        background: #1a3263;
         border: 2px solid #fff;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        background: var(--blue);
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
         pointer-events: all;
         cursor: pointer;
       }
@@ -149,220 +196,352 @@
       .btn-clear-all {
         width: 100%;
         margin-top: 12px;
-        padding: 6px 0;
-        font-size: 0.8rem;
-        border: 1px solid #d44;
+        padding: 8px 0;
+        border: 1px solid #d14343;
         border-radius: 4px;
         background: #fff;
-        color: #d44;
+        color: #c93131;
+        font-size: 0.82rem;
         cursor: pointer;
       }
-      .btn-clear-all:hover { background: #fff0f0; }
 
       .main-content {
         flex: 1;
         min-width: 0;
-        padding: 16px 0 0 24px;
+        padding: 14px 0 0 24px;
       }
+
       .main-header {
         display: flex;
         align-items: baseline;
         gap: 12px;
         margin-bottom: 4px;
       }
+
       .main-header h1 {
-        font-size: 1.5rem;
-        font-weight: 700;
+        margin: 0;
+        font-size: 1.55rem;
+        font-weight: 800;
       }
+
       .result-count {
-        font-size: 0.85rem;
-        color: #666;
+        font-size: 0.88rem;
+        color: var(--muted);
       }
+
       .data-note {
-        font-size: 0.75rem;
-        color: #999;
-        margin-bottom: 12px;
+        margin: 0 0 12px;
+        font-size: 0.8rem;
+        color: #7b8797;
       }
 
       .list-controls {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        border-top: 2px solid #1a3263;
-        border-bottom: 1px solid #e0e0e0;
+        gap: 16px;
         padding: 6px 0;
         margin-bottom: 0;
+        border-top: 2px solid var(--line-strong);
+        border-bottom: 1px solid var(--line);
       }
-      .sort-wrap, .pagesize-wrap {
+
+      .sort-wrap,
+      .pagesize-wrap {
         display: flex;
         align-items: center;
         gap: 6px;
-        font-size: 0.8rem;
-        color: #555;
+        font-size: 0.85rem;
       }
-      .sort-wrap select, .pagesize-wrap select {
-        font-size: 0.8rem;
-        padding: 2px 6px;
-        border: 1px solid #ccc;
+
+      .sort-wrap select,
+      .pagesize-wrap select {
+        padding: 3px 6px;
+        border: 1px solid #bcc7d6;
         border-radius: 3px;
-        background: #fafafa;
+        background: #fff;
+        font-size: 0.82rem;
       }
 
-      .product-list { list-style: none; margin: 0; padding: 0; }
-
-      .product-header,
-      .product-item {
-        display: grid;
-        grid-template-columns:
-          22px
-          26px
-          minmax(0, 190px)
-          90px
-          88px
-          52px
-          58px
-          54px
-          54px
-          78px
-          56px
-          72px
-          84px;
-        align-items: center;
-        gap: 0 6px;
-        padding: 0 4px;
+      .table-scroll {
+        overflow-x: auto;
+        border-bottom: 1px solid var(--line);
       }
-      .product-header {
-        border-top: 2px solid #1a3263;
-        border-bottom: 2px solid #1a3263;
-        background: #f0f4ff;
-        font-size: 0.72rem;
-        font-weight: 700;
-        color: #555;
-        padding: 6px 4px;
+
+      .catalog-table {
+        width: 100%;
+        min-width: 1380px;
+        border-collapse: collapse;
+        table-layout: fixed;
+      }
+
+      .catalog-table col.rank {
+        width: 46px;
+      }
+
+      .catalog-table col.thumb {
+        width: 52px;
+      }
+
+      .catalog-table col.model {
+        width: 350px;
+      }
+
+      .catalog-table col.cpu {
+        width: 200px;
+      }
+
+      .catalog-table col.gpu {
+        width: 150px;
+      }
+
+      .catalog-table col.ram,
+      .catalog-table col.ssd,
+      .catalog-table col.score,
+      .catalog-table col.ai,
+      .catalog-table col.ports,
+      .catalog-table col.stock {
+        width: 92px;
+      }
+
+      .catalog-table col.price {
+        width: 124px;
+      }
+
+      .catalog-table col.action {
+        width: 118px;
+      }
+
+      .catalog-table thead th {
         position: sticky;
         top: 0;
-        z-index: 10;
+        z-index: 3;
+        padding: 8px 8px;
+        border-top: 2px solid var(--line-strong);
+        border-bottom: 2px solid var(--line-strong);
+        background: var(--bg-head);
+        color: #48566a;
+        font-size: 0.74rem;
+        text-align: left;
+        white-space: nowrap;
       }
-      .product-header .col-name { text-align: left; }
-      .product-header .col-center { text-align: center; }
-      .product-header .col-right { text-align: right; }
 
-      .product-item {
-        border-bottom: 1px solid #e8e8e8;
-        padding: 3px 4px;
-        transition: background 0.1s;
+      .catalog-table tbody tr:nth-child(even) {
+        background: #fbfcff;
       }
-      .product-item:hover { background: #f8f9ff; }
 
-      .col-rank {
+      .catalog-table tbody tr:hover {
+        background: #f3f7ff;
+      }
+
+      .catalog-table td {
+        padding: 8px 8px;
+        border-bottom: 1px solid #e7edf5;
+        vertical-align: middle;
+        font-size: 0.81rem;
+      }
+
+      .cell-center {
         text-align: center;
-        font-size: 0.78rem;
-        color: #bbb;
       }
-      .product-thumb {
-        width: 24px;
-        height: 24px;
-        background: #f5f5f5;
-        border: 1px solid #eee;
-        border-radius: 3px;
+
+      .cell-right {
+        text-align: right;
+      }
+
+      .rank-num {
+        color: #94a3b8;
+        font-weight: 700;
+      }
+
+      .thumb-box {
+        width: 36px;
+        height: 36px;
+        border: 1px solid #e3e8f0;
+        border-radius: 4px;
+        background: #fff;
         display: flex;
         align-items: center;
         justify-content: center;
         overflow: hidden;
       }
-      .product-thumb img {
+
+      .thumb-box img {
         width: 100%;
         height: 100%;
         object-fit: contain;
       }
-      .col-name-wrap { min-width: 0; }
-      .product-id { font-size: 0.65rem; color: #bbb; }
-      .product-name {
-        font-size: 0.82rem;
-        font-weight: 600;
-        color: #222;
-        line-height: 1.3;
-        white-space: nowrap;
+
+      .thumb-fallback {
+        font-size: 0.6rem;
+        color: #b5bfcc;
+        line-height: 1.1;
+        text-align: center;
+      }
+
+      .model-main,
+      .cell-nowrap {
         overflow: hidden;
         text-overflow: ellipsis;
-      }
-      .col-center {
-        text-align: center;
-        font-size: 0.78rem;
-        color: #555;
         white-space: nowrap;
       }
-      .col-right {
-        text-align: right;
-        font-size: 0.78rem;
-        color: #555;
-        white-space: nowrap;
-      }
-      .price-val {
-        font-size: 0.95rem;
+
+      .model-main {
+        font-size: 0.85rem;
         font-weight: 700;
-        color: #111;
+        color: #18212f;
+      }
+
+      .model-meta {
+        margin-top: 2px;
+        font-size: 0.69rem;
+        color: #8a95a5;
+        overflow: hidden;
+        text-overflow: ellipsis;
         white-space: nowrap;
-        text-align: right;
-        display: block;
       }
 
       .badge {
         display: inline-block;
-        padding: 1px 6px;
-        border-radius: 10px;
-        font-size: 0.72rem;
-        font-weight: 600;
+        padding: 2px 8px;
+        border-radius: 999px;
+        font-size: 0.7rem;
+        font-weight: 700;
         white-space: nowrap;
       }
-      .badge-strong { background: #e8f0fe; color: #1a3263; }
-      .badge-mid { background: #e6f4ea; color: #1e7e34; }
-      .badge-light { background: #fff3e0; color: #e65100; }
-      .badge-unknown { background: #f1f5f9; color: #64748b; }
 
-      .port-tag { display: inline-block; padding: 0 4px; border-radius: 3px; font-size: 0.7rem; }
-      .port-ocu { background: #e8f0fe; color: #1a3263; }
-      .port-none { background: #f1f5f9; color: #94a3b8; }
+      .badge-excellent {
+        background: var(--blue-soft);
+        color: var(--blue);
+      }
 
-      .ok  { color: #1a7a4a; font-weight: 700; }
-      .ng  { color: #c5221f; }
-      .unk { color: #bbb; }
+      .badge-great {
+        background: var(--green-soft);
+        color: var(--green);
+      }
 
-      .price-date { font-size: 0.65rem; color: #aaa; display: block; }
-      .amazon-btn {
+      .badge-standard {
+        background: var(--orange-soft);
+        color: var(--orange);
+      }
+
+      .badge-unknown {
+        background: #eef2f7;
+        color: #728197;
+      }
+
+      .port-tag {
+        display: inline-block;
+        padding: 2px 8px;
+        border-radius: 999px;
+        font-size: 0.7rem;
+        font-weight: 700;
+      }
+
+      .port-yes {
+        background: var(--blue-soft);
+        color: var(--blue);
+      }
+
+      .port-no {
+        background: #eef2f7;
+        color: #8a95a5;
+      }
+
+      .stock-in {
+        color: var(--green);
+        font-weight: 700;
+      }
+
+      .stock-out {
+        color: #9aa5b5;
+      }
+
+      .price-main {
         display: block;
-        padding: 4px 0;
+        font-size: 1rem;
+        font-weight: 800;
+        color: #111827;
+        white-space: nowrap;
+      }
+
+      .price-sub {
+        display: block;
+        margin-top: 2px;
+        font-size: 0.68rem;
+        color: #8a95a5;
+        white-space: nowrap;
+      }
+
+      .amazon-btn {
+        display: inline-block;
+        width: 100%;
+        padding: 6px 10px;
+        border-radius: 4px;
         background: #ff9900;
         color: #fff;
-        border-radius: 4px;
         text-decoration: none;
-        font-size: 0.72rem;
-        font-weight: 600;
-        white-space: nowrap;
+        font-size: 0.76rem;
+        font-weight: 700;
         text-align: center;
-        width: 100%;
+        white-space: nowrap;
       }
-      .amazon-btn:hover { background: #e68900; }
 
-      .pagination { display: flex; flex-wrap: wrap; gap: 4px; margin: 10px 0; }
+      .amazon-btn:hover {
+        background: #e68a00;
+      }
+
+      .pagination {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4px;
+        margin: 10px 0;
+      }
+
       .page-btn {
         padding: 4px 10px;
+        border: 1px solid #c7d0dd;
+        border-radius: 4px;
+        background: #fff;
+        color: #475569;
         font-size: 0.8rem;
-        border: 1px solid #ccc;
-        border-radius: 3px;
-        background: #fafafa;
         cursor: pointer;
-        color: #444;
       }
-      .page-btn:hover { background: #f0f0f0; }
-      .page-btn.active { border-color: #1a3263; color: #1a3263; font-weight: 700; background: #fff; }
 
-      .loading-msg { text-align: center; padding: 40px; color: #aaa; font-size: 0.9rem; }
+      .page-btn.active {
+        border-color: var(--blue);
+        color: var(--blue);
+        font-weight: 700;
+      }
 
-      @media (max-width: 768px) {
-        .page-wrap { flex-direction: column; padding: 0 8px 40px; }
-        .sidebar { width: 100%; position: static; max-height: none; }
-        .main-content { padding: 12px 0 0; }
+      .loading-msg {
+        padding: 40px;
+        text-align: center;
+        color: #8a95a5;
+        font-size: 0.92rem;
+      }
+
+      @media (max-width: 900px) {
+        .page-wrap {
+          flex-direction: column;
+          padding: 0 10px 40px;
+        }
+
+        .sidebar {
+          width: 100%;
+          position: static;
+          max-height: none;
+        }
+
+        .main-content {
+          width: 100%;
+          padding: 12px 0 0;
+        }
+
+        .list-controls {
+          flex-direction: column;
+          align-items: flex-start;
+        }
       }
     </style>
   </head>
@@ -374,30 +553,30 @@
     <div class="page-wrap">
       <aside class="sidebar">
         <div class="filter-section">
-          <div class="filter-section-title">CPU系統<span class="toggle-icon"></span></div>
+          <div class="filter-section-title">CPU系統 <span class="toggle-icon"></span></div>
           <div class="filter-section-body">
-            <label class="filter-option active" data-filter="cpu" data-value=""><input type="radio" name="cpu" checked> すべて</label>
-            <label class="filter-option" data-filter="cpu" data-value="Ryzen AI"><input type="radio" name="cpu"> Ryzen AI</label>
-            <label class="filter-option" data-filter="cpu" data-value="Ryzen 9"><input type="radio" name="cpu"> Ryzen 9</label>
-            <label class="filter-option" data-filter="cpu" data-value="Ryzen 7"><input type="radio" name="cpu"> Ryzen 7</label>
-            <label class="filter-option" data-filter="cpu" data-value="Core Ultra"><input type="radio" name="cpu"> Core Ultra</label>
-            <label class="filter-option" data-filter="cpu" data-value="Intel N"><input type="radio" name="cpu"> Intel N</label>
+            <label class="filter-option active" data-filter="cpu" data-value=""><input type="radio" name="cpu" checked />すべて</label>
+            <label class="filter-option" data-filter="cpu" data-value="Ryzen AI"><input type="radio" name="cpu" />Ryzen AI</label>
+            <label class="filter-option" data-filter="cpu" data-value="Ryzen 9"><input type="radio" name="cpu" />Ryzen 9</label>
+            <label class="filter-option" data-filter="cpu" data-value="Ryzen 7"><input type="radio" name="cpu" />Ryzen 7</label>
+            <label class="filter-option" data-filter="cpu" data-value="Core Ultra"><input type="radio" name="cpu" />Core Ultra</label>
+            <label class="filter-option" data-filter="cpu" data-value="Intel N"><input type="radio" name="cpu" />Intel N</label>
           </div>
         </div>
 
         <div class="filter-section">
-          <div class="filter-section-title">RAM<span class="toggle-icon"></span></div>
+          <div class="filter-section-title">RAM <span class="toggle-icon"></span></div>
           <div class="filter-section-body">
-            <label class="filter-option active" data-filter="ram" data-value="0"><input type="radio" name="ram" checked> すべて</label>
-            <label class="filter-option" data-filter="ram" data-value="16"><input type="radio" name="ram"> 16GB以上</label>
-            <label class="filter-option" data-filter="ram" data-value="32"><input type="radio" name="ram"> 32GB以上</label>
-            <label class="filter-option" data-filter="ram" data-value="64"><input type="radio" name="ram"> 64GB以上</label>
-            <label class="filter-option" data-filter="ram" data-value="128"><input type="radio" name="ram"> 128GB以上</label>
+            <label class="filter-option active" data-filter="ram" data-value="0"><input type="radio" name="ram" checked />すべて</label>
+            <label class="filter-option" data-filter="ram" data-value="16"><input type="radio" name="ram" />16GB以上</label>
+            <label class="filter-option" data-filter="ram" data-value="32"><input type="radio" name="ram" />32GB以上</label>
+            <label class="filter-option" data-filter="ram" data-value="64"><input type="radio" name="ram" />64GB以上</label>
+            <label class="filter-option" data-filter="ram" data-value="128"><input type="radio" name="ram" />128GB以上</label>
           </div>
         </div>
 
         <div class="filter-section">
-          <div class="filter-section-title">価格<span class="toggle-icon"></span></div>
+          <div class="filter-section-title">価格 <span class="toggle-icon"></span></div>
           <div class="filter-section-body">
             <div class="range-slider-wrap">
               <div class="range-label">
@@ -406,37 +585,37 @@
               </div>
               <div class="range-track">
                 <div class="range-track-fill" id="price-fill"></div>
-                <input type="range" id="price-min" min="0" max="8" value="0" step="1">
-                <input type="range" id="price-max" min="0" max="8" value="8" step="1">
+                <input type="range" id="price-min" min="0" max="8" value="0" step="1" />
+                <input type="range" id="price-max" min="0" max="8" value="8" step="1" />
               </div>
             </div>
           </div>
         </div>
 
         <div class="filter-section">
-          <div class="filter-section-title">AI適性<span class="toggle-icon"></span></div>
+          <div class="filter-section-title">AI適性 <span class="toggle-icon"></span></div>
           <div class="filter-section-body">
-            <label class="filter-option active" data-filter="ai" data-value=""><input type="radio" name="ai" checked> すべて</label>
-            <label class="filter-option" data-filter="ai" data-value="Excellent"><input type="radio" name="ai"> Excellent</label>
-            <label class="filter-option" data-filter="ai" data-value="Great"><input type="radio" name="ai"> Great</label>
-            <label class="filter-option" data-filter="ai" data-value="Standard"><input type="radio" name="ai"> Standard</label>
+            <label class="filter-option active" data-filter="ai" data-value=""><input type="radio" name="ai" checked />すべて</label>
+            <label class="filter-option" data-filter="ai" data-value="Excellent"><input type="radio" name="ai" />Excellent</label>
+            <label class="filter-option" data-filter="ai" data-value="Great"><input type="radio" name="ai" />Great</label>
+            <label class="filter-option" data-filter="ai" data-value="Standard"><input type="radio" name="ai" />Standard</label>
           </div>
         </div>
 
         <div class="filter-section">
-          <div class="filter-section-title">OCuLink<span class="toggle-icon"></span></div>
+          <div class="filter-section-title">OCuLink <span class="toggle-icon"></span></div>
           <div class="filter-section-body">
-            <label class="filter-option active" data-filter="ocu" data-value=""><input type="radio" name="oculink" checked> すべて</label>
-            <label class="filter-option" data-filter="ocu" data-value="1"><input type="radio" name="oculink"> 対応あり</label>
-            <label class="filter-option" data-filter="ocu" data-value="0"><input type="radio" name="oculink"> なし</label>
+            <label class="filter-option active" data-filter="ocu" data-value=""><input type="radio" name="oculink" checked />すべて</label>
+            <label class="filter-option" data-filter="ocu" data-value="1"><input type="radio" name="oculink" />対応あり</label>
+            <label class="filter-option" data-filter="ocu" data-value="0"><input type="radio" name="oculink" />なし</label>
           </div>
         </div>
 
         <div class="filter-section">
-          <div class="filter-section-title">在庫<span class="toggle-icon"></span></div>
+          <div class="filter-section-title">在庫 <span class="toggle-icon"></span></div>
           <div class="filter-section-body">
-            <label class="filter-option active" data-filter="stock" data-value=""><input type="radio" name="stock" checked> すべて</label>
-            <label class="filter-option" data-filter="stock" data-value="1"><input type="radio" name="stock"> 在庫あり</label>
+            <label class="filter-option active" data-filter="stock" data-value=""><input type="radio" name="stock" checked />すべて</label>
+            <label class="filter-option" data-filter="stock" data-value="1"><input type="radio" name="stock" />在庫あり</label>
           </div>
         </div>
 
@@ -452,7 +631,7 @@
 
         <div class="list-controls">
           <div class="sort-wrap">
-            並び順:
+            <span>並び順:</span>
             <select id="select-sort">
               <option value="price_asc">価格が安い順</option>
               <option value="price_desc">価格が高い順</option>
@@ -462,7 +641,7 @@
             </select>
           </div>
           <div class="pagesize-wrap">
-            表示件数:
+            <span>表示件数:</span>
             <select id="select-pagesize">
               <option value="50">50件</option>
               <option value="100" selected>100件</option>
@@ -472,216 +651,274 @@
         </div>
 
         <div class="pagination" id="pagination-top"></div>
-        <div class="product-header">
-          <div></div>
-          <div></div>
-          <div class="col-name">モデル</div>
-          <div class="col-center">CPU</div>
-          <div class="col-center">GPU</div>
-          <div class="col-center">RAM</div>
-          <div class="col-center">SSD</div>
-          <div class="col-center">Score</div>
-          <div class="col-center">AI</div>
-          <div class="col-center">Brand</div>
-          <div class="col-center">Ports</div>
-          <div class="col-right">価格</div>
-          <div></div>
+
+        <div class="table-scroll">
+          <table class="catalog-table">
+            <colgroup>
+              <col class="rank" />
+              <col class="thumb" />
+              <col class="model" />
+              <col class="cpu" />
+              <col class="gpu" />
+              <col class="ram" />
+              <col class="ssd" />
+              <col class="score" />
+              <col class="ai" />
+              <col class="ports" />
+              <col class="stock" />
+              <col class="price" />
+              <col class="action" />
+            </colgroup>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Img</th>
+                <th>Model</th>
+                <th>CPU</th>
+                <th>GPU</th>
+                <th>RAM</th>
+                <th>SSD</th>
+                <th>Score</th>
+                <th>AI</th>
+                <th>Ports</th>
+                <th>Stock</th>
+                <th>価格</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="product-body">
+              <tr>
+                <td colspan="13" class="loading-msg">読み込み中...</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-        <ul class="product-list" id="product-list">
-          <li class="loading-msg">読み込み中...</li>
-        </ul>
+
         <div class="pagination" id="pagination-bottom"></div>
       </main>
     </div>
 
     <script>
-      let allMinis = [];
-      let filteredMinis = [];
+      let all_minis = [];
+      let filtered_minis = [];
       const PRICE_STEPS = [50000, 80000, 100000, 120000, 150000, 200000, 250000, 350000, 500000];
 
-      let currentFilters = { cpu: "", ram: "0", ai: "", ocu: "", stock: "" };
-      let priceRange = { min: 0, max: PRICE_STEPS.length - 1 };
-      let sortKey = "price_asc";
-      let currentPage = 1;
-      let pageSize = 100;
+      let current_filters = { cpu: "", ram: "0", ai: "", ocu: "", stock: "" };
+      let price_range = { min: 0, max: PRICE_STEPS.length - 1 };
+      let sort_key = "price_asc";
+      let current_page = 1;
+      let page_size = 100;
 
-      function displayBrand(brand) {
+      function display_brand(brand) {
         return brand && brand !== "Unknown" ? brand : "-";
       }
 
-      function cpuFamily(name) {
-        const v = (name || "").toLowerCase();
-        if (v.includes("ryzen ai")) return "Ryzen AI";
-        if (v.includes("ryzen 9")) return "Ryzen 9";
-        if (v.includes("ryzen 7")) return "Ryzen 7";
-        if (v.includes("core ultra")) return "Core Ultra";
-        if (/\bn\d{3}\b/.test(v)) return "Intel N";
+      function cpu_family(name) {
+        const value = String(name || "").toLowerCase();
+        if (value.includes("ryzen ai")) return "Ryzen AI";
+        if (value.includes("ryzen 9")) return "Ryzen 9";
+        if (value.includes("ryzen 7")) return "Ryzen 7";
+        if (value.includes("core ultra")) return "Core Ultra";
+        if (/\bn\d{3}\b/.test(value)) return "Intel N";
         return "";
       }
 
-      function aiBucket(value) {
-        const v = (value || "").toLowerCase();
-        if (v.includes("excellent")) return "Excellent";
-        if (v.includes("great")) return "Great";
-        if (v.includes("standard")) return "Standard";
+      function ai_bucket(value) {
+        const text = String(value || "").toLowerCase();
+        if (text.includes("excellent")) return "Excellent";
+        if (text.includes("great")) return "Great";
+        if (text.includes("standard")) return "Standard";
         return "";
       }
 
-      function updateRangeSlider() {
+      function format_yen(value) {
+        if (!value || value <= 0) return "-";
+        return `¥${Number(value).toLocaleString()}`;
+      }
+
+      function update_range_slider() {
         const fill = document.getElementById("price-fill");
-        const minLabel = document.getElementById("price-label-min");
-        const maxLabel = document.getElementById("price-label-max");
+        const min_label = document.getElementById("price-label-min");
+        const max_label = document.getElementById("price-label-max");
         const pct = 100 / (PRICE_STEPS.length - 1);
-        fill.style.left = `${priceRange.min * pct}%`;
-        fill.style.width = `${(priceRange.max - priceRange.min) * pct}%`;
-        minLabel.textContent = `¥${PRICE_STEPS[priceRange.min].toLocaleString()}`;
-        maxLabel.textContent = `¥${PRICE_STEPS[priceRange.max].toLocaleString()}`;
+        fill.style.left = `${price_range.min * pct}%`;
+        fill.style.width = `${(price_range.max - price_range.min) * pct}%`;
+        min_label.textContent = format_yen(PRICE_STEPS[price_range.min]);
+        max_label.textContent = format_yen(PRICE_STEPS[price_range.max]);
       }
 
-      function applyFilters(rows) {
-        const minPrice = PRICE_STEPS[priceRange.min];
-        const maxPrice = PRICE_STEPS[priceRange.max];
+      function apply_filters(rows) {
+        const min_price = PRICE_STEPS[price_range.min];
+        const max_price = PRICE_STEPS[price_range.max];
+
         return rows.filter((row) => {
           const price = Number(row.effective_price_jpy || row.price_jpy || 0);
           const ram = Number(row.ram?.capacity_gb || 0);
-          const family = cpuFamily(row.cpu?.name || "");
-          const ai = aiBucket(row.ai_features?.ai_inference_suitability || "");
+          const family = cpu_family(row.cpu?.name || "");
+          const ai = ai_bucket(row.ai_features?.ai_inference_suitability || "");
           const oculink = row.ai_features?.oculink_support === true;
           const stock = row.stock === "in_stock";
 
-          if (currentFilters.cpu && family !== currentFilters.cpu) return false;
-          if (currentFilters.ai && ai !== currentFilters.ai) return false;
-          if (currentFilters.ram !== "0" && ram < Number(currentFilters.ram)) return false;
-          if (price > 0 && (price < minPrice || price > maxPrice)) return false;
-          if (currentFilters.ocu === "1" && !oculink) return false;
-          if (currentFilters.ocu === "0" && oculink) return false;
-          if (currentFilters.stock === "1" && !stock) return false;
+          if (current_filters.cpu && family !== current_filters.cpu) return false;
+          if (current_filters.ai && ai !== current_filters.ai) return false;
+          if (current_filters.ram !== "0" && ram < Number(current_filters.ram)) return false;
+          if (price > 0 && (price < min_price || price > max_price)) return false;
+          if (current_filters.ocu === "1" && !oculink) return false;
+          if (current_filters.ocu === "0" && oculink) return false;
+          if (current_filters.stock === "1" && !stock) return false;
           return true;
         });
       }
 
-      function sortRows(rows) {
+      function sort_rows(rows) {
         const sorted = [...rows];
         sorted.sort((a, b) => {
-          const priceA = Number(a.effective_price_jpy || a.price_jpy || 0);
-          const priceB = Number(b.effective_price_jpy || b.price_jpy || 0);
-          const scoreA = Number(a.cpu?.score || 0);
-          const scoreB = Number(b.cpu?.score || 0);
-          const ramA = Number(a.ram?.capacity_gb || 0);
-          const ramB = Number(b.ram?.capacity_gb || 0);
-          const stockA = a.stock === "in_stock" ? 1 : 0;
-          const stockB = b.stock === "in_stock" ? 1 : 0;
+          const price_a = Number(a.effective_price_jpy || a.price_jpy || 0);
+          const price_b = Number(b.effective_price_jpy || b.price_jpy || 0);
+          const score_a = Number(a.cpu?.score || 0);
+          const score_b = Number(b.cpu?.score || 0);
+          const ram_a = Number(a.ram?.capacity_gb || 0);
+          const ram_b = Number(b.ram?.capacity_gb || 0);
+          const stock_a = a.stock === "in_stock" ? 1 : 0;
+          const stock_b = b.stock === "in_stock" ? 1 : 0;
 
-          switch (sortKey) {
-            case "price_desc": return priceB - priceA || scoreB - scoreA;
-            case "score_desc": return scoreB - scoreA || priceA - priceB;
-            case "ram_desc": return ramB - ramA || scoreB - scoreA;
-            case "stock_desc": return stockB - stockA || priceA - priceB;
+          switch (sort_key) {
+            case "price_desc":
+              return price_b - price_a || score_b - score_a;
+            case "score_desc":
+              return score_b - score_a || price_a - price_b;
+            case "ram_desc":
+              return ram_b - ram_a || score_b - score_a;
+            case "stock_desc":
+              return stock_b - stock_a || price_a - price_b;
             case "price_asc":
-            default: return priceA - priceB || scoreB - scoreA;
+            default:
+              return price_a - price_b || score_b - score_a;
           }
         });
         return sorted;
       }
 
-      function aiBadge(item) {
-        const label = item.ai_features?.ai_inference_suitability || "-";
-        const bucket = aiBucket(label);
-        const klass =
-          bucket === "Excellent" ? "badge-strong" :
-          bucket === "Great" ? "badge-mid" :
-          bucket === "Standard" ? "badge-light" :
-          "badge-unknown";
-        return `<span class="badge ${klass}">${label}</span>`;
-      }
+      function render_ai_badge(item) {
+        const raw = item.ai_features?.ai_inference_suitability || "";
+        const bucket = ai_bucket(raw);
 
-      function portBadge(item) {
-        if (item.ai_features?.oculink_support) {
-          return `<span class="port-tag port-ocu">OCuLink</span>`;
+        if (bucket === "Excellent") {
+          return `<span class="badge badge-excellent" title="${raw}">Excellent</span>`;
         }
-        return `<span class="port-tag port-none">-</span>`;
+        if (bucket === "Great") {
+          return `<span class="badge badge-great" title="${raw}">Great</span>`;
+        }
+        if (bucket === "Standard") {
+          return `<span class="badge badge-standard" title="${raw}">Standard</span>`;
+        }
+        return '<span class="badge badge-unknown">-</span>';
       }
 
-      function shortName(item) {
+      function render_port_badge(item) {
+        if (item.ai_features?.oculink_support === true) {
+          return '<span class="port-tag port-yes">OCuLink</span>';
+        }
+        return '<span class="port-tag port-no">-</span>';
+      }
+
+      function short_name(item) {
         return item.model || item.id || "-";
       }
 
-      function buildRow(item, rank) {
-        const url = item.amazon_url || "#";
-        const thumbHtml = item.image_url
-          ? `<img src="${item.image_url}" alt="" loading="lazy">`
-          : '<span style="font-size:0.65rem;color:#ccc;">NO<br>IMG</span>';
+      function escape_html(value) {
+        return String(value || "")
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;")
+          .replaceAll('"', "&quot;")
+          .replaceAll("'", "&#39;");
+      }
 
+      function build_row(item, rank) {
+        const url = item.amazon_url || "#";
         const ram = Number(item.ram?.capacity_gb || 0);
         const ssd = Number(item.storage?.capacity_gb || 0);
         const score = Number(item.cpu?.score || 0);
         const price = Number(item.effective_price_jpy || item.price_jpy || 0);
         const fetched = String(item.fetched_at || "").slice(0, 10);
-        const brand = displayBrand(item.brand);
-        const stock = item.stock === "in_stock" ? '<span class="ok">在</span>' : '<span class="unk">-</span>';
+        const asin = item.source_ids?.asin || "";
+        const stock = item.stock === "in_stock";
+        const brand = display_brand(item.brand);
+        const thumb_html = item.image_url
+          ? `<img src="${escape_html(item.image_url)}" alt="" loading="lazy" />`
+          : '<span class="thumb-fallback">NO<br />IMG</span>';
 
         return `
-          <li class="product-item">
-            <div class="col-rank">${rank}</div>
-            <div class="product-thumb">${thumbHtml}</div>
-            <div class="col-name-wrap">
-              <div class="product-name">${shortName(item)}</div>
-              <div class="product-id">${item.id || ""} / ${item.source_ids?.asin || ""} / ${stock} / ${fetched || "-"}</div>
-            </div>
-            <div class="col-center">${item.cpu?.name || "-"}</div>
-            <div class="col-center">${item.gpu || "-"}</div>
-            <div class="col-center">${ram > 0 ? `${ram}GB` : "-"}</div>
-            <div class="col-center">${ssd > 0 ? `${ssd}GB` : "-"}</div>
-            <div class="col-center">${score > 0 ? score.toLocaleString() : "-"}</div>
-            <div class="col-center">${aiBadge(item)}</div>
-            <div class="col-center">${brand}</div>
-            <div class="col-center">${portBadge(item)}</div>
-            <div class="col-right">
-              <span class="price-val">${price > 0 ? `¥${price.toLocaleString()}` : "-"}</span>
-              <span class="price-date">${fetched || ""}</span>
-            </div>
-            <div><a href="${url}" class="amazon-btn" target="_blank" rel="noopener">Amazonで見る</a></div>
-          </li>`;
+          <tr>
+            <td class="cell-center"><span class="rank-num">${rank}</span></td>
+            <td><div class="thumb-box">${thumb_html}</div></td>
+            <td>
+              <div class="model-main" title="${escape_html(short_name(item))}">${escape_html(short_name(item))}</div>
+              <div class="model-meta" title="${escape_html(`${item.id || ""} / ${asin} / ${brand} / ${fetched || "-"}`)}">${escape_html(item.id || "")} / ${escape_html(asin)} / ${escape_html(brand)} / ${escape_html(fetched || "-")}</div>
+            </td>
+            <td><div class="cell-nowrap" title="${escape_html(item.cpu?.name || "-")}">${escape_html(item.cpu?.name || "-")}</div></td>
+            <td><div class="cell-nowrap" title="${escape_html(item.gpu || "-")}">${escape_html(item.gpu || "-")}</div></td>
+            <td class="cell-center">${ram > 0 ? `${ram}GB` : "-"}</td>
+            <td class="cell-center">${ssd > 0 ? `${ssd}GB` : "-"}</td>
+            <td class="cell-right">${score > 0 ? score.toLocaleString() : "-"}</td>
+            <td class="cell-center">${render_ai_badge(item)}</td>
+            <td class="cell-center">${render_port_badge(item)}</td>
+            <td class="cell-center">${stock ? '<span class="stock-in">在庫あり</span>' : '<span class="stock-out">-</span>'}</td>
+            <td class="cell-right">
+              <span class="price-main">${format_yen(price)}</span>
+              <span class="price-sub">${escape_html(fetched || "")}</span>
+            </td>
+            <td><a href="${escape_html(url)}" class="amazon-btn" target="_blank" rel="noopener">Amazonで見る</a></td>
+          </tr>
+        `;
       }
 
-      function renderPagination(total) {
+      function render_pagination(total) {
         const ids = ["pagination-top", "pagination-bottom"];
-        if (pageSize === Infinity || total <= pageSize) {
-          ids.forEach((id) => { document.getElementById(id).innerHTML = ""; });
+        if (page_size === Infinity || total <= page_size) {
+          ids.forEach((id) => {
+            document.getElementById(id).innerHTML = "";
+          });
           return;
         }
-        const totalPages = Math.ceil(total / pageSize);
+
+        const total_pages = Math.ceil(total / page_size);
         let html = "";
-        for (let i = 1; i <= totalPages; i += 1) {
-          html += `<button class="page-btn${i === currentPage ? " active" : ""}" onclick="goPage(${i})">${i}</button>`;
+        for (let i = 1; i <= total_pages; i += 1) {
+          html += `<button class="page-btn${i === current_page ? " active" : ""}" onclick="go_page(${i})">${i}</button>`;
         }
-        ids.forEach((id) => { document.getElementById(id).innerHTML = html; });
+
+        ids.forEach((id) => {
+          document.getElementById(id).innerHTML = html;
+        });
       }
 
-      function goPage(page) {
-        currentPage = page;
+      function go_page(page) {
+        current_page = page;
         render();
-        document.getElementById("product-list").scrollIntoView({ behavior: "smooth", block: "start" });
+        document.getElementById("product-body").scrollIntoView({ behavior: "smooth", block: "start" });
       }
-      window.goPage = goPage;
+
+      window.go_page = go_page;
 
       function render() {
-        filteredMinis = applyFilters(allMinis);
-        const sorted = sortRows(filteredMinis);
+        filtered_minis = apply_filters(all_minis);
+        const sorted = sort_rows(filtered_minis);
         const total = sorted.length;
-        const start = pageSize === Infinity ? 0 : (currentPage - 1) * pageSize;
-        const end = pageSize === Infinity ? total : Math.min(start + pageSize, total);
+        const start = page_size === Infinity ? 0 : (current_page - 1) * page_size;
+        const end = page_size === Infinity ? total : Math.min(start + page_size, total);
         const page = sorted.slice(start, end);
 
         document.getElementById("result-count").textContent = `${total.toLocaleString()}件`;
-        document.getElementById("product-list").innerHTML =
-          page.length
-            ? page.map((item, i) => buildRow(item, start + i + 1)).join("")
-            : '<li class="loading-msg">条件に合うミニPCがありません</li>';
-        renderPagination(total);
+        document.getElementById("product-body").innerHTML = page.length
+          ? page.map((item, index) => build_row(item, start + index + 1)).join("")
+          : '<tr><td colspan="13" class="loading-msg">条件に合うミニPCがありません</td></tr>';
+
+        render_pagination(total);
       }
 
-      function setActiveOptions() {
+      function set_active_options() {
         document.querySelectorAll(".filter-option").forEach((label) => {
           const input = label.querySelector("input");
           label.classList.toggle("active", input.checked);
@@ -690,44 +927,47 @@
 
       document.querySelectorAll(".filter-option").forEach((label) => {
         label.addEventListener("click", () => {
-          const filterKey = label.dataset.filter;
-          document.querySelectorAll(`[data-filter="${filterKey}"]`).forEach((node) => {
+          const filter_key = label.dataset.filter;
+          document.querySelectorAll(`[data-filter="${filter_key}"]`).forEach((node) => {
             node.classList.remove("active");
             node.querySelector("input").checked = false;
           });
           label.classList.add("active");
           label.querySelector("input").checked = true;
-          if (filterKey === "cpu") currentFilters.cpu = label.dataset.value;
-          if (filterKey === "ram") currentFilters.ram = label.dataset.value;
-          if (filterKey === "ai") currentFilters.ai = label.dataset.value;
-          if (filterKey === "ocu") currentFilters.ocu = label.dataset.value;
-          if (filterKey === "stock") currentFilters.stock = label.dataset.value;
-          currentPage = 1;
+
+          if (filter_key === "cpu") current_filters.cpu = label.dataset.value;
+          if (filter_key === "ram") current_filters.ram = label.dataset.value;
+          if (filter_key === "ai") current_filters.ai = label.dataset.value;
+          if (filter_key === "ocu") current_filters.ocu = label.dataset.value;
+          if (filter_key === "stock") current_filters.stock = label.dataset.value;
+
+          current_page = 1;
           render();
         });
       });
 
-      function bindRange(inputId, edge) {
-        const input = document.getElementById(inputId);
+      function bind_range(input_id, edge) {
+        const input = document.getElementById(input_id);
         input.addEventListener("input", () => {
           const value = Number(input.value);
           if (edge === "min") {
-            priceRange.min = Math.min(value, priceRange.max);
-            input.value = priceRange.min;
+            price_range.min = Math.min(value, price_range.max);
+            input.value = price_range.min;
           } else {
-            priceRange.max = Math.max(value, priceRange.min);
-            input.value = priceRange.max;
+            price_range.max = Math.max(value, price_range.min);
+            input.value = price_range.max;
           }
-          currentPage = 1;
-          updateRangeSlider();
+          current_page = 1;
+          update_range_slider();
           render();
         });
       }
-      bindRange("price-min", "min");
-      bindRange("price-max", "max");
+
+      bind_range("price-min", "min");
+      bind_range("price-max", "max");
 
       document.getElementById("btn-clear").addEventListener("click", () => {
-        currentFilters = { cpu: "", ram: "0", ai: "", ocu: "", stock: "" };
+        current_filters = { cpu: "", ram: "0", ai: "", ocu: "", stock: "" };
         document.querySelectorAll(".filter-option").forEach((node) => {
           node.classList.remove("active");
           node.querySelector("input").checked = false;
@@ -736,34 +976,34 @@
           node.classList.add("active");
           node.querySelector("input").checked = true;
         });
-        priceRange = { min: 0, max: PRICE_STEPS.length - 1 };
+        price_range = { min: 0, max: PRICE_STEPS.length - 1 };
         document.getElementById("price-min").value = 0;
         document.getElementById("price-max").value = PRICE_STEPS.length - 1;
-        currentPage = 1;
-        updateRangeSlider();
+        current_page = 1;
+        update_range_slider();
         render();
       });
 
-      document.getElementById("select-sort").addEventListener("change", (e) => {
-        sortKey = e.target.value;
-        currentPage = 1;
+      document.getElementById("select-sort").addEventListener("change", (event) => {
+        sort_key = event.target.value;
+        current_page = 1;
         render();
       });
 
-      document.getElementById("select-pagesize").addEventListener("change", (e) => {
-        pageSize = e.target.value === "all" ? Infinity : parseInt(e.target.value, 10);
-        currentPage = 1;
+      document.getElementById("select-pagesize").addEventListener("change", (event) => {
+        page_size = event.target.value === "all" ? Infinity : parseInt(event.target.value, 10);
+        current_page = 1;
         render();
       });
 
       document.querySelectorAll(".filter-section-title").forEach((title) => {
         const body = title.nextElementSibling;
-        body.style.maxHeight = body.scrollHeight + "px";
+        body.style.maxHeight = `${body.scrollHeight}px`;
         title.addEventListener("click", () => {
           const section = title.closest(".filter-section");
           if (section.classList.contains("collapsed")) {
             section.classList.remove("collapsed");
-            body.style.maxHeight = body.scrollHeight + "px";
+            body.style.maxHeight = `${body.scrollHeight}px`;
           } else {
             section.classList.add("collapsed");
           }
@@ -772,22 +1012,25 @@
 
       async function init() {
         try {
-          const res = await fetch("/shotpc/data/minis.json");
-          const data = await res.json();
-          allMinis = Array.isArray(data) ? data : [];
-          const fetched = allMinis
+          const response = await fetch("/shotpc/data/minis.json");
+          const data = await response.json();
+          all_minis = Array.isArray(data) ? data : [];
+
+          const fetched = all_minis
             .map((item) => String(item.fetched_at || "").slice(0, 10))
             .filter(Boolean)
             .sort()
             .pop() || "不明";
+
           document.getElementById("data-note").textContent =
             `価格と在庫は ${fetched} 時点で取得したAmazon公開情報です。`;
-          updateRangeSlider();
-          setActiveOptions();
+
+          update_range_slider();
+          set_active_options();
           render();
-        } catch (e) {
-          document.getElementById("product-list").innerHTML =
-            '<li class="loading-msg">データの読み込みに失敗しました</li>';
+        } catch (error) {
+          document.getElementById("product-body").innerHTML =
+            '<tr><td colspan="13" class="loading-msg">データの読み込みに失敗しました</td></tr>';
         }
       }
 
