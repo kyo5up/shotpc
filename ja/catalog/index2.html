@@ -397,6 +397,17 @@
         color: #3b4758;
       }
 
+      .brand-main a,
+      .model-main a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .brand-main a:hover,
+      .model-main a:hover {
+        text-decoration: underline;
+      }
+
       .model-main {
         font-size: 0.85rem;
         font-weight: 700;
@@ -847,6 +858,14 @@
         return item.model || item.id || "-";
       }
 
+      function slugify_brand(brand) {
+        return String(brand || "")
+          .trim()
+          .toLowerCase()
+          .replaceAll(/[^a-z0-9]+/g, "-")
+          .replaceAll(/^-+|-+$/g, "");
+      }
+
       function escape_html(value) {
         return String(value || "")
           .replaceAll("&", "&amp;")
@@ -866,6 +885,12 @@
         const asin = item.source_ids?.asin || "";
         const stock = item.stock === "in_stock";
         const brand = display_brand(item.brand);
+        const brand_slug = slugify_brand(item.brand);
+        const has_brand_page = brand !== "-" && brand_slug;
+        const brand_html = has_brand_page
+          ? `<a href="/shotpc/ja/brands/${brand_slug}.html">${escape_html(brand)}</a>`
+          : escape_html(brand);
+        const model_href = item.id ? `/ja/minis/${escape_html(item.id)}.html` : "#";
         const thumb_html = item.image_url
           ? `<img src="${escape_html(item.image_url)}" alt="" loading="lazy" />`
           : '<span class="thumb-fallback">NO<br />IMG</span>';
@@ -874,9 +899,9 @@
           <tr>
             <td class="cell-center"><span class="rank-num">${rank}</span></td>
             <td><div class="thumb-box">${thumb_html}</div></td>
-            <td><div class="brand-main" title="${escape_html(brand)}">${escape_html(brand)}</div></td>
+            <td><div class="brand-main" title="${escape_html(brand)}">${brand_html}</div></td>
             <td>
-              <div class="model-main" title="${escape_html(short_name(item))}">${escape_html(short_name(item))}</div>
+              <div class="model-main" title="${escape_html(short_name(item))}"><a href="${model_href}">${escape_html(short_name(item))}</a></div>
               <div class="model-meta" title="${escape_html(`${item.id || ""} / ${asin}`)}">${escape_html(item.id || "")} / ${escape_html(asin)}</div>
             </td>
             <td>
